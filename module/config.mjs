@@ -2,10 +2,10 @@ import * as advancement from "./documents/advancement/_module.mjs";
 import { preLocalize } from "./utils.mjs";
 
 // Namespace Configuration Values
-const DND5E = {};
+const NIH = {};
 
 // ASCII Artwork
-DND5E.ASCII = `_______________________________
+NIH.ASCII = `_______________________________
 ______      ______ _____ _____
 |  _  \\___  |  _  \\  ___|  ___|
 | | | ( _ ) | | | |___ \\| |__
@@ -30,79 +30,65 @@ _______________________________`;
  * The set of Ability Scores used within the system.
  * @enum {AbilityConfiguration}
  */
-DND5E.abilities = {
-  str: {
-    label: "DND5E.AbilityStr",
-    abbreviation: "DND5E.AbilityStrAbbr",
-    type: "physical"
-  },
-  dex: {
-    label: "DND5E.AbilityDex",
-    abbreviation: "DND5E.AbilityDexAbbr",
-    type: "physical"
-  },
-  con: {
-    label: "DND5E.AbilityCon",
-    abbreviation: "DND5E.AbilityConAbbr",
-    type: "physical"
-  },
-  int: {
-    label: "DND5E.AbilityInt",
-    abbreviation: "DND5E.AbilityIntAbbr",
-    type: "mental",
-    defaults: { vehicle: 0 }
-  },
-  wis: {
-    label: "DND5E.AbilityWis",
-    abbreviation: "DND5E.AbilityWisAbbr",
-    type: "mental",
-    defaults: { vehicle: 0 }
-  },
-  cha: {
-    label: "DND5E.AbilityCha",
-    abbreviation: "DND5E.AbilityChaAbbr",
-    type: "mental",
-    defaults: { vehicle: 0 }
-  },
-  hon: {
-    label: "DND5E.AbilityHon",
-    abbreviation: "DND5E.AbilityHonAbbr",
-    type: "mental",
-    defaults: { npc: "cha", vehicle: 0 },
-    improvement: false
-  },
-  san: {
-    label: "DND5E.AbilitySan",
-    abbreviation: "DND5E.AbilitySanAbbr",
-    type: "mental",
-    defaults: { npc: "wis", vehicle: 0 },
-    improvement: false
-  }
+NIH.abilities = {
+	str: {
+		label: "NIH.AbilityStr",
+		abbreviation: "NIH.AbilityStrAbbr",
+		type: "physical"
+	},
+	dex: {
+		label: "NIH.AbilityDex",
+		abbreviation: "NIH.AbilityDexAbbr",
+		type: "physical"
+	},
+	con: {
+		label: "NIH.AbilityCon",
+		abbreviation: "NIH.AbilityConAbbr",
+		type: "physical"
+	},
+	int: {
+		label: "NIH.AbilityInt",
+		abbreviation: "NIH.AbilityIntAbbr",
+		type: "mental",
+		defaults: { vehicle: 0 }
+	},
+	wis: {
+		label: "NIH.AbilityWis",
+		abbreviation: "NIH.AbilityWisAbbr",
+		type: "mental",
+		defaults: { vehicle: 0 }
+	},
+	cha: {
+		label: "NIH.AbilityCha",
+		abbreviation: "NIH.AbilityChaAbbr",
+		type: "mental",
+		defaults: { vehicle: 0 }
+	}
 };
 preLocalize("abilities", { keys: ["label", "abbreviation"] });
 patchConfig("abilities", "label", { since: 2.2, until: 2.4 });
 
-Object.defineProperty(DND5E, "abilityAbbreviations", {
-  get() {
-    foundry.utils.logCompatibilityWarning(
-      "The `abilityAbbreviations` configuration object has been merged with `abilities`.",
-      { since: "DnD5e 2.2", until: "DnD5e 2.4" }
-    );
-    return Object.fromEntries(Object.entries(DND5E.abilities).map(([k, v]) => [k, v.abbreviation]));
-  }
+Object.defineProperty(NIH, "abilityAbbreviations", {
+	get() {
+		foundry.utils.logCompatibilityWarning(
+			"The `abilityAbbreviations` configuration object has been merged with `abilities`.",
+			{ since: "Nih 2.2", until: "Nih 2.4" }
+		);
+		return Object.fromEntries(Object.entries(NIH.abilities).map(([k, v]) => [k, v.abbreviation]));
+	}
 });
 
 /**
  * Configure which ability score is used as the default modifier for initiative rolls.
  * @type {string}
  */
-DND5E.initiativeAbility = "dex";
+NIH.initiativeAbility = "dex";
 
 /**
  * Configure which ability score is used when calculating hit points per level.
  * @type {string}
  */
-DND5E.hitPointsAbility = "con";
+NIH.hitPointsAbility = "con";
 
 /* -------------------------------------------- */
 
@@ -118,25 +104,25 @@ DND5E.hitPointsAbility = "con";
  * The set of skill which can be trained with their default ability scores.
  * @enum {SkillConfiguration}
  */
-DND5E.skills = {
-  acr: { label: "DND5E.SkillAcr", ability: "dex" },
-  ani: { label: "DND5E.SkillAni", ability: "wis" },
-  arc: { label: "DND5E.SkillArc", ability: "int" },
-  ath: { label: "DND5E.SkillAth", ability: "str" },
-  dec: { label: "DND5E.SkillDec", ability: "cha" },
-  his: { label: "DND5E.SkillHis", ability: "int" },
-  ins: { label: "DND5E.SkillIns", ability: "wis" },
-  itm: { label: "DND5E.SkillItm", ability: "cha" },
-  inv: { label: "DND5E.SkillInv", ability: "int" },
-  med: { label: "DND5E.SkillMed", ability: "wis" },
-  nat: { label: "DND5E.SkillNat", ability: "int" },
-  prc: { label: "DND5E.SkillPrc", ability: "wis" },
-  prf: { label: "DND5E.SkillPrf", ability: "cha" },
-  per: { label: "DND5E.SkillPer", ability: "cha" },
-  rel: { label: "DND5E.SkillRel", ability: "int" },
-  slt: { label: "DND5E.SkillSlt", ability: "dex" },
-  ste: { label: "DND5E.SkillSte", ability: "dex" },
-  sur: { label: "DND5E.SkillSur", ability: "wis" }
+NIH.skills = {
+	acr: { label: "NIH.SkillAcr", ability: "dex" },
+	ani: { label: "NIH.SkillAni", ability: "wis" },
+	arc: { label: "NIH.SkillArc", ability: "int" },
+	ath: { label: "NIH.SkillAth", ability: "str" },
+	dec: { label: "NIH.SkillDec", ability: "cha" },
+	his: { label: "NIH.SkillHis", ability: "int" },
+	ins: { label: "NIH.SkillIns", ability: "wis" },
+	itm: { label: "NIH.SkillItm", ability: "cha" },
+	inv: { label: "NIH.SkillInv", ability: "int" },
+	med: { label: "NIH.SkillMed", ability: "wis" },
+	nat: { label: "NIH.SkillNat", ability: "int" },
+	prc: { label: "NIH.SkillPrc", ability: "wis" },
+	prf: { label: "NIH.SkillPrf", ability: "cha" },
+	per: { label: "NIH.SkillPer", ability: "cha" },
+	rel: { label: "NIH.SkillRel", ability: "int" },
+	slt: { label: "NIH.SkillSlt", ability: "dex" },
+	ste: { label: "NIH.SkillSte", ability: "dex" },
+	sur: { label: "NIH.SkillSur", ability: "wis" }
 };
 preLocalize("skills", { key: "label", sort: true });
 
@@ -146,16 +132,16 @@ preLocalize("skills", { key: "label", sort: true });
  * Character alignment options.
  * @enum {string}
  */
-DND5E.alignments = {
-  lg: "DND5E.AlignmentLG",
-  ng: "DND5E.AlignmentNG",
-  cg: "DND5E.AlignmentCG",
-  ln: "DND5E.AlignmentLN",
-  tn: "DND5E.AlignmentTN",
-  cn: "DND5E.AlignmentCN",
-  le: "DND5E.AlignmentLE",
-  ne: "DND5E.AlignmentNE",
-  ce: "DND5E.AlignmentCE"
+NIH.alignments = {
+	lg: "NIH.AlignmentLG",
+	ng: "NIH.AlignmentNG",
+	cg: "NIH.AlignmentCG",
+	ln: "NIH.AlignmentLN",
+	tn: "NIH.AlignmentTN",
+	cn: "NIH.AlignmentCN",
+	le: "NIH.AlignmentLE",
+	ne: "NIH.AlignmentNE",
+	ce: "NIH.AlignmentCE"
 };
 preLocalize("alignments");
 
@@ -165,20 +151,20 @@ preLocalize("alignments");
  * An enumeration of item attunement types.
  * @enum {number}
  */
-DND5E.attunementTypes = {
-  NONE: 0,
-  REQUIRED: 1,
-  ATTUNED: 2
+NIH.attunementTypes = {
+	NONE: 0,
+	REQUIRED: 1,
+	ATTUNED: 2
 };
 
 /**
  * An enumeration of item attunement states.
  * @type {{"0": string, "1": string, "2": string}}
  */
-DND5E.attunements = {
-  0: "DND5E.AttunementNone",
-  1: "DND5E.AttunementRequired",
-  2: "DND5E.AttunementAttuned"
+NIH.attunements = {
+	0: "NIH.AttunementNone",
+	1: "NIH.AttunementRequired",
+	2: "NIH.AttunementAttuned"
 };
 preLocalize("attunements");
 
@@ -188,22 +174,24 @@ preLocalize("attunements");
  * General weapon categories.
  * @enum {string}
  */
-DND5E.weaponProficiencies = {
-  sim: "DND5E.WeaponSimpleProficiency",
-  mar: "DND5E.WeaponMartialProficiency"
+NIH.weaponProficiencies = {
+	sim: "NIH.WeaponSimpleProficiency",
+	mar: "NIH.WeaponMartialProficiency",
+	exo: "NIH.WeaponExoticProficiency"
 };
 preLocalize("weaponProficiencies");
 
 /**
- * A mapping between `DND5E.weaponTypes` and `DND5E.weaponProficiencies` that
+ * A mapping between `NIH.weaponTypes` and `NIH.weaponProficiencies` that
  * is used to determine if character has proficiency when adding an item.
  * @enum {(boolean|string)}
  */
-DND5E.weaponProficienciesMap = {
-  simpleM: "sim",
-  simpleR: "sim",
-  martialM: "mar",
-  martialR: "mar"
+NIH.weaponProficienciesMap = {
+	simpleM: "sim",
+	simpleR: "sim",
+	martialM: "mar",
+	martialR: "mar",
+	exoticR: "exo"
 };
 
 /**
@@ -211,44 +199,44 @@ DND5E.weaponProficienciesMap = {
  * starting equipment provided by classes and backgrounds.
  * @enum {string}
  */
-DND5E.weaponIds = {
-  battleaxe: "I0WocDSuNpGJayPb",
-  blowgun: "wNWK6yJMHG9ANqQV",
-  club: "nfIRTECQIG81CvM4",
-  dagger: "0E565kQUBmndJ1a2",
-  dart: "3rCO8MTIdPGSW6IJ",
-  flail: "UrH3sMdnUDckIHJ6",
-  glaive: "rOG1OM2ihgPjOvFW",
-  greataxe: "1Lxk6kmoRhG8qQ0u",
-  greatclub: "QRCsxkCwWNwswL9o",
-  greatsword: "xMkP8BmFzElcsMaR",
-  halberd: "DMejWAc8r8YvDPP1",
-  handaxe: "eO7Fbv5WBk5zvGOc",
-  handcrossbow: "qaSro7kFhxD6INbZ",
-  heavycrossbow: "RmP0mYRn2J7K26rX",
-  javelin: "DWLMnODrnHn8IbAG",
-  lance: "RnuxdHUAIgxccVwj",
-  lightcrossbow: "ddWvQRLmnnIS0eLF",
-  lighthammer: "XVK6TOL4sGItssAE",
-  longbow: "3cymOVja8jXbzrdT",
-  longsword: "10ZP2Bu3vnCuYMIB",
-  mace: "Ajyq6nGwF7FtLhDQ",
-  maul: "DizirD7eqjh8n95A",
-  morningstar: "dX8AxCh9o0A9CkT3",
-  net: "aEiM49V8vWpWw7rU",
-  pike: "tC0kcqZT9HHAO0PD",
-  quarterstaff: "g2dWN7PQiMRYWzyk",
-  rapier: "Tobce1hexTnDk4sV",
-  scimitar: "fbC0Mg1a73wdFbqO",
-  shortsword: "osLzOwQdPtrK3rQH",
-  sickle: "i4NeNZ30ycwPDHMx",
-  spear: "OG4nBBydvmfWYXIk",
-  shortbow: "GJv6WkD7D2J6rP6M",
-  sling: "3gynWO9sN4OLGMWD",
-  trident: "F65ANO66ckP8FDMa",
-  warpick: "2YdfjN1PIIrSHZii",
-  warhammer: "F0Df164Xv1gWcYt0",
-  whip: "QKTyxoO0YDnAsbYe"
+NIH.weaponIds = {
+	battleaxe: "I0WocDSuNpGJayPb",
+	blowgun: "wNWK6yJMHG9ANqQV",
+	club: "nfIRTECQIG81CvM4",
+	dagger: "0E565kQUBmndJ1a2",
+	dart: "3rCO8MTIdPGSW6IJ",
+	flail: "UrH3sMdnUDckIHJ6",
+	glaive: "rOG1OM2ihgPjOvFW",
+	greataxe: "1Lxk6kmoRhG8qQ0u",
+	greatclub: "QRCsxkCwWNwswL9o",
+	greatsword: "xMkP8BmFzElcsMaR",
+	halberd: "DMejWAc8r8YvDPP1",
+	handaxe: "eO7Fbv5WBk5zvGOc",
+	handcrossbow: "qaSro7kFhxD6INbZ",
+	heavycrossbow: "RmP0mYRn2J7K26rX",
+	javelin: "DWLMnODrnHn8IbAG",
+	lance: "RnuxdHUAIgxccVwj",
+	lightcrossbow: "ddWvQRLmnnIS0eLF",
+	lighthammer: "XVK6TOL4sGItssAE",
+	longbow: "3cymOVja8jXbzrdT",
+	longsword: "10ZP2Bu3vnCuYMIB",
+	mace: "Ajyq6nGwF7FtLhDQ",
+	maul: "DizirD7eqjh8n95A",
+	morningstar: "dX8AxCh9o0A9CkT3",
+	net: "aEiM49V8vWpWw7rU",
+	pike: "tC0kcqZT9HHAO0PD",
+	quarterstaff: "g2dWN7PQiMRYWzyk",
+	rapier: "Tobce1hexTnDk4sV",
+	scimitar: "fbC0Mg1a73wdFbqO",
+	shortsword: "osLzOwQdPtrK3rQH",
+	sickle: "i4NeNZ30ycwPDHMx",
+	spear: "OG4nBBydvmfWYXIk",
+	shortbow: "GJv6WkD7D2J6rP6M",
+	sling: "3gynWO9sN4OLGMWD",
+	trident: "F65ANO66ckP8FDMa",
+	warpick: "2YdfjN1PIIrSHZii",
+	warhammer: "F0Df164Xv1gWcYt0",
+	whip: "QKTyxoO0YDnAsbYe"
 };
 
 /* -------------------------------------------- */
@@ -257,11 +245,11 @@ DND5E.weaponIds = {
  * The basic ammunition types.
  * @enum {string}
  */
-DND5E.ammoIds = {
-  arrow: "3c7JXOzsv55gqJS5",
-  blowgunNeedle: "gBQ8xqTA5f8wP5iu",
-  crossbowBolt: "SItCnYBqhzqBoaWG",
-  slingBullet: "z9SbsMIBZzuhZOqT"
+NIH.ammoIds = {
+	arrow: "3c7JXOzsv55gqJS5",
+	blowgunNeedle: "gBQ8xqTA5f8wP5iu",
+	crossbowBolt: "SItCnYBqhzqBoaWG",
+	slingBullet: "z9SbsMIBZzuhZOqT"
 };
 
 /* -------------------------------------------- */
@@ -271,10 +259,10 @@ DND5E.ammoIds = {
  *
  * @enum {string}
  */
-DND5E.toolTypes = {
-  art: "DND5E.ToolArtisans",
-  game: "DND5E.ToolGamingSet",
-  music: "DND5E.ToolMusicalInstrument"
+NIH.toolTypes = {
+	art: "NIH.ToolArtisans",
+	game: "NIH.ToolGamingSet",
+	music: "NIH.ToolMusicalInstrument"
 };
 preLocalize("toolTypes", { sort: true });
 
@@ -283,9 +271,9 @@ preLocalize("toolTypes", { sort: true });
  *
  * @enum {string}
  */
-DND5E.toolProficiencies = {
-  ...DND5E.toolTypes,
-  vehicle: "DND5E.ToolVehicle"
+NIH.toolProficiencies = {
+	...NIH.toolTypes,
+	vehicle: "NIH.ToolVehicle"
 };
 preLocalize("toolProficiencies", { sort: true });
 
@@ -294,43 +282,43 @@ preLocalize("toolProficiencies", { sort: true });
  * starting equipment provided by classes and backgrounds.
  * @enum {string}
  */
-DND5E.toolIds = {
-  alchemist: "SztwZhbhZeCqyAes",
-  bagpipes: "yxHi57T5mmVt0oDr",
-  brewer: "Y9S75go1hLMXUD48",
-  calligrapher: "jhjo20QoiD5exf09",
-  card: "YwlHI3BVJapz4a3E",
-  carpenter: "8NS6MSOdXtUqD7Ib",
-  cartographer: "fC0lFK8P4RuhpfaU",
-  chess: "23y8FvWKf9YLcnBL",
-  cobbler: "hM84pZnpCqKfi8XH",
-  cook: "Gflnp29aEv5Lc1ZM",
-  dice: "iBuTM09KD9IoM5L8",
-  disg: "IBhDAr7WkhWPYLVn",
-  drum: "69Dpr25pf4BjkHKb",
-  dulcimer: "NtdDkjmpdIMiX7I2",
-  flute: "eJOrPcAz9EcquyRQ",
-  forg: "cG3m4YlHfbQlLEOx",
-  glassblower: "rTbVrNcwApnuTz5E",
-  herb: "i89okN7GFTWHsvPy",
-  horn: "aa9KuBy4dst7WIW9",
-  jeweler: "YfBwELTgPFHmQdHh",
-  leatherworker: "PUMfwyVUbtyxgYbD",
-  lute: "qBydtUUIkv520DT7",
-  lyre: "EwG1EtmbgR3bM68U",
-  mason: "skUih6tBvcBbORzA",
-  navg: "YHCmjsiXxZ9UdUhU",
-  painter: "ccm5xlWhx74d6lsK",
-  panflute: "G5m5gYIx9VAUWC3J",
-  pois: "il2GNi8C0DvGLL9P",
-  potter: "hJS8yEVkqgJjwfWa",
-  shawm: "G3cqbejJpfB91VhP",
-  smith: "KndVe2insuctjIaj",
-  thief: "woWZ1sO5IUVGzo58",
-  tinker: "0d08g1i5WXnNrCNA",
-  viol: "baoe3U5BfMMMxhCU",
-  weaver: "ap9prThUB2y9lDyj",
-  woodcarver: "xKErqkLo4ASYr5EP"
+NIH.toolIds = {
+	alchemist: "SztwZhbhZeCqyAes",
+	bagpipes: "yxHi57T5mmVt0oDr",
+	brewer: "Y9S75go1hLMXUD48",
+	calligrapher: "jhjo20QoiD5exf09",
+	card: "YwlHI3BVJapz4a3E",
+	carpenter: "8NS6MSOdXtUqD7Ib",
+	cartographer: "fC0lFK8P4RuhpfaU",
+	chess: "23y8FvWKf9YLcnBL",
+	cobbler: "hM84pZnpCqKfi8XH",
+	cook: "Gflnp29aEv5Lc1ZM",
+	dice: "iBuTM09KD9IoM5L8",
+	disg: "IBhDAr7WkhWPYLVn",
+	drum: "69Dpr25pf4BjkHKb",
+	dulcimer: "NtdDkjmpdIMiX7I2",
+	flute: "eJOrPcAz9EcquyRQ",
+	forg: "cG3m4YlHfbQlLEOx",
+	glassblower: "rTbVrNcwApnuTz5E",
+	herb: "i89okN7GFTWHsvPy",
+	horn: "aa9KuBy4dst7WIW9",
+	jeweler: "YfBwELTgPFHmQdHh",
+	leatherworker: "PUMfwyVUbtyxgYbD",
+	lute: "qBydtUUIkv520DT7",
+	lyre: "EwG1EtmbgR3bM68U",
+	mason: "skUih6tBvcBbORzA",
+	navg: "YHCmjsiXxZ9UdUhU",
+	painter: "ccm5xlWhx74d6lsK",
+	panflute: "G5m5gYIx9VAUWC3J",
+	pois: "il2GNi8C0DvGLL9P",
+	potter: "hJS8yEVkqgJjwfWa",
+	shawm: "G3cqbejJpfB91VhP",
+	smith: "KndVe2insuctjIaj",
+	thief: "woWZ1sO5IUVGzo58",
+	tinker: "0d08g1i5WXnNrCNA",
+	viol: "baoe3U5BfMMMxhCU",
+	weaver: "ap9prThUB2y9lDyj",
+	woodcarver: "xKErqkLo4ASYr5EP"
 };
 
 /* -------------------------------------------- */
@@ -339,14 +327,14 @@ DND5E.toolIds = {
  * Time periods that accept a numeric value.
  * @enum {string}
  */
-DND5E.scalarTimePeriods = {
-  turn: "DND5E.TimeTurn",
-  round: "DND5E.TimeRound",
-  minute: "DND5E.TimeMinute",
-  hour: "DND5E.TimeHour",
-  day: "DND5E.TimeDay",
-  month: "DND5E.TimeMonth",
-  year: "DND5E.TimeYear"
+NIH.scalarTimePeriods = {
+	turn: "NIH.TimeTurn",
+	round: "NIH.TimeRound",
+	minute: "NIH.TimeMinute",
+	hour: "NIH.TimeHour",
+	day: "NIH.TimeDay",
+	month: "NIH.TimeMonth",
+	year: "NIH.TimeYear"
 };
 preLocalize("scalarTimePeriods");
 
@@ -356,10 +344,10 @@ preLocalize("scalarTimePeriods");
  * Time periods for spells that don't have a defined ending.
  * @enum {string}
  */
-DND5E.permanentTimePeriods = {
-  disp: "DND5E.TimeDisp",
-  dstr: "DND5E.TimeDispTrig",
-  perm: "DND5E.TimePerm"
+NIH.permanentTimePeriods = {
+	disp: "NIH.TimeDisp",
+	dstr: "NIH.TimeDispTrig",
+	perm: "NIH.TimePerm"
 };
 preLocalize("permanentTimePeriods");
 
@@ -369,9 +357,9 @@ preLocalize("permanentTimePeriods");
  * Time periods that don't accept a numeric value.
  * @enum {string}
  */
-DND5E.specialTimePeriods = {
-  inst: "DND5E.TimeInst",
-  spec: "DND5E.Special"
+NIH.specialTimePeriods = {
+	inst: "NIH.TimeInst",
+	spec: "NIH.Special"
 };
 preLocalize("specialTimePeriods");
 
@@ -381,10 +369,10 @@ preLocalize("specialTimePeriods");
  * The various lengths of time over which effects can occur.
  * @enum {string}
  */
-DND5E.timePeriods = {
-  ...DND5E.specialTimePeriods,
-  ...DND5E.permanentTimePeriods,
-  ...DND5E.scalarTimePeriods
+NIH.timePeriods = {
+	...NIH.specialTimePeriods,
+	...NIH.permanentTimePeriods,
+	...NIH.scalarTimePeriods
 };
 preLocalize("timePeriods");
 
@@ -394,18 +382,18 @@ preLocalize("timePeriods");
  * Various ways in which an item or ability can be activated.
  * @enum {string}
  */
-DND5E.abilityActivationTypes = {
-  action: "DND5E.Action",
-  bonus: "DND5E.BonusAction",
-  reaction: "DND5E.Reaction",
-  minute: DND5E.timePeriods.minute,
-  hour: DND5E.timePeriods.hour,
-  day: DND5E.timePeriods.day,
-  special: DND5E.timePeriods.spec,
-  legendary: "DND5E.LegendaryActionLabel",
-  mythic: "DND5E.MythicActionLabel",
-  lair: "DND5E.LairActionLabel",
-  crew: "DND5E.VehicleCrewAction"
+NIH.abilityActivationTypes = {
+	action: "NIH.Action",
+	bonus: "NIH.BonusAction",
+	reaction: "NIH.Reaction",
+	minute: NIH.timePeriods.minute,
+	hour: NIH.timePeriods.hour,
+	day: NIH.timePeriods.day,
+	special: NIH.timePeriods.spec,
+	legendary: "NIH.LegendaryActionLabel",
+	mythic: "NIH.MythicActionLabel",
+	lair: "NIH.LairActionLabel",
+	crew: "NIH.VehicleCrewAction"
 };
 preLocalize("abilityActivationTypes");
 
@@ -415,12 +403,12 @@ preLocalize("abilityActivationTypes");
  * Different things that an ability can consume upon use.
  * @enum {string}
  */
-DND5E.abilityConsumptionTypes = {
-  ammo: "DND5E.ConsumeAmmunition",
-  attribute: "DND5E.ConsumeAttribute",
-  hitDice: "DND5E.ConsumeHitDice",
-  material: "DND5E.ConsumeMaterial",
-  charges: "DND5E.ConsumeCharges"
+NIH.abilityConsumptionTypes = {
+	ammo: "NIH.ConsumeAmmunition",
+	attribute: "NIH.ConsumeAttribute",
+	hitDice: "NIH.ConsumeHitDice",
+	material: "NIH.ConsumeMaterial",
+	charges: "NIH.ConsumeCharges"
 };
 preLocalize("abilityConsumptionTypes", { sort: true });
 
@@ -430,39 +418,39 @@ preLocalize("abilityConsumptionTypes", { sort: true });
  * Creature sizes.
  * @enum {string}
  */
-DND5E.actorSizes = {
-  tiny: "DND5E.SizeTiny",
-  sm: "DND5E.SizeSmall",
-  med: "DND5E.SizeMedium",
-  lg: "DND5E.SizeLarge",
-  huge: "DND5E.SizeHuge",
-  grg: "DND5E.SizeGargantuan"
+NIH.actorSizes = {
+	tiny: "NIH.SizeTiny",
+	sm: "NIH.SizeSmall",
+	med: "NIH.SizeMedium",
+	lg: "NIH.SizeLarge",
+	huge: "NIH.SizeHuge",
+	grg: "NIH.SizeGargantuan"
 };
 preLocalize("actorSizes");
 
 /**
- * Default token image size for the values of `DND5E.actorSizes`.
+ * Default token image size for the values of `NIH.actorSizes`.
  * @enum {number}
  */
-DND5E.tokenSizes = {
-  tiny: 0.5,
-  sm: 1,
-  med: 1,
-  lg: 2,
-  huge: 3,
-  grg: 4
+NIH.tokenSizes = {
+	tiny: 0.5,
+	sm: 1,
+	med: 1,
+	lg: 2,
+	huge: 3,
+	grg: 4
 };
 
 /**
  * Colors used to visualize temporary and temporary maximum HP in token health bars.
  * @enum {number}
  */
-DND5E.tokenHPColors = {
-  damage: 0xFF0000,
-  healing: 0x00FF00,
-  temp: 0x66CCFF,
-  tempmax: 0x440066,
-  negmax: 0x550000
+NIH.tokenHPColors = {
+	damage: 0xFF0000,
+	healing: 0x00FF00,
+	temp: 0x66CCFF,
+	tempmax: 0x440066,
+	negmax: 0x550000
 };
 
 /* -------------------------------------------- */
@@ -472,21 +460,21 @@ DND5E.tokenHPColors = {
  * *Note: Not pre-localized to allow for easy fetching of pluralized forms.*
  * @enum {string}
  */
-DND5E.creatureTypes = {
-  aberration: "DND5E.CreatureAberration",
-  beast: "DND5E.CreatureBeast",
-  celestial: "DND5E.CreatureCelestial",
-  construct: "DND5E.CreatureConstruct",
-  dragon: "DND5E.CreatureDragon",
-  elemental: "DND5E.CreatureElemental",
-  fey: "DND5E.CreatureFey",
-  fiend: "DND5E.CreatureFiend",
-  giant: "DND5E.CreatureGiant",
-  humanoid: "DND5E.CreatureHumanoid",
-  monstrosity: "DND5E.CreatureMonstrosity",
-  ooze: "DND5E.CreatureOoze",
-  plant: "DND5E.CreaturePlant",
-  undead: "DND5E.CreatureUndead"
+NIH.creatureTypes = {
+	aberration: "NIH.CreatureAberration",
+	beast: "NIH.CreatureBeast",
+	celestial: "NIH.CreatureCelestial",
+	construct: "NIH.CreatureConstruct",
+	dragon: "NIH.CreatureDragon",
+	elemental: "NIH.CreatureElemental",
+	fey: "NIH.CreatureFey",
+	fiend: "NIH.CreatureFiend",
+	giant: "NIH.CreatureGiant",
+	humanoid: "NIH.CreatureHumanoid",
+	monstrosity: "NIH.CreatureMonstrosity",
+	ooze: "NIH.CreatureOoze",
+	plant: "NIH.CreaturePlant",
+	undead: "NIH.CreatureUndead"
 };
 
 /* -------------------------------------------- */
@@ -495,16 +483,16 @@ DND5E.creatureTypes = {
  * Classification types for item action types.
  * @enum {string}
  */
-DND5E.itemActionTypes = {
-  mwak: "DND5E.ActionMWAK",
-  rwak: "DND5E.ActionRWAK",
-  msak: "DND5E.ActionMSAK",
-  rsak: "DND5E.ActionRSAK",
-  save: "DND5E.ActionSave",
-  heal: "DND5E.ActionHeal",
-  abil: "DND5E.ActionAbil",
-  util: "DND5E.ActionUtil",
-  other: "DND5E.ActionOther"
+NIH.itemActionTypes = {
+	mwak: "NIH.ActionMWAK",
+	rwak: "NIH.ActionRWAK",
+	msak: "NIH.ActionMSAK",
+	rsak: "NIH.ActionRSAK",
+	save: "NIH.ActionSave",
+	heal: "NIH.ActionHeal",
+	abil: "NIH.ActionAbil",
+	util: "NIH.ActionUtil",
+	other: "NIH.ActionOther"
 };
 preLocalize("itemActionTypes");
 
@@ -514,9 +502,9 @@ preLocalize("itemActionTypes");
  * Different ways in which item capacity can be limited.
  * @enum {string}
  */
-DND5E.itemCapacityTypes = {
-  items: "DND5E.ItemContainerCapacityItems",
-  weight: "DND5E.ItemContainerCapacityWeight"
+NIH.itemCapacityTypes = {
+	items: "NIH.ItemContainerCapacityItems",
+	weight: "NIH.ItemContainerCapacityWeight"
 };
 preLocalize("itemCapacityTypes", { sort: true });
 
@@ -526,13 +514,13 @@ preLocalize("itemCapacityTypes", { sort: true });
  * List of various item rarities.
  * @enum {string}
  */
-DND5E.itemRarity = {
-  common: "DND5E.ItemRarityCommon",
-  uncommon: "DND5E.ItemRarityUncommon",
-  rare: "DND5E.ItemRarityRare",
-  veryRare: "DND5E.ItemRarityVeryRare",
-  legendary: "DND5E.ItemRarityLegendary",
-  artifact: "DND5E.ItemRarityArtifact"
+NIH.itemRarity = {
+	common: "NIH.ItemRarityCommon",
+	uncommon: "NIH.ItemRarityUncommon",
+	rare: "NIH.ItemRarityRare",
+	veryRare: "NIH.ItemRarityVeryRare",
+	legendary: "NIH.ItemRarityLegendary",
+	artifact: "NIH.ItemRarityArtifact"
 };
 preLocalize("itemRarity");
 
@@ -542,11 +530,11 @@ preLocalize("itemRarity");
  * Enumerate the lengths of time over which an item can have limited use ability.
  * @enum {string}
  */
-DND5E.limitedUsePeriods = {
-  sr: "DND5E.ShortRest",
-  lr: "DND5E.LongRest",
-  day: "DND5E.Day",
-  charges: "DND5E.Charges"
+NIH.limitedUsePeriods = {
+	sr: "NIH.ShortRest",
+	lr: "NIH.LongRest",
+	day: "NIH.Day",
+	charges: "NIH.Charges"
 };
 preLocalize("limitedUsePeriods");
 
@@ -556,12 +544,12 @@ preLocalize("limitedUsePeriods");
  * Specific equipment types that modify base AC.
  * @enum {string}
  */
-DND5E.armorTypes = {
-  light: "DND5E.EquipmentLight",
-  medium: "DND5E.EquipmentMedium",
-  heavy: "DND5E.EquipmentHeavy",
-  natural: "DND5E.EquipmentNatural",
-  shield: "DND5E.EquipmentShield"
+NIH.armorTypes = {
+	light: "NIH.EquipmentLight",
+	medium: "NIH.EquipmentMedium",
+	heavy: "NIH.EquipmentHeavy",
+	natural: "NIH.EquipmentNatural",
+	shield: "NIH.EquipmentShield"
 };
 preLocalize("armorTypes");
 
@@ -571,10 +559,10 @@ preLocalize("armorTypes");
  * Equipment types that aren't armor.
  * @enum {string}
  */
-DND5E.miscEquipmentTypes = {
-  clothing: "DND5E.EquipmentClothing",
-  trinket: "DND5E.EquipmentTrinket",
-  vehicle: "DND5E.EquipmentVehicle"
+NIH.miscEquipmentTypes = {
+	clothing: "NIH.EquipmentClothing",
+	trinket: "NIH.EquipmentTrinket",
+	vehicle: "NIH.EquipmentVehicle"
 };
 preLocalize("miscEquipmentTypes", { sort: true });
 
@@ -584,9 +572,9 @@ preLocalize("miscEquipmentTypes", { sort: true });
  * The set of equipment types for armor, clothing, and other objects which can be worn by the character.
  * @enum {string}
  */
-DND5E.equipmentTypes = {
-  ...DND5E.miscEquipmentTypes,
-  ...DND5E.armorTypes
+NIH.equipmentTypes = {
+	...NIH.miscEquipmentTypes,
+	...NIH.armorTypes
 };
 preLocalize("equipmentTypes", { sort: true });
 
@@ -596,11 +584,11 @@ preLocalize("equipmentTypes", { sort: true });
  * The various types of vehicles in which characters can be proficient.
  * @enum {string}
  */
-DND5E.vehicleTypes = {
-  air: "DND5E.VehicleTypeAir",
-  land: "DND5E.VehicleTypeLand",
-  space: "DND5E.VehicleTypeSpace",
-  water: "DND5E.VehicleTypeWater"
+NIH.vehicleTypes = {
+	air: "NIH.VehicleTypeAir",
+	land: "NIH.VehicleTypeLand",
+	space: "NIH.VehicleTypeSpace",
+	water: "NIH.VehicleTypeWater"
 };
 preLocalize("vehicleTypes", { sort: true });
 
@@ -610,26 +598,26 @@ preLocalize("vehicleTypes", { sort: true });
  * The set of Armor Proficiencies which a character may have.
  * @type {object}
  */
-DND5E.armorProficiencies = {
-  lgt: DND5E.equipmentTypes.light,
-  med: DND5E.equipmentTypes.medium,
-  hvy: DND5E.equipmentTypes.heavy,
-  shl: "DND5E.EquipmentShieldProficiency"
+NIH.armorProficiencies = {
+	lgt: NIH.equipmentTypes.light,
+	med: NIH.equipmentTypes.medium,
+	hvy: NIH.equipmentTypes.heavy,
+	shl: "NIH.EquipmentShieldProficiency"
 };
 preLocalize("armorProficiencies");
 
 /**
- * A mapping between `DND5E.equipmentTypes` and `DND5E.armorProficiencies` that
+ * A mapping between `NIH.equipmentTypes` and `NIH.armorProficiencies` that
  * is used to determine if character has proficiency when adding an item.
  * @enum {(boolean|string)}
  */
-DND5E.armorProficienciesMap = {
-  natural: true,
-  clothing: true,
-  light: "lgt",
-  medium: "med",
-  heavy: "hvy",
-  shield: "shl"
+NIH.armorProficienciesMap = {
+	natural: true,
+	clothing: true,
+	light: "lgt",
+	medium: "med",
+	heavy: "hvy",
+	shield: "shl"
 };
 
 /**
@@ -637,65 +625,65 @@ DND5E.armorProficienciesMap = {
  * automated AC calculation in NPCs, and starting equipment.
  * @enum {string}
  */
-DND5E.armorIds = {
-  breastplate: "SK2HATQ4abKUlV8i",
-  chainmail: "rLMflzmxpe8JGTOA",
-  chainshirt: "p2zChy24ZJdVqMSH",
-  halfplate: "vsgmACFYINloIdPm",
-  hide: "n1V07puo0RQxPGuF",
-  leather: "WwdpHLXGX5r8uZu5",
-  padded: "GtKV1b5uqFQqpEni",
-  plate: "OjkIqlW2UpgFcjZa",
-  ringmail: "nsXZejlmgalj4he9",
-  scalemail: "XmnlF5fgIO3tg6TG",
-  splint: "cKpJmsJmU8YaiuqG",
-  studded: "TIV3B1vbrVHIhQAm"
+NIH.armorIds = {
+	breastplate: "SK2HATQ4abKUlV8i",
+	chainmail: "rLMflzmxpe8JGTOA",
+	chainshirt: "p2zChy24ZJdVqMSH",
+	halfplate: "vsgmACFYINloIdPm",
+	hide: "n1V07puo0RQxPGuF",
+	leather: "WwdpHLXGX5r8uZu5",
+	padded: "GtKV1b5uqFQqpEni",
+	plate: "OjkIqlW2UpgFcjZa",
+	ringmail: "nsXZejlmgalj4he9",
+	scalemail: "XmnlF5fgIO3tg6TG",
+	splint: "cKpJmsJmU8YaiuqG",
+	studded: "TIV3B1vbrVHIhQAm"
 };
 
 /**
  * The basic shield in 5e.
  * @enum {string}
  */
-DND5E.shieldIds = {
-  shield: "sSs3hSzkKBMNBgTs"
+NIH.shieldIds = {
+	shield: "sSs3hSzkKBMNBgTs"
 };
 
 /**
  * Common armor class calculations.
  * @enum {{ label: string, [formula]: string }}
  */
-DND5E.armorClasses = {
-  flat: {
-    label: "DND5E.ArmorClassFlat",
-    formula: "@attributes.ac.flat"
-  },
-  natural: {
-    label: "DND5E.ArmorClassNatural",
-    formula: "@attributes.ac.flat"
-  },
-  default: {
-    label: "DND5E.ArmorClassEquipment",
-    formula: "@attributes.ac.armor + @attributes.ac.dex"
-  },
-  mage: {
-    label: "DND5E.ArmorClassMage",
-    formula: "13 + @abilities.dex.mod"
-  },
-  draconic: {
-    label: "DND5E.ArmorClassDraconic",
-    formula: "13 + @abilities.dex.mod"
-  },
-  unarmoredMonk: {
-    label: "DND5E.ArmorClassUnarmoredMonk",
-    formula: "10 + @abilities.dex.mod + @abilities.wis.mod"
-  },
-  unarmoredBarb: {
-    label: "DND5E.ArmorClassUnarmoredBarbarian",
-    formula: "10 + @abilities.dex.mod + @abilities.con.mod"
-  },
-  custom: {
-    label: "DND5E.ArmorClassCustom"
-  }
+NIH.armorClasses = {
+	flat: {
+		label: "NIH.ArmorClassFlat",
+		formula: "@attributes.ac.flat"
+	},
+	natural: {
+		label: "NIH.ArmorClassNatural",
+		formula: "@attributes.ac.flat"
+	},
+	default: {
+		label: "NIH.ArmorClassEquipment",
+		formula: "@attributes.ac.armor + @attributes.ac.dex"
+	},
+	mage: {
+		label: "NIH.ArmorClassMage",
+		formula: "13 + @abilities.dex.mod"
+	},
+	draconic: {
+		label: "NIH.ArmorClassDraconic",
+		formula: "13 + @abilities.dex.mod"
+	},
+	unarmoredMonk: {
+		label: "NIH.ArmorClassUnarmoredMonk",
+		formula: "10 + @abilities.dex.mod + @abilities.wis.mod"
+	},
+	unarmoredBarb: {
+		label: "NIH.ArmorClassUnarmoredBarbarian",
+		formula: "10 + @abilities.dex.mod + @abilities.con.mod"
+	},
+	custom: {
+		label: "NIH.ArmorClassCustom"
+	}
 };
 preLocalize("armorClasses", { key: "label" });
 
@@ -705,15 +693,15 @@ preLocalize("armorClasses", { key: "label" });
  * Enumerate the valid consumable types which are recognized by the system.
  * @enum {string}
  */
-DND5E.consumableTypes = {
-  ammo: "DND5E.ConsumableAmmo",
-  potion: "DND5E.ConsumablePotion",
-  poison: "DND5E.ConsumablePoison",
-  food: "DND5E.ConsumableFood",
-  scroll: "DND5E.ConsumableScroll",
-  wand: "DND5E.ConsumableWand",
-  rod: "DND5E.ConsumableRod",
-  trinket: "DND5E.ConsumableTrinket"
+NIH.consumableTypes = {
+	ammo: "NIH.ConsumableAmmo",
+	potion: "NIH.ConsumablePotion",
+	poison: "NIH.ConsumablePoison",
+	food: "NIH.ConsumableFood",
+	scroll: "NIH.ConsumableScroll",
+	wand: "NIH.ConsumableWand",
+	rod: "NIH.ConsumableRod",
+	trinket: "NIH.ConsumableTrinket"
 };
 preLocalize("consumableTypes", { sort: true });
 
@@ -723,25 +711,25 @@ preLocalize("consumableTypes", { sort: true });
  * Types of containers.
  * @enum {string}
  */
-DND5E.containerTypes = {
-  backpack: "H8YCd689ezlD26aT",
-  barrel: "7Yqbqg5EtVW16wfT",
-  basket: "Wv7HzD6dv1P0q78N",
-  boltcase: "eJtPBiZtr2pp6ynt",
-  bottle: "HZp69hhyNZUUCipF",
-  bucket: "mQVYcHmMSoCUnBnM",
-  case: "5mIeX824uMklU3xq",
-  chest: "2YbuclKfhDL0bU4u",
-  flask: "lHS63sC6bypENNlR",
-  jug: "0ZBWwjFz3nIAXMLW",
-  pot: "M8xM8BLK4tpUayEE",
-  pitcher: "nXWdGtzi8DXDLLsL",
-  pouch: "9bWTRRDym06PzSAf",
-  quiver: "4MtQKPn9qMWCFjDA",
-  sack: "CNdDj8dsXVpRVpXt",
-  saddlebags: "TmfaFUSZJAotndn9",
-  tankard: "uw6fINSmZ2j2o57A",
-  vial: "meJEfX3gZgtMX4x2"
+NIH.containerTypes = {
+	backpack: "H8YCd689ezlD26aT",
+	barrel: "7Yqbqg5EtVW16wfT",
+	basket: "Wv7HzD6dv1P0q78N",
+	boltcase: "eJtPBiZtr2pp6ynt",
+	bottle: "HZp69hhyNZUUCipF",
+	bucket: "mQVYcHmMSoCUnBnM",
+	case: "5mIeX824uMklU3xq",
+	chest: "2YbuclKfhDL0bU4u",
+	flask: "lHS63sC6bypENNlR",
+	jug: "0ZBWwjFz3nIAXMLW",
+	pot: "M8xM8BLK4tpUayEE",
+	pitcher: "nXWdGtzi8DXDLLsL",
+	pouch: "9bWTRRDym06PzSAf",
+	quiver: "4MtQKPn9qMWCFjDA",
+	sack: "CNdDj8dsXVpRVpXt",
+	saddlebags: "TmfaFUSZJAotndn9",
+	tankard: "uw6fINSmZ2j2o57A",
+	vial: "meJEfX3gZgtMX4x2"
 };
 
 /* -------------------------------------------- */
@@ -758,34 +746,34 @@ DND5E.containerTypes = {
  * Type of spellcasting foci.
  * @enum {SpellcastingFocusConfiguration}
  */
-DND5E.focusTypes = {
-  arcane: {
-    label: "DND5E.Focus.Arcane",
-    itemIds: {
-      crystal: "uXOT4fYbgPY8DGdd",
-      orb: "tH5Rn0JVRG1zdmPa",
-      rod: "OojyyGfh91iViuMF",
-      staff: "BeKIrNIvNHRPQ4t5",
-      wand: "KA2P6I48iOWlnboO"
-    }
-  },
-  druidic: {
-    label: "DND5E.Focus.Druidic",
-    itemIds: {
-      mistletoe: "xDK9GQd2iqOGH8Sd",
-      totem: "PGL6aaM0wE5h0VN5",
-      woodenstaff: "FF1ktpb2YSiyv896",
-      yewwand: "t5yP0d7YaKwuKKiH"
-    }
-  },
-  holy: {
-    label: "DND5E.Focus.Holy",
-    itemIds: {
-      amulet: "paqlMjggWkBIAeCe",
-      emblem: "laVqttkGMW4B9654",
-      reliquary: "gP1URGq3kVIIFHJ7"
-    }
-  }
+NIH.focusTypes = {
+	arcane: {
+		label: "NIH.Focus.Arcane",
+		itemIds: {
+			crystal: "uXOT4fYbgPY8DGdd",
+			orb: "tH5Rn0JVRG1zdmPa",
+			rod: "OojyyGfh91iViuMF",
+			staff: "BeKIrNIvNHRPQ4t5",
+			wand: "KA2P6I48iOWlnboO"
+		}
+	},
+	druidic: {
+		label: "NIH.Focus.Druidic",
+		itemIds: {
+			mistletoe: "xDK9GQd2iqOGH8Sd",
+			totem: "PGL6aaM0wE5h0VN5",
+			woodenstaff: "FF1ktpb2YSiyv896",
+			yewwand: "t5yP0d7YaKwuKKiH"
+		}
+	},
+	holy: {
+		label: "NIH.Focus.Holy",
+		itemIds: {
+			amulet: "paqlMjggWkBIAeCe",
+			emblem: "laVqttkGMW4B9654",
+			reliquary: "gP1URGq3kVIIFHJ7"
+		}
+	}
 };
 
 /* -------------------------------------------- */
@@ -802,40 +790,40 @@ DND5E.focusTypes = {
  * Types of "features" items.
  * @enum {FeatureTypeConfiguration}
  */
-DND5E.featureTypes = {
-  background: {
-    label: "DND5E.Feature.Background"
-  },
-  class: {
-    label: "DND5E.Feature.Class",
-    subtypes: {
-      arcaneShot: "DND5E.ClassFeature.ArcaneShot",
-      artificerInfusion: "DND5E.ClassFeature.ArtificerInfusion",
-      channelDivinity: "DND5E.ClassFeature.ChannelDivinity",
-      defensiveTactic: "DND5E.ClassFeature.DefensiveTactic",
-      eldritchInvocation: "DND5E.ClassFeature.EldritchInvocation",
-      elementalDiscipline: "DND5E.ClassFeature.ElementalDiscipline",
-      fightingStyle: "DND5E.ClassFeature.FightingStyle",
-      huntersPrey: "DND5E.ClassFeature.HuntersPrey",
-      ki: "DND5E.ClassFeature.Ki",
-      maneuver: "DND5E.ClassFeature.Maneuver",
-      metamagic: "DND5E.ClassFeature.Metamagic",
-      multiattack: "DND5E.ClassFeature.Multiattack",
-      pact: "DND5E.ClassFeature.PactBoon",
-      psionicPower: "DND5E.ClassFeature.PsionicPower",
-      rune: "DND5E.ClassFeature.Rune",
-      superiorHuntersDefense: "DND5E.ClassFeature.SuperiorHuntersDefense"
-    }
-  },
-  monster: {
-    label: "DND5E.Feature.Monster"
-  },
-  race: {
-    label: "DND5E.Feature.Race"
-  },
-  feat: {
-    label: "DND5E.Feature.Feat"
-  }
+NIH.featureTypes = {
+	background: {
+		label: "NIH.Feature.Background"
+	},
+	class: {
+		label: "NIH.Feature.Class",
+		subtypes: {
+			arcaneShot: "NIH.ClassFeature.ArcaneShot",
+			artificerInfusion: "NIH.ClassFeature.ArtificerInfusion",
+			channelDivinity: "NIH.ClassFeature.ChannelDivinity",
+			defensiveTactic: "NIH.ClassFeature.DefensiveTactic",
+			eldritchInvocation: "NIH.ClassFeature.EldritchInvocation",
+			elementalDiscipline: "NIH.ClassFeature.ElementalDiscipline",
+			fightingStyle: "NIH.ClassFeature.FightingStyle",
+			huntersPrey: "NIH.ClassFeature.HuntersPrey",
+			ki: "NIH.ClassFeature.Ki",
+			maneuver: "NIH.ClassFeature.Maneuver",
+			metamagic: "NIH.ClassFeature.Metamagic",
+			multiattack: "NIH.ClassFeature.Multiattack",
+			pact: "NIH.ClassFeature.PactBoon",
+			psionicPower: "NIH.ClassFeature.PsionicPower",
+			rune: "NIH.ClassFeature.Rune",
+			superiorHuntersDefense: "NIH.ClassFeature.SuperiorHuntersDefense"
+		}
+	},
+	monster: {
+		label: "NIH.Feature.Monster"
+	},
+	race: {
+		label: "NIH.Feature.Race"
+	},
+	feat: {
+		label: "NIH.Feature.Feat"
+	}
 };
 preLocalize("featureTypes", { key: "label" });
 preLocalize("featureTypes.class.subtypes", { sort: true });
@@ -854,32 +842,27 @@ preLocalize("featureTypes.class.subtypes", { sort: true });
  * The conversion number defines how many of that currency are equal to one GP.
  * @enum {CurrencyConfiguration}
  */
-DND5E.currencies = {
-  pp: {
-    label: "DND5E.CurrencyPP",
-    abbreviation: "DND5E.CurrencyAbbrPP",
-    conversion: 0.1
-  },
-  gp: {
-    label: "DND5E.CurrencyGP",
-    abbreviation: "DND5E.CurrencyAbbrGP",
-    conversion: 1
-  },
-  ep: {
-    label: "DND5E.CurrencyEP",
-    abbreviation: "DND5E.CurrencyAbbrEP",
-    conversion: 2
-  },
-  sp: {
-    label: "DND5E.CurrencySP",
-    abbreviation: "DND5E.CurrencyAbbrSP",
-    conversion: 10
-  },
-  cp: {
-    label: "DND5E.CurrencyCP",
-    abbreviation: "DND5E.CurrencyAbbrCP",
-    conversion: 100
-  }
+NIH.currencies = {
+	pp: {
+		label: "NIH.CurrencyPP",
+		abbreviation: "NIH.CurrencyAbbrPP",
+		conversion: 0.1
+	},
+	gp: {
+		label: "NIH.CurrencyGP",
+		abbreviation: "NIH.CurrencyAbbrGP",
+		conversion: 1
+	},
+	sp: {
+		label: "NIH.CurrencySP",
+		abbreviation: "NIH.CurrencyAbbrSP",
+		conversion: 10
+	},
+	cp: {
+		label: "NIH.CurrencyCP",
+		abbreviation: "NIH.CurrencyAbbrCP",
+		conversion: 100
+	}
 };
 preLocalize("currencies", { keys: ["label", "abbreviation"] });
 
@@ -891,10 +874,10 @@ preLocalize("currencies", { keys: ["label", "abbreviation"] });
  * Types of damage that are considered physical.
  * @enum {string}
  */
-DND5E.physicalDamageTypes = {
-  bludgeoning: "DND5E.DamageBludgeoning",
-  piercing: "DND5E.DamagePiercing",
-  slashing: "DND5E.DamageSlashing"
+NIH.physicalDamageTypes = {
+	bludgeoning: "NIH.DamageBludgeoning",
+	piercing: "NIH.DamagePiercing",
+	slashing: "NIH.DamageSlashing"
 };
 preLocalize("physicalDamageTypes", { sort: true });
 
@@ -904,18 +887,17 @@ preLocalize("physicalDamageTypes", { sort: true });
  * Types of damage the can be caused by abilities.
  * @enum {string}
  */
-DND5E.damageTypes = {
-  ...DND5E.physicalDamageTypes,
-  acid: "DND5E.DamageAcid",
-  cold: "DND5E.DamageCold",
-  fire: "DND5E.DamageFire",
-  force: "DND5E.DamageForce",
-  lightning: "DND5E.DamageLightning",
-  necrotic: "DND5E.DamageNecrotic",
-  poison: "DND5E.DamagePoison",
-  psychic: "DND5E.DamagePsychic",
-  radiant: "DND5E.DamageRadiant",
-  thunder: "DND5E.DamageThunder"
+NIH.damageTypes = {
+	...NIH.physicalDamageTypes,
+	acid: "NIH.DamageAcid",
+	cold: "NIH.DamageCold",
+	fire: "NIH.DamageFire",
+	lightning: "NIH.DamageLightning",
+	necrotic: "NIH.DamageNecrotic",
+	poison: "NIH.DamagePoison",
+	psychic: "NIH.DamagePsychic",
+	radiant: "NIH.DamageRadiant",
+	thunder: "NIH.DamageThunder"
 };
 preLocalize("damageTypes", { sort: true });
 
@@ -926,9 +908,9 @@ preLocalize("damageTypes", { sort: true });
  * @enum {string}
  * @deprecated
  */
-DND5E.damageResistanceTypes = {
-  ...DND5E.damageTypes,
-  physical: "DND5E.DamagePhysical"
+NIH.damageResistanceTypes = {
+	...NIH.damageTypes,
+	physical: "NIH.DamagePhysical"
 };
 preLocalize("damageResistanceTypes", { sort: true });
 
@@ -940,9 +922,9 @@ preLocalize("damageResistanceTypes", { sort: true });
  * Different types of healing that can be applied using abilities.
  * @enum {string}
  */
-DND5E.healingTypes = {
-  healing: "DND5E.Healing",
-  temphp: "DND5E.HealingTemp"
+NIH.healingTypes = {
+	healing: "NIH.Healing",
+	temphp: "NIH.HealingTemp"
 };
 preLocalize("healingTypes");
 
@@ -953,12 +935,12 @@ preLocalize("healingTypes");
  * By default this uses the imperial units of feet and miles.
  * @enum {string}
  */
-DND5E.movementTypes = {
-  burrow: "DND5E.MovementBurrow",
-  climb: "DND5E.MovementClimb",
-  fly: "DND5E.MovementFly",
-  swim: "DND5E.MovementSwim",
-  walk: "DND5E.MovementWalk"
+NIH.movementTypes = {
+	burrow: "NIH.MovementBurrow",
+	climb: "NIH.MovementClimb",
+	fly: "NIH.MovementFly",
+	swim: "NIH.MovementSwim",
+	walk: "NIH.MovementWalk"
 };
 preLocalize("movementTypes", { sort: true });
 
@@ -971,11 +953,11 @@ preLocalize("movementTypes", { sort: true });
  * By default this uses the imperial units of feet and miles.
  * @enum {string}
  */
-DND5E.movementUnits = {
-  ft: "DND5E.DistFt",
-  mi: "DND5E.DistMi",
-  m: "DND5E.DistM",
-  km: "DND5E.DistKm"
+NIH.movementUnits = {
+	ft: "NIH.DistFt",
+	mi: "NIH.DistMi",
+	m: "NIH.DistM",
+	km: "NIH.DistKm"
 };
 preLocalize("movementUnits");
 
@@ -985,24 +967,24 @@ preLocalize("movementUnits");
  * The types of range that are used for measuring actions and effects.
  * @enum {string}
  */
-DND5E.rangeTypes = {
-  self: "DND5E.DistSelf",
-  touch: "DND5E.DistTouch",
-  spec: "DND5E.Special",
-  any: "DND5E.DistAny"
+NIH.rangeTypes = {
+	self: "NIH.DistSelf",
+	touch: "NIH.DistTouch",
+	spec: "NIH.Special",
+	any: "NIH.DistAny"
 };
 preLocalize("rangeTypes");
 
 /* -------------------------------------------- */
 
 /**
- * The valid units of measure for the range of an action or effect. A combination of `DND5E.movementUnits` and
- * `DND5E.rangeUnits`.
+ * The valid units of measure for the range of an action or effect. A combination of `NIH.movementUnits` and
+ * `NIH.rangeUnits`.
  * @enum {string}
  */
-DND5E.distanceUnits = {
-  ...DND5E.movementUnits,
-  ...DND5E.rangeTypes
+NIH.distanceUnits = {
+	...NIH.movementUnits,
+	...NIH.rangeTypes
 };
 preLocalize("distanceUnits");
 
@@ -1012,19 +994,19 @@ preLocalize("distanceUnits");
  * Configure aspects of encumbrance calculation so that it could be configured by modules.
  * @enum {{ imperial: number, metric: number }}
  */
-DND5E.encumbrance = {
-  currencyPerWeight: {
-    imperial: 50,
-    metric: 110
-  },
-  strMultiplier: {
-    imperial: 15,
-    metric: 6.8
-  },
-  vehicleWeightMultiplier: {
-    imperial: 2000, // 2000 lbs in an imperial ton
-    metric: 1000 // 1000 kg in a metric ton
-  }
+NIH.encumbrance = {
+	currencyPerWeight: {
+		imperial: 50,
+		metric: 110
+	},
+	strMultiplier: {
+		imperial: 15,
+		metric: 6.8
+	},
+	vehicleWeightMultiplier: {
+		imperial: 2000, // 2000 lbs in an imperial ton
+		metric: 1000 // 1000 kg in a metric ton
+	}
 };
 
 /* -------------------------------------------- */
@@ -1035,16 +1017,16 @@ DND5E.encumbrance = {
  * Targeting types that apply to one or more distinct targets.
  * @enum {string}
  */
-DND5E.individualTargetTypes = {
-  self: "DND5E.TargetSelf",
-  ally: "DND5E.TargetAlly",
-  enemy: "DND5E.TargetEnemy",
-  creature: "DND5E.TargetCreature",
-  object: "DND5E.TargetObject",
-  space: "DND5E.TargetSpace",
-  creatureOrObject: "DND5E.TargetCreatureOrObject",
-  any: "DND5E.TargetAny",
-  willing: "DND5E.TargetWilling"
+NIH.individualTargetTypes = {
+	self: "NIH.TargetSelf",
+	ally: "NIH.TargetAlly",
+	enemy: "NIH.TargetEnemy",
+	creature: "NIH.TargetCreature",
+	object: "NIH.TargetObject",
+	space: "NIH.TargetSpace",
+	creatureOrObject: "NIH.TargetCreatureOrObject",
+	any: "NIH.TargetAny",
+	willing: "NIH.TargetWilling"
 };
 preLocalize("individualTargetTypes");
 
@@ -1062,39 +1044,39 @@ preLocalize("individualTargetTypes");
  * Targeting types that cover an area.
  * @enum {AreaTargetDefinition}
  */
-DND5E.areaTargetTypes = {
-  radius: {
-    label: "DND5E.TargetRadius",
-    template: "circle"
-  },
-  sphere: {
-    label: "DND5E.TargetSphere",
-    template: "circle"
-  },
-  cylinder: {
-    label: "DND5E.TargetCylinder",
-    template: "circle"
-  },
-  cone: {
-    label: "DND5E.TargetCone",
-    template: "cone"
-  },
-  square: {
-    label: "DND5E.TargetSquare",
-    template: "rect"
-  },
-  cube: {
-    label: "DND5E.TargetCube",
-    template: "rect"
-  },
-  line: {
-    label: "DND5E.TargetLine",
-    template: "ray"
-  },
-  wall: {
-    label: "DND5E.TargetWall",
-    template: "ray"
-  }
+NIH.areaTargetTypes = {
+	radius: {
+		label: "NIH.TargetRadius",
+		template: "circle"
+	},
+	sphere: {
+		label: "NIH.TargetSphere",
+		template: "circle"
+	},
+	cylinder: {
+		label: "NIH.TargetCylinder",
+		template: "circle"
+	},
+	cone: {
+		label: "NIH.TargetCone",
+		template: "cone"
+	},
+	square: {
+		label: "NIH.TargetSquare",
+		template: "rect"
+	},
+	cube: {
+		label: "NIH.TargetCube",
+		template: "rect"
+	},
+	line: {
+		label: "NIH.TargetLine",
+		template: "ray"
+	},
+	wall: {
+		label: "NIH.TargetWall",
+		template: "ray"
+	}
 };
 preLocalize("areaTargetTypes", { key: "label", sort: true });
 
@@ -1104,9 +1086,9 @@ preLocalize("areaTargetTypes", { key: "label", sort: true });
  * The types of single or area targets which can be applied to abilities.
  * @enum {string}
  */
-DND5E.targetTypes = {
-  ...DND5E.individualTargetTypes,
-  ...Object.fromEntries(Object.entries(DND5E.areaTargetTypes).map(([k, v]) => [k, v.label]))
+NIH.targetTypes = {
+	...NIH.individualTargetTypes,
+	...Object.fromEntries(Object.entries(NIH.areaTargetTypes).map(([k, v]) => [k, v.label]))
 };
 preLocalize("targetTypes", { sort: true });
 
@@ -1116,7 +1098,7 @@ preLocalize("targetTypes", { sort: true });
  * Denominations of hit dice which can apply to classes.
  * @type {string[]}
  */
-DND5E.hitDieTypes = ["d4", "d6", "d8", "d10", "d12"];
+NIH.hitDieTypes = ["d4", "d6", "d8", "d10", "d12"];
 
 /* -------------------------------------------- */
 
@@ -1124,11 +1106,11 @@ DND5E.hitDieTypes = ["d4", "d6", "d8", "d10", "d12"];
  * The set of possible sensory perception types which an Actor may have.
  * @enum {string}
  */
-DND5E.senses = {
-  blindsight: "DND5E.SenseBlindsight",
-  darkvision: "DND5E.SenseDarkvision",
-  tremorsense: "DND5E.SenseTremorsense",
-  truesight: "DND5E.SenseTruesight"
+NIH.senses = {
+	blindsight: "NIH.SenseBlindsight",
+	darkvision: "NIH.SenseDarkvision",
+	tremorsense: "NIH.SenseTremorsense",
+	truesight: "NIH.SenseTruesight"
 };
 preLocalize("senses", { sort: true });
 
@@ -1141,27 +1123,27 @@ preLocalize("senses", { sort: true });
  * The entries of this array represent the spell slot progression for a full spell-caster.
  * @type {number[][]}
  */
-DND5E.SPELL_SLOT_TABLE = [
-  [2],
-  [3],
-  [4, 2],
-  [4, 3],
-  [4, 3, 2],
-  [4, 3, 3],
-  [4, 3, 3, 1],
-  [4, 3, 3, 2],
-  [4, 3, 3, 3, 1],
-  [4, 3, 3, 3, 2],
-  [4, 3, 3, 3, 2, 1],
-  [4, 3, 3, 3, 2, 1],
-  [4, 3, 3, 3, 2, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1, 1],
-  [4, 3, 3, 3, 3, 1, 1, 1, 1],
-  [4, 3, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 3, 2, 2, 1, 1]
+NIH.SPELL_SLOT_TABLE = [
+	[2],
+	[3],
+	[4, 2],
+	[4, 3],
+	[4, 3, 2],
+	[4, 3, 3],
+	[4, 3, 3, 1],
+	[4, 3, 3, 2],
+	[4, 3, 3, 3, 1],
+	[4, 3, 3, 3, 2],
+	[4, 3, 3, 3, 2, 1],
+	[4, 3, 3, 3, 2, 1],
+	[4, 3, 3, 3, 2, 1, 1],
+	[4, 3, 3, 3, 2, 1, 1],
+	[4, 3, 3, 3, 2, 1, 1, 1],
+	[4, 3, 3, 3, 2, 1, 1, 1],
+	[4, 3, 3, 3, 2, 1, 1, 1, 1],
+	[4, 3, 3, 3, 3, 1, 1, 1, 1],
+	[4, 3, 3, 3, 3, 2, 1, 1, 1],
+	[4, 3, 3, 3, 3, 2, 2, 1, 1]
 ];
 
 /* -------------------------------------------- */
@@ -1178,15 +1160,15 @@ DND5E.SPELL_SLOT_TABLE = [
  * Define the pact slot & level progression by pact caster level.
  * @enum {PactProgressionConfig}
  */
-DND5E.pactCastingProgression = {
-  1: { slots: 1, level: 1 },
-  2: { slots: 2, level: 1 },
-  3: { slots: 2, level: 2 },
-  5: { slots: 2, level: 3 },
-  7: { slots: 2, level: 4 },
-  9: { slots: 2, level: 5 },
-  11: { slots: 3, level: 5 },
-  17: { slots: 4, level: 5 }
+NIH.pactCastingProgression = {
+	1: { slots: 1, level: 1 },
+	2: { slots: 2, level: 1 },
+	3: { slots: 2, level: 2 },
+	5: { slots: 2, level: 3 },
+	7: { slots: 2, level: 4 },
+	9: { slots: 2, level: 5 },
+	11: { slots: 3, level: 5 },
+	17: { slots: 4, level: 5 }
 };
 
 /* -------------------------------------------- */
@@ -1194,22 +1176,22 @@ DND5E.pactCastingProgression = {
 /**
  * Various different ways a spell can be prepared.
  */
-DND5E.spellPreparationModes = {
-  prepared: "DND5E.SpellPrepPrepared",
-  pact: "DND5E.PactMagic",
-  always: "DND5E.SpellPrepAlways",
-  atwill: "DND5E.SpellPrepAtWill",
-  innate: "DND5E.SpellPrepInnate"
+NIH.spellPreparationModes = {
+	prepared: "NIH.SpellPrepPrepared",
+	pact: "NIH.PactMagic",
+	always: "NIH.SpellPrepAlways",
+	atwill: "NIH.SpellPrepAtWill",
+	innate: "NIH.SpellPrepInnate"
 };
 preLocalize("spellPreparationModes");
 
 /* -------------------------------------------- */
 
 /**
- * Subset of `DND5E.spellPreparationModes` that consume spell slots.
+ * Subset of `NIH.spellPreparationModes` that consume spell slots.
  * @type {boolean[]}
  */
-DND5E.spellUpcastModes = ["always", "pact", "prepared"];
+NIH.spellUpcastModes = ["always", "pact", "prepared"];
 
 /* -------------------------------------------- */
 
@@ -1234,32 +1216,32 @@ DND5E.spellUpcastModes = ["always", "pact", "prepared"];
  * Different spellcasting types and their progression.
  * @type {SpellcastingTypeConfiguration}
  */
-DND5E.spellcastingTypes = {
-  leveled: {
-    label: "DND5E.SpellProgLeveled",
-    progression: {
-      full: {
-        label: "DND5E.SpellProgFull",
-        divisor: 1
-      },
-      half: {
-        label: "DND5E.SpellProgHalf",
-        divisor: 2
-      },
-      third: {
-        label: "DND5E.SpellProgThird",
-        divisor: 3
-      },
-      artificer: {
-        label: "DND5E.SpellProgArt",
-        divisor: 2,
-        roundUp: true
-      }
-    }
-  },
-  pact: {
-    label: "DND5E.SpellProgPact"
-  }
+NIH.spellcastingTypes = {
+	leveled: {
+		label: "NIH.SpellProgLeveled",
+		progression: {
+			full: {
+				label: "NIH.SpellProgFull",
+				divisor: 1
+			},
+			half: {
+				label: "NIH.SpellProgHalf",
+				divisor: 2
+			},
+			third: {
+				label: "NIH.SpellProgThird",
+				divisor: 3
+			},
+			artificer: {
+				label: "NIH.SpellProgArt",
+				divisor: 2,
+				roundUp: true
+			}
+		}
+	},
+	pact: {
+		label: "NIH.SpellProgPact"
+	}
 };
 preLocalize("spellcastingTypes", { key: "label", sort: true });
 preLocalize("spellcastingTypes.leveled.progression", { key: "label" });
@@ -1270,13 +1252,13 @@ preLocalize("spellcastingTypes.leveled.progression", { key: "label" });
  * Ways in which a class can contribute to spellcasting levels.
  * @enum {string}
  */
-DND5E.spellProgression = {
-  none: "DND5E.SpellNone",
-  full: "DND5E.SpellProgFull",
-  half: "DND5E.SpellProgHalf",
-  third: "DND5E.SpellProgThird",
-  pact: "DND5E.SpellProgPact",
-  artificer: "DND5E.SpellProgArt"
+NIH.spellProgression = {
+	none: "NIH.SpellNone",
+	full: "NIH.SpellProgFull",
+	half: "NIH.SpellProgHalf",
+	third: "NIH.SpellProgThird",
+	pact: "NIH.SpellProgPact",
+	artificer: "NIH.SpellProgArt"
 };
 preLocalize("spellProgression", { key: "label" });
 
@@ -1286,17 +1268,17 @@ preLocalize("spellProgression", { key: "label" });
  * Valid spell levels.
  * @enum {string}
  */
-DND5E.spellLevels = {
-  0: "DND5E.SpellLevel0",
-  1: "DND5E.SpellLevel1",
-  2: "DND5E.SpellLevel2",
-  3: "DND5E.SpellLevel3",
-  4: "DND5E.SpellLevel4",
-  5: "DND5E.SpellLevel5",
-  6: "DND5E.SpellLevel6",
-  7: "DND5E.SpellLevel7",
-  8: "DND5E.SpellLevel8",
-  9: "DND5E.SpellLevel9"
+NIH.spellLevels = {
+	0: "NIH.SpellLevel0",
+	1: "NIH.SpellLevel1",
+	2: "NIH.SpellLevel2",
+	3: "NIH.SpellLevel3",
+	4: "NIH.SpellLevel4",
+	5: "NIH.SpellLevel5",
+	6: "NIH.SpellLevel6",
+	7: "NIH.SpellLevel7",
+	8: "NIH.SpellLevel8",
+	9: "NIH.SpellLevel9"
 };
 preLocalize("spellLevels");
 
@@ -1306,10 +1288,10 @@ preLocalize("spellLevels");
  * The available choices for how spell damage scaling may be computed.
  * @enum {string}
  */
-DND5E.spellScalingModes = {
-  none: "DND5E.SpellNone",
-  cantrip: "DND5E.SpellCantrip",
-  level: "DND5E.SpellLevel"
+NIH.spellScalingModes = {
+	none: "NIH.SpellNone",
+	cantrip: "NIH.SpellCantrip",
+	level: "NIH.SpellLevel"
 };
 preLocalize("spellScalingModes", { sort: true });
 
@@ -1319,19 +1301,19 @@ preLocalize("spellScalingModes", { sort: true });
  * Types of components that can be required when casting a spell.
  * @enum {object}
  */
-DND5E.spellComponents = {
-  vocal: {
-    label: "DND5E.ComponentVerbal",
-    abbr: "DND5E.ComponentVerbalAbbr"
-  },
-  somatic: {
-    label: "DND5E.ComponentSomatic",
-    abbr: "DND5E.ComponentSomaticAbbr"
-  },
-  material: {
-    label: "DND5E.ComponentMaterial",
-    abbr: "DND5E.ComponentMaterialAbbr"
-  }
+NIH.spellComponents = {
+	vocal: {
+		label: "NIH.ComponentVerbal",
+		abbr: "NIH.ComponentVerbalAbbr"
+	},
+	somatic: {
+		label: "NIH.ComponentSomatic",
+		abbr: "NIH.ComponentSomaticAbbr"
+	},
+	material: {
+		label: "NIH.ComponentMaterial",
+		abbr: "NIH.ComponentMaterialAbbr"
+	}
 };
 preLocalize("spellComponents", {keys: ["label", "abbr"]});
 
@@ -1341,15 +1323,15 @@ preLocalize("spellComponents", {keys: ["label", "abbr"]});
  * Supplementary rules keywords that inform a spell's use.
  * @enum {object}
  */
-DND5E.spellTags = {
-  concentration: {
-    label: "DND5E.Concentration",
-    abbr: "DND5E.ConcentrationAbbr"
-  },
-  ritual: {
-    label: "DND5E.Ritual",
-    abbr: "DND5E.RitualAbbr"
-  }
+NIH.spellTags = {
+	concentration: {
+		label: "NIH.Concentration",
+		abbr: "NIH.ConcentrationAbbr"
+	},
+	ritual: {
+		label: "NIH.Ritual",
+		abbr: "NIH.RitualAbbr"
+	}
 };
 preLocalize("spellTags", {keys: ["label", "abbr"]});
 
@@ -1359,35 +1341,35 @@ preLocalize("spellTags", {keys: ["label", "abbr"]});
  * Schools to which a spell can belong.
  * @enum {string}
  */
-DND5E.spellSchools = {
-  abj: "DND5E.SchoolAbj",
-  con: "DND5E.SchoolCon",
-  div: "DND5E.SchoolDiv",
-  enc: "DND5E.SchoolEnc",
-  evo: "DND5E.SchoolEvo",
-  ill: "DND5E.SchoolIll",
-  nec: "DND5E.SchoolNec",
-  trs: "DND5E.SchoolTrs"
+NIH.spellSchools = {
+	abj: "NIH.SchoolAbj",
+	con: "NIH.SchoolCon",
+	div: "NIH.SchoolDiv",
+	enc: "NIH.SchoolEnc",
+	evo: "NIH.SchoolEvo",
+	ill: "NIH.SchoolIll",
+	nec: "NIH.SchoolNec",
+	trs: "NIH.SchoolTrs"
 };
 preLocalize("spellSchools", { sort: true });
 
 /* -------------------------------------------- */
 
 /**
- * Spell scroll item ID within the `DND5E.sourcePacks` compendium for each level.
+ * Spell scroll item ID within the `NIH.sourcePacks` compendium for each level.
  * @enum {string}
  */
-DND5E.spellScrollIds = {
-  0: "rQ6sO7HDWzqMhSI3",
-  1: "9GSfMg0VOA2b4uFN",
-  2: "XdDp6CKh9qEvPTuS",
-  3: "hqVKZie7x9w3Kqds",
-  4: "DM7hzgL836ZyUFB1",
-  5: "wa1VF8TXHmkrrR35",
-  6: "tI3rWx4bxefNCexS",
-  7: "mtyw4NS1s7j2EJaD",
-  8: "aOrinPg7yuDZEuWr",
-  9: "O4YbkJkLlnsgUszZ"
+NIH.spellScrollIds = {
+	0: "rQ6sO7HDWzqMhSI3",
+	1: "9GSfMg0VOA2b4uFN",
+	2: "XdDp6CKh9qEvPTuS",
+	3: "hqVKZie7x9w3Kqds",
+	4: "DM7hzgL836ZyUFB1",
+	5: "wa1VF8TXHmkrrR35",
+	6: "tI3rWx4bxefNCexS",
+	7: "mtyw4NS1s7j2EJaD",
+	8: "aOrinPg7yuDZEuWr",
+	9: "O4YbkJkLlnsgUszZ"
 };
 
 /* -------------------------------------------- */
@@ -1398,14 +1380,14 @@ DND5E.spellScrollIds = {
  * The set of types which a weapon item can take.
  * @enum {string}
  */
-DND5E.weaponTypes = {
-  simpleM: "DND5E.WeaponSimpleM",
-  simpleR: "DND5E.WeaponSimpleR",
-  martialM: "DND5E.WeaponMartialM",
-  martialR: "DND5E.WeaponMartialR",
-  natural: "DND5E.WeaponNatural",
-  improv: "DND5E.WeaponImprov",
-  siege: "DND5E.WeaponSiege"
+NIH.weaponTypes = {
+	simpleM: "NIH.WeaponSimpleM",
+	simpleR: "NIH.WeaponSimpleR",
+	martialM: "NIH.WeaponMartialM",
+	martialR: "NIH.WeaponMartialR",
+	natural: "NIH.WeaponNatural",
+	improv: "NIH.WeaponImprov",
+	siege: "NIH.WeaponSiege"
 };
 preLocalize("weaponTypes");
 
@@ -1416,10 +1398,10 @@ preLocalize("weaponTypes");
  * These properties are used for determining physical resistance bypasses.
  * @enum {string}
  */
-DND5E.physicalWeaponProperties = {
-  ada: "DND5E.WeaponPropertiesAda",
-  mgc: "DND5E.WeaponPropertiesMgc",
-  sil: "DND5E.WeaponPropertiesSil"
+NIH.physicalWeaponProperties = {
+	ada: "NIH.WeaponPropertiesAda",
+	mgc: "NIH.WeaponPropertiesMgc",
+	sil: "NIH.WeaponPropertiesSil"
 };
 preLocalize("physicalWeaponProperties", { sort: true });
 
@@ -1429,22 +1411,22 @@ preLocalize("physicalWeaponProperties", { sort: true });
  * The set of weapon property flags which can exist on a weapon.
  * @enum {string}
  */
-DND5E.weaponProperties = {
-  ...DND5E.physicalWeaponProperties,
-  amm: "DND5E.WeaponPropertiesAmm",
-  fin: "DND5E.WeaponPropertiesFin",
-  fir: "DND5E.WeaponPropertiesFir",
-  foc: "DND5E.WeaponPropertiesFoc",
-  hvy: "DND5E.WeaponPropertiesHvy",
-  lgt: "DND5E.WeaponPropertiesLgt",
-  lod: "DND5E.WeaponPropertiesLod",
-  rch: "DND5E.WeaponPropertiesRch",
-  rel: "DND5E.WeaponPropertiesRel",
-  ret: "DND5E.WeaponPropertiesRet",
-  spc: "DND5E.WeaponPropertiesSpc",
-  thr: "DND5E.WeaponPropertiesThr",
-  two: "DND5E.WeaponPropertiesTwo",
-  ver: "DND5E.WeaponPropertiesVer"
+NIH.weaponProperties = {
+	...NIH.physicalWeaponProperties,
+	amm: "NIH.WeaponPropertiesAmm",
+	fin: "NIH.WeaponPropertiesFin",
+	fir: "NIH.WeaponPropertiesFir",
+	foc: "NIH.WeaponPropertiesFoc",
+	hvy: "NIH.WeaponPropertiesHvy",
+	lgt: "NIH.WeaponPropertiesLgt",
+	lod: "NIH.WeaponPropertiesLod",
+	rch: "NIH.WeaponPropertiesRch",
+	rel: "NIH.WeaponPropertiesRel",
+	ret: "NIH.WeaponPropertiesRet",
+	spc: "NIH.WeaponPropertiesSpc",
+	thr: "NIH.WeaponPropertiesThr",
+	two: "NIH.WeaponPropertiesTwo",
+	ver: "NIH.WeaponPropertiesVer"
 };
 preLocalize("weaponProperties", { sort: true });
 
@@ -1454,8 +1436,8 @@ preLocalize("weaponProperties", { sort: true });
  * Compendium packs used for localized items.
  * @enum {string}
  */
-DND5E.sourcePacks = {
-  ITEMS: "dnd5e.items"
+NIH.sourcePacks = {
+	ITEMS: "nih.items"
 };
 
 /* -------------------------------------------- */
@@ -1464,20 +1446,20 @@ DND5E.sourcePacks = {
  * Settings to configure how actors are merged when polymorphing is applied.
  * @enum {string}
  */
-DND5E.polymorphSettings = {
-  keepPhysical: "DND5E.PolymorphKeepPhysical",
-  keepMental: "DND5E.PolymorphKeepMental",
-  keepSaves: "DND5E.PolymorphKeepSaves",
-  keepSkills: "DND5E.PolymorphKeepSkills",
-  mergeSaves: "DND5E.PolymorphMergeSaves",
-  mergeSkills: "DND5E.PolymorphMergeSkills",
-  keepClass: "DND5E.PolymorphKeepClass",
-  keepFeats: "DND5E.PolymorphKeepFeats",
-  keepSpells: "DND5E.PolymorphKeepSpells",
-  keepItems: "DND5E.PolymorphKeepItems",
-  keepBio: "DND5E.PolymorphKeepBio",
-  keepVision: "DND5E.PolymorphKeepVision",
-  keepSelf: "DND5E.PolymorphKeepSelf"
+NIH.polymorphSettings = {
+	keepPhysical: "NIH.PolymorphKeepPhysical",
+	keepMental: "NIH.PolymorphKeepMental",
+	keepSaves: "NIH.PolymorphKeepSaves",
+	keepSkills: "NIH.PolymorphKeepSkills",
+	mergeSaves: "NIH.PolymorphMergeSaves",
+	mergeSkills: "NIH.PolymorphMergeSkills",
+	keepClass: "NIH.PolymorphKeepClass",
+	keepFeats: "NIH.PolymorphKeepFeats",
+	keepSpells: "NIH.PolymorphKeepSpells",
+	keepItems: "NIH.PolymorphKeepItems",
+	keepBio: "NIH.PolymorphKeepBio",
+	keepVision: "NIH.PolymorphKeepVision",
+	keepSelf: "NIH.PolymorphKeepSelf"
 };
 preLocalize("polymorphSettings", { sort: true });
 
@@ -1485,15 +1467,15 @@ preLocalize("polymorphSettings", { sort: true });
  * Settings to configure how actors are effects are merged when polymorphing is applied.
  * @enum {string}
  */
-DND5E.polymorphEffectSettings = {
-  keepAE: "DND5E.PolymorphKeepAE",
-  keepOtherOriginAE: "DND5E.PolymorphKeepOtherOriginAE",
-  keepOriginAE: "DND5E.PolymorphKeepOriginAE",
-  keepEquipmentAE: "DND5E.PolymorphKeepEquipmentAE",
-  keepFeatAE: "DND5E.PolymorphKeepFeatureAE",
-  keepSpellAE: "DND5E.PolymorphKeepSpellAE",
-  keepClassAE: "DND5E.PolymorphKeepClassAE",
-  keepBackgroundAE: "DND5E.PolymorphKeepBackgroundAE"
+NIH.polymorphEffectSettings = {
+	keepAE: "NIH.PolymorphKeepAE",
+	keepOtherOriginAE: "NIH.PolymorphKeepOtherOriginAE",
+	keepOriginAE: "NIH.PolymorphKeepOriginAE",
+	keepEquipmentAE: "NIH.PolymorphKeepEquipmentAE",
+	keepFeatAE: "NIH.PolymorphKeepFeatureAE",
+	keepSpellAE: "NIH.PolymorphKeepSpellAE",
+	keepClassAE: "NIH.PolymorphKeepClassAE",
+	keepBackgroundAE: "NIH.PolymorphKeepBackgroundAE"
 };
 preLocalize("polymorphEffectSettings", { sort: true });
 
@@ -1501,36 +1483,36 @@ preLocalize("polymorphEffectSettings", { sort: true });
  * Settings to configure how actors are merged when preset polymorphing is applied.
  * @enum {object}
  */
-DND5E.transformationPresets = {
-  wildshape: {
-    icon: '<i class="fas fa-paw"></i>',
-    label: "DND5E.PolymorphWildShape",
-    options: {
-      keepBio: true,
-      keepClass: true,
-      keepMental: true,
-      mergeSaves: true,
-      mergeSkills: true,
-      keepEquipmentAE: false
-    }
-  },
-  polymorph: {
-    icon: '<i class="fas fa-pastafarianism"></i>',
-    label: "DND5E.Polymorph",
-    options: {
-      keepEquipmentAE: false,
-      keepClassAE: false,
-      keepFeatAE: false,
-      keepBackgroundAE: false
-    }
-  },
-  polymorphSelf: {
-    icon: '<i class="fas fa-eye"></i>',
-    label: "DND5E.PolymorphSelf",
-    options: {
-      keepSelf: true
-    }
-  }
+NIH.transformationPresets = {
+	wildshape: {
+		icon: '<i class="fas fa-paw"></i>',
+		label: "NIH.PolymorphWildShape",
+		options: {
+			keepBio: true,
+			keepClass: true,
+			keepMental: true,
+			mergeSaves: true,
+			mergeSkills: true,
+			keepEquipmentAE: false
+		}
+	},
+	polymorph: {
+		icon: '<i class="fas fa-pastafarianism"></i>',
+		label: "NIH.Polymorph",
+		options: {
+			keepEquipmentAE: false,
+			keepClassAE: false,
+			keepFeatAE: false,
+			keepBackgroundAE: false
+		}
+	},
+	polymorphSelf: {
+		icon: '<i class="fas fa-eye"></i>',
+		label: "NIH.PolymorphSelf",
+		options: {
+			keepSelf: true
+		}
+	}
 };
 preLocalize("transformationPresets", { sort: true, keys: ["label"] });
 
@@ -1541,11 +1523,11 @@ preLocalize("transformationPresets", { sort: true, keys: ["label"] });
  * The key for each level represents its proficiency multiplier.
  * @enum {string}
  */
-DND5E.proficiencyLevels = {
-  0: "DND5E.NotProficient",
-  1: "DND5E.Proficient",
-  0.5: "DND5E.HalfProficient",
-  2: "DND5E.Expertise"
+NIH.proficiencyLevels = {
+	0: "NIH.NotProficient",
+	1: "NIH.Proficient",
+	0.5: "NIH.HalfProficient",
+	2: "NIH.Expertise"
 };
 preLocalize("proficiencyLevels");
 
@@ -1555,9 +1537,9 @@ preLocalize("proficiencyLevels");
  * Weapon and armor item proficiency levels.
  * @enum {string}
  */
-DND5E.weaponAndArmorProficiencyLevels = {
-  0: "DND5E.NotProficient",
-  1: "DND5E.Proficient"
+NIH.weaponAndArmorProficiencyLevels = {
+	0: "NIH.NotProficient",
+	1: "NIH.Proficient"
 };
 preLocalize("weaponAndArmorProficiencyLevels");
 
@@ -1568,11 +1550,11 @@ preLocalize("weaponAndArmorProficiencyLevels");
  * of cover are in play, we take the highest value.
  * @enum {string}
  */
-DND5E.cover = {
-  0: "DND5E.None",
-  .5: "DND5E.CoverHalf",
-  .75: "DND5E.CoverThreeQuarters",
-  1: "DND5E.CoverTotal"
+NIH.cover = {
+	0: "NIH.None",
+	.5: "NIH.CoverHalf",
+	.75: "NIH.CoverThreeQuarters",
+	1: "NIH.CoverTotal"
 };
 preLocalize("cover");
 
@@ -1583,10 +1565,10 @@ preLocalize("cover");
  * @type {string[]}
  * @deprecated since v10
  */
-DND5E.trackableAttributes = [
-  "attributes.ac.value", "attributes.init.bonus", "attributes.movement", "attributes.senses", "attributes.spelldc",
-  "attributes.spellLevel", "details.cr", "details.spellLevel", "details.xp.value", "skills.*.passive",
-  "abilities.*.value"
+NIH.trackableAttributes = [
+	"attributes.ac.value", "attributes.init.bonus", "attributes.movement", "attributes.senses", "attributes.spelldc",
+	"attributes.spellLevel", "details.cr", "details.spellLevel", "details.xp.value", "skills.*.passive",
+	"abilities.*.value"
 ];
 
 /* -------------------------------------------- */
@@ -1595,8 +1577,8 @@ DND5E.trackableAttributes = [
  * A selection of actor and item attributes that are valid targets for item resource consumption.
  * @type {string[]}
  */
-DND5E.consumableResources = [
-  // Configured during init.
+NIH.consumableResources = [
+	// Configured during init.
 ];
 
 /* -------------------------------------------- */
@@ -1605,23 +1587,23 @@ DND5E.consumableResources = [
  * Conditions that can affect an actor.
  * @enum {string}
  */
-DND5E.conditionTypes = {
-  blinded: "DND5E.ConBlinded",
-  charmed: "DND5E.ConCharmed",
-  deafened: "DND5E.ConDeafened",
-  diseased: "DND5E.ConDiseased",
-  exhaustion: "DND5E.ConExhaustion",
-  frightened: "DND5E.ConFrightened",
-  grappled: "DND5E.ConGrappled",
-  incapacitated: "DND5E.ConIncapacitated",
-  invisible: "DND5E.ConInvisible",
-  paralyzed: "DND5E.ConParalyzed",
-  petrified: "DND5E.ConPetrified",
-  poisoned: "DND5E.ConPoisoned",
-  prone: "DND5E.ConProne",
-  restrained: "DND5E.ConRestrained",
-  stunned: "DND5E.ConStunned",
-  unconscious: "DND5E.ConUnconscious"
+NIH.conditionTypes = {
+	blinded: "NIH.ConBlinded",
+	charmed: "NIH.ConCharmed",
+	deafened: "NIH.ConDeafened",
+	diseased: "NIH.ConDiseased",
+	exhaustion: "NIH.ConExhaustion",
+	frightened: "NIH.ConFrightened",
+	grappled: "NIH.ConGrappled",
+	incapacitated: "NIH.ConIncapacitated",
+	invisible: "NIH.ConInvisible",
+	paralyzed: "NIH.ConParalyzed",
+	petrified: "NIH.ConPetrified",
+	poisoned: "NIH.ConPoisoned",
+	prone: "NIH.ConProne",
+	restrained: "NIH.ConRestrained",
+	stunned: "NIH.ConStunned",
+	unconscious: "NIH.ConUnconscious"
 };
 preLocalize("conditionTypes", { sort: true });
 
@@ -1629,32 +1611,32 @@ preLocalize("conditionTypes", { sort: true });
  * Languages a character can learn.
  * @enum {string}
  */
-DND5E.languages = {
-  common: "DND5E.LanguagesCommon",
-  aarakocra: "DND5E.LanguagesAarakocra",
-  abyssal: "DND5E.LanguagesAbyssal",
-  aquan: "DND5E.LanguagesAquan",
-  auran: "DND5E.LanguagesAuran",
-  celestial: "DND5E.LanguagesCelestial",
-  deep: "DND5E.LanguagesDeepSpeech",
-  draconic: "DND5E.LanguagesDraconic",
-  druidic: "DND5E.LanguagesDruidic",
-  dwarvish: "DND5E.LanguagesDwarvish",
-  elvish: "DND5E.LanguagesElvish",
-  giant: "DND5E.LanguagesGiant",
-  gith: "DND5E.LanguagesGith",
-  gnomish: "DND5E.LanguagesGnomish",
-  goblin: "DND5E.LanguagesGoblin",
-  gnoll: "DND5E.LanguagesGnoll",
-  halfling: "DND5E.LanguagesHalfling",
-  ignan: "DND5E.LanguagesIgnan",
-  infernal: "DND5E.LanguagesInfernal",
-  orc: "DND5E.LanguagesOrc",
-  primordial: "DND5E.LanguagesPrimordial",
-  sylvan: "DND5E.LanguagesSylvan",
-  terran: "DND5E.LanguagesTerran",
-  cant: "DND5E.LanguagesThievesCant",
-  undercommon: "DND5E.LanguagesUndercommon"
+NIH.languages = {
+	common: "NIH.LanguagesCommon",
+	aarakocra: "NIH.LanguagesAarakocra",
+	abyssal: "NIH.LanguagesAbyssal",
+	aquan: "NIH.LanguagesAquan",
+	auran: "NIH.LanguagesAuran",
+	celestial: "NIH.LanguagesCelestial",
+	deep: "NIH.LanguagesDeepSpeech",
+	draconic: "NIH.LanguagesDraconic",
+	druidic: "NIH.LanguagesDruidic",
+	dwarvish: "NIH.LanguagesDwarvish",
+	elvish: "NIH.LanguagesElvish",
+	giant: "NIH.LanguagesGiant",
+	gith: "NIH.LanguagesGith",
+	gnomish: "NIH.LanguagesGnomish",
+	goblin: "NIH.LanguagesGoblin",
+	gnoll: "NIH.LanguagesGnoll",
+	halfling: "NIH.LanguagesHalfling",
+	ignan: "NIH.LanguagesIgnan",
+	infernal: "NIH.LanguagesInfernal",
+	orc: "NIH.LanguagesOrc",
+	primordial: "NIH.LanguagesPrimordial",
+	sylvan: "NIH.LanguagesSylvan",
+	terran: "NIH.LanguagesTerran",
+	cant: "NIH.LanguagesThievesCant",
+	undercommon: "NIH.LanguagesUndercommon"
 };
 preLocalize("languages", { sort: true });
 
@@ -1662,30 +1644,30 @@ preLocalize("languages", { sort: true });
  * Maximum allowed character level.
  * @type {number}
  */
-DND5E.maxLevel = 20;
+NIH.maxLevel = 20;
 
 /**
  * Maximum ability score value allowed by default.
  * @type {number}
  */
-DND5E.maxAbilityScore = 20;
+NIH.maxAbilityScore = 20;
 
 /**
  * XP required to achieve each character level.
  * @type {number[]}
  */
-DND5E.CHARACTER_EXP_LEVELS = [
-  0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
-  120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
+NIH.CHARACTER_EXP_LEVELS = [
+	0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
+	120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
 ];
 
 /**
  * XP granted for each challenge rating.
  * @type {number[]}
  */
-DND5E.CR_EXP_LEVELS = [
-  10, 200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000,
-  20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000
+NIH.CR_EXP_LEVELS = [
+	10, 200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000,
+	20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000
 ];
 
 /**
@@ -1710,11 +1692,11 @@ DND5E.CR_EXP_LEVELS = [
  * @property {string} [actorKeyPath]      If the trait doesn't directly map to an entry as `traits.[key]`, where is
  *                                        this trait's data stored on the actor?
  * @property {string} [configKey]         If the list of trait options doesn't match the name of the trait, where can
- *                                        the options be found within `CONFIG.DND5E`?
+ *                                        the options be found within `CONFIG.NIH`?
  * @property {string} [labelKey]          If config is an enum of objects, where can the label be found?
  * @property {object} [subtypes]          Configuration for traits that take some sort of base item.
  * @property {string} [subtypes.keyPath]  Path to subtype value on base items, should match a category key.
- * @property {string[]} [subtypes.ids]    Key for base item ID objects within `CONFIG.DND5E`.
+ * @property {string[]} [subtypes.ids]    Key for base item ID objects within `CONFIG.NIH`.
  * @property {object} [children]          Mapping of category key to an object defining its children.
  * @property {boolean} [sortCategories]   Whether top-level categories should be sorted.
  */
@@ -1723,55 +1705,55 @@ DND5E.CR_EXP_LEVELS = [
  * Configurable traits on actors.
  * @enum {TraitConfiguration}
  */
-DND5E.traits = {
-  saves: {
-    label: "DND5E.ClassSaves",
-    configKey: "abilities",
-    labelKey: "label"
-  },
-  skills: {
-    label: "DND5E.TraitSkillProf",
-    labelKey: "label"
-  },
-  languages: {
-    label: "DND5E.Languages"
-  },
-  di: {
-    label: "DND5E.DamImm",
-    configKey: "damageTypes"
-  },
-  dr: {
-    label: "DND5E.DamRes",
-    configKey: "damageTypes"
-  },
-  dv: {
-    label: "DND5E.DamVuln",
-    configKey: "damageTypes"
-  },
-  ci: {
-    label: "DND5E.ConImm",
-    configKey: "conditionTypes"
-  },
-  weapon: {
-    label: "DND5E.TraitWeaponProf",
-    actorKeyPath: "traits.weaponProf",
-    configKey: "weaponProficiencies",
-    subtypes: { keyPath: "weaponType", ids: ["weaponIds"] }
-  },
-  armor: {
-    label: "DND5E.TraitArmorProf",
-    actorKeyPath: "traits.armorProf",
-    configKey: "armorProficiencies",
-    subtypes: { keyPath: "armor.type", ids: ["armorIds", "shieldIds"] }
-  },
-  tool: {
-    label: "DND5E.TraitToolProf",
-    actorKeyPath: "tools",
-    configKey: "toolProficiencies",
-    subtypes: { keyPath: "toolType", ids: ["toolIds"] },
-    children: { vehicle: "vehicleTypes" },
-    sortCategories: true
-  }
+NIH.traits = {
+	saves: {
+		label: "NIH.ClassSaves",
+		configKey: "abilities",
+		labelKey: "label"
+	},
+	skills: {
+		label: "NIH.TraitSkillProf",
+		labelKey: "label"
+	},
+	languages: {
+		label: "NIH.Languages"
+	},
+	di: {
+		label: "NIH.DamImm",
+		configKey: "damageTypes"
+	},
+	dr: {
+		label: "NIH.DamRes",
+		configKey: "damageTypes"
+	},
+	dv: {
+		label: "NIH.DamVuln",
+		configKey: "damageTypes"
+	},
+	ci: {
+		label: "NIH.ConImm",
+		configKey: "conditionTypes"
+	},
+	weapon: {
+		label: "NIH.TraitWeaponProf",
+		actorKeyPath: "traits.weaponProf",
+		configKey: "weaponProficiencies",
+		subtypes: { keyPath: "weaponType", ids: ["weaponIds"] }
+	},
+	armor: {
+		label: "NIH.TraitArmorProf",
+		actorKeyPath: "traits.armorProf",
+		configKey: "armorProficiencies",
+		subtypes: { keyPath: "armor.type", ids: ["armorIds", "shieldIds"] }
+	},
+	tool: {
+		label: "NIH.TraitToolProf",
+		actorKeyPath: "tools",
+		configKey: "toolProficiencies",
+		subtypes: { keyPath: "toolType", ids: ["toolIds"] },
+		children: { vehicle: "vehicleTypes" },
+		sortCategories: true
+	}
 };
 preLocalize("traits", { key: "label" });
 
@@ -1781,97 +1763,97 @@ preLocalize("traits", { key: "label" });
  * Special character flags.
  * @enum {CharacterFlagConfig}
  */
-DND5E.characterFlags = {
-  diamondSoul: {
-    name: "DND5E.FlagsDiamondSoul",
-    hint: "DND5E.FlagsDiamondSoulHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  elvenAccuracy: {
-    name: "DND5E.FlagsElvenAccuracy",
-    hint: "DND5E.FlagsElvenAccuracyHint",
-    section: "DND5E.RacialTraits",
-    abilities: ["dex", "int", "wis", "cha"],
-    type: Boolean
-  },
-  halflingLucky: {
-    name: "DND5E.FlagsHalflingLucky",
-    hint: "DND5E.FlagsHalflingLuckyHint",
-    section: "DND5E.RacialTraits",
-    type: Boolean
-  },
-  initiativeAdv: {
-    name: "DND5E.FlagsInitiativeAdv",
-    hint: "DND5E.FlagsInitiativeAdvHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  initiativeAlert: {
-    name: "DND5E.FlagsAlert",
-    hint: "DND5E.FlagsAlertHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  jackOfAllTrades: {
-    name: "DND5E.FlagsJOAT",
-    hint: "DND5E.FlagsJOATHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  observantFeat: {
-    name: "DND5E.FlagsObservant",
-    hint: "DND5E.FlagsObservantHint",
-    skills: ["prc", "inv"],
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  tavernBrawlerFeat: {
-    name: "DND5E.FlagsTavernBrawler",
-    hint: "DND5E.FlagsTavernBrawlerHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  powerfulBuild: {
-    name: "DND5E.FlagsPowerfulBuild",
-    hint: "DND5E.FlagsPowerfulBuildHint",
-    section: "DND5E.RacialTraits",
-    type: Boolean
-  },
-  reliableTalent: {
-    name: "DND5E.FlagsReliableTalent",
-    hint: "DND5E.FlagsReliableTalentHint",
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  remarkableAthlete: {
-    name: "DND5E.FlagsRemarkableAthlete",
-    hint: "DND5E.FlagsRemarkableAthleteHint",
-    abilities: ["str", "dex", "con"],
-    section: "DND5E.Feats",
-    type: Boolean
-  },
-  weaponCriticalThreshold: {
-    name: "DND5E.FlagsWeaponCritThreshold",
-    hint: "DND5E.FlagsWeaponCritThresholdHint",
-    section: "DND5E.Feats",
-    type: Number,
-    placeholder: 20
-  },
-  spellCriticalThreshold: {
-    name: "DND5E.FlagsSpellCritThreshold",
-    hint: "DND5E.FlagsSpellCritThresholdHint",
-    section: "DND5E.Feats",
-    type: Number,
-    placeholder: 20
-  },
-  meleeCriticalDamageDice: {
-    name: "DND5E.FlagsMeleeCriticalDice",
-    hint: "DND5E.FlagsMeleeCriticalDiceHint",
-    section: "DND5E.Feats",
-    type: Number,
-    placeholder: 0
-  }
+NIH.characterFlags = {
+	diamondSoul: {
+		name: "NIH.FlagsDiamondSoul",
+		hint: "NIH.FlagsDiamondSoulHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	elvenAccuracy: {
+		name: "NIH.FlagsElvenAccuracy",
+		hint: "NIH.FlagsElvenAccuracyHint",
+		section: "NIH.RacialTraits",
+		abilities: ["dex", "int", "wis", "cha"],
+		type: Boolean
+	},
+	halflingLucky: {
+		name: "NIH.FlagsHalflingLucky",
+		hint: "NIH.FlagsHalflingLuckyHint",
+		section: "NIH.RacialTraits",
+		type: Boolean
+	},
+	initiativeAdv: {
+		name: "NIH.FlagsInitiativeAdv",
+		hint: "NIH.FlagsInitiativeAdvHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	initiativeAlert: {
+		name: "NIH.FlagsAlert",
+		hint: "NIH.FlagsAlertHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	jackOfAllTrades: {
+		name: "NIH.FlagsJOAT",
+		hint: "NIH.FlagsJOATHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	observantFeat: {
+		name: "NIH.FlagsObservant",
+		hint: "NIH.FlagsObservantHint",
+		skills: ["prc", "inv"],
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	tavernBrawlerFeat: {
+		name: "NIH.FlagsTavernBrawler",
+		hint: "NIH.FlagsTavernBrawlerHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	powerfulBuild: {
+		name: "NIH.FlagsPowerfulBuild",
+		hint: "NIH.FlagsPowerfulBuildHint",
+		section: "NIH.RacialTraits",
+		type: Boolean
+	},
+	reliableTalent: {
+		name: "NIH.FlagsReliableTalent",
+		hint: "NIH.FlagsReliableTalentHint",
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	remarkableAthlete: {
+		name: "NIH.FlagsRemarkableAthlete",
+		hint: "NIH.FlagsRemarkableAthleteHint",
+		abilities: ["str", "dex", "con"],
+		section: "NIH.Feats",
+		type: Boolean
+	},
+	weaponCriticalThreshold: {
+		name: "NIH.FlagsWeaponCritThreshold",
+		hint: "NIH.FlagsWeaponCritThresholdHint",
+		section: "NIH.Feats",
+		type: Number,
+		placeholder: 20
+	},
+	spellCriticalThreshold: {
+		name: "NIH.FlagsSpellCritThreshold",
+		hint: "NIH.FlagsSpellCritThresholdHint",
+		section: "NIH.Feats",
+		type: Number,
+		placeholder: 20
+	},
+	meleeCriticalDamageDice: {
+		name: "NIH.FlagsMeleeCriticalDice",
+		hint: "NIH.FlagsMeleeCriticalDiceHint",
+		section: "NIH.Feats",
+		type: Number,
+		placeholder: 0
+	}
 };
 preLocalize("characterFlags", { keys: ["name", "hint", "section"] });
 
@@ -1879,7 +1861,7 @@ preLocalize("characterFlags", { keys: ["name", "hint", "section"] });
  * Flags allowed on actors. Any flags not in the list may be deleted during a migration.
  * @type {string[]}
  */
-DND5E.allowedActorFlags = ["isPolymorphed", "originalActor"].concat(Object.keys(DND5E.characterFlags));
+NIH.allowedActorFlags = ["isPolymorphed", "originalActor"].concat(Object.keys(NIH.characterFlags));
 
 /* -------------------------------------------- */
 
@@ -1887,12 +1869,12 @@ DND5E.allowedActorFlags = ["isPolymorphed", "originalActor"].concat(Object.keys(
  * Advancement types that can be added to items.
  * @enum {*}
  */
-DND5E.advancementTypes = {
-  AbilityScoreImprovement: advancement.AbilityScoreImprovementAdvancement,
-  HitPoints: advancement.HitPointsAdvancement,
-  ItemChoice: advancement.ItemChoiceAdvancement,
-  ItemGrant: advancement.ItemGrantAdvancement,
-  ScaleValue: advancement.ScaleValueAdvancement
+NIH.advancementTypes = {
+	AbilityScoreImprovement: advancement.AbilityScoreImprovementAdvancement,
+	HitPoints: advancement.HitPointsAdvancement,
+	ItemChoice: advancement.ItemChoiceAdvancement,
+	ItemGrant: advancement.ItemGrantAdvancement,
+	ScaleValue: advancement.ScaleValueAdvancement
 };
 
 /* -------------------------------------------- */
@@ -1900,22 +1882,22 @@ DND5E.advancementTypes = {
 /**
  * Patch an existing config enum to allow conversion from string values to object values without
  * breaking existing modules that are expecting strings.
- * @param {string} key          Key within DND5E that has been replaced with an enum of objects.
+ * @param {string} key          Key within NIH that has been replaced with an enum of objects.
  * @param {string} fallbackKey  Key within the new config object from which to get the fallback value.
  * @param {object} [options]    Additional options passed through to logCompatibilityWarning.
  */
 function patchConfig(key, fallbackKey, options) {
-  /** @override */
-  function toString() {
-    const message = `The value of CONFIG.DND5E.${key} has been changed to an object.`
-      +` The former value can be acccessed from .${fallbackKey}.`;
-    foundry.utils.logCompatibilityWarning(message, options);
-    return this[fallbackKey];
-  }
+	/** @override */
+	function toString() {
+		const message = `The value of CONFIG.NIH.${key} has been changed to an object.`
+			+` The former value can be acccessed from .${fallbackKey}.`;
+		foundry.utils.logCompatibilityWarning(message, options);
+		return this[fallbackKey];
+	}
 
-  Object.values(DND5E[key]).forEach(o => o.toString = toString);
+	Object.values(NIH[key]).forEach(o => o.toString = toString);
 }
 
 /* -------------------------------------------- */
 
-export default DND5E;
+export default NIH;

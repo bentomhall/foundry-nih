@@ -78,7 +78,7 @@ export default class Advancement extends BaseAdvancement {
     return {
       order: 100,
       icon: "icons/svg/upgrade.svg",
-      title: game.i18n.localize("DND5E.AdvancementTitle"),
+      title: game.i18n.localize("NIH.AdvancementTitle"),
       hint: "",
       multiLevel: false,
       validItemTypes: new Set(["background", "class", "subclass"]),
@@ -125,7 +125,7 @@ export default class Advancement extends BaseAdvancement {
 
   /**
    * Actor to which this advancement's item belongs, if the item is embedded.
-   * @type {Actor5e|null}
+   * @type {ActorNIH|null}
    */
   get actor() {
     return this.item.parent ?? null;

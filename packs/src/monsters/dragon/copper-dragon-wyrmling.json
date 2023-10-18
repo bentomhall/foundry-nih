@@ -561,7 +561,7 @@
       },
       "flags": {
         "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.WdpSeGqhZpptz37y"
+          "sourceId": "Compendium.nih.monsterfeatures.WdpSeGqhZpptz37y"
         }
       },
       "_stats": {
@@ -653,7 +653,7 @@
       },
       "flags": {
         "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.KcUjvqIXZI3APp5a"
+          "sourceId": "Compendium.nih.monsterfeatures.KcUjvqIXZI3APp5a"
         }
       },
       "_stats": {
@@ -750,7 +750,7 @@
       },
       "flags": {
         "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.zjcGly9P3Gn9MXt7"
+          "sourceId": "Compendium.nih.monsterfeatures.zjcGly9P3Gn9MXt7"
         }
       },
       "_stats": {
@@ -842,7 +842,7 @@
       },
       "flags": {
         "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.JRy507rS9wxT3GBh"
+          "sourceId": "Compendium.nih.monsterfeatures.JRy507rS9wxT3GBh"
         }
       },
       "_stats": {
@@ -863,11 +863,11 @@
   },
   "flags": {},
   "_stats": {
-    "systemId": "dnd5e",
+    "systemId": "nih",
     "systemVersion": "2.1.0",
     "coreVersion": "10.291",
     "createdTime": 1661787232654,
     "modifiedTime": 1672596094176,
-    "lastModifiedBy": "dnd5ebuilder0000"
+    "lastModifiedBy": "nihbuilder0000"
   }
 }

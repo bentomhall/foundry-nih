@@ -1,8 +1,8 @@
 <form autocomplete="off">
-    <p class="notes">{{localize "DND5E.InitiativeConfigHint"}}</p>
+    <p class="notes">{{localize "NIH.InitiativeConfigHint"}}</p>
 
     <div class="form-group">
-        <label>{{localize "DND5E.AbilityModifier"}}</label>
+        <label>{{localize "NIH.AbilityModifier"}}</label>
         <div class="form-fields">
             <select name="system.attributes.init.ability">
                 {{selectOptions abilities selected=ability blank="" labelAttr="label"}}
@@ -11,20 +11,20 @@
     </div>
 
     <div class="form-group">
-        <label>{{localize "DND5E.InitiativeBonus"}}</label>
+        <label>{{localize "NIH.InitiativeBonus"}}</label>
         <div class="form-fields">
             <input name="system.attributes.init.bonus" type="text" value="{{bonus}}"/>
         </div>
     </div>
 
     <div class="form-group">
-        <label>{{localize "DND5E.FlagsAlert"}}</label>
-        <input type="checkbox" name="flags.dnd5e.initiativeAlert" {{checked initiativeAlert}}/>
+        <label>{{localize "NIH.FlagsAlert"}}</label>
+        <input type="checkbox" name="flags.nih.initiativeAlert" {{checked initiativeAlert}}/>
     </div>
 
     <div class="form-group">
-        <label>{{localize "DND5E.FlagsInitiativeAdv"}}</label>
-        <input type="checkbox" name="flags.dnd5e.initiativeAdv" {{checked initiativeAdv}}/>
+        <label>{{localize "NIH.FlagsInitiativeAdv"}}</label>
+        <input type="checkbox" name="flags.nih.initiativeAdv" {{checked initiativeAdv}}/>
     </div>
 
     <button type="submit"><i class="far fa-save"></i> {{ localize "Submit"}}</button>

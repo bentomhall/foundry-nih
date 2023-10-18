@@ -1,4 +1,4 @@
-import Actor5e from "../../documents/actor/actor.mjs";
+import ActorNIH from "../../documents/actor/actor.mjs";
 import Proficiency from "../../documents/actor/proficiency.mjs";
 import JournalEditor from "./journal-editor.mjs";
 
@@ -21,7 +21,7 @@ export default class JournalClassPageSheet extends JournalPageSheet {
 
   /** @inheritdoc */
   get template() {
-    return `systems/dnd5e/templates/journal/page-class-${this.isEditable ? "edit" : "view"}.hbs`;
+    return `systems/nih/templates/journal/page-class-${this.isEditable ? "edit" : "view"}.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -117,9 +117,9 @@ export default class JournalClassPageSheet extends JournalPageSheet {
     const scaleValues = (item.advancement.byType.ScaleValue ?? []);
     const spellProgression = await this._getSpellProgression(item);
 
-    const headers = [[{content: game.i18n.localize("DND5E.Level")}]];
-    if ( item.type === "class" ) headers[0].push({content: game.i18n.localize("DND5E.ProficiencyBonus")});
-    if ( hasFeatures ) headers[0].push({content: game.i18n.localize("DND5E.Features")});
+    const headers = [[{content: game.i18n.localize("NIH.Level")}]];
+    if ( item.type === "class" ) headers[0].push({content: game.i18n.localize("NIH.ProficiencyBonus")});
+    if ( hasFeatures ) headers[0].push({content: game.i18n.localize("NIH.Features")});
     headers[0].push(...scaleValues.map(a => ({content: a.title})));
     if ( spellProgression ) {
       if ( spellProgression.headers.length > 1 ) {
@@ -140,12 +140,12 @@ export default class JournalClassPageSheet extends JournalPageSheet {
     const makeLink = async uuid => (await fromUuid(uuid))?.toAnchor({classes: ["content-link"]}).outerHTML;
 
     const rows = [];
-    for ( const level of Array.fromRange((CONFIG.DND5E.maxLevel - (initialLevel - 1)), initialLevel) ) {
+    for ( const level of Array.fromRange((CONFIG.NIH.maxLevel - (initialLevel - 1)), initialLevel) ) {
       const features = [];
       for ( const advancement of item.advancement.byLevel[level] ) {
         switch ( advancement.constructor.typeName ) {
           case "AbilityScoreImprovement":
-            features.push(game.i18n.localize("DND5E.AdvancementAbilityScoreImprovementTitle"));
+            features.push(game.i18n.localize("NIH.AdvancementAbilityScoreImprovementTitle"));
             continue;
           case "ItemGrant":
             if ( advancement.configuration.optional ) continue;
@@ -186,15 +186,15 @@ export default class JournalClassPageSheet extends JournalPageSheet {
 
     if ( spellcasting.type === "leveled" ) {
       const spells = {};
-      const maxSpellLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[CONFIG.DND5E.SPELL_SLOT_TABLE.length - 1].length;
+      const maxSpellLevel = CONFIG.NIH.SPELL_SLOT_TABLE[CONFIG.NIH.SPELL_SLOT_TABLE.length - 1].length;
       Array.fromRange(maxSpellLevel, 1).forEach(l => spells[`spell${l}`] = {});
 
       let largestSlot;
-      for ( const level of Array.fromRange(CONFIG.DND5E.maxLevel, 1).reverse() ) {
+      for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1).reverse() ) {
         const progression = { slot: 0 };
         spellcasting.levels = level;
-        Actor5e.computeClassProgression(progression, item, { spellcasting });
-        Actor5e.prepareSpellcastingSlots(spells, "leveled", progression);
+        ActorNIH.computeClassProgression(progression, item, { spellcasting });
+        ActorNIH.prepareSpellcastingSlots(spells, "leveled", progression);
 
         if ( !largestSlot ) largestSlot = Object.entries(spells).reduce((slot, [key, data]) => {
           if ( !data.max ) return slot;
@@ -210,7 +210,7 @@ export default class JournalClassPageSheet extends JournalPageSheet {
 
       // Prepare headers & columns
       table.headers = [
-        [{content: game.i18n.localize("JOURNALENTRYPAGE.DND5E.Class.SpellSlotsPerSpellLevel"), colSpan: largestSlot}],
+        [{content: game.i18n.localize("JOURNALENTRYPAGE.NIH.Class.SpellSlotsPerSpellLevel"), colSpan: largestSlot}],
         Array.fromRange(largestSlot, 1).map(spellLevel => ({content: spellLevel.ordinalString()}))
       ];
       table.cols = [{class: "spellcasting", span: largestSlot}];
@@ -221,17 +221,17 @@ export default class JournalClassPageSheet extends JournalPageSheet {
       const spells = { pact: {} };
 
       table.headers = [[
-        { content: game.i18n.localize("JOURNALENTRYPAGE.DND5E.Class.SpellSlots") },
-        { content: game.i18n.localize("JOURNALENTRYPAGE.DND5E.Class.SpellSlotLevel") }
+        { content: game.i18n.localize("JOURNALENTRYPAGE.NIH.Class.SpellSlots") },
+        { content: game.i18n.localize("JOURNALENTRYPAGE.NIH.Class.SpellSlotLevel") }
       ]];
       table.cols = [{class: "spellcasting", span: 2}];
 
       // Loop through each level, gathering "Spell Slots" & "Slot Level" for each one
-      for ( const level of Array.fromRange(CONFIG.DND5E.maxLevel, 1) ) {
+      for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1) ) {
         const progression = { pact: 0 };
         spellcasting.levels = level;
-        Actor5e.computeClassProgression(progression, item, { spellcasting });
-        Actor5e.prepareSpellcastingSlots(spells, "pact", progression);
+        ActorNIH.computeClassProgression(progression, item, { spellcasting });
+        ActorNIH.prepareSpellcastingSlots(spells, "pact", progression);
         table.rows.push([
           { class: "spell-slots", content: `${spells.pact.max}` },
           { class: "slot-level", content: spells.pact.level.ordinalString() }
@@ -242,15 +242,15 @@ export default class JournalClassPageSheet extends JournalPageSheet {
     else {
       /**
        * A hook event that fires to generate the table for custom spellcasting types.
-       * The actual hook names include the spellcasting type (e.g. `dnd5e.buildPsionicSpellcastingTable`).
+       * The actual hook names include the spellcasting type (e.g. `nih.buildPsionicSpellcastingTable`).
        * @param {object} table                          Table definition being built. *Will be mutated.*
        * @param {Item5e} item                           Class for which the spellcasting table is being built.
        * @param {SpellcastingDescription} spellcasting  Spellcasting descriptive object.
-       * @function dnd5e.buildSpellcastingTable
+       * @function nih.buildSpellcastingTable
        * @memberof hookEvents
        */
       Hooks.callAll(
-        `dnd5e.build${spellcasting.type.capitalize()}SpellcastingTable`, table, item, spellcasting
+        `nih.build${spellcasting.type.capitalize()}SpellcastingTable`, table, item, spellcasting
       );
     }
 
@@ -266,8 +266,8 @@ export default class JournalClassPageSheet extends JournalPageSheet {
    */
   async _getOptionalTable(item) {
     const headers = [[
-      { content: game.i18n.localize("DND5E.Level") },
-      { content: game.i18n.localize("DND5E.Features") }
+      { content: game.i18n.localize("NIH.Level") },
+      { content: game.i18n.localize("NIH.Features") }
     ]];
 
     const cols = [
@@ -278,7 +278,7 @@ export default class JournalClassPageSheet extends JournalPageSheet {
     const makeLink = async uuid => (await fromUuid(uuid))?.toAnchor({classes: ["content-link"]}).outerHTML;
 
     const rows = [];
-    for ( const level of Array.fromRange(CONFIG.DND5E.maxLevel, 1) ) {
+    for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1) ) {
       const features = [];
       for ( const advancement of item.advancement.byLevel[level] ) {
         switch ( advancement.constructor.typeName ) {

@@ -16,10 +16,10 @@ import MountableTemplate from "./templates/mountable.mjs";
  * @mixes MountableTemplate
  *
  * @property {object} armor             Armor details and equipment type information.
- * @property {string} armor.type        Equipment type as defined in `DND5E.equipmentTypes`.
+ * @property {string} armor.type        Equipment type as defined in `NIH.equipmentTypes`.
  * @property {number} armor.value       Base armor class or shield bonus.
  * @property {number} armor.dex         Maximum dex bonus added to armor class.
- * @property {string} baseItem          Base armor as defined in `DND5E.armorIds` for determining proficiency.
+ * @property {string} baseItem          Base armor as defined in `NIH.armorIds` for determining proficiency.
  * @property {object} speed             Speed granted by a piece of vehicle equipment.
  * @property {number} speed.value       Speed granted by this piece of equipment measured in feet or meters
  *                                      depending on system setting.
@@ -37,22 +37,22 @@ export default class EquipmentData extends SystemDataModel.mixin(
     return this.mergeSchema(super.defineSchema(), {
       armor: new foundry.data.fields.SchemaField({
         type: new foundry.data.fields.StringField({
-          required: true, initial: "light", label: "DND5E.ItemEquipmentType"
+          required: true, initial: "light", label: "NIH.ItemEquipmentType"
         }),
-        value: new foundry.data.fields.NumberField({required: true, integer: true, min: 0, label: "DND5E.ArmorClass"}),
-        dex: new foundry.data.fields.NumberField({required: true, integer: true, label: "DND5E.ItemEquipmentDexMod"})
+        value: new foundry.data.fields.NumberField({required: true, integer: true, min: 0, label: "NIH.ArmorClass"}),
+        dex: new foundry.data.fields.NumberField({required: true, integer: true, label: "NIH.ItemEquipmentDexMod"})
       }, {label: ""}),
-      baseItem: new foundry.data.fields.StringField({required: true, label: "DND5E.ItemEquipmentBase"}),
+      baseItem: new foundry.data.fields.StringField({required: true, label: "NIH.ItemEquipmentBase"}),
       speed: new foundry.data.fields.SchemaField({
-        value: new foundry.data.fields.NumberField({required: true, min: 0, label: "DND5E.Speed"}),
-        conditions: new foundry.data.fields.StringField({required: true, label: "DND5E.SpeedConditions"})
-      }, {label: "DND5E.Speed"}),
+        value: new foundry.data.fields.NumberField({required: true, min: 0, label: "NIH.Speed"}),
+        conditions: new foundry.data.fields.StringField({required: true, label: "NIH.SpeedConditions"})
+      }, {label: "NIH.Speed"}),
       strength: new foundry.data.fields.NumberField({
-        required: true, integer: true, min: 0, label: "DND5E.ItemRequiredStr"
+        required: true, integer: true, min: 0, label: "NIH.ItemRequiredStr"
       }),
-      stealth: new foundry.data.fields.BooleanField({required: true, label: "DND5E.ItemEquipmentStealthDisav"}),
+      stealth: new foundry.data.fields.BooleanField({required: true, label: "NIH.ItemEquipmentStealthDisav"}),
       proficient: new foundry.data.fields.NumberField({
-        required: true, min: 0, max: 1, integer: true, initial: null, label: "DND5E.ProficiencyLevel"
+        required: true, min: 0, max: 1, integer: true, initial: null, label: "NIH.ProficiencyLevel"
       })
     });
   }
@@ -118,9 +118,9 @@ export default class EquipmentData extends SystemDataModel.mixin(
    */
   get chatProperties() {
     return [
-      CONFIG.DND5E.equipmentTypes[this.armor.type],
+      CONFIG.NIH.equipmentTypes[this.armor.type],
       this.parent.labels?.armor ?? null,
-      this.stealth ? game.i18n.localize("DND5E.StealthDisadvantage") : null
+      this.stealth ? game.i18n.localize("NIH.StealthDisadvantage") : null
     ];
   }
 
@@ -131,7 +131,7 @@ export default class EquipmentData extends SystemDataModel.mixin(
    * @type {boolean}
    */
   get isArmor() {
-    return this.armor.type in CONFIG.DND5E.armorTypes;
+    return this.armor.type in CONFIG.NIH.armorTypes;
   }
 
   /* -------------------------------------------- */
@@ -156,7 +156,7 @@ export default class EquipmentData extends SystemDataModel.mixin(
     const actor = this.parent.actor;
     if ( !actor ) return 0;
     if ( actor.type === "npc" ) return 1; // NPCs are always considered proficient with any armor in their stat block.
-    const config = CONFIG.DND5E.armorProficienciesMap;
+    const config = CONFIG.NIH.armorProficienciesMap;
     const itemProf = config[this.armor?.type];
     const actorProfs = actor.system.traits?.armorProf?.value ?? new Set();
     const isProficient = (itemProf === true) || actorProfs.has(itemProf) || actorProfs.has(this.baseItem);

@@ -103,11 +103,6 @@ In general, content contributions will take the shape of fixing typos or bugs in
 Every PR which contributes content must change both the source JSON file and the db file.
 
 ### Translations
-
-Non-English languages are not contained within the core dnd5e system, but instead they are managed by specialized [localization modules](https://foundryvtt.com/packages/tag/translation).
-
-Instead of opening an PR with translation files, create one of these modules (or contribute to an existing one!).
-
 ## Code
 
 Here are some guidelines for contributing code to this project.

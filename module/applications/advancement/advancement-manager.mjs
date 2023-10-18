@@ -16,7 +16,7 @@ import Advancement from "../../documents/advancement/advancement.mjs";
 /**
  * Application for controlling the advancement workflow and displaying the interface.
  *
- * @param {Actor5e} actor        Actor on which this advancement is being performed.
+ * @param {ActorNIH} actor        Actor on which this advancement is being performed.
  * @param {object} [options={}]  Additional application options.
  */
 export default class AdvancementManager extends Application {
@@ -25,13 +25,13 @@ export default class AdvancementManager extends Application {
 
     /**
      * The original actor to which changes will be applied when the process is complete.
-     * @type {Actor5e}
+     * @type {ActorNIH}
      */
     this.actor = actor;
 
     /**
      * A clone of the original actor to which the changes can be applied during the advancement process.
-     * @type {Actor5e}
+     * @type {ActorNIH}
      */
     this.clone = actor.clone();
 
@@ -61,8 +61,8 @@ export default class AdvancementManager extends Application {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["dnd5e", "advancement", "flow"],
-      template: "systems/dnd5e/templates/advancement/advancement-manager.hbs",
+      classes: ["nih", "advancement", "flow"],
+      template: "systems/nih/templates/advancement/advancement-manager.hbs",
       width: 460,
       height: "auto"
     });
@@ -74,11 +74,11 @@ export default class AdvancementManager extends Application {
   get title() {
     const visibleSteps = this.steps.filter(s => !s.automatic);
     const visibleIndex = visibleSteps.indexOf(this.step);
-    const step = visibleIndex < 0 ? "" : game.i18n.format("DND5E.AdvancementManagerSteps", {
+    const step = visibleIndex < 0 ? "" : game.i18n.format("NIH.AdvancementManagerSteps", {
       current: visibleIndex + 1,
       total: visibleSteps.length
     });
-    return `${game.i18n.localize("DND5E.AdvancementManagerTitle")} ${step}`;
+    return `${game.i18n.localize("NIH.AdvancementManagerTitle")} ${step}`;
   }
 
   /* -------------------------------------------- */
@@ -125,7 +125,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for a newly added advancement from drag-drop.
-   * @param {Actor5e} actor               Actor from which the advancement should be updated.
+   * @param {ActorNIH} actor               Actor from which the advancement should be updated.
    * @param {string} itemId               ID of the item to which the advancements are being dropped.
    * @param {Advancement[]} advancements  Dropped advancements to add.
    * @param {object} options              Rendering options passed to the application.
@@ -173,7 +173,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for a newly added item.
-   * @param {Actor5e} actor         Actor to which the item is being added.
+   * @param {ActorNIH} actor         Actor to which the item is being added.
    * @param {object} itemData       Data for the item being added.
    * @param {object} options        Rendering options passed to the application.
    * @returns {AdvancementManager}  Prepared manager. Steps count can be used to determine if advancements are needed.
@@ -214,7 +214,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for modifying choices on an item at a specific level.
-   * @param {Actor5e} actor         Actor from which the choices should be modified.
+   * @param {ActorNIH} actor         Actor from which the choices should be modified.
    * @param {object} itemId         ID of the item whose choices are to be changed.
    * @param {number} level          Level at which the choices are being changed.
    * @param {object} options        Rendering options passed to the application.
@@ -244,7 +244,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for an advancement that needs to be deleted.
-   * @param {Actor5e} actor         Actor from which the advancement should be unapplied.
+   * @param {ActorNIH} actor         Actor from which the advancement should be unapplied.
    * @param {string} itemId         ID of the item from which the advancement should be deleted.
    * @param {string} advancementId  ID of the advancement to delete.
    * @param {object} options        Rendering options passed to the application.
@@ -277,7 +277,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for an item that needs to be deleted.
-   * @param {Actor5e} actor         Actor from which the item should be deleted.
+   * @param {ActorNIH} actor         Actor from which the item should be deleted.
    * @param {string} itemId         ID of the item to be deleted.
    * @param {object} options        Rendering options passed to the application.
    * @returns {AdvancementManager}  Prepared manager. Steps count can be used to determine if advancements are needed.
@@ -307,7 +307,7 @@ export default class AdvancementManager extends Application {
 
   /**
    * Construct a manager for a change in a class's levels.
-   * @param {Actor5e} actor         Actor whose level has changed.
+   * @param {ActorNIH} actor         Actor whose level has changed.
    * @param {string} classId        ID of the class being changed.
    * @param {number} levelDelta     Levels by which to increase or decrease the class.
    * @param {object} options        Rendering options passed to the application.
@@ -386,7 +386,7 @@ export default class AdvancementManager extends Application {
   /**
    * Determine the proper working level either from the provided item or from the cloned actor.
    * @param {Item5e} item    Item being advanced. If class or subclass, its level will be used.
-   * @param {Actor5e} actor  Actor being advanced.
+   * @param {ActorNIH} actor  Actor being advanced.
    * @returns {number}       Working level.
    */
   static currentLevel(item, actor) {
@@ -413,7 +413,7 @@ export default class AdvancementManager extends Application {
       actor: this.clone,
       flowId: this.step.flow.id,
       header: item.name,
-      subheader: level ? game.i18n.format("DND5E.AdvancementLevelHeader", { level }) : "",
+      subheader: level ? game.i18n.format("NIH.AdvancementLevelHeader", { level }) : "",
       steps: {
         current: visibleIndex + 1,
         total: visibleSteps.length,
@@ -439,11 +439,11 @@ export default class AdvancementManager extends Application {
 
     /**
      * A hook event that fires when an AdvancementManager is about to be processed.
-     * @function dnd5e.preAdvancementManagerRender
+     * @function nih.preAdvancementManagerRender
      * @memberof hookEvents
      * @param {AdvancementManager} advancementManager The advancement manager about to be rendered
      */
-    const allowed = Hooks.call("dnd5e.preAdvancementManagerRender", this);
+    const allowed = Hooks.call("nih.preAdvancementManagerRender", this);
 
     // Abort if not allowed
     if ( allowed === false ) return this;
@@ -503,17 +503,17 @@ export default class AdvancementManager extends Application {
   async close(options={}) {
     if ( !options.skipConfirmation ) {
       return new Dialog({
-        title: `${game.i18n.localize("DND5E.AdvancementManagerCloseTitle")}: ${this.actor.name}`,
-        content: game.i18n.localize("DND5E.AdvancementManagerCloseMessage"),
+        title: `${game.i18n.localize("NIH.AdvancementManagerCloseTitle")}: ${this.actor.name}`,
+        content: game.i18n.localize("NIH.AdvancementManagerCloseMessage"),
         buttons: {
           close: {
             icon: '<i class="fas fa-times"></i>',
-            label: game.i18n.localize("DND5E.AdvancementManagerCloseButtonStop"),
+            label: game.i18n.localize("NIH.AdvancementManagerCloseButtonStop"),
             callback: () => super.close(options)
           },
           continue: {
             icon: '<i class="fas fa-chevron-right"></i>',
-            label: game.i18n.localize("DND5E.AdvancementManagerCloseButtonContinue")
+            label: game.i18n.localize("NIH.AdvancementManagerCloseButtonContinue")
           }
         },
         default: "close"
@@ -623,8 +623,8 @@ export default class AdvancementManager extends Application {
    */
   async _restart(event) {
     const restart = await Dialog.confirm({
-      title: game.i18n.localize("DND5E.AdvancementManagerRestartConfirmTitle"),
-      content: game.i18n.localize("DND5E.AdvancementManagerRestartConfirm")
+      title: game.i18n.localize("NIH.AdvancementManagerRestartConfirmTitle"),
+      content: game.i18n.localize("NIH.AdvancementManagerRestartConfirm")
     });
     if ( !restart ) return;
     // While there is still a renderable step.
@@ -661,7 +661,7 @@ export default class AdvancementManager extends Application {
     /**
      * A hook event that fires at the final stage of a character's advancement process, before actor and item updates
      * are applied.
-     * @function dnd5e.preAdvancementManagerComplete
+     * @function nih.preAdvancementManagerComplete
      * @memberof hookEvents
      * @param {AdvancementManager} advancementManager  The advancement manager.
      * @param {object} actorUpdates                    Updates to the actor.
@@ -669,7 +669,7 @@ export default class AdvancementManager extends Application {
      * @param {object[]} toUpdate                      Items that will be updated on the actor.
      * @param {string[]} toDelete                      IDs of items that will be deleted on the actor.
      */
-    if ( Hooks.call("dnd5e.preAdvancementManagerComplete", this, updates, toCreate, toUpdate, toDelete) === false ) {
+    if ( Hooks.call("nih.preAdvancementManagerComplete", this, updates, toCreate, toUpdate, toDelete) === false ) {
       console.log("AdvancementManager completion was prevented by the 'preAdvancementManagerComplete' hook.");
       return this.close({ skipConfirmation: true });
     }
@@ -684,11 +684,11 @@ export default class AdvancementManager extends Application {
 
     /**
      * A hook event that fires when an AdvancementManager is done modifying an actor.
-     * @function dnd5e.advancementManagerComplete
+     * @function nih.advancementManagerComplete
      * @memberof hookEvents
      * @param {AdvancementManager} advancementManager The advancement manager that just completed
      */
-    Hooks.callAll("dnd5e.advancementManagerComplete", this);
+    Hooks.callAll("nih.advancementManagerComplete", this);
 
     // Close prompt
     return this.close({ skipConfirmation: true });

@@ -23,28 +23,28 @@ export default class AttributesFields {
   static get common() {
     return {
       init: new foundry.data.fields.SchemaField({
-        ability: new foundry.data.fields.StringField({label: "DND5E.AbilityModifier"}),
-        bonus: new FormulaField({label: "DND5E.InitiativeBonus"})
-      }, { label: "DND5E.Initiative" }),
+        ability: new foundry.data.fields.StringField({label: "NIH.AbilityModifier"}),
+        bonus: new FormulaField({label: "NIH.InitiativeBonus"})
+      }, { label: "NIH.Initiative" }),
       movement: new foundry.data.fields.SchemaField({
         burrow: new foundry.data.fields.NumberField({
-          nullable: false, min: 0, step: 0.1, initial: 0, label: "DND5E.MovementBurrow"
+          nullable: false, min: 0, step: 0.1, initial: 0, label: "NIH.MovementBurrow"
         }),
         climb: new foundry.data.fields.NumberField({
-          nullable: false, min: 0, step: 0.1, initial: 0, label: "DND5E.MovementClimb"
+          nullable: false, min: 0, step: 0.1, initial: 0, label: "NIH.MovementClimb"
         }),
         fly: new foundry.data.fields.NumberField({
-          nullable: false, min: 0, step: 0.1, initial: 0, label: "DND5E.MovementFly"
+          nullable: false, min: 0, step: 0.1, initial: 0, label: "NIH.MovementFly"
         }),
         swim: new foundry.data.fields.NumberField({
-          nullable: false, min: 0, step: 0.1, initial: 0, label: "DND5E.MovementSwim"
+          nullable: false, min: 0, step: 0.1, initial: 0, label: "NIH.MovementSwim"
         }),
         walk: new foundry.data.fields.NumberField({
-          nullable: false, min: 0, step: 0.1, initial: 30, label: "DND5E.MovementWalk"
+          nullable: false, min: 0, step: 0.1, initial: 30, label: "NIH.MovementWalk"
         }),
-        units: new foundry.data.fields.StringField({initial: "ft", label: "DND5E.MovementUnits"}),
-        hover: new foundry.data.fields.BooleanField({label: "DND5E.MovementHover"})
-      }, {label: "DND5E.Movement"})
+        units: new foundry.data.fields.StringField({initial: "ft", label: "NIH.MovementUnits"}),
+        hover: new foundry.data.fields.BooleanField({label: "NIH.MovementHover"})
+      }, {label: "NIH.Movement"})
     };
   }
 
@@ -69,27 +69,27 @@ export default class AttributesFields {
     return {
       attunement: new foundry.data.fields.SchemaField({
         max: new foundry.data.fields.NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 3, label: "DND5E.AttunementMax"
+          required: true, nullable: false, integer: true, min: 0, initial: 3, label: "NIH.AttunementMax"
         })
-      }, {label: "DND5E.Attunement"}),
+      }, {label: "NIH.Attunement"}),
       senses: new foundry.data.fields.SchemaField({
         darkvision: new foundry.data.fields.NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.SenseDarkvision"
+          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SenseDarkvision"
         }),
         blindsight: new foundry.data.fields.NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.SenseBlindsight"
+          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SenseBlindsight"
         }),
         tremorsense: new foundry.data.fields.NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.SenseTremorsense"
+          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SenseTremorsense"
         }),
         truesight: new foundry.data.fields.NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.SenseTruesight"
+          required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SenseTruesight"
         }),
-        units: new foundry.data.fields.StringField({required: true, initial: "ft", label: "DND5E.SenseUnits"}),
-        special: new foundry.data.fields.StringField({required: true, label: "DND5E.SenseSpecial"})
-      }, {label: "DND5E.Senses"}),
+        units: new foundry.data.fields.StringField({required: true, initial: "ft", label: "NIH.SenseUnits"}),
+        special: new foundry.data.fields.StringField({required: true, label: "NIH.SenseSpecial"})
+      }, {label: "NIH.Senses"}),
       spellcasting: new foundry.data.fields.StringField({
-        required: true, blank: true, initial: "int", label: "DND5E.SpellAbility"
+        required: true, blank: true, initial: "int", label: "NIH.SpellAbility"
       })
     };
   }

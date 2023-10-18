@@ -10,7 +10,7 @@ import * as Trait from "../../documents/actor/trait.mjs";
 /**
  * An application responsible for configuring proficiencies and bonuses in tools and skills.
  *
- * @param {Actor5e} actor                     The Actor being configured.
+ * @param {ActorNIH} actor                     The Actor being configured.
  * @param {ProficiencyConfigOptions} options  Additional configuration options.
  */
 export default class ProficiencyConfig extends BaseConfigSheet {
@@ -18,8 +18,8 @@ export default class ProficiencyConfig extends BaseConfigSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["dnd5e"],
-      template: "systems/dnd5e/templates/apps/proficiency-config.hbs",
+      classes: ["nih"],
+      template: "systems/nih/templates/apps/proficiency-config.hbs",
       width: 500,
       height: "auto"
     });
@@ -49,8 +49,8 @@ export default class ProficiencyConfig extends BaseConfigSheet {
 
   /** @inheritdoc */
   get title() {
-    const label = this.isSkill ? CONFIG.DND5E.skills[this.options.key].label : Trait.keyLabel("tool", this.options.key);
-    return `${game.i18n.format("DND5E.ProficiencyConfigureTitle", {label})}: ${this.document.name}`;
+    const label = this.isSkill ? CONFIG.NIH.skills[this.options.key].label : Trait.keyLabel("tool", this.options.key);
+    return `${game.i18n.format("NIH.ProficiencyConfigureTitle", {label})}: ${this.document.name}`;
   }
 
   /* -------------------------------------------- */
@@ -65,8 +65,8 @@ export default class ProficiencyConfig extends BaseConfigSheet {
   /** @inheritdoc */
   getData(options={}) {
     return {
-      abilities: CONFIG.DND5E.abilities,
-      proficiencyLevels: CONFIG.DND5E.proficiencyLevels,
+      abilities: CONFIG.NIH.abilities,
+      proficiencyLevels: CONFIG.NIH.proficiencyLevels,
       entry: this.document.system[this.options.property]?.[this.options.key],
       isTool: this.isTool,
       isSkill: this.isSkill,
@@ -83,8 +83,8 @@ export default class ProficiencyConfig extends BaseConfigSheet {
     const passive = formData[`system.skills.${this.options.key}.bonuses.passive`];
     const passiveRoll = new Roll(passive);
     if ( !passiveRoll.isDeterministic ) {
-      const message = game.i18n.format("DND5E.FormulaCannotContainDiceError", {
-        name: game.i18n.localize("DND5E.SkillBonusPassive")
+      const message = game.i18n.format("NIH.FormulaCannotContainDiceError", {
+        name: game.i18n.localize("NIH.SkillBonusPassive")
       });
       ui.notifications.error(message);
       throw new Error(message);
