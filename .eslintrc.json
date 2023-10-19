@@ -118,7 +118,7 @@
     "capitalized-comments": ["warn", "always", {"ignoreConsecutiveComments": true}],
     "comma-spacing": "warn",
     "dot-notation": "warn",
-    "indent": ["warn", "tab"],
+    "indent": ["warn", "tab", {"switchCase": 1}],
     "key-spacing": "warn",
     "keyword-spacing": ["warn", {"overrides": {"catch": {"before": true, "after": false}}}],
     "max-len": ["warn", {

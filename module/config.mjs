@@ -1327,31 +1327,9 @@ NIH.spellTags = {
 	concentration: {
 		label: "NIH.Concentration",
 		abbr: "NIH.ConcentrationAbbr"
-	},
-	ritual: {
-		label: "NIH.Ritual",
-		abbr: "NIH.RitualAbbr"
 	}
 };
 preLocalize("spellTags", {keys: ["label", "abbr"]});
-
-/* -------------------------------------------- */
-
-/**
- * Schools to which a spell can belong.
- * @enum {string}
- */
-NIH.spellSchools = {
-	abj: "NIH.SchoolAbj",
-	con: "NIH.SchoolCon",
-	div: "NIH.SchoolDiv",
-	enc: "NIH.SchoolEnc",
-	evo: "NIH.SchoolEvo",
-	ill: "NIH.SchoolIll",
-	nec: "NIH.SchoolNec",
-	trs: "NIH.SchoolTrs"
-};
-preLocalize("spellSchools", { sort: true });
 
 /* -------------------------------------------- */
 
@@ -1387,7 +1365,8 @@ NIH.weaponTypes = {
 	martialR: "NIH.WeaponMartialR",
 	natural: "NIH.WeaponNatural",
 	improv: "NIH.WeaponImprov",
-	siege: "NIH.WeaponSiege"
+	siege: "NIH.WeaponSiege",
+	exoticR: "NIH.WeaponExoticR"
 };
 preLocalize("weaponTypes");
 
@@ -1414,12 +1393,17 @@ preLocalize("physicalWeaponProperties", { sort: true });
 NIH.weaponProperties = {
 	...NIH.physicalWeaponProperties,
 	amm: "NIH.WeaponPropertiesAmm",
+	bat: "NIH.WeaponPropertiesBat",
+	con: "NIH.WeaponPropertiesCon",
+	cle: "NIH.WeaponPropertiesCle",
 	fin: "NIH.WeaponPropertiesFin",
 	fir: "NIH.WeaponPropertiesFir",
 	foc: "NIH.WeaponPropertiesFoc",
 	hvy: "NIH.WeaponPropertiesHvy",
 	lgt: "NIH.WeaponPropertiesLgt",
 	lod: "NIH.WeaponPropertiesLod",
+	par: "NIH.WeaponPropertiesPar",
+	pre: "NIH.WeaponPropertiesPre",
 	rch: "NIH.WeaponPropertiesRch",
 	rel: "NIH.WeaponPropertiesRel",
 	ret: "NIH.WeaponPropertiesRet",
@@ -1589,12 +1573,15 @@ NIH.consumableResources = [
  */
 NIH.conditionTypes = {
 	blinded: "NIH.ConBlinded",
+	bloodied: "NIH.ConBloodied",
+	broken: "NIH.ConBroken",
 	charmed: "NIH.ConCharmed",
 	deafened: "NIH.ConDeafened",
 	diseased: "NIH.ConDiseased",
 	exhaustion: "NIH.ConExhaustion",
 	frightened: "NIH.ConFrightened",
 	grappled: "NIH.ConGrappled",
+	hidden: "NIH.ConHidden",
 	incapacitated: "NIH.ConIncapacitated",
 	invisible: "NIH.ConInvisible",
 	paralyzed: "NIH.ConParalyzed",
@@ -1602,7 +1589,10 @@ NIH.conditionTypes = {
 	poisoned: "NIH.ConPoisoned",
 	prone: "NIH.ConProne",
 	restrained: "NIH.ConRestrained",
+	shaken: "NIH.ConShaken",
+	staggered: "NIH.ConStaggered",
 	stunned: "NIH.ConStunned",
+	surprised: "NIH.ConSurprised",
 	unconscious: "NIH.ConUnconscious"
 };
 preLocalize("conditionTypes", { sort: true });
@@ -1613,22 +1603,15 @@ preLocalize("conditionTypes", { sort: true });
  */
 NIH.languages = {
 	common: "NIH.LanguagesCommon",
-	aarakocra: "NIH.LanguagesAarakocra",
 	abyssal: "NIH.LanguagesAbyssal",
 	aquan: "NIH.LanguagesAquan",
 	auran: "NIH.LanguagesAuran",
 	celestial: "NIH.LanguagesCelestial",
-	deep: "NIH.LanguagesDeepSpeech",
 	draconic: "NIH.LanguagesDraconic",
-	druidic: "NIH.LanguagesDruidic",
 	dwarvish: "NIH.LanguagesDwarvish",
-	elvish: "NIH.LanguagesElvish",
+	elvish: "NIH.LanguagesYonwach",
 	giant: "NIH.LanguagesGiant",
-	gith: "NIH.LanguagesGith",
-	gnomish: "NIH.LanguagesGnomish",
 	goblin: "NIH.LanguagesGoblin",
-	gnoll: "NIH.LanguagesGnoll",
-	halfling: "NIH.LanguagesHalfling",
 	ignan: "NIH.LanguagesIgnan",
 	infernal: "NIH.LanguagesInfernal",
 	orc: "NIH.LanguagesOrc",
@@ -1636,7 +1619,10 @@ NIH.languages = {
 	sylvan: "NIH.LanguagesSylvan",
 	terran: "NIH.LanguagesTerran",
 	cant: "NIH.LanguagesThievesCant",
-	undercommon: "NIH.LanguagesUndercommon"
+	woodElf: "NIH.LanguagesMetsae",
+	tiborean: "NIH.LanguagesTiborean",
+	jinzi: "NIH.LanguagesJinzi",
+	iathNeidr: "NIH.LanguagesIathNeidr"
 };
 preLocalize("languages", { sort: true });
 
@@ -1650,24 +1636,14 @@ NIH.maxLevel = 20;
  * Maximum ability score value allowed by default.
  * @type {number}
  */
-NIH.maxAbilityScore = 20;
+NIH.maxAbilityScore = 5;
 
 /**
  * XP required to achieve each character level.
  * @type {number[]}
  */
 NIH.CHARACTER_EXP_LEVELS = [
-	0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
-	120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
-];
-
-/**
- * XP granted for each challenge rating.
- * @type {number[]}
- */
-NIH.CR_EXP_LEVELS = [
-	10, 200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000,
-	20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000
+	0, 1, 3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71
 ];
 
 /**
