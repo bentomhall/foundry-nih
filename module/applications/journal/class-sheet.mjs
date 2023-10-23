@@ -189,24 +189,25 @@ export default class JournalClassPageSheet extends JournalPageSheet {
       const maxSpellLevel = CONFIG.NIH.SPELL_SLOT_TABLE[CONFIG.NIH.SPELL_SLOT_TABLE.length - 1].length;
       Array.fromRange(maxSpellLevel, 1).forEach(l => spells[`spell${l}`] = {});
 
+      //TODO REWORK
       let largestSlot;
-      for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1).reverse() ) {
-        const progression = { slot: 0 };
-        spellcasting.levels = level;
-        ActorNIH.computeClassProgression(progression, item, { spellcasting });
-        ActorNIH.prepareSpellcastingSlots(spells, "leveled", progression);
+      // for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1).reverse() ) {
+      //   const progression = { slot: 0 };
+      //   spellcasting.levels = level;
+      //   ActorNIH.computeClassProgression(progression, item, { spellcasting });
+      //   ActorNIH.prepareSpellcastingSlots(spells, "leveled", progression);
 
-        if ( !largestSlot ) largestSlot = Object.entries(spells).reduce((slot, [key, data]) => {
-          if ( !data.max ) return slot;
-          const level = parseInt(key.slice(5));
-          if ( !Number.isNaN(level) && (level > slot) ) return level;
-          return slot;
-        }, -1);
+      //   if ( !largestSlot ) largestSlot = Object.entries(spells).reduce((slot, [key, data]) => {
+      //     if ( !data.max ) return slot;
+      //     const level = parseInt(key.slice(5));
+      //     if ( !Number.isNaN(level) && (level > slot) ) return level;
+      //     return slot;
+      //   }, -1);
 
-        table.rows.push(Array.fromRange(largestSlot, 1).map(spellLevel => {
-          return {class: "spell-slots", content: spells[`spell${spellLevel}`]?.max || "&mdash;"};
-        }));
-      }
+      //   table.rows.push(Array.fromRange(largestSlot, 1).map(spellLevel => {
+      //     return {class: "spell-slots", content: spells[`spell${spellLevel}`]?.max || "&mdash;"};
+      //   }));
+      // }
 
       // Prepare headers & columns
       table.headers = [
@@ -215,28 +216,6 @@ export default class JournalClassPageSheet extends JournalPageSheet {
       ];
       table.cols = [{class: "spellcasting", span: largestSlot}];
       table.rows.reverse();
-    }
-
-    else if ( spellcasting.type === "pact" ) {
-      const spells = { pact: {} };
-
-      table.headers = [[
-        { content: game.i18n.localize("JOURNALENTRYPAGE.NIH.Class.SpellSlots") },
-        { content: game.i18n.localize("JOURNALENTRYPAGE.NIH.Class.SpellSlotLevel") }
-      ]];
-      table.cols = [{class: "spellcasting", span: 2}];
-
-      // Loop through each level, gathering "Spell Slots" & "Slot Level" for each one
-      for ( const level of Array.fromRange(CONFIG.NIH.maxLevel, 1) ) {
-        const progression = { pact: 0 };
-        spellcasting.levels = level;
-        ActorNIH.computeClassProgression(progression, item, { spellcasting });
-        ActorNIH.prepareSpellcastingSlots(spells, "pact", progression);
-        table.rows.push([
-          { class: "spell-slots", content: `${spells.pact.max}` },
-          { class: "slot-level", content: spells.pact.level.ordinalString() }
-        ]);
-      }
     }
 
     else {

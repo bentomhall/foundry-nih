@@ -640,7 +640,7 @@ export default class ActorNIH extends Actor {
 		const progression = { slot: 0, pact: 0 };
 		const types = {};
 
-		// NPCs don't get spell levels from classes
+		// NPCs don't get aether or stamina
 		if ( this.type === "npc" ) {
 			progression.slot = this.system.details.spellLevel ?? 0;
 			types.leveled = 1;
@@ -656,30 +656,24 @@ export default class ActorNIH extends Actor {
 				types[type] += 1;
 				return true;
 			});
-
-			for ( const cls of classes ) this.constructor.computeClassProgression(
-				progression, cls, { actor: this, count: types[cls.spellcasting.type] }
-			);
+			let cls = classes[0];
+			this.constructor.computeClassProgression(cls, {actor: this, count: 1});
 		}
 
-		for ( const type of Object.keys(CONFIG.NIH.spellcastingTypes) ) {
-			this.constructor.prepareSpellcastingSlots(this.system.spells, type, progression, { actor: this });
-		}
+		
 	}
 
 	/* -------------------------------------------- */
 
 	/**
 	 * Contribute to the actor's spellcasting progression.
-	 * @param {object} progression                             Spellcasting progression data. *Will be mutated.*
 	 * @param {Item5e} cls                                     Class for whom this progression is being computed.
 	 * @param {object} [config={}]
 	 * @param {ActorNIH|null} [config.actor]                    Actor for whom the data is being prepared.
 	 * @param {SpellcastingDescription} [config.spellcasting]  Spellcasting descriptive object.
 	 * @param {number} [config.count=1]                        Number of classes with this type of spellcasting.
 	 */
-	static computeClassProgression(progression, cls, {actor, spellcasting, count=1}={}) {
-		const type = cls.spellcasting.type;
+	static computeClassProgression(cls, {actor, spellcasting, count=1}={}) {
 		spellcasting = spellcasting ?? cls.spellcasting;
 
 		/**
@@ -695,131 +689,15 @@ export default class ActorNIH extends Actor {
 		 * @memberof hookEvents
 		 */
 		const allowed = Hooks.call(
-			`nih.compute${type.capitalize()}Progression`, progression, actor, cls, spellcasting, count
+			`nih.computeLeveledProgression`, {}, actor, cls, spellcasting, count
 		);
-
-		if ( allowed && (type === "pact") ) {
-			this.computePactProgression(progression, actor, cls, spellcasting, count);
-		} else if ( allowed && (type === "leveled") ) {
-			this.computeLeveledProgression(progression, actor, cls, spellcasting, count);
-		}
-	}
-
-	/* -------------------------------------------- */
-
-	/**
-	 * Contribute to the actor's spellcasting progression for a class with leveled spellcasting.
-	 * @param {object} progression                    Spellcasting progression data. *Will be mutated.*
-	 * @param {ActorNIH} actor                         Actor for whom the data is being prepared.
-	 * @param {Item5e} cls                            Class for whom this progression is being computed.
-	 * @param {SpellcastingDescription} spellcasting  Spellcasting descriptive object.
-	 * @param {number} count                          Number of classes with this type of spellcasting.
-	 */
-	static computeLeveledProgression(progression, actor, cls, spellcasting, count) {
-		const prog = CONFIG.NIH.spellcastingTypes.leveled.progression[spellcasting.progression];
-		if ( !prog ) return;
-		const rounding = prog.roundUp ? Math.ceil : Math.floor;
-		progression.slot += rounding(spellcasting.levels / prog.divisor ?? 1);
-		// Single-classed, non-full progression rounds up, rather than down.
-		if ( (count === 1) && (prog.divisor > 1) && progression.slot ) {
-			progression.slot = Math.ceil(spellcasting.levels / prog.divisor);
-		}
-	}
-
-	/* -------------------------------------------- */
-
-	/**
-	 * Contribute to the actor's spellcasting progression for a class with pact spellcasting.
-	 * @param {object} progression                    Spellcasting progression data. *Will be mutated.*
-	 * @param {ActorNIH} actor                         Actor for whom the data is being prepared.
-	 * @param {Item5e} cls                            Class for whom this progression is being computed.
-	 * @param {SpellcastingDescription} spellcasting  Spellcasting descriptive object.
-	 * @param {number} count                          Number of classes with this type of spellcasting.
-	 */
-	static computePactProgression(progression, actor, cls, spellcasting, count) {
-		progression.pact += spellcasting.levels;
-	}
-
-	/* -------------------------------------------- */
-
-	/**
-	 * Prepare actor's spell slots using progression data.
-	 * @param {object} spells           The `data.spells` object within actor's data. *Will be mutated.*
-	 * @param {string} type             Type of spellcasting slots being prepared.
-	 * @param {object} progression      Spellcasting progression data.
-	 * @param {object} [config]
-	 * @param {ActorNIH} [config.actor]  Actor for whom the data is being prepared.
-	 */
-	static prepareSpellcastingSlots(spells, type, progression, {actor}={}) {
-		/**
-		 * A hook event that fires to convert the provided spellcasting progression into spell slots.
-		 * The actual hook names include the spellcasting type (e.g. `nih.prepareLeveledSlots`).
-		 * @param {object} spells        The `data.spells` object within actor's data. *Will be mutated.*
-		 * @param {ActorNIH} actor        Actor for whom the data is being prepared.
-		 * @param {object} progression   Spellcasting progression data.
-		 * @returns {boolean}            Explicitly return false to prevent default preparation from being performed.
-		 * @function nih.prepareSpellcastingSlots
-		 * @memberof hookEvents
-		 */
-		const allowed = Hooks.call(`nih.prepare${type.capitalize()}Slots`, spells, actor, progression);
-
-		if ( allowed && (type === "pact") ) this.preparePactSlots(spells, actor, progression);
-		else if ( allowed && (type === "leveled") ) this.prepareLeveledSlots(spells, actor, progression);
-	}
-
-	/* -------------------------------------------- */
-
-	/**
-	 * Prepare leveled spell slots using progression data.
-	 * @param {object} spells        The `data.spells` object within actor's data. *Will be mutated.*
-	 * @param {ActorNIH} actor        Actor for whom the data is being prepared.
-	 * @param {object} progression   Spellcasting progression data.
-	 */
-	static prepareLeveledSlots(spells, actor, progression) {
-		const levels = Math.clamped(progression.slot, 0, CONFIG.NIH.maxLevel);
-		const slots = CONFIG.NIH.SPELL_SLOT_TABLE[Math.min(levels, CONFIG.NIH.SPELL_SLOT_TABLE.length) - 1] ?? [];
-		for ( const level of Array.fromRange(Object.keys(CONFIG.NIH.spellLevels).length - 1, 1) ) {
-			const slot = spells[`spell${level}`] ??= { value: 0 };
-			slot.max = Number.isNumeric(slot.override) ? Math.max(parseInt(slot.override), 0) : slots[level - 1] ?? 0;
-		}
-	}
-
-	/* -------------------------------------------- */
-
-	/**
-	 * Prepare pact spell slots using progression data.
-	 * @param {object} spells        The `data.spells` object within actor's data. *Will be mutated.*
-	 * @param {ActorNIH} actor        Actor for whom the data is being prepared.
-	 * @param {object} progression   Spellcasting progression data.
-	 */
-	static preparePactSlots(spells, actor, progression) {
-		// Pact spell data:
-		// - pact.level: Slot level for pact casting
-		// - pact.max: Total number of pact slots
-		// - pact.value: Currently available pact slots
-		// - pact.override: Override number of available spell slots
-
-		let pactLevel = Math.clamped(progression.pact, 0, CONFIG.NIH.maxLevel);
-		spells.pact ??= {};
-		const override = Number.isNumeric(spells.pact.override) ? parseInt(spells.pact.override) : null;
-
-		// Pact slot override
-		if ( (pactLevel === 0) && (actor.type === "npc") && (override !== null) ) {
-			pactLevel = actor.system.details.spellLevel;
-		}
-
-		const [, pactConfig] = Object.entries(CONFIG.NIH.pactCastingProgression)
-			.reverse().find(([l]) => Number(l) <= pactLevel) ?? [];
-		if ( pactConfig ) {
-			spells.pact.level = pactConfig.level;
-			if ( override === null ) spells.pact.max = pactConfig.slots;
-			else spells.pact.max = Math.max(override, 1);
-			spells.pact.value = Math.min(spells.pact.value, spells.pact.max);
-		}
-
-		else {
-			spells.pact.max = override || 0;
-			spells.pact.level = spells.pact.max > 0 ? 1 : 0;
+		if (allowed) {
+			let prog = CONFIG.NIH.spellcastingTypes.leveled[spellcasting.progression];
+			actor.system.resources.aether.max = Math.ceil(prog.multiplier * cls.levels);
+			actor.system.resources.aether.lr = true;
+			actor.system.resources.aether.sr = false;
+			actor.system.attributes.aetherCap = prog.cap[cls.levels - 1];
+			actor.system.resources.stamina.max = Math.ceil(cls.levels * cls.stamina.multiplier) + (cls.stamina.includesCon ? actor.attributes.con.mod : 0);
 		}
 	}
 

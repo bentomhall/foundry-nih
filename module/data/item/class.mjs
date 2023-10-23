@@ -17,8 +17,12 @@ import ItemDescriptionTemplate from "./templates/item-description.mjs";
  * @property {string[]} skills.choices  List of skill keys that are valid to be chosen.
  * @property {string[]} skills.value    List of skill keys the player has chosen.
  * @property {object} spellcasting      Details on class's spellcasting ability.
- * @property {string} spellcasting.progression  Spell progression granted by class as from `NIH.spellProgression`.
+ * @property {string} spellcasting.progression  Spell access progression granted by class as from `NIH.spellProgression`.
  * @property {string} spellcasting.ability      Ability score to use for spellcasting.
+ * @property {number} spellcasting.multiplier   Aether progression multiplier (level * multiplier, rounded up)
+ * @property {object} stamina
+ * @property {boolean} stamina.includesCon
+ * @property {number} stamina.multiplier        Stamina = (level * multiplier) + (includesCon ? con mod : 0);
  */
 export default class ClassData extends SystemDataModel.mixin(ItemDescriptionTemplate) {
   /** @inheritdoc */
@@ -50,10 +54,17 @@ export default class ClassData extends SystemDataModel.mixin(ItemDescriptionTemp
       }),
       spellcasting: new foundry.data.fields.SchemaField({
         progression: new foundry.data.fields.StringField({
-          required: true, initial: "none", blank: false, label: "NIH.SpellProgression"
+          required: true, initial: "martial", blank: false, label: "NIH.SpellProgression"
         }),
-        ability: new foundry.data.fields.StringField({required: true, label: "NIH.SpellAbility"})
-      }, {label: "NIH.Spellcasting"})
+        ability: new foundry.data.fields.StringField({required: true, label: "NIH.SpellAbility"}),
+        multiplier: new foundry.data.fields.NumberField({required: true, nullable: false, integer: false, min: 0.5, initial: 0.5, label: "NIH.SpellMultiplier"})
+      }, {label: "NIH.Spellcasting"}),
+      stamina: new foundry.data.fields.SchemaField({
+        includesCon: new foundry.data.fields.BoolField({required: true, initial: false, blank: false, label: "NIH.StaminaIncludesCon"}),
+        multiplier: new foundry.data.fields.NumberField({
+          required: true, nullable: false, integer: false, min: 0.5, initial: 1, label: "NIH.StaminaMultiplier"
+        })
+      })
     });
   }
 

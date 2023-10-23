@@ -1115,70 +1115,12 @@ NIH.senses = {
 preLocalize("senses", { sort: true });
 
 /* -------------------------------------------- */
-/*  Spellcasting                                */
-/* -------------------------------------------- */
-
-/**
- * Define the standard slot progression by character level.
- * The entries of this array represent the spell slot progression for a full spell-caster.
- * @type {number[][]}
- */
-NIH.SPELL_SLOT_TABLE = [
-	[2],
-	[3],
-	[4, 2],
-	[4, 3],
-	[4, 3, 2],
-	[4, 3, 3],
-	[4, 3, 3, 1],
-	[4, 3, 3, 2],
-	[4, 3, 3, 3, 1],
-	[4, 3, 3, 3, 2],
-	[4, 3, 3, 3, 2, 1],
-	[4, 3, 3, 3, 2, 1],
-	[4, 3, 3, 3, 2, 1, 1],
-	[4, 3, 3, 3, 2, 1, 1],
-	[4, 3, 3, 3, 2, 1, 1, 1],
-	[4, 3, 3, 3, 2, 1, 1, 1],
-	[4, 3, 3, 3, 2, 1, 1, 1, 1],
-	[4, 3, 3, 3, 3, 1, 1, 1, 1],
-	[4, 3, 3, 3, 3, 2, 1, 1, 1],
-	[4, 3, 3, 3, 3, 2, 2, 1, 1]
-];
-
-/* -------------------------------------------- */
-
-/**
- * Configuration data for pact casting progression.
- *
- * @typedef {object} PactProgressionConfig
- * @property {number} slots  Number of spell slots granted.
- * @property {number} level  Level of spells that can be cast.
- */
-
-/**
- * Define the pact slot & level progression by pact caster level.
- * @enum {PactProgressionConfig}
- */
-NIH.pactCastingProgression = {
-	1: { slots: 1, level: 1 },
-	2: { slots: 2, level: 1 },
-	3: { slots: 2, level: 2 },
-	5: { slots: 2, level: 3 },
-	7: { slots: 2, level: 4 },
-	9: { slots: 2, level: 5 },
-	11: { slots: 3, level: 5 },
-	17: { slots: 4, level: 5 }
-};
-
-/* -------------------------------------------- */
 
 /**
  * Various different ways a spell can be prepared.
  */
 NIH.spellPreparationModes = {
 	prepared: "NIH.SpellPrepPrepared",
-	pact: "NIH.PactMagic",
 	always: "NIH.SpellPrepAlways",
 	atwill: "NIH.SpellPrepAtWill",
 	innate: "NIH.SpellPrepInnate"
@@ -1191,7 +1133,7 @@ preLocalize("spellPreparationModes");
  * Subset of `NIH.spellPreparationModes` that consume spell slots.
  * @type {boolean[]}
  */
-NIH.spellUpcastModes = ["always", "pact", "prepared"];
+NIH.spellUpcastModes = ["prepared"];
 
 /* -------------------------------------------- */
 
@@ -1208,8 +1150,8 @@ NIH.spellUpcastModes = ["always", "pact", "prepared"];
  *
  * @typedef {object} SpellcastingProgressionConfiguration
  * @property {string} label             Localized label.
- * @property {number} [divisor=1]       Value by which the class levels are divided to determine spellcasting level.
- * @property {boolean} [roundUp=false]  Should fractional values should be rounded up by default?
+ * @property {number} [multiplier=1]    Value by which the level is multiplied to get the aether total.
+ * @property {array} cap  							Array of aether cap by level (zero-indexed)
  */
 
 /**
@@ -1222,25 +1164,20 @@ NIH.spellcastingTypes = {
 		progression: {
 			full: {
 				label: "NIH.SpellProgFull",
-				divisor: 1
+				multiplier: 4,
+				cap: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17]
 			},
 			half: {
 				label: "NIH.SpellProgHalf",
-				divisor: 2
+				multiplier: 2,
+				cap: [2, 2, 3, 3, 4, 5, 5, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14]
 			},
-			third: {
-				label: "NIH.SpellProgThird",
-				divisor: 3
-			},
-			artificer: {
-				label: "NIH.SpellProgArt",
-				divisor: 2,
-				roundUp: true
+			martial: {
+				label: "NIH.SpellProgMartial",
+				multiplier: 0.5,
+				cap: [1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
 			}
 		}
-	},
-	pact: {
-		label: "NIH.SpellProgPact"
 	}
 };
 preLocalize("spellcastingTypes", { key: "label", sort: true });
@@ -1253,34 +1190,11 @@ preLocalize("spellcastingTypes.leveled.progression", { key: "label" });
  * @enum {string}
  */
 NIH.spellProgression = {
-	none: "NIH.SpellNone",
 	full: "NIH.SpellProgFull",
 	half: "NIH.SpellProgHalf",
-	third: "NIH.SpellProgThird",
-	pact: "NIH.SpellProgPact",
-	artificer: "NIH.SpellProgArt"
+	martial: "NIH.SpellProgMartial"
 };
 preLocalize("spellProgression", { key: "label" });
-
-/* -------------------------------------------- */
-
-/**
- * Valid spell levels.
- * @enum {string}
- */
-NIH.spellLevels = {
-	0: "NIH.SpellLevel0",
-	1: "NIH.SpellLevel1",
-	2: "NIH.SpellLevel2",
-	3: "NIH.SpellLevel3",
-	4: "NIH.SpellLevel4",
-	5: "NIH.SpellLevel5",
-	6: "NIH.SpellLevel6",
-	7: "NIH.SpellLevel7",
-	8: "NIH.SpellLevel8",
-	9: "NIH.SpellLevel9"
-};
-preLocalize("spellLevels");
 
 /* -------------------------------------------- */
 

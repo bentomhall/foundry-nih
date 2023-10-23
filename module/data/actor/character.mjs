@@ -39,9 +39,9 @@ import TraitsFields from "./templates/traits.mjs";
  * @property {SimpleTraitData} traits.weaponProf          Character's weapon proficiencies.
  * @property {SimpleTraitData} traits.armorProf           Character's armor proficiencies.
  * @property {object} resources
- * @property {CharacterResourceData} resources.primary    Resource number one.
- * @property {CharacterResourceData} resources.secondary  Resource number two.
- * @property {CharacterResourceData} resources.tertiary   Resource number three.
+ * @property {CharacterResourceData} resources.stamina    Stamina.
+ * @property {CharacterResourceData} resources.aether     Aether.
+ * @property {CharacterResourceData} resources.tertiary   Character-specific resource.
  */
 export default class CharacterData extends CreatureTemplate {
 
@@ -86,7 +86,10 @@ export default class CharacterData extends CreatureTemplate {
         exhaustion: new foundry.data.fields.NumberField({
           required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.Exhaustion"
         }),
-        inspiration: new foundry.data.fields.BooleanField({required: true, label: "NIH.Inspiration"})
+        inspiration: new foundry.data.fields.BooleanField({required: true, label: "NIH.Inspiration"}),
+        aetherCap: new foundry.data.fields.NumberField({
+          required: true, nullable: false, integer: true, min: 1, initial: 1, label: "NIH.AetherCap"
+        }),
       }, {label: "NIH.Attributes"}),
       details: new foundry.data.fields.SchemaField({
         ...DetailsFields.common,
@@ -111,9 +114,9 @@ export default class CharacterData extends CreatureTemplate {
         armorProf: TraitsFields.makeSimpleTrait({label: "NIH.TraitArmorProf"})
       }, {label: "NIH.Traits"}),
       resources: new foundry.data.fields.SchemaField({
-        primary: makeResourceField({label: "NIH.ResourcePrimary"}),
-        secondary: makeResourceField({label: "NIH.ResourceSecondary"}),
-        tertiary: makeResourceField({label: "NIH.ResourceTertiary"})
+        stamina: makeResourceField({label: "NIH.ResourcePrimary"}),
+        aether: makeResourceField({label: "NIH.ResourceSecondary"}),
+        tertiary: makeResourceField({label: "NIH.ResourceTertiary"}),
       }, {label: "NIH.Resources"})
     });
   }

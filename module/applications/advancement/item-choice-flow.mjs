@@ -142,15 +142,6 @@ export default class ItemChoiceFlow extends ItemGrantFlow {
       }
     }
 
-    // If spell level is restricted to available level, ensure the spell is of the appropriate level
-    const spellLevel = this.advancement.configuration.restriction.level;
-    if ( (this.advancement.configuration.type === "spell") && spellLevel === "available" ) {
-      const maxSlot = this._maxSpellSlotLevel();
-      if ( item.system.level > maxSlot ) return ui.notifications.error(game.i18n.format(
-        "NIH.AdvancementItemChoiceSpellLevelAvailableWarning", { level: CONFIG.NIH.spellLevels[maxSlot] }
-      ));
-    }
-
     // Mark the item as selected
     this.selected.add(item.uuid);
 
@@ -161,36 +152,5 @@ export default class ItemChoiceFlow extends ItemGrantFlow {
     }
 
     this.render();
-  }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Determine the maximum spell slot level for the actor to which this advancement is being applied.
-   * @returns {number}
-   */
-  _maxSpellSlotLevel() {
-    const spellcasting = this.advancement.item.spellcasting;
-    let spells;
-
-    // For advancements on classes or subclasses, use the largest slot available for that class
-    if ( spellcasting ) {
-      const progression = { slot: 0, pact: {} };
-      const maxSpellLevel = CONFIG.NIH.SPELL_SLOT_TABLE[CONFIG.NIH.SPELL_SLOT_TABLE.length - 1].length;
-      spells = Object.fromEntries(Array.fromRange(maxSpellLevel, 1).map(l => [`spell${l}`, {}]));
-      ActorNIH.computeClassProgression(progression, this.advancement.item, { spellcasting });
-      ActorNIH.prepareSpellcastingSlots(spells, spellcasting.type, progression);
-    }
-
-    // For all other items, use the largest slot possible
-    else spells = this.advancement.actor.system.spells;
-
-    const largestSlot = Object.entries(spells).reduce((slot, [key, data]) => {
-      if ( data.max === 0 ) return slot;
-      const level = parseInt(key.replace("spell", ""));
-      if ( !Number.isNaN(level) && level > slot ) return level;
-      return slot;
-    }, -1);
-    return Math.max(spells.pact?.level ?? 0, largestSlot);
   }
 }

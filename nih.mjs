@@ -174,7 +174,7 @@ function _configureTrackableAttributes() {
 
 	CONFIG.Actor.trackableAttributes = {
 		character: {
-			bar: [...creature.bar, "resources.primary", "resources.secondary", "resources.tertiary", "details.xp"],
+			bar: [...creature.bar, "resources.stamina", "resources.aether", "resources.tertiary", "details.xp"],
 			value: [...creature.value]
 		},
 		npc: {
@@ -205,7 +205,7 @@ function _configureConsumableAttributes() {
 		...Object.keys(NIH.movementTypes).map(type => `attributes.movement.${type}`),
 		...Object.keys(NIH.currencies).map(denom => `currency.${denom}`),
 		"details.xp.value",
-		"resources.primary.value", "resources.secondary.value", "resources.tertiary.value",
+		"resources.stamina.value", "resources.aether.value", "resources.tertiary.value",
 		"resources.legact.value", "resources.legres.value",
 		"spells.pact.value",
 		...Array.fromRange(Object.keys(NIH.spellLevels).length - 1, 1).map(level => `spells.spell${level}.value`)
