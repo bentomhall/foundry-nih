@@ -66,14 +66,14 @@ export default class CreatureTemplate extends CommonTemplate {
           check: new FormulaField({required: true, label: "NIH.CheckBonus"})
         }, {label: "NIH.ToolBonuses"})
       })),
-      spells: new MappingField(new foundry.data.fields.SchemaField({
-        value: new foundry.data.fields.NumberField({
-          nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SpellProgAvailable"
-        }),
-        override: new foundry.data.fields.NumberField({
-          integer: true, min: 0, label: "NIH.SpellProgOverride"
-        })
-      }), {initialKeys: this._spellLevels, label: "NIH.SpellLevels"})
+      // spells: new MappingField(new foundry.data.fields.SchemaField({
+      //   value: new foundry.data.fields.NumberField({
+      //     nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SpellProgAvailable"
+      //   }),
+      //   override: new foundry.data.fields.NumberField({
+      //     integer: true, min: 0, label: "NIH.SpellProgOverride"
+      //   })
+      // }), {initialKeys: this._spellLevels, label: "NIH.SpellLevels"})
     });
   }
 

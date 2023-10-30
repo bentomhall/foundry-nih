@@ -108,12 +108,12 @@ export default class ItemChoiceAdvancement extends ItemGrantAdvancement {
     }
 
     // If spell level is restricted, ensure the spell is of the appropriate level
-    const l = parseInt(restriction.level);
-    if ( (type === "spell") && !Number.isNaN(l) && (item.system.level !== l) ) {
-      const level = CONFIG.NIH.spellLevels[l];
-      if ( strict ) throw new Error(game.i18n.format("NIH.AdvancementItemChoiceSpellLevelSpecificWarning", {level}));
-      return false;
-    }
+    // const l = parseInt(restriction.level);
+    // if ( (type === "spell") && !Number.isNaN(l) && (item.system.level !== l) ) {
+    //   const level = CONFIG.NIH.spellLevels[l];
+    //   if ( strict ) throw new Error(game.i18n.format("NIH.AdvancementItemChoiceSpellLevelSpecificWarning", {level}));
+    //   return false;
+    // }
 
     return true;
   }

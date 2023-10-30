@@ -207,8 +207,6 @@ function _configureConsumableAttributes() {
 		"details.xp.value",
 		"resources.stamina.value", "resources.aether.value", "resources.tertiary.value",
 		"resources.legact.value", "resources.legres.value",
-		"spells.pact.value",
-		...Array.fromRange(Object.keys(NIH.spellLevels).length - 1, 1).map(level => `spells.spell${level}.value`)
 	];
 }
 

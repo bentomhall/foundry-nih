@@ -102,43 +102,43 @@ export default class AbilityUseDialog extends Dialog {
     if ( !consumeSpellSlot ) {
       return foundry.utils.mergeObject(data, { isSpell: true, consumeSpellSlot });
     }
-
+		return foundry.utils.mergeObject(data, { isSpell: true, consumeSpellSlot });
     // Determine the levels which are feasible
-    let lmax = 0;
-    const spellLevels = Array.fromRange(Object.keys(CONFIG.NIH.spellLevels).length).reduce((arr, i) => {
-      if ( i < lvl ) return arr;
-      const label = CONFIG.NIH.spellLevels[i];
-      const l = actorData.spells[`spell${i}`] || {max: 0, override: null};
-      let max = parseInt(l.override || l.max || 0);
-      let slots = Math.clamped(parseInt(l.value || 0), 0, max);
-      if ( max > 0 ) lmax = i;
-      arr.push({
-        level: i,
-        label: i > 0 ? game.i18n.format("NIH.SpellLevelSlot", {level: label, n: slots}) : label,
-        canCast: max > 0,
-        hasSlots: slots > 0
-      });
-      return arr;
-    }, []).filter(sl => sl.level <= lmax);
+    // let lmax = 0;
+    // const spellLevels = Array.fromRange(Object.keys(CONFIG.NIH.spellLevels).length).reduce((arr, i) => {
+    //   if ( i < lvl ) return arr;
+    //   const label = CONFIG.NIH.spellLevels[i];
+    //   const l = actorData.spells[`spell${i}`] || {max: 0, override: null};
+    //   let max = parseInt(l.override || l.max || 0);
+    //   let slots = Math.clamped(parseInt(l.value || 0), 0, max);
+    //   if ( max > 0 ) lmax = i;
+    //   arr.push({
+    //     level: i,
+    //     label: i > 0 ? game.i18n.format("NIH.SpellLevelSlot", {level: label, n: slots}) : label,
+    //     canCast: max > 0,
+    //     hasSlots: slots > 0
+    //   });
+    //   return arr;
+    // }, []).filter(sl => sl.level <= lmax);
 
     // If this character has pact slots, present them as an option for casting the spell.
-    const pact = actorData.spells.pact;
-    if ( pact.level >= lvl ) {
-      spellLevels.push({
-        level: "pact",
-        label: `${game.i18n.format("NIH.SpellLevelPact", {level: pact.level, n: pact.value})}`,
-        canCast: true,
-        hasSlots: pact.value > 0
-      });
-    }
-    const canCast = spellLevels.some(l => l.hasSlots);
-    if ( !canCast ) data.errors.push(game.i18n.format("NIH.SpellCastNoSlots", {
-      level: CONFIG.NIH.spellLevels[lvl],
-      name: data.item.name
-    }));
+    // const pact = actorData.spells.pact;
+    // if ( pact.level >= lvl ) {
+    //   spellLevels.push({
+    //     level: "pact",
+    //     label: `${game.i18n.format("NIH.SpellLevelPact", {level: pact.level, n: pact.value})}`,
+    //     canCast: true,
+    //     hasSlots: pact.value > 0
+    //   });
+    // }
+    // const canCast = spellLevels.some(l => l.hasSlots);
+    // if ( !canCast ) data.errors.push(game.i18n.format("NIH.SpellCastNoSlots", {
+    //   level: CONFIG.NIH.spellLevels[lvl],
+    //   name: data.item.name
+    // }));
 
     // Merge spell casting data
-    return foundry.utils.mergeObject(data, { isSpell: true, consumeSpellSlot, spellLevels });
+    //return foundry.utils.mergeObject(data, { isSpell: true, consumeSpellSlot, spellLevels });
   }
 
   /* -------------------------------------------- */

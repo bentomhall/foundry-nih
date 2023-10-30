@@ -372,7 +372,7 @@ export default class Item5e extends Item {
     }));
     const attributes = {...CONFIG.NIH.spellComponents, ...tags};
     this.system.preparation.mode ||= "prepared";
-    this.labels.level = CONFIG.NIH.spellLevels[this.system.level];
+    this.labels.level = 0//CONFIG.NIH.spellLevels[this.system.level];
     this.labels.components = Object.entries(this.system.components).reduce((obj, [c, active]) => {
       const config = attributes[c];
       if ( !config || (active !== true) ) return obj;

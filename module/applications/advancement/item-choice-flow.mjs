@@ -142,6 +142,15 @@ export default class ItemChoiceFlow extends ItemGrantFlow {
       }
     }
 
+    // If spell level is restricted to available level, ensure the spell is of the appropriate level
+    // const spellLevel = this.advancement.configuration.restriction.level;
+    // if ( (this.advancement.configuration.type === "spell") && spellLevel === "available" ) {
+    //   const maxSlot = this._maxSpellSlotLevel();
+    //   if ( item.system.level > maxSlot ) return ui.notifications.error(game.i18n.format(
+    //     "NIH.AdvancementItemChoiceSpellLevelAvailableWarning", { level: CONFIG.NIH.spellLevels[maxSlot] }
+    //   ));
+    // }
+
     // Mark the item as selected
     this.selected.add(item.uuid);
 

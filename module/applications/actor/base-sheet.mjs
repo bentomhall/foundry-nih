@@ -453,93 +453,93 @@ export default class ActorSheet5e extends ActorSheet {
 		const spellbook = {};
 
 		// Define section and label mappings
-		const sections = {atwill: -20, innate: -10, pact: 0.5 };
+		const sections = {atwill: -20, innate: -10 };
 		const useLabels = {"-20": "-", "-10": "-", 0: "&infin;"};
 
 		// Format a spellbook entry for a certain indexed level
-		const registerSection = (sl, i, label, {prepMode="prepared", value, max, override}={}) => {
-			const aeOverride = foundry.utils.hasProperty(this.actor.overrides, `system.spells.spell${i}.override`);
-			spellbook[i] = {
-				order: i,
-				label: label,
-				usesSlots: i > 0,
-				canCreate: owner,
-				canPrepare: (context.actor.type === "character") && (i >= 1),
-				spells: [],
-				uses: useLabels[i] || value || 0,
-				slots: useLabels[i] || max || 0,
-				override: override || 0,
-				dataset: {type: "spell", level: prepMode in sections ? 1 : i, "preparation.mode": prepMode},
-				prop: sl,
-				editable: context.editable && !aeOverride
-			};
-		};
+		// const registerSection = (sl, i, label, {prepMode="prepared", value, max, override}={}) => {
+		// 	const aeOverride = foundry.utils.hasProperty(this.actor.overrides, `system.spells.spell${i}.override`);
+		// 	spellbook[i] = {
+		// 		order: i,
+		// 		label: label,
+		// 		usesSlots: i > 0,
+		// 		canCreate: owner,
+		// 		canPrepare: (context.actor.type === "character") && (i >= 1),
+		// 		spells: [],
+		// 		uses: useLabels[i] || value || 0,
+		// 		slots: useLabels[i] || max || 0,
+		// 		override: override || 0,
+		// 		dataset: {type: "spell", level: prepMode in sections ? 1 : i, "preparation.mode": prepMode},
+		// 		prop: sl,
+		// 		editable: context.editable && !aeOverride
+		// 	};
+		// };
 
 		// Determine the maximum spell level which has a slot
-		const maxLevel = Array.fromRange(Object.keys(CONFIG.NIH.spellLevels).length - 1, 1).reduce((max, i) => {
-			const level = levels[`spell${i}`];
-			if ( level && (level.max || level.override ) && ( i > max ) ) max = i;
-			return max;
-		}, 0);
+		// const maxLevel = Array.fromRange(Object.keys(CONFIG.NIH.spellLevels).length - 1, 1).reduce((max, i) => {
+		// 	const level = levels[`spell${i}`];
+		// 	if ( level && (level.max || level.override ) && ( i > max ) ) max = i;
+		// 	return max;
+		// }, 0);
 
 		// Level-based spellcasters have cantrips and leveled slots
-		if ( maxLevel > 0 ) {
-			registerSection("spell0", 0, CONFIG.NIH.spellLevels[0]);
-			for (let lvl = 1; lvl <= maxLevel; lvl++) {
-				const sl = `spell${lvl}`;
-				registerSection(sl, lvl, CONFIG.NIH.spellLevels[lvl], levels[sl]);
-			}
-		}
+		// if ( maxLevel > 0 ) {
+		// 	registerSection("spell0", 0, CONFIG.NIH.spellLevels[0]);
+		// 	for (let lvl = 1; lvl <= maxLevel; lvl++) {
+		// 		const sl = `spell${lvl}`;
+		// 		registerSection(sl, lvl, CONFIG.NIH.spellLevels[lvl], levels[sl]);
+		// 	}
+		// }
 
 		// Pact magic users have cantrips and a pact magic section
-		if ( levels.pact && levels.pact.max ) {
-			if ( !spellbook["0"] ) registerSection("spell0", 0, CONFIG.NIH.spellLevels[0]);
-			const l = levels.pact;
-			const config = CONFIG.NIH.spellPreparationModes.pact;
-			const level = game.i18n.localize(`NIH.SpellLevel${levels.pact.level}`);
-			const label = `${config} — ${level}`;
-			registerSection("pact", sections.pact, label, {
-				prepMode: "pact",
-				value: l.value,
-				max: l.max,
-				override: l.override
-			});
-		}
+		// if ( levels.pact && levels.pact.max ) {
+		// 	if ( !spellbook["0"] ) registerSection("spell0", 0, CONFIG.NIH.spellLevels[0]);
+		// 	const l = levels.pact;
+		// 	const config = CONFIG.NIH.spellPreparationModes.pact;
+		// 	const level = game.i18n.localize(`NIH.SpellLevel${levels.pact.level}`);
+		// 	const label = `${config} — ${level}`;
+		// 	registerSection("pact", sections.pact, label, {
+		// 		prepMode: "pact",
+		// 		value: l.value,
+		// 		max: l.max,
+		// 		override: l.override
+		// 	});
+		// }
 
 		// Iterate over every spell item, adding spells to the spellbook by section
-		spells.forEach(spell => {
-			const mode = spell.system.preparation.mode || "prepared";
-			let s = spell.system.level || 0;
-			const sl = `spell${s}`;
+		// spells.forEach(spell => {
+		// 	const mode = spell.system.preparation.mode || "prepared";
+		// 	let s = spell.system.level || 0;
+		// 	const sl = `spell${s}`;
 
-			// Specialized spellcasting modes (if they exist)
-			if ( mode in sections ) {
-				s = sections[mode];
-				if ( !spellbook[s] ) {
-					const l = levels[mode] || {};
-					const config = CONFIG.NIH.spellPreparationModes[mode];
-					registerSection(mode, s, config, {
-						prepMode: mode,
-						value: l.value,
-						max: l.max,
-						override: l.override
-					});
-				}
-			}
+		// 	// Specialized spellcasting modes (if they exist)
+		// 	if ( mode in sections ) {
+		// 		s = sections[mode];
+		// 		if ( !spellbook[s] ) {
+		// 			const l = levels[mode] || {};
+		// 			const config = CONFIG.NIH.spellPreparationModes[mode];
+		// 			registerSection(mode, s, config, {
+		// 				prepMode: mode,
+		// 				value: l.value,
+		// 				max: l.max,
+		// 				override: l.override
+		// 			});
+		// 		}
+		// 	}
 
-			// Sections for higher-level spells which the caster "should not" have, but spell items exist for
-			else if ( !spellbook[s] ) {
-				registerSection(sl, s, CONFIG.NIH.spellLevels[s], {levels: levels[sl]});
-			}
+		// 	// Sections for higher-level spells which the caster "should not" have, but spell items exist for
+		// 	else if ( !spellbook[s] ) {
+		// 		registerSection(sl, s, CONFIG.NIH.spellLevels[s], {levels: levels[sl]});
+		// 	}
 
-			// Add the spell to the relevant heading
-			spellbook[s].spells.push(spell);
-		});
+		// 	// Add the spell to the relevant heading
+		// 	spellbook[s].spells.push(spell);
+		// });
 
 		// Sort the spellbook by section level
-		const sorted = Object.values(spellbook);
-		sorted.sort((a, b) => a.order - b.order);
-		return sorted;
+		// const sorted = Object.values(spellbook);
+		// sorted.sort((a, b) => a.order - b.order);
+		// return sorted;
 	}
 
 	/* -------------------------------------------- */
