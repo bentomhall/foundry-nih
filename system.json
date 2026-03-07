@@ -1,27 +1,27 @@
 {
-  "id": "dnd5e",
-  "title": "Dungeons & Dragons Fifth Edition",
-  "description": "A system for playing the fifth edition of the world's most popular role-playing game in the Foundry Virtual Tabletop environment.",
-  "version": "5.2.5",
+  "id": "nih",
+  "title": "Not Invented Here System, a 5e fork",
+  "description": "A system for playing NIH in the Foundry Virtual Tabletop environment.",
+  "version": "0.0.1",
   "compatibility": {
     "minimum": "13.347",
     "verified": "13"
   },
-  "url": "https://github.com/foundryvtt/dnd5e/",
-  "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
-  "download": "https://github.com/foundryvtt/dnd5e/releases/download/release-5.2.5/dnd5e-release-5.2.5.zip",
+  "url": "https://github.com/bentomhall/foundry-nih/",
+  "manifest": "https://raw.githubusercontent.com/bentomhall/foundry-nih/main/system.json",
+  "download": "https://github.com/bentomhall/foundry-nih/releases/download/release-0.0.1/foundry-release-0.0.1.zip",
   "authors": [
     {
-      "name": "Atropos",
-      "url": "https://foundryvtt.com",
+      "name": "AdmiralBenbo",
+      "url": "https://wiki.admiralbenbo.com",
       "flags": {}
     }
   ],
   "esmodules": [
-    "dnd5e.mjs"
+    "nih.mjs"
   ],
   "styles": [
-    "dnd5e.css"
+    "nih.css"
   ],
   "documentTypes": {
     "ActiveEffect": {
@@ -29,7 +29,7 @@
     },
     "Actor": {
       "character": {
-        "htmlFields": ["details.biography.value", "details.biography.public", "bastion.description"]
+        "htmlFields": ["details.biography.value", "details.biography.public"]
       },
       "encounter": {
         "htmlFields": ["description.full", "description.summary"]
@@ -77,7 +77,13 @@
       "loot": {
         "htmlFields": ["description.value", "description.chat", "unidentified.description"]
       },
-      "race": {
+      "lineage": {
+        "filePathFields": {
+          "advancement.*.icon": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.chat"]
+      },
+      "culture": {
         "filePathFields": {
           "advancement.*.icon": ["IMAGE"]
         },
@@ -107,7 +113,7 @@
         },
         "htmlFields": ["description.value", "description.chat"]
       },
-      "feat": {
+      "feature": {
         "filePathFields": {
           "activities.*.img": ["IMAGE"],
           "advancement.*.icon": ["IMAGE"]
@@ -147,21 +153,21 @@
       }
     },
     "RegionBehavior": {
-      "dnd5e.difficultTerrain": {},
-      "dnd5e.rotateArea": {}
+      "nih.difficultTerrain": {},
+      "nih.rotateArea": {}
     }
   },
   "packs": [
     {
       "name": "heroes",
       "label": "Starter Heroes",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/heroes",
       "type": "Actor",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
+        "nih": {
+          "sourceBook": "SRD 0.1",
           "types": ["character"]
         }
       }
@@ -169,13 +175,13 @@
     {
       "name": "monsters",
       "label": "Monsters (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/monsters",
       "type": "Actor",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
+        "nih": {
+          "sourceBook": "SRD 0.1",
           "types": ["npc"]
         }
       }
@@ -183,27 +189,27 @@
     {
       "name": "items",
       "label": "Items (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/items",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
-          "types": ["weapon", "equipment", "consumable", "tool", "loot", "feat", "container"]
+        "nih": {
+          "sourceBook": "SRD 0.1",
+          "types": ["weapon", "equipment", "consumable", "tool", "loot", "feature", "container"]
         }
       }
     },
     {
       "name": "tradegoods",
       "label": "Trade Goods (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/tradegoods",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
+        "nih": {
+          "sourceBook": "SRD 0.1",
           "types": ["loot"]
         }
       }
@@ -211,42 +217,56 @@
     {
       "name": "spells",
       "label": "Spells (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/spells",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
+        "nih": {
           "sorting": "m",
-          "sourceBook": "SRD 5.1",
+          "sourceBook": "SRD 0.1",
           "types": ["spell"]
+        }
+      }
+    },
+    {
+      "name": "cultures",
+      "label": "Cultures (SRD)",
+      "system": "nih",
+      "path": "packs/cultures",
+      "type": "Item",
+      "private": false,
+      "flags": {
+        "nih": {
+          "sourceBook":"SRD 0.1",
+          "types": ["culture"]
         }
       }
     },
     {
       "name": "backgrounds",
       "label": "Backgrounds (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/backgrounds",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
-          "types": ["background", "feat"]
+        "nih": {
+          "sourceBook": "SRD 0.1",
+          "types": ["background", "feature"]
         }
       }
     },
     {
       "name": "classes",
       "label": "Classes (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/classes",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
+        "nih": {
+          "sourceBook": "SRD 0.1",
           "types": ["class"]
         }
       }
@@ -254,68 +274,68 @@
     {
       "name": "subclasses",
       "label": "Subclasses (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/subclasses",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
+        "nih": {
+          "sourceBook": "SRD 0.1",
           "types": ["subclass"]
         }
       }
     },
     {
-      "name": "classfeatures",
+      "name": "Features",
       "label": "Class & Subclass Features (SRD)",
-      "system": "dnd5e",
-      "path": "packs/classfeatures",
+      "system": "nih",
+      "path": "packs/features",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
-          "types": ["feat", "weapon"]
+        "nih": {
+          "sourceBook": "SRD 0.1",
+          "types": ["feature", "weapon"]
         }
       }
     },
     {
       "name": "races",
       "label": "Races (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/races",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
-          "types": ["race", "feat"]
+        "nih": {
+          "sourceBook": "SRD 0.1",
+          "types": ["race", "feature"]
         }
       }
     },
     {
       "name": "monsterfeatures",
       "label": "Monster Features (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/monsterfeatures",
       "type": "Item",
       "private": false,
       "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.1",
-          "types": ["feat", "weapon"]
+        "nih": {
+          "sourceBook": "SRD 0.1",
+          "types": ["feature", "weapon"]
         }
       }
     },
     {
       "name": "rules",
       "label": "Rules (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/rules",
       "type": "JournalEntry",
       "private": false,
       "flags": {
-        "dnd5e": {
+        "nih": {
           "display": "table-of-contents"
         }
       }
@@ -323,174 +343,14 @@
     {
       "name": "tables",
       "label": "Tables (SRD)",
-      "system": "dnd5e",
+      "system": "nih",
       "path": "packs/tables",
       "type": "RollTable",
       "private": false,
       "flags": {}
-    },
-    {
-      "name": "content24",
-      "label": "Rules",
-      "path": "packs/content24",
-      "type": "JournalEntry",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "display": "table-of-contents"
-      }
-    },
-    {
-      "name": "classes24",
-      "label": "Character Classes",
-      "path": "packs/classes24",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.2",
-          "types": ["class", "subclass", "feat"]
-        }
-      }
-    },
-    {
-      "name": "origins24",
-      "label": "Character Origins",
-      "path": "packs/origins24",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.2",
-          "types": ["race", "background", "feat"]
-        }
-      }
-    },
-    {
-      "name": "feats24",
-      "label": "Feats",
-      "path": "packs/feats24",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.2",
-          "types": ["feat"]
-        }
-      }
-    },
-    {
-      "name": "spells24",
-      "label": "Spells",
-      "path": "packs/spells24",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sorting": "m",
-          "sourceBook": "SRD 5.2",
-          "types": ["spell"]
-        }
-      }
-    },
-    {
-      "name": "equipment24",
-      "label": "Equipment",
-      "path": "packs/equipment24",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.2",
-          "types": ["weapon", "equipment", "consumable", "tool", "loot", "feat", "container"]
-        }
-      }
-    },
-    {
-      "name": "tables24",
-      "label": "Roll Tables",
-      "path": "packs/tables24",
-      "type": "RollTable",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e"
-    },
-    {
-      "name": "actors24",
-      "label": "Actors",
-      "path": "packs/actors24",
-      "type": "Actor",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sorting": "m",
-          "sourceBook": "SRD 5.2"
-        }
-      }
-    },
-    {
-      "name": "monsterfeatures24",
-      "label": "Monster Features",
-      "path": "packs/monsterfeatures24",
-      "type": "Item",
-      "ownership": {
-        "ASSISTANT": "OWNER"
-      },
-      "system": "dnd5e",
-      "flags": {
-        "dnd5e": {
-          "sourceBook": "SRD 5.2",
-          "types": ["feat", "weapon"]
-        }
-      }
     }
   ],
   "packFolders": [
-    {
-      "name": "D&D Modern Content",
-      "color": "#cd2c1e",
-      "sorting": "m",
-      "packs": [
-        "content24",
-        "classes24",
-        "origins24",
-        "feats24",
-        "spells24",
-        "tables24",
-        "actors24",
-        "equipment24",
-        "monsterfeatures24"
-      ]
-    },
     {
       "name": "D&D Legacy Content",
       "sorting": "m",
@@ -502,7 +362,7 @@
       ],
       "folders": [
         {
-          "name": "Character Features",
+          "name": "Character features",
           "sorting": "m",
           "color": "#b72c1f",
           "packs": [
@@ -548,11 +408,6 @@
       "type": "cover",
       "loop": false,
       "flags": {}
-    },
-    {
-      "type": "setup",
-      "url": "systems/dnd5e/ui/official/dnd5e-repo.jpg",
-      "thumbnail": "systems/dnd5e/ui/official/dnd5e-thumbnail.jpg"
     }
   ],
   "socket": true,
@@ -561,25 +416,24 @@
     "units": "ft"
   },
   "primaryTokenAttribute": "attributes.hp",
-  "background": "systems/dnd5e/ui/official/dnd5e-background.webp",
+  "background": "systems/nih/ui/official/nih-background.webp",
   "flags": {
     "compendiumArtMappings": {
-      "dnd5e": {
-        "mapping": "systems/dnd5e/json/fa-token-mapping.json",
+      "nih": {
+        "mapping": "systems/nih/json/fa-token-mapping.json",
         "credit": "<em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em>"
       }
     },
-    "dnd5e": {
+    "nih": {
       "sourceBooks": {
-        "SRD 5.1": "SOURCE.BOOK.SRD51",
-        "SRD 5.2": "SOURCE.BOOK.SRD52"
+        "SRD 0.1": "SOURCE.BOOK.SRD01"
       }
     },
     "needsMigrationVersion": "5.2.0",
     "compatibleMigrationVersion": "0.8",
     "hotReload": {
       "extensions": ["css", "hbs", "json"],
-      "paths": ["dnd5e.css", "templates", "lang"]
+      "paths": ["nih.css", "templates", "lang"]
     }
   }
 }
