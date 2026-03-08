@@ -533,10 +533,10 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.MFuiImIvLzYA3osc
+      compendiumSource: Compendium.nih.monsterfeatures.MFuiImIvLzYA3osc
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -581,14 +581,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.Hc6MqLQhPTI1KOvm
+      compendiumSource: Compendium.nih.monsterfeatures.Hc6MqLQhPTI1KOvm
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745447760126
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!z3gSIXHHWYaHjfBT.kf6ELkKrSnpD2fwD'
   - _id: GGgxGpYSCDYiflMA
@@ -627,10 +627,10 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.nahRRxck9R5GVVFS
+      compendiumSource: Compendium.nih.monsterfeatures.nahRRxck9R5GVVFS
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -662,8 +662,8 @@ items:
       requirements: ''
       properties: []
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -726,14 +726,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.EqoLg8T8EHvhJgKE
+      compendiumSource: Compendium.nih.monsterfeatures.EqoLg8T8EHvhJgKE
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745447764639
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!z3gSIXHHWYaHjfBT.Ym2CUTgDPucdmj1W'
   - _id: DelAxHnRbNHC6OoV
@@ -816,8 +816,8 @@ items:
       container: null
       crewed: false
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: attack
           activation:
             type: action
@@ -893,11 +893,11 @@ items:
       compendiumSource: null
       duplicateSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: null
       modifiedTime: 1760378687408
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!z3gSIXHHWYaHjfBT.DelAxHnRbNHC6OoV'
   - _id: 9aTwUWuZQLhMxjcD
@@ -940,8 +940,8 @@ items:
       requirements: ''
       properties: []
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: save
           activation:
             type: action
@@ -1013,14 +1013,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.BDnjS1sQi2pdARh8
+      compendiumSource: Compendium.nih.monsterfeatures.BDnjS1sQi2pdARh8
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745447781846
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!z3gSIXHHWYaHjfBT.9aTwUWuZQLhMxjcD'
 effects: []
@@ -1032,10 +1032,10 @@ flags: {}
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.4.0
   createdTime: 1726171267148
   modifiedTime: 1745447792269
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!actors!z3gSIXHHWYaHjfBT'

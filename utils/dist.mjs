@@ -25,15 +25,15 @@ const { argv } = yargs(hideBin(process.argv))
     });
     yargs.option("repo", {
       alias: "r",
-      describe: "The dnd5e repository.",
+      describe: "The nih repository.",
       type: "string",
-      default: "git@github.com:foundryvtt/dnd5e.git",
+      default: "git@github.com:foundryvtt/nih.git",
       requiresArg: true
     });
     yargs.option("url", {
       describe: "A public URL where releases are posted.",
       type: "string",
-      default: "https://github.com/foundryvtt/dnd5e",
+      default: "https://github.com/foundryvtt/nih",
       requiresArg: true
     });
   })
@@ -50,7 +50,7 @@ const paths = { dist: out, free: freeRules };
  */
 async function build() {
   await passthrough("npm", ["run", "build"], { cwd: paths.dist });
-  fs.renameSync(path.join(paths.dist, "dnd5e-compiled.mjs"), path.join(paths.dist, "dnd5e.mjs"));
+  fs.renameSync(path.join(paths.dist, "nih-compiled.mjs"), path.join(paths.dist, "nih.mjs"));
 }
 
 /* -------------------------------------------- */
@@ -76,14 +76,14 @@ function compileManifest() {
   const systemManifest = JSON.parse(fs.readFileSync(path.join(paths.dist, "system.json"), "utf8"));
 
   // Merge changes.
-  Object.assign(systemManifest.flags.dnd5e.sourceBooks, freeManifest.flags?.dnd5e?.sourceBooks ?? {});
+  Object.assign(systemManifest.flags.nih.sourceBooks, freeManifest.flags?.nih?.sourceBooks ?? {});
 
   // Remove flags.
   delete systemManifest.flags.hotReload;
 
   // Make sure versions are correct.
   const [, version] = argv.tag.split("-");
-  const download = `${argv.url}/releases/download/${argv.tag}/dnd5e-${argv.tag}.zip`;
+  const download = `${argv.url}/releases/download/${argv.tag}/nih-${argv.tag}.zip`;
   if ( systemManifest.version !== version ) {
     throw new Error(`System manifest version did not match build version '${version}'.`);
   }
@@ -111,7 +111,7 @@ function copyCompendiumContent() {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
 
     let data = fs.readFileSync(src, "utf8");
-    data = data.replaceAll("modules/dnd-free-rules/icons/", "systems/dnd5e/icons/");
+    data = data.replaceAll("modules/dnd-free-rules/icons/", "systems/nih/icons/");
     console.info(`Writing ${dest}...`);
     fs.writeFileSync(dest, data, { mode: 0o644 });
   }
@@ -191,7 +191,7 @@ async function zip() {
     ...(manifest.languages?.map(l => l.path) ?? []),
     ...(config.includes ?? [])
   ];
-  const artifact = `dnd5e-${argv.tag}.zip`;
+  const artifact = `nih-${argv.tag}.zip`;
   await passthrough("zip", [artifact, "-r", ...includes], { cwd: paths.dist });
   console.log(`Release artifact written to '${path.join(paths.dist, artifact)}'.`);
 }

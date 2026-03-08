@@ -19,7 +19,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.USES"];
+  static LOCALIZATION_PREFIXES = ["NIH.USES"];
 
   /* -------------------------------------------- */
 
@@ -59,7 +59,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
    * @type {ActiveEffect5e[]}
    */
   get appliedEnchantments() {
-    return dnd5e.registry.enchantments.applied(this.parent.uuid);
+    return nih.registry.enchantments.applied(this.parent.uuid);
   }
 
   /* -------------------------------------------- */
@@ -201,7 +201,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
 
     // If period is not blank, set an appropriate recovery type
     else if ( source.uses?.per ) {
-      if ( CONFIG.DND5E.limitedUsePeriods[source.uses.per]?.formula && source.uses.recovery ) {
+      if ( CONFIG.NIH.limitedUsePeriods[source.uses.per]?.formula && source.uses.recovery ) {
         source.uses.recovery = [{ period: source.uses.per, type: "formula", formula: source.uses.recovery }];
       }
       else source.uses.recovery = [{ period: source.uses.per, type: "recoverAll" }];
@@ -228,7 +228,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
     if ( this.#shouldCreateInitialActivity(source) ) this.#createInitialActivity(source);
     const uses = source.system?.uses ?? {};
     if ( source._id && source.type && ("value" in uses) && uses.max ) {
-      foundry.utils.setProperty(source, "flags.dnd5e.migratedUses", uses.value);
+      foundry.utils.setProperty(source, "flags.nih.migratedUses", uses.value);
     }
   }
 
@@ -278,17 +278,17 @@ export default class ActivitiesTemplate extends SystemDataModel {
     if ( (type === "utility") && source.system.damage?.parts?.length ) type = "damage";
     if ( source.type === "tool" ) type = "check";
 
-    const cls = CONFIG.DND5E.activityTypes[type].documentClass;
+    const cls = CONFIG.NIH.activityTypes[type].documentClass;
     cls.createInitialActivity(source);
 
     if ( (type !== "save") && source.system.save?.ability ) {
-      CONFIG.DND5E.activityTypes.save.documentClass.createInitialActivity(source, { offset: 1 });
+      CONFIG.NIH.activityTypes.save.documentClass.createInitialActivity(source, { offset: 1 });
     }
     if ( (source.type !== "weapon") && source.system.damage?.versatile ) {
-      CONFIG.DND5E.activityTypes.damage.documentClass.createInitialActivity(source, { offset: 2, versatile: true });
+      CONFIG.NIH.activityTypes.damage.documentClass.createInitialActivity(source, { offset: 2, versatile: true });
     }
     if ( (type !== "utility") && source.system.formula ) {
-      CONFIG.DND5E.activityTypes.utility.documentClass.createInitialActivity(source, { offset: 3 });
+      CONFIG.NIH.activityTypes.utility.documentClass.createInitialActivity(source, { offset: 3 });
     }
   }
 
@@ -329,7 +329,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
   async recoverUses(periods, rollData) {
     const updates = {};
     const rolls = [];
-    const autoRecharge = game.settings.get("dnd5e", "autoRecharge");
+    const autoRecharge = game.settings.get("nih", "autoRecharge");
     const shouldRecharge = periods.includes("turnStart") && (this.parent.actor.type === "npc")
       && (autoRecharge !== "no");
     const recharge = async doc => {
@@ -407,9 +407,9 @@ export default class ActivitiesTemplate extends SystemDataModel {
       return riders;
     }, { activity: new Set(), effect: new Set() });
     if ( !riders.activity.size && !riders.effect.size ) {
-      foundry.utils.setProperty(changed, "flags.dnd5e.-=riders", null);
+      foundry.utils.setProperty(changed, "flags.nih.-=riders", null);
     } else {
-      foundry.utils.setProperty(changed, "flags.dnd5e.riders", Object.entries(riders)
+      foundry.utils.setProperty(changed, "flags.nih.riders", Object.entries(riders)
         .reduce((updates, [key, value]) => {
           if ( value.size ) updates[key] = Array.from(value);
           else updates[`-=${key}`] = null;
@@ -430,7 +430,7 @@ export default class ActivitiesTemplate extends SystemDataModel {
       }
       return null;
     }).filter(_ => _);
-    if ( removed.length ) foundry.utils.setProperty(options, "dnd5e.removedCachedItems", removed);
+    if ( removed.length ) foundry.utils.setProperty(options, "nih.removedCachedItems", removed);
   }
 
   /* -------------------------------------------- */
@@ -446,8 +446,8 @@ export default class ActivitiesTemplate extends SystemDataModel {
       || !foundry.utils.hasProperty(changed, "system.activities") ) return;
 
     // If any Cast activities were removed, or their spells changed, remove old cached spells
-    if ( options.dnd5e?.removedCachedItems ) {
-      await this.parent.actor.deleteEmbeddedDocuments("Item", options.dnd5e.removedCachedItems);
+    if ( options.nih?.removedCachedItems ) {
+      await this.parent.actor.deleteEmbeddedDocuments("Item", options.nih.removedCachedItems);
     }
 
     // Create any new cached spells & update existing ones as necessary

@@ -31,7 +31,7 @@ export default class NPCData extends CreatureTemplate {
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.NPC", "DND5E.BONUSES", "DND5E.SOURCE"];
+  static LOCALIZATION_PREFIXES = ["NIH.NPC", "NIH.BONUSES", "NIH.SOURCE"];
 
   /* -------------------------------------------- */
 
@@ -55,33 +55,33 @@ export default class NPCData extends CreatureTemplate {
         ...AttributesFields.creature,
         hd: new SchemaField({
           spent: new NumberField({ integer: true, min: 0, initial: 0 })
-        }, { label: "DND5E.HitDice" }),
+        }, { label: "NIH.HitDice" }),
         hp: new SchemaField({
           ...AttributesFields.hitPoints,
-          formula: new FormulaField({ required: true, label: "DND5E.HPFormula" })
-        }, { label: "DND5E.HitPoints" }),
+          formula: new FormulaField({ required: true, label: "NIH.HPFormula" })
+        }, { label: "NIH.HitPoints" }),
         death: new RollConfigField({
           ability: false,
           success: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.DeathSaveSuccesses"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.DeathSaveSuccesses"
           }),
           failure: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.DeathSaveFailures"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.DeathSaveFailures"
           }),
           bonuses: new SchemaField({
-            save: new FormulaField({ required: true, label: "DND5E.DeathSaveBonus" })
+            save: new FormulaField({ required: true, label: "NIH.DeathSaveBonus" })
           })
-        }, { label: "DND5E.DeathSave" }),
+        }, { label: "NIH.DeathSave" }),
         price: new SchemaField({
           value: new NumberField({ initial: null, min: 0 }),
           denomination: new StringField({ required: true, blank: false, initial: "gp" })
         }),
         spell: new SchemaField({
           level: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.SpellcasterLevel"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.SpellcasterLevel"
           })
         })
-      }, { label: "DND5E.Attributes" }),
+      }, { label: "NIH.Attributes" }),
       details: new SchemaField({
         ...DetailsFields.common,
         ...DetailsFields.creature,
@@ -94,43 +94,43 @@ export default class NPCData extends CreatureTemplate {
           custom: new StringField({ required: true })
         }),
         cr: new NumberField({
-          required: true, nullable: true, min: 0, initial: 1, label: "DND5E.ChallengeRating"
+          required: true, nullable: true, min: 0, initial: 1, label: "NIH.ChallengeRating"
         }),
         treasure: new SchemaField({
           value: new SetField(new StringField())
         })
-      }, { label: "DND5E.Details" }),
+      }, { label: "NIH.Details" }),
       resources: new SchemaField({
         legact: new SchemaField({
           max: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.LegendaryAction.Max"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.LegendaryAction.Max"
           }),
           spent: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.LegendaryAction.Spent"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.LegendaryAction.Spent"
           })
-        }, { label: "DND5E.LegendaryAction.Label" }),
+        }, { label: "NIH.LegendaryAction.Label" }),
         legres: new SchemaField({
           max: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.LegendaryResistance.Max"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.LegendaryResistance.Max"
           }),
           spent: new NumberField({
-            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "DND5E.LegendaryResistance.Spent"
+            required: true, nullable: false, integer: true, min: 0, initial: 0, label: "NIH.LegendaryResistance.Spent"
           })
-        }, { label: "DND5E.LegendaryResistance.Label" }),
+        }, { label: "NIH.LegendaryResistance.Label" }),
         lair: new SchemaField({
-          value: new BooleanField({required: true, label: "DND5E.LAIR.Action.Uses"}),
+          value: new BooleanField({required: true, label: "NIH.LAIR.Action.Uses"}),
           initiative: new NumberField({
-            required: true, integer: true, label: "DND5E.LAIR.Action.Initiative"
+            required: true, integer: true, label: "NIH.LAIR.Action.Initiative"
           }),
-          inside: new BooleanField({ label: "DND5E.LAIR.Inside" })
-        }, { label: "DND5E.LAIR.Action.Label" })
-      }, { label: "DND5E.Resources" }),
+          inside: new BooleanField({ label: "NIH.LAIR.Inside" })
+        }, { label: "NIH.LAIR.Action.Label" })
+      }, { label: "NIH.Resources" }),
       source: new SourceField(),
       traits: new SchemaField({
         ...TraitsFields.common,
         ...TraitsFields.creature,
         important: new BooleanField()
-      }, { label: "DND5E.Traits" })
+      }, { label: "NIH.Traits" })
     });
   }
 
@@ -140,26 +140,26 @@ export default class NPCData extends CreatureTemplate {
   static get compendiumBrowserFilters() {
     return new Map([
       ["size", {
-        label: "DND5E.Size",
+        label: "NIH.Size",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.actorSizes,
+          choices: CONFIG.NIH.actorSizes,
           keyPath: "system.traits.size"
         }
       }],
       ["type", {
-        label: "DND5E.CreatureType",
+        label: "NIH.CreatureType",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.creatureTypes,
+          choices: CONFIG.NIH.creatureTypes,
           keyPath: "system.details.type.value"
         }
       }],
       ["habitat", {
-        label: "DND5E.Habitat.Configuration.Label",
+        label: "NIH.Habitat.Configuration.Label",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.habitats
+          choices: CONFIG.NIH.habitats
         },
         createFilter: (filters, value, def) => {
           const { include, exclude } = Object.entries(value).reduce((d, [key, value]) => {
@@ -176,7 +176,7 @@ export default class NPCData extends CreatureTemplate {
         }
       }],
       ["cr", {
-        label: "DND5E.ChallengeRating",
+        label: "NIH.ChallengeRating",
         type: "range",
         config: {
           keyPath: "system.details.cr",
@@ -185,10 +185,10 @@ export default class NPCData extends CreatureTemplate {
         }
       }],
       ["movement", {
-        label: "DND5E.Movement",
+        label: "NIH.Movement",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.movementTypes
+          choices: CONFIG.NIH.movementTypes
         },
         createFilter: (filters, value, def) => {
           for ( const [k, v] of Object.entries(value ?? {}) ) {
@@ -298,7 +298,7 @@ export default class NPCData extends CreatureTemplate {
 
       // Match a known creature type
       const typeLc = match.groups.type.trim().toLowerCase();
-      const typeMatch = Object.entries(CONFIG.DND5E.creatureTypes).find(([k, v]) => {
+      const typeMatch = Object.entries(CONFIG.NIH.creatureTypes).find(([k, v]) => {
         return (typeLc === k)
           || (typeLc === game.i18n.localize(v.label).toLowerCase())
           || (typeLc === game.i18n.localize(`${v.label}Pl`).toLowerCase());
@@ -313,7 +313,7 @@ export default class NPCData extends CreatureTemplate {
       // Match a swarm
       if ( match.groups.size ) {
         const sizeLc = match.groups.size ? match.groups.size.trim().toLowerCase() : "tiny";
-        const sizeMatch = Object.entries(CONFIG.DND5E.actorSizes).find(([k, v]) => {
+        const sizeMatch = Object.entries(CONFIG.NIH.actorSizes).find(([k, v]) => {
           return (sizeLc === k) || (sizeLc === game.i18n.localize(v.label).toLowerCase());
         });
         source.type.swarm = sizeMatch ? sizeMatch[0] : "tiny";
@@ -340,7 +340,7 @@ export default class NPCData extends CreatureTemplate {
     // Determine hit dice denomination & max from hit points formula
     const [, max, denomination] = this.attributes.hp.formula?.match(/(\d*)d(\d+)/i) ?? [];
     this.attributes.hd.max = Number(max ?? 0);
-    this.attributes.hd.denomination = Number(denomination ?? CONFIG.DND5E.actorSizes[this.traits.size]?.hitDie ?? 4);
+    this.attributes.hd.denomination = Number(denomination ?? CONFIG.NIH.actorSizes[this.traits.size]?.hitDie ?? 4);
 
     for ( const item of this.parent.items ) {
       // Class levels & hit dice
@@ -387,8 +387,8 @@ export default class NPCData extends CreatureTemplate {
       AttributesFields.prepareRace.call(this, this.details.race, { force: true });
       this.details.type = this.details.race.system.type;
     }
-    for ( const key of Object.keys(CONFIG.DND5E.movementTypes) ) this.attributes.movement[key] ??= 0;
-    for ( const key of Object.keys(CONFIG.DND5E.senses) ) this.attributes.senses[key] ??= 0;
+    for ( const key of Object.keys(CONFIG.NIH.movementTypes) ) this.attributes.movement[key] ??= 0;
+    for ( const key of Object.keys(CONFIG.NIH.senses) ) this.attributes.senses[key] ??= 0;
     this.attributes.movement.units ??= defaultUnits("length");
     this.attributes.senses.units ??= defaultUnits("length");
   }
@@ -422,7 +422,7 @@ export default class NPCData extends CreatureTemplate {
     // Hit Points
     const hpOptions = {
       advancement: Object.values(this.parent.classes).map(c => c.advancement.byType.HitPoints?.[0]).filter(a => a),
-      mod: this.abilities[CONFIG.DND5E.defaultAbilities.hitPoints ?? "con"]?.mod ?? 0
+      mod: this.abilities[CONFIG.NIH.defaultAbilities.hitPoints ?? "con"]?.mod ?? 0
     };
     AttributesFields.prepareHitPoints.call(this, this.attributes.hp, hpOptions);
 
@@ -435,10 +435,10 @@ export default class NPCData extends CreatureTemplate {
     if ( legres.max && legendaryResistanceItem ) {
       const max = this._source.resources.legres.max;
       const modernRules = (this.source?.rules
-        || (game.settings.get("dnd5e", "rulesVersion") === "modern" ? "2024" : "2014")) === "2024";
+        || (game.settings.get("nih", "rulesVersion") === "modern" ? "2024" : "2014")) === "2024";
       legendaryResistanceItem.system.uses.label = this.resources.lair.value && modernRules ? game.i18n.format(
-        "DND5E.LegendaryResistance.LairUses",  { normal: formatNumber(max), lair: formatNumber(max + 1) }
-      ) : `${formatNumber(max)}/${CONFIG.DND5E.limitedUsePeriods.day?.label ?? ""}`;
+        "NIH.LegendaryResistance.LairUses",  { normal: formatNumber(max), lair: formatNumber(max + 1) }
+      ) : `${formatNumber(max)}/${CONFIG.NIH.limitedUsePeriods.day?.label ?? ""}`;
     }
   }
 
@@ -482,13 +482,13 @@ export default class NPCData extends CreatureTemplate {
     if ( !max ) return "";
     const pr = getPluralRules().select(max);
     const rulesVersion = this.source?.rules
-      || (game.settings.get("dnd5e", "rulesVersion") === "modern" ? "2024" : "2014");
-    return game.i18n.format(`DND5E.LegendaryAction.Description${rulesVersion === "2014" ? "Legacy" : ""}`, {
+      || (game.settings.get("nih", "rulesVersion") === "modern" ? "2024" : "2014");
+    return game.i18n.format(`NIH.LegendaryAction.Description${rulesVersion === "2014" ? "Legacy" : ""}`, {
       name: name.toLowerCase(),
-      uses: this.resources.lair.value ? game.i18n.format("DND5E.LegendaryAction.LairUses", {
+      uses: this.resources.lair.value ? game.i18n.format("NIH.LegendaryAction.LairUses", {
         normal: formatNumber(max), lair: formatNumber(max + 1)
       }) : formatNumber(max),
-      usesNamed: game.i18n.format(`DND5E.ACTIVATION.Type.Legendary.Counted.${pr}`, { number: formatNumber(max) })
+      usesNamed: game.i18n.format(`NIH.ACTIVATION.Type.Legendary.Counted.${pr}`, { number: formatNumber(max) })
     });
   }
 
@@ -522,10 +522,10 @@ export default class NPCData extends CreatureTemplate {
    */
   async resistSave(message) {
     if ( this.resources.legres.value === 0 ) throw new Error("No legendary resistances remaining.");
-    if ( message.flags.dnd5e?.roll?.type !== "save" ) throw new Error("Chat message must contain a save roll.");
-    if ( message.flags.dnd5e?.roll?.forceSuccess ) throw new Error("Save has already been resisted.");
+    if ( message.flags.nih?.roll?.type !== "save" ) throw new Error("Chat message must contain a save roll.");
+    if ( message.flags.nih?.roll?.forceSuccess ) throw new Error("Save has already been resisted.");
     await this.parent.update({ "system.resources.legres.spent": this.resources.legres.spent + 1 });
-    await message.setFlag("dnd5e", "roll.forceSuccess", true);
+    await message.setFlag("nih", "roll.forceSuccess", true);
   }
 
   /* -------------------------------------------- */
@@ -546,19 +546,19 @@ export default class NPCData extends CreatureTemplate {
     }
     const template = document.createElement("template");
     template.innerHTML = await foundry.applications.handlebars.renderTemplate(
-      "systems/dnd5e/templates/actors/embeds/npc-embed.hbs", context
+      "systems/nih/templates/actors/embeds/npc-embed.hbs", context
     );
 
     /**
      * A hook event that fires after an embedded NPC stat block is rendered.
-     * @function dnd5e.renderNPCStatBlock
+     * @function nih.renderNPCStatBlock
      * @memberof hookEvents
      * @param {Actor5e} actor                   NPC being embedded.
      * @param {HTMLTemplateElement} template    Template whose children will be embedded.
      * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
      * @param {EnrichmentOptions} options       Original enrichment options.
      */
-    Hooks.call("dnd5e.renderNPCStatBlock", this.parent, template, config, options);
+    Hooks.call("nih.renderNPCStatBlock", this.parent, template, config, options);
 
     return template.content;
   }
@@ -579,17 +579,17 @@ export default class NPCData extends CreatureTemplate {
       ...Array.from(value).map(t => Trait.keyLabel(t, { trait })).filter(_ => _),
       ...splitSemicolons(custom ?? "")
     ].sort((lhs, rhs) => lhs.localeCompare(rhs, game.i18n.lang)));
-    const o = this.parent.flags.dnd5e?.statBlockOverride ?? {};
+    const o = this.parent.flags.nih?.statBlockOverride ?? {};
 
     const prepareSpeed = () => {
       const standard = formatter.format([
         prepareMeasured(this.attributes.movement.walk, this.attributes.movement.units),
-        ...Object.entries(CONFIG.DND5E.movementTypes)
+        ...Object.entries(CONFIG.NIH.movementTypes)
           .filter(([k]) => this.attributes.movement[k] && (k !== "walk"))
           .map(([k, { label }]) => {
             let prepared = prepareMeasured(this.attributes.movement[k], this.attributes.movement.units, label);
             if ( (k === "fly") && this.attributes.movement.hover ) {
-              prepared = `${prepared} (${game.i18n.localize("DND5E.MOVEMENT.Hover").toLowerCase()})`;
+              prepared = `${prepared} (${game.i18n.localize("NIH.MOVEMENT.Hover").toLowerCase()})`;
             }
             return prepared;
           })
@@ -599,13 +599,13 @@ export default class NPCData extends CreatureTemplate {
     };
 
     const xp = rulesVersion === "2024"
-      ? `${o.xp ?? game.i18n.format(`DND5E.ExperiencePoints.StatBlock.${
+      ? `${o.xp ?? game.i18n.format(`NIH.ExperiencePoints.StatBlock.${
         (this.resources.lair.value) && (this.details.cr !== null) ? "Lair" : "Standard"}`, {
         value: formatNumber(this.parent.getCRExp(this.details.cr)),
         lair: formatNumber(this.parent.getCRExp(this.details.cr + 1))
-      })}; ${o.pb ?? `${game.i18n.localize("DND5E.ProficiencyBonusAbbr")} ${
+      })}; ${o.pb ?? `${game.i18n.localize("NIH.ProficiencyBonusAbbr")} ${
         formatNumber(this.attributes.prof, { signDisplay: "always" })}`}`
-      : o.xp ?? game.i18n.format("DND5E.ExperiencePoints.Format", {
+      : o.xp ?? game.i18n.format("NIH.ExperiencePoints.Format", {
         value: formatNumber(this.parent.getCRExp(this.details.cr))
       });
 
@@ -613,34 +613,34 @@ export default class NPCData extends CreatureTemplate {
       abilityTables: rulesVersion === "2024" ? Array.fromRange(3).map(_ => ({ abilities: [] })) : null,
       actionSections: {
         trait: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.Traits"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.Traits"),
           hideLabel: rulesVersion === "2014",
           actions: []
         },
         action: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.Actions"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.Actions"),
           actions: []
         },
         bonus: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.BonusActions"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.BonusActions"),
           actions: []
         },
         reaction: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.Reactions"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.Reactions"),
           actions: []
         },
         legendary: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.LegendaryActions"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.LegendaryActions"),
           description: "",
           actions: []
         },
         mythic: {
-          label: game.i18n.localize("DND5E.NPC.SECTIONS.MythicActions"),
+          label: game.i18n.localize("NIH.NPC.SECTIONS.MythicActions"),
           description: "",
           actions: []
         }
       },
-      CONFIG: CONFIG.DND5E,
+      CONFIG: CONFIG.NIH,
       definitions: {
         lower: [],
         upper: []
@@ -671,7 +671,7 @@ export default class NPCData extends CreatureTemplate {
 
         // Saves (e.g. `Dex +7, Con +15, Wis +10, Cha +12`)
         saves: formatter.format(
-          Object.entries(CONFIG.DND5E.abilities)
+          Object.entries(CONFIG.NIH.abilities)
             .filter(([k]) => this.abilities[k].saveProf.multiplier !== 0)
             .map(([k, { abbreviation }]) =>
               `${abbreviation.capitalize()} ${formatNumber(this.abilities[k].save.value, { signDisplay: "always" })}`
@@ -681,17 +681,17 @@ export default class NPCData extends CreatureTemplate {
         // Senses (e.g. `Blindsight 60 ft., Darkvision 120 ft.; Passive Perception 27`)
         senses: o.senses ?? [
           formatter.format([
-            ...Object.entries(CONFIG.DND5E.senses)
+            ...Object.entries(CONFIG.NIH.senses)
               .filter(([k]) => this.attributes.senses[k])
               .map(([k, label]) => prepareMeasured(this.attributes.senses[k], this.attributes.senses.units, label)),
             ...splitSemicolons(this.attributes.senses.special)
           ].sort((lhs, rhs) => lhs.localeCompare(rhs, game.i18n.lang))),
-          `${game.i18n.localize("DND5E.PassivePerception")} ${formatNumber(this.skills.prc.passive)}`
+          `${game.i18n.localize("NIH.PassivePerception")} ${formatNumber(this.skills.prc.passive)}`
         ].filterJoin("; "),
 
         // Skills (e.g. `Perception +17, Stealth +7`)
         skills: o.skills ?? formatter.format(
-          Object.entries(CONFIG.DND5E.skills)
+          Object.entries(CONFIG.NIH.skills)
             .filter(([k]) => this.skills[k].value > 0)
             .map(([k, { label }]) => `${label} ${formatNumber(this.skills[k].total, { signDisplay: "always" })}`)
         ),
@@ -700,8 +700,8 @@ export default class NPCData extends CreatureTemplate {
         speed: o.speed ?? prepareSpeed(),
 
         // Tag (e.g. `Gargantuan Dragon, Lawful Evil`)
-        tag: o.tag ?? game.i18n.format("DND5E.CreatureTag", {
-          size: o.size ?? CONFIG.DND5E.actorSizes[this.traits.size]?.label ?? "",
+        tag: o.tag ?? game.i18n.format("NIH.CreatureTag", {
+          size: o.size ?? CONFIG.NIH.actorSizes[this.traits.size]?.label ?? "",
           type: o.type ?? Actor5e.formatCreatureType(this.details.type) ?? "",
           alignment: o.alignment ?? this.details.alignment
         }).replace(/, $/, "")
@@ -720,18 +720,18 @@ export default class NPCData extends CreatureTemplate {
         const trait = `${category[0]}${type[0]}`;
         const data = this.traits[trait];
         const { value, physical } = data.value.reduce((acc, t) => {
-          if ( data.bypasses?.size && CONFIG.DND5E.damageTypes[t]?.isPhysical ) acc.physical.push(t);
+          if ( data.bypasses?.size && CONFIG.NIH.damageTypes[t]?.isPhysical ) acc.physical.push(t);
           else acc.value.push(t);
           return acc;
         }, { value: [], physical: [] });
         const list = prepareTrait({ value, custom: data.custom }, trait);
         if ( list ) entries.push(list);
-        if ( physical.length ) entries.push(game.i18n.format("DND5E.DamagePhysicalBypasses", {
+        if ( physical.length ) entries.push(game.i18n.format("NIH.DamagePhysicalBypasses", {
           damageTypes: game.i18n.getListFormatter({ style: "long", type: "conjunction" }).format(
-            physical.map(t => CONFIG.DND5E.damageTypes[t].label)
+            physical.map(t => CONFIG.NIH.damageTypes[t].label)
           ),
           bypassTypes: game.i18n.getListFormatter({ style: "long", type: "disjunction" }).format(
-            Array.from(data.bypasses).map(t => CONFIG.DND5E.itemProperties[t]?.label).filter(_ => _)
+            Array.from(data.bypasses).map(t => CONFIG.NIH.itemProperties[t]?.label).filter(_ => _)
           )
         }));
       }
@@ -740,27 +740,27 @@ export default class NPCData extends CreatureTemplate {
 
     const { summary, system } = context;
     if ( rulesVersion === "2024" ) {
-      for ( const [index, [key, { abbreviation }]] of Object.entries(CONFIG.DND5E.abilities).entries() ) {
+      for ( const [index, [key, { abbreviation }]] of Object.entries(CONFIG.NIH.abilities).entries() ) {
         context.abilityTables[index % 3].abilities.push({ ...this.abilities[key], label: abbreviation.capitalize() });
       }
 
       context.definitions.upper = [
-        { label: "DND5E.AC", classes: "half-width", definitions: [o.ac ?? system.attributes.ac.value] },
-        { label: "DND5E.Initiative", classes: "half-width", definitions: [summary.initiative] },
-        { label: "DND5E.HP", definitions: o.hp ? [o.hp] : system.attributes.hp.formula ? [
+        { label: "NIH.AC", classes: "half-width", definitions: [o.ac ?? system.attributes.ac.value] },
+        { label: "NIH.Initiative", classes: "half-width", definitions: [summary.initiative] },
+        { label: "NIH.HP", definitions: o.hp ? [o.hp] : system.attributes.hp.formula ? [
           system.attributes.hp.max, `(${system.attributes.hp.formula})`
         ] : [system.attributes.hp.max] },
-        { label: "DND5E.Speed", definitions: [summary.speed] }
+        { label: "NIH.Speed", definitions: [summary.speed] }
       ];
       context.definitions.lower = [
-        summary.skills ? { label: "DND5E.Skills", definitions: [summary.skills] } : null,
-        summary.vulnerabilities ? { label: "DND5E.Vulnerabilities", definitions: [summary.vulnerabilities] } : null,
-        summary.resistances ? { label: "DND5E.Resistances", definitions: [summary.resistances] } : null,
-        summary.immunities ? { label: "DND5E.Immunities", definitions: [summary.immunities] } : null,
-        summary.gear ? { label: "DND5E.Gear", definitions: [summary.gear] } : null,
-        { label: "DND5E.Senses", definitions: [summary.senses] },
-        { label: "DND5E.Languages", definitions: [summary.languages] },
-        { label: "DND5E.AbbreviationCR", definitions: [summary.cr] }
+        summary.skills ? { label: "NIH.Skills", definitions: [summary.skills] } : null,
+        summary.vulnerabilities ? { label: "NIH.Vulnerabilities", definitions: [summary.vulnerabilities] } : null,
+        summary.resistances ? { label: "NIH.Resistances", definitions: [summary.resistances] } : null,
+        summary.immunities ? { label: "NIH.Immunities", definitions: [summary.immunities] } : null,
+        summary.gear ? { label: "NIH.Gear", definitions: [summary.gear] } : null,
+        { label: "NIH.Senses", definitions: [summary.senses] },
+        { label: "NIH.Languages", definitions: [summary.languages] },
+        { label: "NIH.AbbreviationCR", definitions: [summary.cr] }
       ].filter(_ => _);
     }
 
@@ -770,26 +770,26 @@ export default class NPCData extends CreatureTemplate {
         return def;
       };
       context.definitions.upper = [
-        { label: "DND5E.ArmorClass", definitions: o.ac ? [o.ac] : system.attributes.ac.label ? [
+        { label: "NIH.ArmorClass", definitions: o.ac ? [o.ac] : system.attributes.ac.label ? [
           system.attributes.ac.value, `(${system.attributes.ac.label})`
         ] : [system.attributes.ac.value] },
-        { label: "DND5E.HitPoints", definitions: o.hp ? [o.hp] : system.attributes.hp.formula ? [
+        { label: "NIH.HitPoints", definitions: o.hp ? [o.hp] : system.attributes.hp.formula ? [
           system.attributes.hp.max, `(${system.attributes.hp.formula})`
         ] : [system.attributes.hp.max] },
-        { label: "DND5E.Speed", definitions: [summary.speed] }
+        { label: "NIH.Speed", definitions: [summary.speed] }
       ].map(d => lowerCase(d));
       context.definitions.lower = [
-        summary.saves ? { label: "DND5E.ClassSaves", definitions: [summary.saves] } : null,
-        summary.skills ? { label: "DND5E.Skills", definitions: [summary.skills] } : null,
-        summary.vulnerabilities ? lowerCase({ label: "DND5E.DamVuln", definitions: [summary.vulnerabilities] }) : null,
-        summary.resistances ? lowerCase({ label: "DND5E.DamRes", definitions: [summary.resistances] }) : null,
-        summary.immunities ? lowerCase({ label: "DND5E.DamImm", definitions: [summary.immunities] }) : null,
+        summary.saves ? { label: "NIH.ClassSaves", definitions: [summary.saves] } : null,
+        summary.skills ? { label: "NIH.Skills", definitions: [summary.skills] } : null,
+        summary.vulnerabilities ? lowerCase({ label: "NIH.DamVuln", definitions: [summary.vulnerabilities] }) : null,
+        summary.resistances ? lowerCase({ label: "NIH.DamRes", definitions: [summary.resistances] }) : null,
+        summary.immunities ? lowerCase({ label: "NIH.DamImm", definitions: [summary.immunities] }) : null,
         summary.conditionImmunities
-          ? lowerCase({ label: "DND5E.TraitCIPlural.other", definitions: [summary.conditionImmunities] }) : null,
-        { label: "DND5E.Senses", definitions: [summary.senses] },
-        { label: "DND5E.Languages", definitions: [summary.languages] },
-        { label: "DND5E.Challenge", classes: "half-width", definitions: [summary.cr] },
-        { label: "DND5E.ProficiencyBonus", classes: "half-width", definitions: [
+          ? lowerCase({ label: "NIH.TraitCIPlural.other", definitions: [summary.conditionImmunities] }) : null,
+        { label: "NIH.Senses", definitions: [summary.senses] },
+        { label: "NIH.Languages", definitions: [summary.languages] },
+        { label: "NIH.Challenge", classes: "half-width", definitions: [summary.cr] },
+        { label: "NIH.ProficiencyBonus", classes: "half-width", definitions: [
           o.pb ?? formatNumber(this.attributes.prof, { signDisplay: "always" })
         ] }
       ].filter(_ => _);

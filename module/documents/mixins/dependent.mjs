@@ -10,8 +10,8 @@ export default function DependentDocumentMixin(Base) {
     /** @inheritDoc */
     prepareData() {
       super.prepareData();
-      if ( this.flags?.dnd5e?.dependentOn && this.uuid ) {
-        dnd5e.registry.dependents.track(this.flags.dnd5e.dependentOn, this);
+      if ( this.flags?.nih?.dependentOn && this.uuid ) {
+        nih.registry.dependents.track(this.flags.nih.dependentOn, this);
       }
     }
 
@@ -20,8 +20,8 @@ export default function DependentDocumentMixin(Base) {
     /** @inheritDoc */
     _onDelete(options, userId) {
       super._onDelete(options, userId);
-      if ( this.flags?.dnd5e?.dependentOn && this.uuid ) {
-        dnd5e.registry.dependents.untrack(this.flags.dnd5e.dependentOn, this);
+      if ( this.flags?.nih?.dependentOn && this.uuid ) {
+        nih.registry.dependents.untrack(this.flags.nih.dependentOn, this);
       }
     }
   }

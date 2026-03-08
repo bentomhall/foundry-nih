@@ -23,10 +23,10 @@ export default class SkillToolRollConfigurationDialog extends D20RollConfigurati
     context = await super._prepareConfigurationContext(context, options);
     if ( this.options.chooseAbility ) context.fields.unshift({
       field: new foundry.data.fields.StringField({
-        required: true, blank: false, label: game.i18n.localize("DND5E.Abilities")
+        required: true, blank: false, label: game.i18n.localize("NIH.Abilities")
       }),
       name: "ability",
-      options: Object.entries(CONFIG.DND5E.abilities).map(([value, { label }]) => ({ value, label })),
+      options: Object.entries(CONFIG.NIH.abilities).map(([value, { label }]) => ({ value, label })),
       value: this.config.ability
     });
     return context;
@@ -40,10 +40,10 @@ export default class SkillToolRollConfigurationDialog extends D20RollConfigurati
   _onChangeForm(formConfig, event) {
     super._onChangeForm(formConfig, event);
     if ( this.config.skill && (event.target?.name === "ability") ) {
-      const skillLabel = CONFIG.DND5E.skills[this.config.skill]?.label ?? "";
+      const skillLabel = CONFIG.NIH.skills[this.config.skill]?.label ?? "";
       const ability = event.target.value ?? this.config.ability;
-      const abilityLabel = CONFIG.DND5E.abilities[ability]?.label ?? "";
-      const flavor = game.i18n.format("DND5E.SkillPromptTitle", { skill: skillLabel, ability: abilityLabel });
+      const abilityLabel = CONFIG.NIH.abilities[ability]?.label ?? "";
+      const flavor = game.i18n.format("NIH.SkillPromptTitle", { skill: skillLabel, ability: abilityLabel });
       foundry.utils.setProperty(this.message, "data.flavor", flavor);
       this._updateFrame({ window: { title: flavor } });
     }

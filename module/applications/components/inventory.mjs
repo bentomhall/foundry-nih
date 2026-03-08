@@ -28,110 +28,110 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       width: 200,
       order: 800,
       priority: 1000,
-      template: "systems/dnd5e/templates/inventory/columns/capacity.hbs"
+      template: "systems/nih/templates/inventory/columns/capacity.hbs"
     },
     charges: {
       id: "charges",
       width: 70,
       order: 800,
       priority: 600,
-      label: "DND5E.Charges",
-      template: "systems/dnd5e/templates/inventory/columns/uses.hbs"
+      label: "NIH.Charges",
+      template: "systems/nih/templates/inventory/columns/uses.hbs"
     },
     controls: {
       id: "controls",
       width: 70,
       order: 1000,
       priority: 1000,
-      template: "systems/dnd5e/templates/inventory/columns/controls.hbs"
+      template: "systems/nih/templates/inventory/columns/controls.hbs"
     },
     formula: {
       id: "formula",
       width: 80,
       order: 700,
       priority: 700,
-      label: "DND5E.SpellHeader.Formula",
-      template: "systems/dnd5e/templates/inventory/columns/formula.hbs"
+      label: "NIH.SpellHeader.Formula",
+      template: "systems/nih/templates/inventory/columns/formula.hbs"
     },
     price: {
       id: "price",
       width: 80,
       order: 300,
       priority: 300,
-      label: "DND5E.Price",
-      template: "systems/dnd5e/templates/inventory/columns/price.hbs"
+      label: "NIH.Price",
+      template: "systems/nih/templates/inventory/columns/price.hbs"
     },
     range: {
       id: "range",
       width: 50,
       order: 300,
       priority: 800,
-      label: "DND5E.SpellHeader.Range",
-      template: "systems/dnd5e/templates/inventory/columns/range.hbs"
+      label: "NIH.SpellHeader.Range",
+      template: "systems/nih/templates/inventory/columns/range.hbs"
     },
     recovery: {
       id: "recovery",
       width: 60,
       order: 400,
       priority: 500,
-      label: "DND5E.Recovery",
-      template: "systems/dnd5e/templates/inventory/columns/recovery.hbs"
+      label: "NIH.Recovery",
+      template: "systems/nih/templates/inventory/columns/recovery.hbs"
     },
     roll: {
       id: "roll",
       width: 40,
       order: 600,
       priority: 800,
-      label: "DND5E.SpellHeader.Roll",
-      template: "systems/dnd5e/templates/inventory/columns/roll.hbs"
+      label: "NIH.SpellHeader.Roll",
+      template: "systems/nih/templates/inventory/columns/roll.hbs"
     },
     school: {
       id: "school",
       width: 40,
       order: 100,
       priority: 100,
-      label: "DND5E.SpellHeader.School",
-      template: "systems/dnd5e/templates/inventory/columns/school.hbs"
+      label: "NIH.SpellHeader.School",
+      template: "systems/nih/templates/inventory/columns/school.hbs"
     },
     target: {
       id: "target",
       width: 80,
       order: 400,
       priority: 800,
-      label: "DND5E.SpellHeader.Target",
-      template: "systems/dnd5e/templates/inventory/columns/target.hbs"
+      label: "NIH.SpellHeader.Target",
+      template: "systems/nih/templates/inventory/columns/target.hbs"
     },
     time: {
       id: "time",
       width: 40,
       order: 200,
       priority: 800,
-      label: "DND5E.SpellHeader.Time",
-      template: "systems/dnd5e/templates/inventory/columns/time.hbs"
+      label: "NIH.SpellHeader.Time",
+      template: "systems/nih/templates/inventory/columns/time.hbs"
     },
     quantity: {
       id: "quantity",
       width: 70,
       order: 500,
       priority: 500,
-      label: "DND5E.Quantity",
-      template: "systems/dnd5e/templates/inventory/columns/quantity.hbs"
+      label: "NIH.Quantity",
+      template: "systems/nih/templates/inventory/columns/quantity.hbs"
     },
     uses: {
       id: "uses",
       width: 70,
       order: 500,
       priority: 600,
-      label: "DND5E.Uses",
-      template: "systems/dnd5e/templates/inventory/columns/uses.hbs"
+      label: "NIH.Uses",
+      template: "systems/nih/templates/inventory/columns/uses.hbs"
     },
     weight: {
       id: "weight",
       width: 60,
       order: 400,
       priority: 400,
-      label: "DND5E.Weight",
-      template: "systems/dnd5e/templates/inventory/columns/weight.hbs"
+      label: "NIH.Weight",
+      template: "systems/nih/templates/inventory/columns/weight.hbs"
     }
   };
 
@@ -146,7 +146,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       id: "contents",
       order: 100,
       groups: { contents: "contents" },
-      label: "DND5E.Contents",
+      label: "NIH.Contents",
       columns: ["price", "weight", "quantity", "charges", "controls"]
     }
   };
@@ -159,7 +159,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
    * The HTML tag named used by this element.
    * @type {string}
    */
-  static tagName = "dnd5e-inventory";
+  static tagName = "nih-inventory";
 
   /* -------------------------------------------- */
 
@@ -326,27 +326,27 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
 
     // Standard options.
     const options = [{
-      name: "DND5E.ItemView",
+      name: "NIH.ItemView",
       icon: '<i class="fa-solid fa-eye fa-fw"></i>',
       callback: li => this._onAction(li, "view")
     }, {
-      name: "DND5E.ContextMenuActionEdit",
+      name: "NIH.ContextMenuActionEdit",
       icon: '<i class="fa-solid fa-edit fa-fw"></i>',
       condition: () => item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "edit")
     }, {
-      name: "DND5E.ContextMenuActionDuplicate",
+      name: "NIH.ContextMenuActionDuplicate",
       icon: '<i class="fa-solid fa-copy fa-fw"></i>',
       condition: () => item.canDuplicate && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "duplicate")
     }, {
       id: "delete",
-      name: "DND5E.ContextMenuActionDelete",
+      name: "NIH.ContextMenuActionDelete",
       icon: '<i class="fa-solid fa-trash fa-fw"></i>',
       condition: () => item.canDelete && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "delete")
     }, {
-      name: "DND5E.DisplayCard",
+      name: "NIH.DisplayCard",
       icon: '<i class="fa-solid fa-message"></i>',
       callback: () => item.displayCard()
     }];
@@ -358,10 +358,10 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
 
     // Owned item options.
     options.push({
-      name: "DND5E.Scroll.CreateScroll",
+      name: "NIH.Scroll.CreateScroll",
       icon: '<i class="fa-solid fa-scroll"></i>',
       condition: () => {
-        const isSpell = (item.type === "spell") && !item.getFlag("dnd5e", "cachedFor");
+        const isSpell = (item.type === "spell") && !item.getFlag("nih", "cachedFor");
         const canEdit = this.actor.isOwner && !this.actor.collection.locked;
         return isSpell && canEdit;
       },
@@ -371,42 +371,42 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       },
       group: "action"
     }, {
-      name: "DND5E.ConcentrationBreak",
-      icon: '<dnd5e-icon src="systems/dnd5e/icons/svg/break-concentration.svg"></dnd5e-icon>',
+      name: "NIH.ConcentrationBreak",
+      icon: '<nih-icon src="systems/nih/icons/svg/break-concentration.svg"></nih-icon>',
       condition: () => this.actor?.concentration?.items.has(item),
       callback: () => this.actor?.endConcentration(item),
       group: "state"
     }, {
-      name: `DND5E.ContextMenuAction${item.system.attuned ? "Unattune" : "Attune"}`,
+      name: `NIH.ContextMenuAction${item.system.attuned ? "Unattune" : "Attune"}`,
       icon: '<i class="fa-solid fa-sun fa-fw"></i>',
       condition: () => item.system.attunement && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "attune"),
       group: "state"
     }, {
-      name: `DND5E.ContextMenuAction${item.system.equipped ? "Unequip" : "Equip"}`,
+      name: `NIH.ContextMenuAction${item.system.equipped ? "Unequip" : "Equip"}`,
       icon: '<i class="fa-solid fa-shield-alt fa-fw"></i>',
       condition: () => ("equipped" in item.system) && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "equip"),
       group: "state"
     }, {
-      name: `DND5E.ContextMenuAction${item.isOnCooldown ? "Charge" : "ExpendCharge"}`,
+      name: `NIH.ContextMenuAction${item.isOnCooldown ? "Charge" : "ExpendCharge"}`,
       icon: '<i class="fa-solid fa-bolt"></i>',
       condition: () => item.hasRecharge && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "toggleCharge"),
       group: "state"
     }, {
-      name: `DND5E.ContextMenuAction${item.system.prepared ? "Unprepare" : "Prepare"}`,
+      name: `NIH.ContextMenuAction${item.system.prepared ? "Unprepare" : "Prepare"}`,
       icon: '<i class="fa-solid fa-sun fa-fw"></i>',
       condition: () => {
-        const isPrepared = CONFIG.DND5E.spellcasting[item.system.method]?.prepares;
-        const isAlways = item.system.prepared === CONFIG.DND5E.spellPreparationStates.always.value;
+        const isPrepared = CONFIG.NIH.spellcasting[item.system.method]?.prepares;
+        const isAlways = item.system.prepared === CONFIG.NIH.spellPreparationStates.always.value;
         const canEdit = item.isOwner && !compendiumLocked;
-        return !item.hasRecharge && isPrepared && !isAlways && canEdit && !item.getFlag("dnd5e", "cachedFor");
+        return !item.hasRecharge && isPrepared && !isAlways && canEdit && !item.getFlag("nih", "cachedFor");
       },
       callback: li => this._onAction(li, "prepare"),
       group: "state"
     }, {
-      name: "DND5E.Identify",
+      name: "NIH.Identify",
       icon: '<i class="fa-solid fa-magnifying-glass"></i>',
       condition: () => {
         const canIdentify = ("identified" in item.system) && !item.system.identified;
@@ -416,7 +416,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       callback: li => this._onAction(li, "identify"),
       group: "state"
     }, {
-      name: favorited ? "DND5E.FavoriteRemove" : "DND5E.Favorite",
+      name: favorited ? "NIH.FavoriteRemove" : "NIH.Favorite",
       icon: '<i class="fa-solid fa-bookmark fa-fw"></i>',
       condition: () => ("favorites" in this.actor.system) && item.isOwner && !compendiumLocked,
       callback: li => this._onAction(li, "toggleFavorite"),
@@ -632,7 +632,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
     if ( element.closest("[data-activity-id]") ) UtilityActivity.onContextMenu(item, element);
     else {
       ui.context.menuItems = this._getContextOptions(item, element);
-      Hooks.callAll("dnd5e.getItemContextOptions", item, ui.context.menuItems);
+      Hooks.callAll("nih.getItemContextOptions", item, ui.context.menuItems);
     }
   }
 
@@ -738,7 +738,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       } else {
         const chatData = await item.getChatData({secrets: item.isOwner});
         const summary = $(await foundry.applications.handlebars.renderTemplate(
-          "systems/dnd5e/templates/items/parts/item-summary.hbs", chatData
+          "systems/nih/templates/items/parts/item-summary.hbs", chatData
         ));
         $(li).append(summary.hide());
         summary.slideDown(200);
@@ -762,7 +762,7 @@ export default class InventoryElement extends (foundry.applications.elements.Ado
       this.app.expandedSections.set(item.id, false);
     } else {
       const context = await item.getChatData({ secrets: item.isOwner });
-      const template = "systems/dnd5e/templates/items/parts/item-summary.hbs";
+      const template = "systems/nih/templates/items/parts/item-summary.hbs";
       const content = await foundry.applications.handlebars.renderTemplate(template, context);
       summary.querySelectorAll(".item-summary").forEach(el => el.remove());
       summary.insertAdjacentHTML("beforeend", content);

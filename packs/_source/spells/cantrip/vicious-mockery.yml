@@ -55,8 +55,8 @@ system:
   properties:
     - vocal
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: save
       activation:
         type: action
@@ -118,10 +118,10 @@ folder: Z8kZlnggh1PtuF3Y
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.0.0
   createdTime: 1725037360458
   modifiedTime: 1725992721211
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!cdrYKaFi98YWaBMw'

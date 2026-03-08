@@ -62,8 +62,8 @@ system:
     - somatic
     - concentration
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: summon
       activation:
         type: action
@@ -110,28 +110,28 @@ system:
         - count: '10'
           name: ''
           _id: xLVPgOloyb3QJ0i1
-          uuid: Compendium.dnd5e.monsters.Actor.Hn8FFLEzscgT7azz
+          uuid: Compendium.nih.monsters.Actor.Hn8FFLEzscgT7azz
           level:
             min: null
             max: null
         - count: ''
           name: ''
           _id: zzh3sTByUIvUYVvE
-          uuid: Compendium.dnd5e.monsters.Actor.GxgIVRX5GbVTifiF
+          uuid: Compendium.nih.monsters.Actor.GxgIVRX5GbVTifiF
           level:
             min: null
             max: null
         - count: '3'
           name: ''
           _id: Mjp51GLFAYyA6NgW
-          uuid: Compendium.dnd5e.monsters.Actor.v99wOosUJjUgcUNF
+          uuid: Compendium.nih.monsters.Actor.v99wOosUJjUgcUNF
           level:
             min: null
             max: null
         - count: '5'
           name: ''
           _id: LkxYBiqNIyzUJxuH
-          uuid: Compendium.dnd5e.monsters.Actor.4tl0s2SnaLjkoDiI
+          uuid: Compendium.nih.monsters.Actor.4tl0s2SnaLjkoDiI
           level:
             min: null
             max: null
@@ -156,10 +156,10 @@ folder: 5auWSClKMDUIV5Ni
 _stats:
   duplicateSource: null
   coreVersion: '13.350'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037360727
   modifiedTime: 1760981610690
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!czXrVRx6XYRWsHAi'

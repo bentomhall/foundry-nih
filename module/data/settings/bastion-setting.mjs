@@ -14,13 +14,13 @@ export default class BastionSetting extends foundry.abstract.DataModel {
   static defineSchema() {
     return {
       button: new BooleanField({
-        required: true, label: "DND5E.Bastion.Button.Label", hint: "DND5E.Bastion.Button.Hint"
+        required: true, label: "NIH.Bastion.Button.Label", hint: "NIH.Bastion.Button.Hint"
       }),
       duration: new NumberField({
-        required: true, positive: true, integer: true, initial: 7, label: "DND5E.Bastion.Duration.Label"
+        required: true, positive: true, integer: true, initial: 7, label: "NIH.Bastion.Duration.Label"
       }),
       enabled: new BooleanField({
-        required: true, label: "DND5E.Bastion.Enabled.Label", hint: "DND5E.Bastion.Enabled.Hint"
+        required: true, label: "NIH.Bastion.Enabled.Label", hint: "NIH.Bastion.Enabled.Hint"
       })
     };
   }

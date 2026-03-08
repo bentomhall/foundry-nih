@@ -32,7 +32,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.pvEzGSv71zBhaolc]{Barbarian}</td>
+        <td>@UUID[Compendium.nih.classes.Item.pvEzGSv71zBhaolc]{Barbarian}</td>
 
         <td>d12</td>
 
@@ -46,7 +46,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.ILvRZGEx3aXqSVUt]{Bard}</td>
+        <td>@UUID[Compendium.nih.classes.Item.ILvRZGEx3aXqSVUt]{Bard}</td>
 
         <td>d8</td>
 
@@ -61,7 +61,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.tlwBnN8GmqJcTgub]{Cleric}</td>
+        <td>@UUID[Compendium.nih.classes.Item.tlwBnN8GmqJcTgub]{Cleric}</td>
 
         <td>d8</td>
 
@@ -75,7 +75,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.ygVYgPbJkaH0tH1N]{Druid}</td>
+        <td>@UUID[Compendium.nih.classes.Item.ygVYgPbJkaH0tH1N]{Druid}</td>
 
         <td>d8</td>
 
@@ -91,7 +91,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.ABEBgWyRhVlDUIfq]{Fighter}</td>
+        <td>@UUID[Compendium.nih.classes.Item.ABEBgWyRhVlDUIfq]{Fighter}</td>
 
         <td>d10</td>
 
@@ -105,7 +105,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.6VoZrWxhOEKGYhnq]{Monk}</td>
+        <td>@UUID[Compendium.nih.classes.Item.6VoZrWxhOEKGYhnq]{Monk}</td>
 
         <td>d8</td>
 
@@ -119,7 +119,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.gZiUvbXWLs0pOp0c]{Paladin}</td>
+        <td>@UUID[Compendium.nih.classes.Item.gZiUvbXWLs0pOp0c]{Paladin}</td>
 
         <td>d10</td>
 
@@ -133,7 +133,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.VkRQ7glQvTWWiOCS]{Ranger}</td>
+        <td>@UUID[Compendium.nih.classes.Item.VkRQ7glQvTWWiOCS]{Ranger}</td>
 
         <td>d10</td>
 
@@ -147,7 +147,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.xEb8jmA5HlNs7xTF]{Rogue}</td>
+        <td>@UUID[Compendium.nih.classes.Item.xEb8jmA5HlNs7xTF]{Rogue}</td>
 
         <td>d8</td>
 
@@ -162,7 +162,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.6T08zzKtmmpVwlXU]{Sorcerer}</td>
+        <td>@UUID[Compendium.nih.classes.Item.6T08zzKtmmpVwlXU]{Sorcerer}</td>
 
         <td>d6</td>
 
@@ -176,7 +176,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.7WJp9vhi6F6SlAFa]{Warlock}</td>
+        <td>@UUID[Compendium.nih.classes.Item.7WJp9vhi6F6SlAFa]{Warlock}</td>
 
         <td>d8</td>
 
@@ -190,7 +190,7 @@ pages:
 
         <tr>
 
-        <td>@UUID[Compendium.dnd5e.classes.Item.wZK2Q0rXB0AQo8h3]{Wizard}</td>
+        <td>@UUID[Compendium.nih.classes.Item.wZK2Q0rXB0AQo8h3]{Wizard}</td>
 
         <td>d6</td>
 
@@ -219,7 +219,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -241,7 +241,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.pvEzGSv71zBhaolc
+      item: Compendium.nih.classes.Item.pvEzGSv71zBhaolc
       description:
         value: ''
         additionalHitPoints: ''
@@ -250,7 +250,7 @@ pages:
         subclass: ''
       subclassHeader: Primal Paths
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.uGuDQX9Mz3oHNHkU
+        - Compendium.nih.subclasses.Item.uGuDQX9Mz3oHNHkU
     sort: 0
     ownership:
       default: -1
@@ -258,7 +258,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -280,7 +280,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.ILvRZGEx3aXqSVUt
+      item: Compendium.nih.classes.Item.ILvRZGEx3aXqSVUt
       description:
         value: ''
         additionalHitPoints: ''
@@ -289,7 +289,7 @@ pages:
         subclass: ''
       subclassHeader: Bard Colleges
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.MNvsEc4D2ccX7dQT
+        - Compendium.nih.subclasses.Item.MNvsEc4D2ccX7dQT
     sort: 0
     ownership:
       default: -1
@@ -297,7 +297,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -319,7 +319,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.tlwBnN8GmqJcTgub
+      item: Compendium.nih.classes.Item.tlwBnN8GmqJcTgub
       description:
         value: ''
         additionalHitPoints: ''
@@ -328,7 +328,7 @@ pages:
         subclass: ''
       subclassHeader: Divine Domains
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.H3RYLGqCiqm8BP3q
+        - Compendium.nih.subclasses.Item.H3RYLGqCiqm8BP3q
     sort: 0
     ownership:
       default: -1
@@ -336,7 +336,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -358,7 +358,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.ygVYgPbJkaH0tH1N
+      item: Compendium.nih.classes.Item.ygVYgPbJkaH0tH1N
       description:
         value: ''
         additionalHitPoints: ''
@@ -367,7 +367,7 @@ pages:
         subclass: ''
       subclassHeader: Druid Circles
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.4Ae2SPZRXEVbVs0M
+        - Compendium.nih.subclasses.Item.4Ae2SPZRXEVbVs0M
     sort: 0
     ownership:
       default: -1
@@ -375,7 +375,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -397,7 +397,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.ABEBgWyRhVlDUIfq
+      item: Compendium.nih.classes.Item.ABEBgWyRhVlDUIfq
       description:
         value: ''
         additionalHitPoints: ''
@@ -406,7 +406,7 @@ pages:
         subclass: ''
       subclassHeader: Martial Archetypes
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.sprHbe7cRg9osTzf
+        - Compendium.nih.subclasses.Item.sprHbe7cRg9osTzf
     sort: 0
     ownership:
       default: -1
@@ -414,7 +414,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -436,7 +436,7 @@ pages:
       volume: 0.5
     src: null
     system:
-      item: Compendium.dnd5e.classes.Item.6VoZrWxhOEKGYhnq
+      item: Compendium.nih.classes.Item.6VoZrWxhOEKGYhnq
       description:
         value: ''
         additionalHitPoints: ''
@@ -452,7 +452,7 @@ pages:
           upon reaching 3rd level.</p>
       subclassHeader: Monastic Traditions
       subclassItems:
-        - Compendium.dnd5e.subclasses.Item.IvlpKMXX3PmW1NY2
+        - Compendium.nih.subclasses.Item.IvlpKMXX3PmW1NY2
     sort: 0
     ownership:
       default: -1
@@ -460,7 +460,7 @@ pages:
     _stats:
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null

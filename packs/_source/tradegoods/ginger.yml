@@ -44,10 +44,10 @@ folder: null
 _stats:
   duplicateSource: null
   coreVersion: '13.350'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037332356
   modifiedTime: 1763149073873
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!VcHmykfFBurKzCO6'

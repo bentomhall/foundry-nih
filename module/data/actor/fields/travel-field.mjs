@@ -15,21 +15,21 @@ export default class TravelField extends foundry.data.fields.SchemaField {
   constructor(fields={}, { initialTime=8, initialUnits=null, ...options }={}) {
     fields = {
       pace: new StringField({
-        required: true, blank: false, initial: "normal", choices: () => CONFIG.DND5E.travelPace,
-        label: "DND5E.TRAVEL.Label"
+        required: true, blank: false, initial: "normal", choices: () => CONFIG.NIH.travelPace,
+        label: "NIH.TRAVEL.Label"
       }),
       paces: new MappingField(new FormulaField({ deterministic: true }), {
-        initialKeys: CONFIG.DND5E.travelTypes, initialKeysOnly: true
+        initialKeys: CONFIG.NIH.travelTypes, initialKeysOnly: true
       }),
       speeds: new MappingField(new FormulaField({ deterministic: true }), {
-        initialKeys: CONFIG.DND5E.travelTypes, initialKeysOnly: true
+        initialKeys: CONFIG.NIH.travelTypes, initialKeysOnly: true
       }),
       time: new NumberField({
         positive: true, integer: true, initial: initialTime,
-        label: "DND5E.TRAVEL.FIELDS.time.label", hint: "DND5E.TRAVEL.FIELDS.time.hint"
+        label: "NIH.TRAVEL.FIELDS.time.label", hint: "NIH.TRAVEL.FIELDS.time.hint"
       }),
       units: new StringField({
-        required: true, nullable: true, blank: false, initial: initialUnits, label: "DND5E.UNITS.TRAVEL.Label"
+        required: true, nullable: true, blank: false, initial: initialUnits, label: "NIH.UNITS.TRAVEL.Label"
       }),
       ...fields
     };
@@ -63,18 +63,18 @@ export default class TravelField extends foundry.data.fields.SchemaField {
       if ( pace && !speed ) travel.speeds[type] = Math.floor(pace / travel.time);
       if ( pace && paceMode ) {
         travel.prePace[type] = pace;
-        travel.paces[type] = TravelField.applyPaceMultiplier(pace, paceMode, CONFIG.DND5E.travelUnits[units]?.type);
+        travel.paces[type] = TravelField.applyPaceMultiplier(pace, paceMode, CONFIG.NIH.travelUnits[units]?.type);
       }
       if ( pace > travel.paces.max ) travel.paces.max = pace;
       if ( speed > travel.speeds.max ) travel.speeds.max = speed;
     }
 
     if ( !movement ) return;
-    for ( const [type, { travel: travelType="land" }] of Object.entries(CONFIG.DND5E.movementTypes) ) {
+    for ( const [type, { travel: travelType="land" }] of Object.entries(CONFIG.NIH.movementTypes) ) {
       if ( !movement[type] ) continue;
       const speed = TravelField.convertMovementToTravel(movement[type], movement.units, units);
       const pace = travel.paces[travelType] ||= TravelField.applyPaceMultiplier(
-        speed * travel.time, paceMode, CONFIG.DND5E.movementUnits[movement.units]?.type
+        speed * travel.time, paceMode, CONFIG.NIH.movementUnits[movement.units]?.type
       );
       travel.speeds[travelType] ||= speed;
       if ( pace > travel.paces.max ) travel.paces.max = pace;
@@ -95,10 +95,10 @@ export default class TravelField extends foundry.data.fields.SchemaField {
    * @returns {number}
    */
   static applyPaceMultiplier(value, pace, unitType) {
-    const { normal } = CONFIG.DND5E.travelPace;
-    const config = CONFIG.DND5E.travelPace[pace];
+    const { normal } = CONFIG.NIH.travelPace;
+    const config = CONFIG.NIH.travelPace[pace];
     if ( (unitType === "imperial") && (value === normal.standard) && config?.standard ) return config.standard;
-    value *= CONFIG.DND5E.travelPace[pace]?.multiplier ?? 1;
+    value *= CONFIG.NIH.travelPace[pace]?.multiplier ?? 1;
     if ( config?.round === "down" ) value = Math.floor(value);
     else if ( config?.round === "up" ) value = Math.ceil(value);
     return value;
@@ -114,8 +114,8 @@ export default class TravelField extends foundry.data.fields.SchemaField {
    * @returns {number}
    */
   static convertMovementToTravel(value, initialUnit, finalUnit) {
-    const fromConfig = CONFIG.DND5E.movementUnits[initialUnit];
-    const toConfig = CONFIG.DND5E.movementUnits[finalUnit];
+    const fromConfig = CONFIG.NIH.movementUnits[initialUnit];
+    const toConfig = CONFIG.NIH.movementUnits[finalUnit];
     if ( (fromConfig?.type === "metric") && (toConfig?.type === "metric") ) {
       value = convertLength(value, initialUnit, "m", { strict: false });
       return convertTravelSpeed(value / 2, "kph", { strict: false, to: finalUnit }).value;
@@ -134,7 +134,7 @@ export default class TravelField extends foundry.data.fields.SchemaField {
    * @returns {{ advantage: boolean, disadvantage: boolean }}
    */
   static getTravelPaceMode(pace, skill) {
-    const config = CONFIG.DND5E.skills[skill];
+    const config = CONFIG.NIH.skills[skill];
     return {
       advantage: config?.pace?.advantage?.has(pace) ?? false,
       disadvantage: config?.pace?.disadvantage?.has(pace) ?? false

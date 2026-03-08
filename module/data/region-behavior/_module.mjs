@@ -7,11 +7,11 @@ export {
 };
 
 export const config = {
-  "dnd5e.difficultTerrain": DifficultTerrainRegionBehaviorType,
-  "dnd5e.rotateArea": RotateAreaRegionBehaviorType
+  "nih.difficultTerrain": DifficultTerrainRegionBehaviorType,
+  "nih.rotateArea": RotateAreaRegionBehaviorType
 };
 
 export const icons = {
-  "dnd5e.difficultTerrain": "fa-solid fa-hill-rockslide",
-  "dnd5e.rotateArea": "fa-solid fa-arrows-spin"
+  "nih.difficultTerrain": "fa-solid fa-hill-rockslide",
+  "nih.rotateArea": "fa-solid fa-arrows-spin"
 };

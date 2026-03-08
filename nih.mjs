@@ -1,16 +1,9 @@
 /**
- * The D&D fifth edition game system for Foundry Virtual Tabletop
- * A system for playing the fifth edition of the world's most popular role-playing game.
- * Author: Atropos
- * Software License: MIT
- * Content License: https://www.dndbeyond.com/attachments/39j2li89/SRD5.1-CCBY4.0License.pdf
- *                  https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.pdf
- * Repository: https://github.com/foundryvtt/dnd5e
- * Issue Tracker: https://github.com/foundryvtt/dnd5e/issues
+ * License: MIT
  */
 
 // Import Configuration
-import DND5E from "./module/config.mjs";
+import NIH from "./module/config.mjs";
 import {
   applyLegacyRules, registerDeferredSettings, registerSystemKeybindings, registerSystemSettings
 } from "./module/settings.mjs";
@@ -35,10 +28,10 @@ import DragDrop5e from "./module/drag-drop.mjs";
 /*  Define Module Structure                     */
 /* -------------------------------------------- */
 
-globalThis.dnd5e = {
+globalThis.nih = {
   applications,
   canvas,
-  config: DND5E,
+  config: NIH,
   dataModels,
   dice,
   documents,
@@ -55,11 +48,11 @@ globalThis.dnd5e = {
 /* -------------------------------------------- */
 
 Hooks.once("init", function() {
-  globalThis.dnd5e = game.dnd5e = Object.assign(game.system, globalThis.dnd5e);
-  utils.log(`Initializing the D&D Fifth Game System - Version ${dnd5e.version}\n${DND5E.ASCII}`);
+  globalThis.nih = game.nih = Object.assign(game.system, globalThis.nih);
+  utils.log(`Initializing the D&D Fifth Game System - Version ${nih.version}\n${NIH.ASCII}`);
 
   // Record Configuration Values
-  CONFIG.DND5E = DND5E;
+  CONFIG.NIH = NIH;
   CONFIG.ActiveEffect.documentClass = documents.ActiveEffect5e;
   CONFIG.ActiveEffect.legacyTransferral = false;
   CONFIG.Actor.collection = dataModels.collection.Actors5e;
@@ -80,7 +73,7 @@ Hooks.once("init", function() {
   CONFIG.Token.movement.TerrainData = dataModels.TerrainData5e;
   CONFIG.User.documentClass = documents.User5e;
   CONFIG.time.roundTime = 6;
-  Roll.TOOLTIP_TEMPLATE = "systems/dnd5e/templates/chat/roll-breakdown.hbs";
+  Roll.TOOLTIP_TEMPLATE = "systems/nih/templates/chat/roll-breakdown.hbs";
   CONFIG.Dice.BasicRoll = dice.BasicRoll;
   CONFIG.Dice.DamageRoll = dice.DamageRoll;
   CONFIG.Dice.D20Die = dice.D20Die;
@@ -97,23 +90,23 @@ Hooks.once("init", function() {
   registerSystemKeybindings();
 
   // Configure module art
-  game.dnd5e.moduleArt = new ModuleArt();
+  game.nih.moduleArt = new ModuleArt();
 
   // Configure bastions
-  game.dnd5e.bastion = new documents.Bastion();
+  game.nih.bastion = new documents.Bastion();
 
   // Configure tooltips
-  game.dnd5e.tooltips = new Tooltips5e();
+  game.nih.tooltips = new Tooltips5e();
 
   // Remove honor & sanity from configuration if they aren't enabled
-  if ( !game.settings.get("dnd5e", "honorScore") ) delete DND5E.abilities.hon;
-  if ( !game.settings.get("dnd5e", "sanityScore") ) delete DND5E.abilities.san;
+  if ( !game.settings.get("nih", "honorScore") ) delete NIH.abilities.hon;
+  if ( !game.settings.get("nih", "sanityScore") ) delete NIH.abilities.san;
 
   // Legacy rules.
-  if ( game.settings.get("dnd5e", "rulesVersion") === "legacy" ) applyLegacyRules();
+  if ( game.settings.get("nih", "rulesVersion") === "legacy" ) applyLegacyRules();
 
   // Register system
-  DND5E.SPELL_LISTS.forEach(uuid => dnd5e.registry.spellLists.register(uuid));
+  NIH.SPELL_LISTS.forEach(uuid => nih.registry.spellLists.register(uuid));
 
   // Register module data from manifests
   registerModuleData();
@@ -137,87 +130,87 @@ Hooks.once("init", function() {
   // Register sheet application classes
   const DocumentSheetConfig = foundry.applications.apps.DocumentSheetConfig;
   DocumentSheetConfig.unregisterSheet(Actor, "core", foundry.appv1.sheets.ActorSheet);
-  DocumentSheetConfig.registerSheet(Actor, "dnd5e", applications.actor.CharacterActorSheet, {
+  DocumentSheetConfig.registerSheet(Actor, "nih", applications.actor.CharacterActorSheet, {
     types: ["character"],
     makeDefault: true,
-    label: "DND5E.SheetClass.Character"
+    label: "NIH.SheetClass.Character"
   });
-  DocumentSheetConfig.registerSheet(Actor, "dnd5e", applications.actor.NPCActorSheet, {
+  DocumentSheetConfig.registerSheet(Actor, "nih", applications.actor.NPCActorSheet, {
     types: ["npc"],
     makeDefault: true,
-    label: "DND5E.SheetClass.NPC"
+    label: "NIH.SheetClass.NPC"
   });
-  DocumentSheetConfig.registerSheet(Actor, "dnd5e", applications.actor.VehicleActorSheet, {
+  DocumentSheetConfig.registerSheet(Actor, "nih", applications.actor.VehicleActorSheet, {
     types: ["vehicle"],
     makeDefault: true,
-    label: "DND5E.SheetClass.Vehicle"
+    label: "NIH.SheetClass.Vehicle"
   });
-  DocumentSheetConfig.registerSheet(Actor, "dnd5e", applications.actor.GroupActorSheet, {
+  DocumentSheetConfig.registerSheet(Actor, "nih", applications.actor.GroupActorSheet, {
     types: ["group"],
     makeDefault: true,
-    label: "DND5E.SheetClass.Group"
+    label: "NIH.SheetClass.Group"
   });
-  DocumentSheetConfig.registerSheet(Actor, "dnd5e", applications.actor.EncounterActorSheet, {
+  DocumentSheetConfig.registerSheet(Actor, "nih", applications.actor.EncounterActorSheet, {
     types: ["encounter"],
     makeDefault: true,
-    label: "DND5E.SheetClass.Encounter"
+    label: "NIH.SheetClass.Encounter"
   });
 
   DocumentSheetConfig.unregisterSheet(Item, "core", foundry.appv1.sheets.ItemSheet);
-  DocumentSheetConfig.registerSheet(Item, "dnd5e", applications.item.ItemSheet5e, {
+  DocumentSheetConfig.registerSheet(Item, "nih", applications.item.ItemSheet5e, {
     makeDefault: true,
-    label: "DND5E.SheetClass.Item"
+    label: "NIH.SheetClass.Item"
   });
-  DocumentSheetConfig.unregisterSheet(Item, "dnd5e", applications.item.ItemSheet5e, { types: ["container"] });
-  DocumentSheetConfig.registerSheet(Item, "dnd5e", applications.item.ContainerSheet, {
+  DocumentSheetConfig.unregisterSheet(Item, "nih", applications.item.ItemSheet5e, { types: ["container"] });
+  DocumentSheetConfig.registerSheet(Item, "nih", applications.item.ContainerSheet, {
     makeDefault: true,
     types: ["container"],
-    label: "DND5E.SheetClass.Container"
+    label: "NIH.SheetClass.Container"
   });
 
-  DocumentSheetConfig.registerSheet(JournalEntry, "dnd5e", applications.journal.JournalEntrySheet5e, {
+  DocumentSheetConfig.registerSheet(JournalEntry, "nih", applications.journal.JournalEntrySheet5e, {
     makeDefault: true,
-    label: "DND5E.SheetClass.JournalEntry"
+    label: "NIH.SheetClass.JournalEntry"
   });
-  DocumentSheetConfig.registerSheet(JournalEntry, "dnd5e", applications.journal.JournalSheet5e, {
+  DocumentSheetConfig.registerSheet(JournalEntry, "nih", applications.journal.JournalSheet5e, {
     makeDefault: false,
     canConfigure: false,
     canBeDefault: false,
-    label: "DND5E.SheetClass.JournalEntrySheetLegacy"
+    label: "NIH.SheetClass.JournalEntrySheetLegacy"
   });
-  DocumentSheetConfig.registerSheet(JournalEntryPage, "dnd5e", applications.journal.JournalClassPageSheet, {
-    label: "DND5E.SheetClass.ClassSummary",
+  DocumentSheetConfig.registerSheet(JournalEntryPage, "nih", applications.journal.JournalClassPageSheet, {
+    label: "NIH.SheetClass.ClassSummary",
     types: ["class", "subclass"]
   });
-  DocumentSheetConfig.registerSheet(JournalEntryPage, "dnd5e", applications.journal.JournalMapLocationPageSheet, {
-    label: "DND5E.SheetClass.MapLocation",
+  DocumentSheetConfig.registerSheet(JournalEntryPage, "nih", applications.journal.JournalMapLocationPageSheet, {
+    label: "NIH.SheetClass.MapLocation",
     types: ["map"]
   });
-  DocumentSheetConfig.registerSheet(JournalEntryPage, "dnd5e", applications.journal.JournalRulePageSheet, {
-    label: "DND5E.SheetClass.Rule",
+  DocumentSheetConfig.registerSheet(JournalEntryPage, "nih", applications.journal.JournalRulePageSheet, {
+    label: "NIH.SheetClass.Rule",
     types: ["rule"]
   });
-  DocumentSheetConfig.registerSheet(JournalEntryPage, "dnd5e", applications.journal.JournalSpellListPageSheet, {
-    label: "DND5E.SheetClass.SpellList",
+  DocumentSheetConfig.registerSheet(JournalEntryPage, "nih", applications.journal.JournalSpellListPageSheet, {
+    label: "NIH.SheetClass.SpellList",
     types: ["spells"]
   });
 
   DocumentSheetConfig.unregisterSheet(RegionBehavior, "core", foundry.applications.sheets.RegionBehaviorConfig, {
-    types: ["dnd5e.difficultTerrain", "dnd5e.rotateArea"]
+    types: ["nih.difficultTerrain", "nih.rotateArea"]
   });
-  DocumentSheetConfig.registerSheet(RegionBehavior, "dnd5e", applications.regionBehavior.DifficultTerrainConfig, {
-    label: "DND5E.SheetClass.DifficultTerrain",
-    types: ["dnd5e.difficultTerrain"]
+  DocumentSheetConfig.registerSheet(RegionBehavior, "nih", applications.regionBehavior.DifficultTerrainConfig, {
+    label: "NIH.SheetClass.DifficultTerrain",
+    types: ["nih.difficultTerrain"]
   });
-  DocumentSheetConfig.registerSheet(RegionBehavior, "dnd5e", applications.regionBehavior.RotateAreaConfig, {
-    label: "DND5E.SheetClass.RotateArea",
-    types: ["dnd5e.rotateArea"]
+  DocumentSheetConfig.registerSheet(RegionBehavior, "nih", applications.regionBehavior.RotateAreaConfig, {
+    label: "NIH.SheetClass.RotateArea",
+    types: ["nih.rotateArea"]
   });
 
   CONFIG.Token.prototypeSheetClass = applications.PrototypeTokenConfig5e;
   DocumentSheetConfig.unregisterSheet(TokenDocument, "core", foundry.applications.sheets.TokenConfig);
-  DocumentSheetConfig.registerSheet(TokenDocument, "dnd5e", applications.TokenConfig5e, {
-    label: "DND5E.SheetClass.Token"
+  DocumentSheetConfig.registerSheet(TokenDocument, "nih", applications.TokenConfig5e, {
+    label: "NIH.SheetClass.Token"
   });
 
   // Preload Handlebars helpers & partials
@@ -254,14 +247,14 @@ function _configureCalendar() {
   /**
    * A hook event that fires during the `init` step to give modules a chance to customize the calendar
    * configuration before loading the world calendar.
-   * @function dnd5e.preSetupCalendar
+   * @function nih.preSetupCalendar
    * @memberof hookEvents
    * @returns               Explicitly return `false` to prevent system from setting up the calendar.
    */
-  if ( Hooks.call("dnd5e.setupCalendar") === false ) return;
+  if ( Hooks.call("nih.setupCalendar") === false ) return;
 
-  const calendar = game.settings.get("dnd5e", "calendar");
-  const calendarConfig = CONFIG.DND5E.calendar.calendars.find(c => c.value === calendar);
+  const calendar = game.settings.get("nih", "calendar");
+  const calendarConfig = CONFIG.NIH.calendar.calendars.find(c => c.value === calendar);
   if ( calendarConfig ) {
     CONFIG.time.worldCalendarConfig = calendarConfig.config;
     if ( calendarConfig.class ) CONFIG.time.worldCalendarClass = calendarConfig.class;
@@ -278,8 +271,8 @@ function _configureTrackableAttributes() {
   const common = {
     bar: [],
     value: [
-      ...Object.keys(DND5E.abilities).map(ability => `abilities.${ability}.value`),
-      ...Object.keys(DND5E.movementTypes).map(movement => `attributes.movement.${movement}`),
+      ...Object.keys(NIH.abilities).map(ability => `abilities.${ability}.value`),
+      ...Object.keys(NIH.movementTypes).map(movement => `attributes.movement.${movement}`),
       "attributes.ac.value", "attributes.init.total"
     ]
   };
@@ -292,8 +285,8 @@ function _configureTrackableAttributes() {
     ],
     value: [
       ...common.value,
-      ...Object.keys(DND5E.skills).map(skill => `skills.${skill}.passive`),
-      ...Object.keys(DND5E.senses).map(sense => `attributes.senses.${sense}`),
+      ...Object.keys(NIH.skills).map(skill => `skills.${skill}.passive`),
+      ...Object.keys(NIH.senses).map(sense => `attributes.senses.${sense}`),
       "attributes.hp.temp", "attributes.spell.attack", "attributes.spell.dc"
     ]
   };
@@ -327,8 +320,8 @@ function _configureTrackableAttributes() {
  * @internal
  */
 function _trackedSpellAttributes(suffix="") {
-  return Object.entries(DND5E.spellcasting).reduce((acc, [k, v]) => {
-    if ( v.slots ) Array.fromRange(Object.keys(DND5E.spellLevels).length - 1, 1).forEach(l => {
+  return Object.entries(NIH.spellcasting).reduce((acc, [k, v]) => {
+    if ( v.slots ) Array.fromRange(Object.keys(NIH.spellLevels).length - 1, 1).forEach(l => {
       acc.add(`spells.${v.getSpellSlotKey(l)}${suffix}`);
     });
     return acc;
@@ -342,14 +335,14 @@ function _trackedSpellAttributes(suffix="") {
  * @internal
  */
 function _configureConsumableAttributes() {
-  CONFIG.DND5E.consumableResources = [
-    ...Object.keys(DND5E.abilities).map(ability => `abilities.${ability}.value`),
+  CONFIG.NIH.consumableResources = [
+    ...Object.keys(NIH.abilities).map(ability => `abilities.${ability}.value`),
     "attributes.ac.flat",
     "attributes.hp.value",
     "attributes.exhaustion",
-    ...Object.keys(DND5E.senses).map(sense => `attributes.senses.${sense}`),
-    ...Object.keys(DND5E.movementTypes).map(type => `attributes.movement.${type}`),
-    ...Object.keys(DND5E.currencies).map(denom => `currency.${denom}`),
+    ...Object.keys(NIH.senses).map(sense => `attributes.senses.${sense}`),
+    ...Object.keys(NIH.movementTypes).map(type => `attributes.movement.${type}`),
+    ...Object.keys(NIH.currencies).map(denom => `currency.${denom}`),
     "details.xp.value",
     "resources.primary.value", "resources.secondary.value", "resources.tertiary.value",
     "resources.legact.value", "resources.legres.value", "attributes.actions.value",
@@ -367,20 +360,20 @@ function _configureFonts() {
     Roboto: {
       editor: true,
       fonts: [
-        { urls: ["systems/dnd5e/fonts/roboto/Roboto-Regular.woff2"] },
-        { urls: ["systems/dnd5e/fonts/roboto/Roboto-Bold.woff2"], weight: "bold" },
-        { urls: ["systems/dnd5e/fonts/roboto/Roboto-Italic.woff2"], style: "italic" },
-        { urls: ["systems/dnd5e/fonts/roboto/Roboto-BoldItalic.woff2"], weight: "bold", style: "italic" }
+        { urls: ["systems/nih/fonts/roboto/Roboto-Regular.woff2"] },
+        { urls: ["systems/nih/fonts/roboto/Roboto-Bold.woff2"], weight: "bold" },
+        { urls: ["systems/nih/fonts/roboto/Roboto-Italic.woff2"], style: "italic" },
+        { urls: ["systems/nih/fonts/roboto/Roboto-BoldItalic.woff2"], weight: "bold", style: "italic" }
       ]
     },
     "Roboto Condensed": {
       editor: true,
       fonts: [
-        { urls: ["systems/dnd5e/fonts/roboto-condensed/RobotoCondensed-Regular.woff2"] },
-        { urls: ["systems/dnd5e/fonts/roboto-condensed/RobotoCondensed-Bold.woff2"], weight: "bold" },
-        { urls: ["systems/dnd5e/fonts/roboto-condensed/RobotoCondensed-Italic.woff2"], style: "italic" },
+        { urls: ["systems/nih/fonts/roboto-condensed/RobotoCondensed-Regular.woff2"] },
+        { urls: ["systems/nih/fonts/roboto-condensed/RobotoCondensed-Bold.woff2"], weight: "bold" },
+        { urls: ["systems/nih/fonts/roboto-condensed/RobotoCondensed-Italic.woff2"], style: "italic" },
         {
-          urls: ["systems/dnd5e/fonts/roboto-condensed/RobotoCondensed-BoldItalic.woff2"], weight: "bold",
+          urls: ["systems/nih/fonts/roboto-condensed/RobotoCondensed-BoldItalic.woff2"], weight: "bold",
           style: "italic"
         }
       ]
@@ -388,8 +381,8 @@ function _configureFonts() {
     "Roboto Slab": {
       editor: true,
       fonts: [
-        { urls: ["systems/dnd5e/fonts/roboto-slab/RobotoSlab-Regular.ttf"] },
-        { urls: ["systems/dnd5e/fonts/roboto-slab/RobotoSlab-Bold.ttf"], weight: "bold" }
+        { urls: ["systems/nih/fonts/roboto-slab/RobotoSlab-Regular.ttf"] },
+        { urls: ["systems/nih/fonts/roboto-slab/RobotoSlab-Bold.ttf"], weight: "bold" }
       ]
     }
   });
@@ -403,21 +396,21 @@ function _configureFonts() {
 function _configureStatusEffects() {
   const addEffect = (effects, {special, ...data}) => {
     data = foundry.utils.deepClone(data);
-    data._id = utils.staticID(`dnd5e${data.id}`);
+    data._id = utils.staticID(`nih${data.id}`);
     data.order ??= Infinity;
     effects.push(data);
     if ( special ) CONFIG.specialStatusEffects[special] = data.id;
-    if ( data.neverBlockMovement ) DND5E.neverBlockStatuses.add(data.id);
+    if ( data.neverBlockMovement ) NIH.neverBlockStatuses.add(data.id);
   };
-  CONFIG.statusEffects = Object.entries(CONFIG.DND5E.statusEffects).reduce((arr, [id, data]) => {
+  CONFIG.statusEffects = Object.entries(CONFIG.NIH.statusEffects).reduce((arr, [id, data]) => {
     const original = CONFIG.statusEffects.find(s => s.id === id);
     addEffect(arr, foundry.utils.mergeObject(original ?? {}, { id, ...data }, { inplace: false }));
     return arr;
   }, []);
-  for ( const [id, data] of Object.entries(CONFIG.DND5E.conditionTypes) ) {
+  for ( const [id, data] of Object.entries(CONFIG.NIH.conditionTypes) ) {
     addEffect(CONFIG.statusEffects, { id, ...data });
   }
-  for ( const [id, data] of Object.entries(CONFIG.DND5E.encumbrance.effects) ) {
+  for ( const [id, data] of Object.entries(CONFIG.NIH.encumbrance.effects) ) {
     addEffect(CONFIG.statusEffects, { id, ...data, hud: false });
   }
 }
@@ -434,10 +427,10 @@ Hooks.once("setup", function() {
   _configureTrackableAttributes();
   _configureConsumableAttributes();
 
-  CONFIG.DND5E.trackableAttributes = expandAttributeList(CONFIG.DND5E.trackableAttributes);
-  game.dnd5e.moduleArt.registerModuleArt();
+  CONFIG.NIH.trackableAttributes = expandAttributeList(CONFIG.NIH.trackableAttributes);
+  game.nih.moduleArt.registerModuleArt();
   Tooltips5e.activateListeners();
-  game.dnd5e.tooltips.observe();
+  game.nih.tooltips.observe();
 
   // Register settings after modules have had a chance to initialize
   registerDeferredSettings();
@@ -447,13 +440,13 @@ Hooks.once("setup", function() {
 
   // Create CSS for currencies
   const style = document.createElement("style");
-  const currencies = append => Object.entries(CONFIG.DND5E.currencies)
+  const currencies = append => Object.entries(CONFIG.NIH.currencies)
     .map(([key, { icon }]) => `&.${key}${append ?? ""} { background-image: url("${icon}"); }`);
   style.innerHTML = `
-    :is(.dnd5e2, .dnd5e2-journal) :is(i, span).currency {
+    :is(.nih2, .nih2-journal) :is(i, span).currency {
       ${currencies().join("\n")}
     }
-    .dnd5e2 .form-group label.label-icon.currency {
+    .nih2 .form-group label.label-icon.currency {
       ${currencies("::after").join("\n")}
     }
   `;
@@ -483,42 +476,42 @@ Hooks.once("i18nInit", () => {
   // Set up status effects. Explicitly performed after init and before prelocalization.
   _configureStatusEffects();
 
-  if ( game.settings.get("dnd5e", "rulesVersion") === "legacy" ) {
+  if ( game.settings.get("nih", "rulesVersion") === "legacy" ) {
     const { translations, _fallback } = game.i18n;
     foundry.utils.mergeObject(translations, {
       "TYPES.Item": {
         race: game.i18n.localize("TYPES.Item.raceLegacy"),
         racePl: game.i18n.localize("TYPES.Item.raceLegacyPl")
       },
-      DND5E: {
-        "Feature.Class.ArtificerPlan": game.i18n.localize("DND5E.Feature.Class.ArtificerInfusion"),
-        "Feature.Species": game.i18n.localize("DND5E.Feature.SpeciesLegacy"),
-        FlagsAlertHint: game.i18n.localize("DND5E.FlagsAlertHintLegacy"),
-        ItemSpeciesDetails: game.i18n.localize("DND5E.ItemSpeciesDetailsLegacy"),
-        "Language.Category.Rare": game.i18n.localize("DND5E.Language.Category.Exotic"),
-        "MOVEMENT.Type.Speed": game.i18n.localize("DND5E.MOVEMENT.Type.Walk"),
-        RacialTraits: game.i18n.localize("DND5E.RacialTraitsLegacy"),
-        "REST.Long.Hint.Normal": game.i18n.localize("DND5E.REST.Long.Hint.NormalLegacy"),
-        "REST.Long.Hint.Group": game.i18n.localize("DND5E.REST.Long.Hint.GroupLegacy"),
-        "Species.Add": game.i18n.localize("DND5E.Species.AddLegacy"),
-        "Species.Features": game.i18n.localize("DND5E.Species.FeaturesLegacy"),
+      NIH: {
+        "Feature.Class.ArtificerPlan": game.i18n.localize("NIH.Feature.Class.ArtificerInfusion"),
+        "Feature.Species": game.i18n.localize("NIH.Feature.SpeciesLegacy"),
+        FlagsAlertHint: game.i18n.localize("NIH.FlagsAlertHintLegacy"),
+        ItemSpeciesDetails: game.i18n.localize("NIH.ItemSpeciesDetailsLegacy"),
+        "Language.Category.Rare": game.i18n.localize("NIH.Language.Category.Exotic"),
+        "MOVEMENT.Type.Speed": game.i18n.localize("NIH.MOVEMENT.Type.Walk"),
+        RacialTraits: game.i18n.localize("NIH.RacialTraitsLegacy"),
+        "REST.Long.Hint.Normal": game.i18n.localize("NIH.REST.Long.Hint.NormalLegacy"),
+        "REST.Long.Hint.Group": game.i18n.localize("NIH.REST.Long.Hint.GroupLegacy"),
+        "Species.Add": game.i18n.localize("NIH.Species.AddLegacy"),
+        "Species.Features": game.i18n.localize("NIH.Species.FeaturesLegacy"),
         "TARGET.Type.Emanation": foundry.utils.mergeObject(
-          _fallback.DND5E?.TARGET?.Type?.Radius ?? {},
-          translations.DND5E?.TARGET?.Type?.Radius ?? {},
+          _fallback.NIH?.TARGET?.Type?.Radius ?? {},
+          translations.NIH?.TARGET?.Type?.Radius ?? {},
           { inplace: false }
         ),
         TraitArmorPlural: foundry.utils.mergeObject(
-          _fallback.DND5E?.TraitArmorLegacyPlural ?? {},
-          translations.DND5E?.TraitArmorLegacyPlural ?? {},
+          _fallback.NIH?.TraitArmorLegacyPlural ?? {},
+          translations.NIH?.TraitArmorLegacyPlural ?? {},
           { inplace: false }
         ),
-        TraitArmorProf: game.i18n.localize("DND5E.TraitArmorLegacyProf")
+        TraitArmorProf: game.i18n.localize("NIH.TraitArmorLegacyProf")
       }
     });
   }
-  utils.performPreLocalization(CONFIG.DND5E);
-  Object.values(CONFIG.DND5E.activityTypes).forEach(c => c.documentClass.localize());
-  Object.values(CONFIG.DND5E.advancementTypes).forEach(c => c.documentClass.localize());
+  utils.performPreLocalization(CONFIG.NIH);
+  Object.values(CONFIG.NIH.activityTypes).forEach(c => c.documentClass.localize());
+  Object.values(CONFIG.NIH.advancementTypes).forEach(c => c.documentClass.localize());
   foundry.helpers.Localization.localizeDataModel(dataModels.settings.CalendarConfigSetting);
   foundry.helpers.Localization.localizeDataModel(dataModels.settings.CalendarPreferencesSetting);
   foundry.helpers.Localization.localizeDataModel(dataModels.settings.TransformationSetting);
@@ -547,31 +540,31 @@ Hooks.once("ready", function() {
   game.actors.forEach(a => a.sourcedItems._redirectKeys());
 
   // Register items by type
-  dnd5e.registry.classes.initialize();
-  dnd5e.registry.subclasses.initialize();
+  nih.registry.classes.initialize();
+  nih.registry.subclasses.initialize();
 
   // Chat message listeners
   documents.ChatMessage5e.activateListeners();
 
   // Bastion initialization
-  game.dnd5e.bastion.initializeUI();
+  game.nih.bastion.initializeUI();
 
   // Display the calendar HUD
-  if ( CONFIG.DND5E.calendar.application ) {
-    dnd5e.ui.calendar = new CONFIG.DND5E.calendar.application();
-    dnd5e.ui.calendar.render({ force: true });
+  if ( CONFIG.NIH.calendar.application ) {
+    nih.ui.calendar = new CONFIG.NIH.calendar.application();
+    nih.ui.calendar.render({ force: true });
   }
 
   // Determine whether a system migration is required and feasible
   if ( !game.user.isGM ) return;
-  const cv = game.settings.get("dnd5e", "systemMigrationVersion") || game.world.flags.dnd5e?.version;
+  const cv = game.settings.get("nih", "systemMigrationVersion") || game.world.flags.nih?.version;
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
-  if ( !cv && totalDocuments === 0 ) return game.settings.set("dnd5e", "systemMigrationVersion", game.system.version);
+  if ( !cv && totalDocuments === 0 ) return game.settings.set("nih", "systemMigrationVersion", game.system.version);
   if ( cv && !foundry.utils.isNewerVersion(game.system.flags.needsMigrationVersion, cv) ) return;
 
   // Compendium pack folder migration.
   if ( foundry.utils.isNewerVersion("3.0.0", cv) ) {
-    migrations.reparentCompendiums("DnD5e SRD Content", "D&D SRD Content");
+    migrations.reparentCompendiums("NIH SRD Content", "D&D SRD Content");
   }
 
   // Perform the migration
@@ -587,13 +580,13 @@ Hooks.once("ready", function() {
 
 Hooks.on("renderGamePause", (app, html) => {
   if ( Hooks.events.renderGamePause.length > 1 ) return;
-  html.classList.add("dnd5e2");
+  html.classList.add("nih2");
   const container = document.createElement("div");
   container.classList.add("flexcol");
   container.append(...html.children);
   html.append(container);
   const img = html.querySelector("img");
-  img.src = "systems/dnd5e/ui/official/ampersand.svg";
+  img.src = "systems/nih/ui/official/ampersand.svg";
   img.className = "";
 });
 
@@ -643,17 +636,17 @@ Hooks.on("renderCombatTracker", (app, html, data) => app.renderGroups(html));
 Hooks.on("preCreateScene", (doc, createData, options, userId) => {
   // Set default grid units based on metric length setting
   const units = utils.defaultUnits("length");
-  if ( (units !== dnd5e.grid.units) && !foundry.utils.getProperty(createData, "grid.distance")
+  if ( (units !== nih.grid.units) && !foundry.utils.getProperty(createData, "grid.distance")
     && !foundry.utils.getProperty(createData, "grid.units") ) {
     doc.updateSource({
-      grid: { distance: utils.convertLength(dnd5e.grid.distance, dnd5e.grid.units, units, { strict: false }), units }
+      grid: { distance: utils.convertLength(nih.grid.distance, nih.grid.units, units, { strict: false }), units }
     });
   }
 });
 
 Hooks.on("updateWorldTime", (...args) => {
   dataModels.calendar.CalendarData5e.onUpdateWorldTime(...args);
-  CONFIG.DND5E.calendar.application?.onUpdateWorldTime?.(...args);
+  CONFIG.NIH.calendar.application?.onUpdateWorldTime?.(...args);
 });
 
 /* -------------------------------------------- */
@@ -671,5 +664,5 @@ export {
   migrations,
   registry,
   utils,
-  DND5E
+  NIH
 };

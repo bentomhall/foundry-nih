@@ -24,7 +24,7 @@ export default class SubclassData extends ItemDataModel.mixin(AdvancementTemplat
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.SOURCE"];
+  static LOCALIZATION_PREFIXES = ["NIH.SOURCE"];
 
   /* -------------------------------------------- */
 
@@ -32,7 +32,7 @@ export default class SubclassData extends ItemDataModel.mixin(AdvancementTemplat
   static defineSchema() {
     return this.mergeSchema(super.defineSchema(), {
       classIdentifier: new IdentifierField({
-        required: true, label: "DND5E.ClassIdentifier", hint: "DND5E.ClassIdentifierHint"
+        required: true, label: "NIH.ClassIdentifier", hint: "NIH.ClassIdentifierHint"
       }),
       spellcasting: new SpellcastingField()
     });
@@ -47,12 +47,12 @@ export default class SubclassData extends ItemDataModel.mixin(AdvancementTemplat
         label: "TYPES.Item.class",
         type: "set",
         config: {
-          choices: dnd5e.registry.classes.choices,
+          choices: nih.registry.classes.choices,
           keyPath: "system.classIdentifier"
         }
       }],
       ["hasSpellcasting", {
-        label: "DND5E.CompendiumBrowser.Filters.HasSpellcasting",
+        label: "NIH.CompendiumBrowser.Filters.HasSpellcasting",
         type: "boolean",
         createFilter: (filters, value, def) => {
           if ( value === 0 ) return;
@@ -95,7 +95,7 @@ export default class SubclassData extends ItemDataModel.mixin(AdvancementTemplat
   async getSheetData(context) {
     context.subtitles = [{ label: game.i18n.localize(CONFIG.Item.typeLabels.subclass) }];
     context.singleDescription = true;
-    context.parts = ["dnd5e.details-subclass", "dnd5e.details-spellcasting"];
+    context.parts = ["nih.details-subclass", "nih.details-spellcasting"];
   }
 
   /* -------------------------------------------- */

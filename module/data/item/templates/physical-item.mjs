@@ -18,28 +18,28 @@ export default class PhysicalItemTemplate extends SystemDataModel {
   static defineSchema() {
     return {
       container: new ForeignDocumentField(foundry.documents.BaseItem, {
-        idOnly: true, label: "DND5E.Container"
+        idOnly: true, label: "NIH.Container"
       }),
       quantity: new NumberField({
-        required: true, nullable: false, integer: true, initial: 1, min: 0, label: "DND5E.Quantity"
+        required: true, nullable: false, integer: true, initial: 1, min: 0, label: "NIH.Quantity"
       }),
       weight: new SchemaField({
         value: new NumberField({
-          required: true, nullable: false, initial: 0, min: 0, label: "DND5E.Weight"
+          required: true, nullable: false, initial: 0, min: 0, label: "NIH.Weight"
         }),
         units: new StringField({
-          required: true, blank: false, label: "DND5E.UNITS.WEIGHT.Label", initial: () => defaultUnits("weight")
+          required: true, blank: false, label: "NIH.UNITS.WEIGHT.Label", initial: () => defaultUnits("weight")
         })
-      }, { label: "DND5E.Weight" }),
+      }, { label: "NIH.Weight" }),
       price: new SchemaField({
         value: new NumberField({
-          required: true, nullable: false, initial: 0, min: 0, label: "DND5E.Price"
+          required: true, nullable: false, initial: 0, min: 0, label: "NIH.Price"
         }),
         denomination: new StringField({
-          required: true, blank: false, initial: "gp", label: "DND5E.Currency"
+          required: true, blank: false, initial: "gp", label: "NIH.Currency"
         })
-      }, { label: "DND5E.Price" }),
-      rarity: new StringField({ required: true, blank: true, label: "DND5E.Rarity" })
+      }, { label: "NIH.Price" }),
+      rarity: new StringField({ required: true, blank: true, label: "NIH.Rarity" })
     };
   }
 
@@ -60,18 +60,18 @@ export default class PhysicalItemTemplate extends SystemDataModel {
   static get compendiumBrowserPhysicalItemFilters() {
     return [
       ["price", {
-        label: "DND5E.Price",
+        label: "NIH.Price",
         type: "range",
         config: {
           keyPath: "system.price.value"
         }
       }],
       ["rarity", {
-        label: "DND5E.Rarity",
+        label: "NIH.Rarity",
         type: "set",
         config: {
-          blank: game.i18n.localize("DND5E.ItemRarityMundane").capitalize(),
-          choices: Object.entries(CONFIG.DND5E.itemRarity).reduce((obj, [key, label]) => {
+          blank: game.i18n.localize("NIH.ItemRarityMundane").capitalize(),
+          choices: Object.entries(CONFIG.NIH.itemRarity).reduce((obj, [key, label]) => {
             obj[key] = { label: label.capitalize() };
             return obj;
           }, {}),
@@ -91,8 +91,8 @@ export default class PhysicalItemTemplate extends SystemDataModel {
    */
   get priceLabel() {
     const { value, denomination } = this.price;
-    const hasPrice = value && (denomination in CONFIG.DND5E.currencies);
-    return hasPrice ? `${value} ${CONFIG.DND5E.currencies[denomination].label}` : null;
+    const hasPrice = value && (denomination in CONFIG.NIH.currencies);
+    return hasPrice ? `${value} ${CONFIG.NIH.currencies[denomination].label}` : null;
   }
 
   /* -------------------------------------------- */
@@ -113,12 +113,12 @@ export default class PhysicalItemTemplate extends SystemDataModel {
    */
   get physicalItemSheetFields() {
     return [{
-      label: CONFIG.DND5E.itemRarity[this.rarity],
+      label: CONFIG.NIH.itemRarity[this.rarity],
       value: this._source.rarity,
       requiresIdentification: true,
       field: this.schema.getField("rarity"),
-      choices: CONFIG.DND5E.itemRarity,
-      blank: "DND5E.Rarity",
+      choices: CONFIG.NIH.itemRarity,
+      blank: "NIH.Rarity",
       classes: "item-rarity"
     }];
   }
@@ -156,9 +156,9 @@ export default class PhysicalItemTemplate extends SystemDataModel {
    * @param {object} source  The candidate source data from which the model will be constructed.
    */
   static #migrateRarity(source) {
-    if ( !("rarity" in source) || CONFIG.DND5E.itemRarity[source.rarity] ) return;
-    source.rarity = Object.keys(CONFIG.DND5E.itemRarity).find(key =>
-      CONFIG.DND5E.itemRarity[key].toLowerCase() === source.rarity.toLowerCase()
+    if ( !("rarity" in source) || CONFIG.NIH.itemRarity[source.rarity] ) return;
+    source.rarity = Object.keys(CONFIG.NIH.itemRarity).find(key =>
+      CONFIG.NIH.itemRarity[key].toLowerCase() === source.rarity.toLowerCase()
     ) ?? "";
   }
 
@@ -184,10 +184,10 @@ export default class PhysicalItemTemplate extends SystemDataModel {
    * Prepare physical item properties.
    */
   preparePhysicalData() {
-    if ( !("gp" in CONFIG.DND5E.currencies) ) return;
+    if ( !("gp" in CONFIG.NIH.currencies) ) return;
     const { value, denomination } = this.price;
-    const { conversion } = CONFIG.DND5E.currencies[denomination] ?? {};
-    const { gp } = CONFIG.DND5E.currencies;
+    const { conversion } = CONFIG.NIH.currencies[denomination] ?? {};
+    const { gp } = CONFIG.NIH.currencies;
     if ( conversion ) {
       const multiplier = gp.conversion / conversion;
       this.price.valueInGP = Math.floor(value * multiplier);

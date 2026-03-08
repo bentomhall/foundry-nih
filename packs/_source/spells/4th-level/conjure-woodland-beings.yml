@@ -50,8 +50,8 @@ system:
     - material
     - concentration
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: summon
       activation:
         type: action
@@ -156,10 +156,10 @@ folder: 5auWSClKMDUIV5Ni
 _stats:
   duplicateSource: null
   coreVersion: '13.350'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037360953
   modifiedTime: 1760981549792
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!dEfSELiY1eO3cpX9'

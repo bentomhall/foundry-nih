@@ -49,8 +49,8 @@ system:
     - somatic
     - material
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: save
       activation:
         type: action
@@ -112,10 +112,10 @@ folder: bG9QTayc46rfNkv2
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.0.0
   createdTime: 1725037356091
   modifiedTime: 1725992719811
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!RpKjTlYASrfqUPVA'

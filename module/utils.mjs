@@ -36,12 +36,12 @@ export function formatIdentifier(input) {
 /**
  * Form a number using the provided length unit.
  * @param {number} value         The length to format.
- * @param {string} unit          Length unit as defined in `CONFIG.DND5E.movementUnits`.
+ * @param {string} unit          Length unit as defined in `CONFIG.NIH.movementUnits`.
  * @param {object} [options={}]  Formatting options passed to `formatNumber`.
  * @returns {string}
  */
 export function formatLength(value, unit, options={}) {
-  return _formatSystemUnits(value, unit, CONFIG.DND5E.movementUnits[unit], options);
+  return _formatSystemUnits(value, unit, CONFIG.NIH.movementUnits[unit], options);
 }
 
 /* -------------------------------------------- */
@@ -69,7 +69,7 @@ export function formatModifier(mod) {
  * @returns {string}
  */
 export function formatNumber(value, { blank, numerals, ordinal, words, ...options }={}) {
-  if ( words && game.i18n.has(`DND5E.NUMBER.${value}`, false) ) return game.i18n.localize(`DND5E.NUMBER.${value}`);
+  if ( words && game.i18n.has(`NIH.NUMBER.${value}`, false) ) return game.i18n.localize(`NIH.NUMBER.${value}`);
   if ( !value && (typeof blank === "string") ) return blank;
   if ( numerals ) return _formatNumberAsNumerals(value);
   if ( ordinal ) return _formatNumberAsOrdinal(value, options);
@@ -112,7 +112,7 @@ function _formatNumberAsNumerals(n) {
 function _formatNumberAsOrdinal(n, options={}) {
   const pr = getPluralRules({ type: "ordinal" }).select(n);
   const number = formatNumber(n, options);
-  return game.i18n.has(`DND5E.ORDINAL.${pr}`) ? game.i18n.format(`DND5E.ORDINAL.${pr}`, { number }) : number;
+  return game.i18n.has(`NIH.ORDINAL.${pr}`) ? game.i18n.format(`NIH.ORDINAL.${pr}`, { number }) : number;
 }
 
 /* -------------------------------------------- */
@@ -134,13 +134,13 @@ export function formatNumberParts(value, options) {
 /**
  * Form a number using the provided travel speed unit.
  * @param {number} value                    Travel speed to display.
- * @param {string} unit                     Unit as defined in `CONFIG.DND5E.travelUnits`.
+ * @param {string} unit                     Unit as defined in `CONFIG.NIH.travelUnits`.
  * @param {object} [options={}]             Formatting options passed to `formatNumber`.
  * @param {string} [options.period="hour"]  Time period formatting unit (e.g. hour or day).
  * @returns {string}
  */
 export function formatTravelSpeed(value, unit, { period="hour", ...options }={}) {
-  const unitConfig = CONFIG.DND5E.travelUnits[unit];
+  const unitConfig = CONFIG.NIH.travelUnits[unit];
   options.unit ??= `${unitConfig?.formattingUnit ?? unit}-per-${period}`;
   return _formatSystemUnits(value, unit, unitConfig, options);
 }
@@ -175,14 +175,14 @@ export function formatText(value) {
 /**
  * A helper function that formats a time in a human-readable format.
  * @param {number} value         Time to display.
- * @param {string} unit          Units as defined in `CONFIG.DND5E.timeUnits`.
+ * @param {string} unit          Units as defined in `CONFIG.NIH.timeUnits`.
  * @param {object} [options={}]  Formatting options passed to `formatNumber`.
  * @returns {string}
  */
 export function formatTime(value, unit, options={}) {
   options.maximumFractionDigits ??= 0;
   options.unitDisplay ??= "long";
-  const config = CONFIG.DND5E.timeUnits[unit];
+  const config = CONFIG.NIH.timeUnits[unit];
   if ( config?.counted ) {
     if ( (options.unitDisplay === "narrow") && game.i18n.has(`${config.counted}.narrow`) ) {
       return game.i18n.format(`${config.counted}.narrow`, { number: formatNumber(value, options) });
@@ -203,12 +203,12 @@ export function formatTime(value, unit, options={}) {
 /**
  * Form a number using the provided volume unit.
  * @param {number} value         The volume to format.
- * @param {string} unit          Volume unit as defined in `CONFIG.DND5E.volumeUnits`.
+ * @param {string} unit          Volume unit as defined in `CONFIG.NIH.volumeUnits`.
  * @param {object} [options={}]  Formatting options passed to `formatNumber`.
  * @returns {string}
  */
 export function formatVolume(value, unit, options={}) {
-  return _formatSystemUnits(value, unit, CONFIG.DND5E.volumeUnits[unit], options);
+  return _formatSystemUnits(value, unit, CONFIG.NIH.volumeUnits[unit], options);
 }
 
 /* -------------------------------------------- */
@@ -216,12 +216,12 @@ export function formatVolume(value, unit, options={}) {
 /**
  * Form a number using the provided weight unit.
  * @param {number} value         The weight to format.
- * @param {string} unit          Weight unit as defined in `CONFIG.DND5E.weightUnits`.
+ * @param {string} unit          Weight unit as defined in `CONFIG.NIH.weightUnits`.
  * @param {object} [options={}]  Formatting options passed to `formatNumber`.
  * @returns {string}
  */
 export function formatWeight(value, unit, options={}) {
-  return _formatSystemUnits(value, unit, CONFIG.DND5E.weightUnits[unit], options);
+  return _formatSystemUnits(value, unit, CONFIG.NIH.weightUnits[unit], options);
 }
 
 /* -------------------------------------------- */
@@ -346,7 +346,7 @@ export function prepareFormulaValue(model, keyPath, label, rollData) {
     foundry.utils.setProperty(model, keyPath, roll.evaluateSync().total);
   } catch(err) {
     if ( item.isEmbedded ) {
-      const message = game.i18n.format("DND5E.FormulaMalformedError", { property, name: model.name ?? item.name });
+      const message = game.i18n.format("NIH.FormulaMalformedError", { property, name: model.name ?? item.name });
       item.actor._preparationWarnings.push({ message, link: item.uuid, type: "error" });
       console.error(message, err);
     }
@@ -381,7 +381,7 @@ export function replaceFormulaData(formula, data, { actor, item, missing="0", pr
   actor ??= item?.parent;
   if ( (missingReferences.size > 0) && actor && property ) {
     const listFormatter = new Intl.ListFormat(game.i18n.lang, { style: "long", type: "conjunction" });
-    const message = game.i18n.format("DND5E.FormulaMissingReferenceWarn", {
+    const message = game.i18n.format("NIH.FormulaMissingReferenceWarn", {
       property, name: item?.name ?? actor.name, references: listFormatter.format(missingReferences)
     });
     actor._preparationWarnings.push({ message, link: item?.uuid ?? actor.uuid, type: "warning" });
@@ -445,7 +445,7 @@ const MODIFIER_CODES = {
 /**
  * Based on the provided event, determine if the keys are pressed to fulfill the specified keybinding.
  * @param {Event} event    Triggering event.
- * @param {string} action  Keybinding action within the `dnd5e` namespace.
+ * @param {string} action  Keybinding action within the `nih` namespace.
  * @returns {boolean}      Is the keybinding triggered?
  */
 export function areKeysPressed(event, action) {
@@ -459,7 +459,7 @@ export function areKeysPressed(event, action) {
   addModifiers(MODIFIER_KEYS.CONTROL, event.ctrlKey);
   addModifiers("Meta", event.metaKey);
   addModifiers(MODIFIER_KEYS.SHIFT, event.shiftKey);
-  return game.keybindings.get("dnd5e", action).some(b => {
+  return game.keybindings.get("nih", action).some(b => {
     if ( game.keyboard.downKeys.has(b.key) && b.modifiers.every(m => activeModifiers[m]) ) return true;
     if ( b.modifiers.length ) return false;
     return activeModifiers[b.key];
@@ -644,8 +644,8 @@ export function getSceneTargets(actor) {
  * @returns {number}
  */
 export function convertLength(value, from, to, { strict=true }={}) {
-  const message = unit => `Length unit ${unit} not defined in CONFIG.DND5E.movementUnits`;
-  return _convertSystemUnits(value, from, to, CONFIG.DND5E.movementUnits, { message, strict });
+  const message = unit => `Length unit ${unit} not defined in CONFIG.NIH.movementUnits`;
+  return _convertSystemUnits(value, from, to, CONFIG.NIH.movementUnits, { message, strict });
 }
 
 /* -------------------------------------------- */
@@ -654,7 +654,7 @@ export function convertLength(value, from, to, { strict=true }={}) {
  * Convert the provided time value to another unit. If no final unit is provided, then will convert it to the largest
  * unit that can still represent the value as a whole number.
  * @param {number} value                    The time being converted.
- * @param {string} from                     The initial unit as defined in `CONFIG.DND5E.timeUnits`.
+ * @param {string} from                     The initial unit as defined in `CONFIG.NIH.timeUnits`.
  * @param {object} [options={}]
  * @param {boolean} [options.combat=false]  Use combat units when auto-selecting units, rather than normal units.
  * @param {boolean} [options.strict=true]   Throw an error if from unit isn't found.
@@ -662,10 +662,10 @@ export function convertLength(value, from, to, { strict=true }={}) {
  * @returns {{ value: number, unit: string }}
  */
 export function convertTime(value, from, { combat=false, strict=true, to }={}) {
-  const base = value * (CONFIG.DND5E.timeUnits[from]?.conversion ?? 1);
+  const base = value * (CONFIG.NIH.timeUnits[from]?.conversion ?? 1);
   if ( !to ) {
     // Find unit with largest conversion value that can still display the value
-    const unitOptions = Object.entries(CONFIG.DND5E.timeUnits)
+    const unitOptions = Object.entries(CONFIG.NIH.timeUnits)
       .reduce((arr, [key, v]) => {
         if ( ((v.combat ?? false) === combat) && ((base % v.conversion === 0) || (base >= v.conversion * 2)) ) {
           arr.push({ key, conversion: v.conversion });
@@ -676,8 +676,8 @@ export function convertTime(value, from, { combat=false, strict=true, to }={}) {
     to = unitOptions[0]?.key ?? from;
   }
 
-  const message = unit => `Time unit ${unit} not defined in CONFIG.DND5E.timeUnits`;
-  return { value: _convertSystemUnits(value, from, to, CONFIG.DND5E.timeUnits, { message, strict }), unit: to };
+  const message = unit => `Time unit ${unit} not defined in CONFIG.NIH.timeUnits`;
+  return { value: _convertSystemUnits(value, from, to, CONFIG.NIH.timeUnits, { message, strict }), unit: to };
 }
 
 /* -------------------------------------------- */
@@ -692,8 +692,8 @@ export function convertTime(value, from, { combat=false, strict=true, to }={}) {
  * @returns {{ value: number, unit: string }}
  */
 export function convertTravelSpeed(value, from, { strict=false, to }) {
-  const message = unit => `Travel speed unit ${unit} not defined in CONFIG.DND5E.travelUnits`;
-  return { value: _convertSystemUnits(value, from, to, CONFIG.DND5E.travelUnits, { message, strict }), unit: to };
+  const message = unit => `Travel speed unit ${unit} not defined in CONFIG.NIH.travelUnits`;
+  return { value: _convertSystemUnits(value, from, to, CONFIG.NIH.travelUnits, { message, strict }), unit: to };
 }
 
 /* -------------------------------------------- */
@@ -701,15 +701,15 @@ export function convertTravelSpeed(value, from, { strict=false, to }) {
 /**
  * Convert the provided weight to another unit.
  * @param {number} value                   The weight being converted.
- * @param {string} from                    The initial unit as defined in `CONFIG.DND5E.weightUnits`.
+ * @param {string} from                    The initial unit as defined in `CONFIG.NIH.weightUnits`.
  * @param {string} to                      The final units.
  * @param {object} [options={}]
  * @param {boolean} [options.strict=true]  Throw an error if either unit isn't found.
  * @returns {number}      Weight in the specified units.
  */
 export function convertWeight(value, from, to, { strict=true }={}) {
-  const message = unit => `Weight unit ${unit} not defined in CONFIG.DND5E.weightUnits`;
-  return _convertSystemUnits(value, from, to, CONFIG.DND5E.weightUnits, { message, strict });
+  const message = unit => `Weight unit ${unit} not defined in CONFIG.NIH.weightUnits`;
+  return _convertSystemUnits(value, from, to, CONFIG.NIH.weightUnits, { message, strict });
 }
 
 /* -------------------------------------------- */
@@ -741,7 +741,7 @@ function _convertSystemUnits(value, from, to, config, { message, strict }) {
  */
 export function defaultUnits(type) {
   const settingKey = type === "travel" ? "metricLengthUnits" : `metric${type.capitalize()}Units`;
-  return CONFIG.DND5E.defaultUnits[type]?.[game.settings.get("dnd5e", settingKey) ? "metric" : "imperial"];
+  return CONFIG.NIH.defaultUnits[type]?.[game.settings.get("nih", settingKey) ? "metric" : "imperial"];
 }
 
 /* -------------------------------------------- */
@@ -800,84 +800,84 @@ export function parseOrString(raw) {
 /**
  * Define a set of template paths to pre-load. Pre-loaded templates are compiled and cached for fast access when
  * rendering. These paths will also be available as Handlebars partials by using the file name
- * (e.g. "dnd5e.actor-traits").
+ * (e.g. "nih.actor-traits").
  * @returns {Promise}
  */
 export async function preloadHandlebarsTemplates() {
   const partials = [
     // Shared Partials
-    "systems/dnd5e/templates/shared/active-effects.hbs",
-    "systems/dnd5e/templates/apps/parts/trait-list.hbs",
-    "systems/dnd5e/templates/apps/parts/traits-list.hbs",
+    "systems/nih/templates/shared/active-effects.hbs",
+    "systems/nih/templates/apps/parts/trait-list.hbs",
+    "systems/nih/templates/apps/parts/traits-list.hbs",
 
     // Actor Sheet Partials
-    "systems/dnd5e/templates/actors/parts/actor-classes.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-trait-pills.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-traits.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-features.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-spellbook.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-warnings.hbs",
-    "systems/dnd5e/templates/actors/parts/actor-warnings-dialog.hbs",
-    "systems/dnd5e/templates/actors/parts/biography-textbox.hbs",
-    "systems/dnd5e/templates/actors/tabs/character-bastion.hbs",
-    "systems/dnd5e/templates/actors/tabs/character-biography.hbs",
-    "systems/dnd5e/templates/actors/tabs/character-details.hbs",
-    "systems/dnd5e/templates/actors/tabs/creature-special-traits.hbs",
-    "systems/dnd5e/templates/actors/tabs/npc-biography.hbs",
+    "systems/nih/templates/actors/parts/actor-classes.hbs",
+    "systems/nih/templates/actors/parts/actor-trait-pills.hbs",
+    "systems/nih/templates/actors/parts/actor-traits.hbs",
+    "systems/nih/templates/actors/parts/actor-features.hbs",
+    "systems/nih/templates/actors/parts/actor-spellbook.hbs",
+    "systems/nih/templates/actors/parts/actor-warnings.hbs",
+    "systems/nih/templates/actors/parts/actor-warnings-dialog.hbs",
+    "systems/nih/templates/actors/parts/biography-textbox.hbs",
+    "systems/nih/templates/actors/tabs/character-bastion.hbs",
+    "systems/nih/templates/actors/tabs/character-biography.hbs",
+    "systems/nih/templates/actors/tabs/character-details.hbs",
+    "systems/nih/templates/actors/tabs/creature-special-traits.hbs",
+    "systems/nih/templates/actors/tabs/npc-biography.hbs",
 
     // Chat Message Partials
-    "systems/dnd5e/templates/chat/parts/card-activities.hbs",
-    "systems/dnd5e/templates/chat/parts/card-deltas.hbs",
+    "systems/nih/templates/chat/parts/card-activities.hbs",
+    "systems/nih/templates/chat/parts/card-deltas.hbs",
 
     // Item Sheet Partials
-    "systems/dnd5e/templates/items/details/details-background.hbs",
-    "systems/dnd5e/templates/items/details/details-class.hbs",
-    "systems/dnd5e/templates/items/details/details-consumable.hbs",
-    "systems/dnd5e/templates/items/details/details-container.hbs",
-    "systems/dnd5e/templates/items/details/details-equipment.hbs",
-    "systems/dnd5e/templates/items/details/details-facility.hbs",
-    "systems/dnd5e/templates/items/details/details-feat.hbs",
-    "systems/dnd5e/templates/items/details/details-loot.hbs",
-    "systems/dnd5e/templates/items/details/details-mountable.hbs",
-    "systems/dnd5e/templates/items/details/details-species.hbs",
-    "systems/dnd5e/templates/items/details/details-spell.hbs",
-    "systems/dnd5e/templates/items/details/details-spellcasting.hbs",
-    "systems/dnd5e/templates/items/details/details-starting-equipment.hbs",
-    "systems/dnd5e/templates/items/details/details-subclass.hbs",
-    "systems/dnd5e/templates/items/details/details-tool.hbs",
-    "systems/dnd5e/templates/items/details/details-weapon.hbs",
-    "systems/dnd5e/templates/items/parts/item-summary.hbs",
-    "systems/dnd5e/templates/items/parts/item-tooltip.hbs",
-    "systems/dnd5e/templates/items/parts/spell-block.hbs",
+    "systems/nih/templates/items/details/details-background.hbs",
+    "systems/nih/templates/items/details/details-class.hbs",
+    "systems/nih/templates/items/details/details-consumable.hbs",
+    "systems/nih/templates/items/details/details-container.hbs",
+    "systems/nih/templates/items/details/details-equipment.hbs",
+    "systems/nih/templates/items/details/details-facility.hbs",
+    "systems/nih/templates/items/details/details-feat.hbs",
+    "systems/nih/templates/items/details/details-loot.hbs",
+    "systems/nih/templates/items/details/details-mountable.hbs",
+    "systems/nih/templates/items/details/details-species.hbs",
+    "systems/nih/templates/items/details/details-spell.hbs",
+    "systems/nih/templates/items/details/details-spellcasting.hbs",
+    "systems/nih/templates/items/details/details-starting-equipment.hbs",
+    "systems/nih/templates/items/details/details-subclass.hbs",
+    "systems/nih/templates/items/details/details-tool.hbs",
+    "systems/nih/templates/items/details/details-weapon.hbs",
+    "systems/nih/templates/items/parts/item-summary.hbs",
+    "systems/nih/templates/items/parts/item-tooltip.hbs",
+    "systems/nih/templates/items/parts/spell-block.hbs",
 
     // Field Partials
-    "systems/dnd5e/templates/shared/fields/field-activation.hbs",
-    "systems/dnd5e/templates/shared/fields/field-damage.hbs",
-    "systems/dnd5e/templates/shared/fields/field-duration.hbs",
-    "systems/dnd5e/templates/shared/fields/field-range.hbs",
-    "systems/dnd5e/templates/shared/fields/field-targets.hbs",
-    "systems/dnd5e/templates/shared/fields/field-uses.hbs",
-    "systems/dnd5e/templates/shared/fields/fieldlist.hbs",
-    "systems/dnd5e/templates/shared/fields/formlist.hbs",
+    "systems/nih/templates/shared/fields/field-activation.hbs",
+    "systems/nih/templates/shared/fields/field-damage.hbs",
+    "systems/nih/templates/shared/fields/field-duration.hbs",
+    "systems/nih/templates/shared/fields/field-range.hbs",
+    "systems/nih/templates/shared/fields/field-targets.hbs",
+    "systems/nih/templates/shared/fields/field-uses.hbs",
+    "systems/nih/templates/shared/fields/fieldlist.hbs",
+    "systems/nih/templates/shared/fields/formlist.hbs",
 
     // Journal Partials
-    "systems/dnd5e/templates/journal/parts/journal-legacy-traits.hbs",
-    "systems/dnd5e/templates/journal/parts/journal-modern-traits.hbs",
-    "systems/dnd5e/templates/journal/parts/journal-table.hbs",
+    "systems/nih/templates/journal/parts/journal-legacy-traits.hbs",
+    "systems/nih/templates/journal/parts/journal-modern-traits.hbs",
+    "systems/nih/templates/journal/parts/journal-table.hbs",
 
     // Activity Partials
-    "systems/dnd5e/templates/activity/parts/activity-usage-notes.hbs",
+    "systems/nih/templates/activity/parts/activity-usage-notes.hbs",
 
     // Advancement Partials
-    "systems/dnd5e/templates/advancement/parts/advancement-ability-score-control.hbs",
-    "systems/dnd5e/templates/advancement/parts/advancement-controls.hbs",
-    "systems/dnd5e/templates/advancement/parts/advancement-spell-config.hbs"
+    "systems/nih/templates/advancement/parts/advancement-ability-score-control.hbs",
+    "systems/nih/templates/advancement/parts/advancement-controls.hbs",
+    "systems/nih/templates/advancement/parts/advancement-spell-config.hbs"
   ];
 
   const paths = {};
   for ( const path of partials ) {
     paths[path.replace(".hbs", ".html")] = path;
-    paths[`dnd5e.${path.split("/").pop().replace(".hbs", "")}`] = path;
+    paths[`nih.${path.split("/").pop().replace(".hbs", "")}`] = path;
   }
 
   return foundry.applications.handlebars.loadTemplates(paths);
@@ -917,7 +917,7 @@ export function generateIcon(icon, { alt }={}) {
     element = document.createElement("i");
     element.className = icon;
   } else if ( icon ) {
-    element = document.createElement(icon.endsWith(".svg") ? "dnd5e-icon" : "img");
+    element = document.createElement(icon.endsWith(".svg") ? "nih-icon" : "img");
     element.src = icon;
   } else {
     return null;
@@ -987,7 +987,7 @@ function groupedSelectOptions(choices, options) {
  * @returns {string}
  */
 function itemContext(context, options) {
-  if ( arguments.length !== 2 ) throw new Error("#dnd5e-itemContext requires exactly one argument");
+  if ( arguments.length !== 2 ) throw new Error("#nih-itemContext requires exactly one argument");
   if ( foundry.utils.getType(context) === "function" ) context = context.call(this);
 
   const ctx = options.data.root.itemContext?.[context.id];
@@ -1016,8 +1016,8 @@ function concealSection(conceal, options) {
   </div>
   <div class="unidentified-notice">
       <div>
-          <strong>${game.i18n.localize("DND5E.Unidentified.Title")}</strong>
-          <p>${game.i18n.localize("DND5E.Unidentified.Notice")}</p>
+          <strong>${game.i18n.localize("NIH.Unidentified.Title")}</strong>
+          <p>${game.i18n.localize("NIH.Unidentified.Notice")}</p>
       </div>
   </div>`;
   return content;
@@ -1047,27 +1047,27 @@ export function registerHandlebarsHelpers() {
   };
   Handlebars.registerHelper({
     getProperty: foundry.utils.getProperty,
-    "dnd5e-concealSection": concealSection,
-    "dnd5e-dataset": dataset,
-    "dnd5e-icon": (icon, { hash: options }) => {
+    "nih-concealSection": concealSection,
+    "nih-dataset": dataset,
+    "nih-icon": (icon, { hash: options }) => {
       let element = generateIcon(icon, options);
       if ( !element && options.fallback ) element = generateIcon(options.fallback, options);
       return element ? new Handlebars.SafeString(element.outerHTML) : "";
     },
-    "dnd5e-formatCR": (value, options) => formatCR(value, options.hash),
-    "dnd5e-formatLength": curryUnitFormatter(formatLength),
-    "dnd5e-formatModifier": formatModifier,
-    "dnd5e-formatTravelSpeed": curryUnitFormatter(formatTravelSpeed),
-    "dnd5e-formatTime": curryUnitFormatter(formatTime),
-    "dnd5e-formatVolume": curryUnitFormatter(formatVolume),
-    "dnd5e-formatWeight": curryUnitFormatter(formatWeight),
-    "dnd5e-groupedSelectOptions": groupedSelectOptions,
-    "dnd5e-itemContext": itemContext,
-    "dnd5e-linkForUuid": (uuid, options) => linkForUuid(uuid, options.hash),
-    "dnd5e-numberFormat": (value, options) => formatNumber(value, options.hash),
-    "dnd5e-numberParts": (value, options) => formatNumberParts(value, options.hash),
-    "dnd5e-object": makeObject,
-    "dnd5e-textFormat": formatText
+    "nih-formatCR": (value, options) => formatCR(value, options.hash),
+    "nih-formatLength": curryUnitFormatter(formatLength),
+    "nih-formatModifier": formatModifier,
+    "nih-formatTravelSpeed": curryUnitFormatter(formatTravelSpeed),
+    "nih-formatTime": curryUnitFormatter(formatTime),
+    "nih-formatVolume": curryUnitFormatter(formatVolume),
+    "nih-formatWeight": curryUnitFormatter(formatWeight),
+    "nih-groupedSelectOptions": groupedSelectOptions,
+    "nih-itemContext": itemContext,
+    "nih-linkForUuid": (uuid, options) => linkForUuid(uuid, options.hash),
+    "nih-numberFormat": (value, options) => formatNumber(value, options.hash),
+    "nih-numberParts": (value, options) => formatNumberParts(value, options.hash),
+    "nih-object": makeObject,
+    "nih-textFormat": formatText
   });
 }
 
@@ -1084,7 +1084,7 @@ const _preLocalizationRegistrations = {};
 
 /**
  * Mark the provided config key to be pre-localized during the init stage.
- * @param {string} configKeyPath          Key path within `CONFIG.DND5E` to localize.
+ * @param {string} configKeyPath          Key path within `CONFIG.NIH` to localize.
  * @param {object} [options={}]
  * @param {string} [options.key]          If each entry in the config enum is an object,
  *                                        localize and sort using this property.
@@ -1101,7 +1101,7 @@ export function preLocalize(configKeyPath, { key, keys=[], sort=false }={}) {
 
 /**
  * Execute previously defined pre-localization tasks on the provided config object.
- * @param {object} config  The `CONFIG.DND5E` object to localize and sort. *Will be mutated.*
+ * @param {object} config  The `CONFIG.NIH` object to localize and sort. *Will be mutated.*
  */
 export function performPreLocalization(config) {
   for ( const [keyPath, settings] of Object.entries(_preLocalizationRegistrations) ) {
@@ -1192,7 +1192,7 @@ export function getHumanReadableAttributeLabel(attr, { actor, item }={}) {
   }
 
   if ( (attr === "details.xp.value") && (actor?.type === "npc") ) {
-    return game.i18n.localize("DND5E.ExperiencePoints.Value");
+    return game.i18n.localize("NIH.ExperiencePoints.Value");
   }
 
   if ( attr.startsWith(".") && actor ) {
@@ -1225,7 +1225,7 @@ export function getHumanReadableAttributeLabel(attr, { actor, item }={}) {
     name = `${item.name}: ${activity.name}`;
     type = "activity";
     if ( _attributeLabelCache.activity.has(attr) ) label = _attributeLabelCache.activity.get(attr);
-    else if ( attr === "uses.spent" ) label = "DND5E.Uses";
+    else if ( attr === "uses.spent" ) label = "NIH.Uses";
   }
 
   // Item labels
@@ -1233,51 +1233,51 @@ export function getHumanReadableAttributeLabel(attr, { actor, item }={}) {
     name = item.name;
     type = "item";
     if ( _attributeLabelCache.item.has(attr) ) label = _attributeLabelCache.item.get(attr);
-    else if ( attr === "hd.spent" ) label = "DND5E.HitDice";
-    else if ( attr === "uses.spent" ) label = "DND5E.Uses";
+    else if ( attr === "hd.spent" ) label = "NIH.HitDice";
+    else if ( attr === "uses.spent" ) label = "NIH.Uses";
     else label = getSchemaLabel(attr, "Item", item);
   }
 
   // Derived fields.
-  else if ( attr === "attributes.init.total" ) label = "DND5E.InitiativeBonus";
-  else if ( (attr === "attributes.ac.value") || (attr === "attributes.ac.flat") ) label = "DND5E.ArmorClass";
-  else if ( attr === "attributes.spell.attack" ) label = "DND5E.SpellAttackBonus";
-  else if ( attr === "attributes.spell.dc" ) label = "DND5E.SpellDC";
+  else if ( attr === "attributes.init.total" ) label = "NIH.InitiativeBonus";
+  else if ( (attr === "attributes.ac.value") || (attr === "attributes.ac.flat") ) label = "NIH.ArmorClass";
+  else if ( attr === "attributes.spell.attack" ) label = "NIH.SpellAttackBonus";
+  else if ( attr === "attributes.spell.dc" ) label = "NIH.SpellDC";
 
   // Abilities.
   else if ( attr.startsWith("abilities.") ) {
     const [, key] = attr.split(".");
-    label = game.i18n.format("DND5E.AbilityScoreL", { ability: CONFIG.DND5E.abilities[key].label });
+    label = game.i18n.format("NIH.AbilityScoreL", { ability: CONFIG.NIH.abilities[key].label });
   }
 
   // Resources
-  else if ( attr === "resources.legact.spent" ) label = "DND5E.LegendaryAction.LabelPl";
-  else if ( attr === "resources.legact.value" ) label = "DND5E.LegendaryAction.Remaining";
-  else if ( attr === "resources.legres.spent" ) label = "DND5E.LegendaryResistance.LabelPl";
-  else if ( attr === "resources.legres.value" ) label = "DND5E.LegendaryResistance.Remaining";
-  else if ( attr === "attributes.actions.value" ) label = "DND5E.VEHICLE.FIELDS.attributes.actions.label";
+  else if ( attr === "resources.legact.spent" ) label = "NIH.LegendaryAction.LabelPl";
+  else if ( attr === "resources.legact.value" ) label = "NIH.LegendaryAction.Remaining";
+  else if ( attr === "resources.legres.spent" ) label = "NIH.LegendaryResistance.LabelPl";
+  else if ( attr === "resources.legres.value" ) label = "NIH.LegendaryResistance.Remaining";
+  else if ( attr === "attributes.actions.value" ) label = "NIH.VEHICLE.FIELDS.attributes.actions.label";
 
   // Skills.
   else if ( attr.startsWith("skills.") ) {
     const [, key] = attr.split(".");
-    label = game.i18n.format("DND5E.SkillPassiveScore", { skill: CONFIG.DND5E.skills[key].label });
+    label = game.i18n.format("NIH.SkillPassiveScore", { skill: CONFIG.NIH.skills[key].label });
   }
 
   // Spell slots.
   else if ( attr.startsWith("spells.") ) {
     const [, key] = attr.split(".");
-    if ( !/spell\d+/.test(key) ) label = `DND5E.SpellSlots${key.capitalize()}`;
+    if ( !/spell\d+/.test(key) ) label = `NIH.SpellSlots${key.capitalize()}`;
     else {
       const plurals = new Intl.PluralRules(game.i18n.lang, { type: "ordinal" });
       const level = Number(key.slice(5));
-      label = game.i18n.format(`DND5E.SpellSlotsN.${plurals.select(level)}`, { n: level });
+      label = game.i18n.format(`NIH.SpellSlotsN.${plurals.select(level)}`, { n: level });
     }
   }
 
   // Currency
   else if ( attr.startsWith("currency.") ) {
     const [, key] = attr.split(".");
-    label = CONFIG.DND5E.currencies[key]?.label;
+    label = CONFIG.NIH.currencies[key]?.label;
   }
 
   // Attempt to find the attribute in a data model.

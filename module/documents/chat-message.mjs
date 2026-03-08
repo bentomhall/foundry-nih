@@ -27,7 +27,7 @@ export default class ChatMessage5e extends ChatMessage {
    * @type {boolean}
    */
   get canApplyDamage() {
-    const type = this.flags.dnd5e?.roll?.type;
+    const type = this.flags.nih?.roll?.type;
     if ( type && (type !== "damage") ) return false;
     return this.isRoll && this.isContentVisible && !!canvas.tokens?.controlled.length;
   }
@@ -39,7 +39,7 @@ export default class ChatMessage5e extends ChatMessage {
    * @type {boolean}
    */
   get canSelectTargets() {
-    if ( this.flags.dnd5e?.roll?.type !== "attack" ) return false;
+    if ( this.flags.nih?.roll?.type !== "attack" ) return false;
     return this.isRoll && this.isContentVisible;
   }
 
@@ -48,7 +48,7 @@ export default class ChatMessage5e extends ChatMessage {
   /** @inheritDoc */
   get isRoll() {
     if ( this.system?.isRoll !== undefined ) return this.system.isRoll;
-    return super.isRoll && !this.flags.dnd5e?.rest;
+    return super.isRoll && !this.flags.nih?.rest;
   }
 
   /* -------------------------------------------- */
@@ -59,7 +59,7 @@ export default class ChatMessage5e extends ChatMessage {
    */
   get shouldDisplayChallenge() {
     if ( game.user.isGM || (this.author === game.user) ) return true;
-    switch ( game.settings.get("dnd5e", "challengeVisibility") ) {
+    switch ( game.settings.get("nih", "challengeVisibility") ) {
       case "all": return true;
       case "player": return !this.author?.isGM;
       default: return false;
@@ -82,16 +82,16 @@ export default class ChatMessage5e extends ChatMessage {
   /** @inheritDoc */
   static migrateData(source) {
     source = super.migrateData(source);
-    if ( foundry.utils.hasProperty(source, "flags.dnd5e.itemData") ) {
-      foundry.utils.setProperty(source, "flags.dnd5e.item.data", source.flags.dnd5e.itemData);
-      delete source.flags.dnd5e.itemData;
+    if ( foundry.utils.hasProperty(source, "flags.nih.itemData") ) {
+      foundry.utils.setProperty(source, "flags.nih.item.data", source.flags.nih.itemData);
+      delete source.flags.nih.itemData;
     }
-    if ( foundry.utils.hasProperty(source, "flags.dnd5e.use") ) {
-      const use = source.flags.dnd5e.use;
-      foundry.utils.setProperty(source, "flags.dnd5e.messageType", "usage");
-      if ( use.type ) foundry.utils.setProperty(source, "flags.dnd5e.item.type", use.type);
-      if ( use.itemId ) foundry.utils.setProperty(source, "flags.dnd5e.item.id", use.itemId);
-      if ( use.itemUuid ) foundry.utils.setProperty(source, "flags.dnd5e.item.uuid", use.itemUuid);
+    if ( foundry.utils.hasProperty(source, "flags.nih.use") ) {
+      const use = source.flags.nih.use;
+      foundry.utils.setProperty(source, "flags.nih.messageType", "usage");
+      if ( use.type ) foundry.utils.setProperty(source, "flags.nih.item.type", use.type);
+      if ( use.itemId ) foundry.utils.setProperty(source, "flags.nih.item.id", use.itemId);
+      if ( use.itemUuid ) foundry.utils.setProperty(source, "flags.nih.item.uuid", use.itemUuid);
     }
     return source;
   }
@@ -103,11 +103,11 @@ export default class ChatMessage5e extends ChatMessage {
   /** @inheritDoc */
   prepareData() {
     super.prepareData();
-    if ( !this.flags.dnd5e?.item?.data && this.flags.dnd5e?.item?.id ) {
-      const itemData = this.getFlag("dnd5e", "use.consumed.deleted")?.find(i => i._id === this.flags.dnd5e.item.id);
-      if ( itemData ) Object.defineProperty(this.flags.dnd5e.item, "data", { value: itemData });
+    if ( !this.flags.nih?.item?.data && this.flags.nih?.item?.id ) {
+      const itemData = this.getFlag("nih", "use.consumed.deleted")?.find(i => i._id === this.flags.nih.item.id);
+      if ( itemData ) Object.defineProperty(this.flags.nih.item, "data", { value: itemData });
     }
-    dnd5e.registry.messages.track(this);
+    nih.registry.messages.track(this);
   }
 
   /* -------------------------------------------- */
@@ -125,23 +125,23 @@ export default class ChatMessage5e extends ChatMessage {
 
     this._displayChatActionButtons(html);
     this._highlightCriticalSuccessFailure(html);
-    if ( game.settings.get("dnd5e", "autoCollapseItemCards") ) {
+    if ( game.settings.get("nih", "autoCollapseItemCards") ) {
       html.querySelectorAll(".description.collapsible").forEach(el => el.classList.add("collapsed"));
     }
 
     await this._enrichChatCard(html);
     this._collapseTrays(html);
     this._activateActivityListeners(html);
-    dnd5e.bastion._activateChatListeners(this, html);
+    nih.bastion._activateChatListeners(this, html);
 
     /**
-     * A hook event that fires after dnd5e-specific chat message modifications have completed.
-     * @function dnd5e.renderChatMessage
+     * A hook event that fires after nih-specific chat message modifications have completed.
+     * @function nih.renderChatMessage
      * @memberof hookEvents
      * @param {ChatMessage5e} message  Chat message being rendered.
      * @param {HTMLElement} html       HTML contents of the message.
      */
-    Hooks.callAll("dnd5e.renderChatMessage", this, html);
+    Hooks.callAll("nih.renderChatMessage", this, html);
 
     return html;
   }
@@ -154,7 +154,7 @@ export default class ChatMessage5e extends ChatMessage {
    */
   _collapseTrays(html) {
     let collapse;
-    switch ( game.settings.get("dnd5e", "autoCollapseChatTrays") ) {
+    switch ( game.settings.get("nih", "autoCollapseChatTrays") ) {
       case "always": collapse = true; break;
       case "never":
       case "manual": collapse = false; break;
@@ -207,8 +207,8 @@ export default class ChatMessage5e extends ChatMessage {
     if ( !this.isContentVisible || !this.rolls.length ) return;
     const originatingMessage = this.getOriginatingMessage();
     const displayChallenge = originatingMessage?.shouldDisplayChallenge;
-    const displayAttackResult = game.user.isGM || (game.settings.get("dnd5e", "attackRollVisibility") !== "none");
-    const forceSuccess = this.flags.dnd5e?.roll?.forceSuccess === true;
+    const displayAttackResult = game.user.isGM || (game.settings.get("nih", "attackRollVisibility") !== "none");
+    const forceSuccess = this.flags.nih?.roll?.forceSuccess === true;
 
     /**
      * Create an icon to indicate success or failure.
@@ -229,7 +229,7 @@ export default class ChatMessage5e extends ChatMessage {
       const d0 = d20Roll.dice[0];
       if ( (d0?.faces !== 20) || (d0?.values.length !== 1) ) continue;
 
-      d20Roll = dnd5e.dice.D20Roll.fromRoll(d20Roll);
+      d20Roll = nih.dice.D20Roll.fromRoll(d20Roll);
       const d = d20Roll.dice[0];
 
       const isModifiedRoll = ("success" in d.results[0]) || d.options.marginSuccess || d.options.marginFailure;
@@ -239,8 +239,8 @@ export default class ChatMessage5e extends ChatMessage {
       const total = totals[index];
       if ( !total ) continue;
       // Only attack rolls and death saves can crit or fumble.
-      const canCrit = ["attack", "death"].includes(this.getFlag("dnd5e", "roll.type"));
-      const isAttack = this.getFlag("dnd5e", "roll.type") === "attack";
+      const canCrit = ["attack", "death"].includes(this.getFlag("nih", "roll.type"));
+      const isAttack = this.getFlag("nih", "roll.type") === "attack";
       const showResult = isAttack ? displayAttackResult : displayChallenge;
       if ( d.options.target && showResult ) {
         if ( d20Roll.isSuccess || forceSuccess ) total.classList.add("success");
@@ -267,8 +267,8 @@ export default class ChatMessage5e extends ChatMessage {
    * @protected
    */
   async _enrichChatCard(html) {
-    html.querySelectorAll(".dnd5e2").forEach(el => el.classList.remove("dnd5e2")); // Legacy
-    html.classList.add("dnd5e2");
+    html.querySelectorAll(".nih2").forEach(el => el.classList.remove("nih2")); // Legacy
+    html.classList.add("nih2");
 
     // Header matter
     const actor = this.getAssociatedActor();
@@ -325,29 +325,29 @@ export default class ChatMessage5e extends ChatMessage {
     if ( !game.user.isGM ) deleteButton?.remove();
     else deleteButton?.querySelector("i").classList.add("fa-fw");
     const anchor = document.createElement("a");
-    anchor.setAttribute("aria-label", game.i18n.localize("DND5E.AdditionalControls"));
+    anchor.setAttribute("aria-label", game.i18n.localize("NIH.AdditionalControls"));
     anchor.classList.add("chat-control");
     anchor.dataset.contextMenu = "";
     anchor.innerHTML = '<i class="fas fa-ellipsis-vertical fa-fw"></i>';
     metadata.appendChild(anchor);
 
     // SVG icons
-    html.querySelectorAll("i.dnd5e-icon").forEach(el => {
-      const icon = document.createElement("dnd5e-icon");
+    html.querySelectorAll("i.nih-icon").forEach(el => {
+      const icon = document.createElement("nih-icon");
       icon.src = el.dataset.src;
       el.replaceWith(icon);
     });
 
     // Enriched roll flavor
-    const roll = this.getFlag("dnd5e", "roll");
+    const roll = this.getFlag("nih", "roll");
     const item = this.getAssociatedItem();
     const activity = this.getAssociatedActivity();
     if ( this.isContentVisible && item && roll ) {
       const isCritical = (roll.type === "damage") && this.rolls[0]?.isCritical;
       const subtitle = roll.type === "damage"
         ? isCritical
-          ? game.i18n.localize("DND5E.CriticalHit")
-          : activity?.damageFlavor ?? game.i18n.localize("DND5E.DamageRoll")
+          ? game.i18n.localize("NIH.CriticalHit")
+          : activity?.damageFlavor ?? game.i18n.localize("NIH.DamageRoll")
         : roll.type === "attack"
           ? (activity?.getActionLabel(roll.attackMode) ?? "")
           : (item.system.type?.label ?? game.i18n.localize(CONFIG.Item.typeLabels[item.type]));
@@ -430,9 +430,9 @@ export default class ChatMessage5e extends ChatMessage {
    */
   _enrichAttackTargets(html) {
     const attackRoll = this.rolls[0];
-    if ( !(attackRoll instanceof dnd5e.dice.D20Roll) ) return;
+    if ( !(attackRoll instanceof nih.dice.D20Roll) ) return;
 
-    const masteryConfig = CONFIG.DND5E.weaponMasteries[attackRoll.options.mastery];
+    const masteryConfig = CONFIG.NIH.weaponMasteries[attackRoll.options.mastery];
     if ( masteryConfig ) {
       const p = document.createElement("p");
       p.classList.add("supplement");
@@ -441,22 +441,22 @@ export default class ChatMessage5e extends ChatMessage {
         <a class="content-link" draggable="true" data-link data-uuid="${masteryConfig.reference}"
            data-tooltip="${mastery}">${mastery}</a>
       `;
-      p.innerHTML = `<strong>${game.i18n.format("DND5E.WEAPON.Mastery.Flavor")}</strong> ${mastery}`;
+      p.innerHTML = `<strong>${game.i18n.format("NIH.WEAPON.Mastery.Flavor")}</strong> ${mastery}`;
       (html.querySelector(".chat-card") ?? html.querySelector(".message-content"))?.appendChild(p);
     }
 
-    const visibility = game.settings.get("dnd5e", "attackRollVisibility");
+    const visibility = game.settings.get("nih", "attackRollVisibility");
     const isVisible = game.user.isGM || (visibility !== "none");
     if ( !isVisible ) return;
 
-    const targets = this.getFlag("dnd5e", "targets");
+    const targets = this.getFlag("nih", "targets");
     if ( !targets?.length ) return;
     const tray = document.createElement("div");
     tray.innerHTML = `
       <div class="card-tray targets-tray collapsible collapsed">
         <label class="roboto-upper">
           <i class="fas fa-bullseye" inert></i>
-          <span>${game.i18n.localize("DND5E.TargetPl")}</span>
+          <span>${game.i18n.localize("NIH.TargetPl")}</span>
           <i class="fas fa-caret-down" inert></i>
         </label>
         <div class="collapsible-content">
@@ -507,9 +507,9 @@ export default class ChatMessage5e extends ChatMessage {
    */
   _enrichDamageTooltip(rolls, html) {
     if ( !rolls.length ) return;
-    const aggregatedRolls = CONFIG.DND5E.aggregateDamageDisplay ? aggregateDamageRolls(rolls) : rolls;
+    const aggregatedRolls = CONFIG.NIH.aggregateDamageDisplay ? aggregateDamageRolls(rolls) : rolls;
     let { formula, total, breakdown } = aggregatedRolls.reduce((obj, r) => {
-      obj.formula.push(CONFIG.DND5E.aggregateDamageDisplay ? r.formula : ` + ${r.formula}`);
+      obj.formula.push(CONFIG.NIH.aggregateDamageDisplay ? r.formula : ` + ${r.formula}`);
       obj.total += Math.max(0, r.total);
       obj.breakdown.push(this._simplifyDamageRoll(r));
       return obj;
@@ -520,7 +520,7 @@ export default class ChatMessage5e extends ChatMessage {
     roll.classList.add("dice-roll");
 
     const tooltipContents = breakdown.reduce((str, { type, total, constant, dice, icon, method }) => {
-      const config = CONFIG.DND5E.damageTypes[type] ?? CONFIG.DND5E.healingTypes[type];
+      const config = CONFIG.NIH.damageTypes[type] ?? CONFIG.NIH.healingTypes[type];
       return `${str}
         <section class="tooltip-part">
           <div class="dice">
@@ -557,12 +557,12 @@ export default class ChatMessage5e extends ChatMessage {
     `;
     html.querySelector(".message-content").appendChild(roll);
 
-    const damageOnSave = this.getFlag("dnd5e", "roll.damageOnSave");
+    const damageOnSave = this.getFlag("nih", "roll.damageOnSave");
     if ( damageOnSave ) {
       const p = document.createElement("p");
       p.classList.add("supplement");
-      p.innerHTML = `<strong>${game.i18n.format("DND5E.SAVE.OnSave")}</strong> ${
-        game.i18n.localize(`DND5E.SAVE.FIELDS.damage.onSave.${damageOnSave.capitalize()}`)
+      p.innerHTML = `<strong>${game.i18n.format("NIH.SAVE.OnSave")}</strong> ${
+        game.i18n.localize(`NIH.SAVE.FIELDS.damage.onSave.${damageOnSave.capitalize()}`)
       }`;
       html.querySelector(".chat-card, .message-content")?.appendChild(p);
     }
@@ -641,11 +641,11 @@ export default class ChatMessage5e extends ChatMessage {
    * @protected
    */
   _enrichEnchantmentTooltip(html) {
-    const enchantmentProfile = this.getFlag("dnd5e", "use.enchantmentProfile");
+    const enchantmentProfile = this.getFlag("nih", "use.enchantmentProfile");
     if ( !enchantmentProfile ) return;
 
     // Ensure concentration is still being maintained
-    const concentrationId = this.getFlag("dnd5e", "use.concentrationId");
+    const concentrationId = this.getFlag("nih", "use.concentrationId");
     if ( concentrationId && !this.getAssociatedActor()?.effects.get(concentrationId) ) return;
 
     // Create the enchantment tray
@@ -664,7 +664,7 @@ export default class ChatMessage5e extends ChatMessage {
    */
   _enrichSaveTooltip(html) {
     const actor = this.getAssociatedActor();
-    const roll = this.getFlag("dnd5e", "roll");
+    const roll = this.getFlag("nih", "roll");
     if ( (actor?.type !== "npc") || (roll?.type !== "save") || this.rolls.some(r => r.isSuccess) ) return;
 
     const content = document.createElement("div");
@@ -673,8 +673,8 @@ export default class ChatMessage5e extends ChatMessage {
     // If message has the `forceSuccess` flag, mark it as resisted
     if ( roll.forceSuccess ) content.insertAdjacentHTML("beforeend", `
       <p class="supplement">
-        <strong>${game.i18n.localize("DND5E.ROLL.Status")}</strong>
-        ${game.i18n.localize("DND5E.LegendaryResistance.Resisted")}
+        <strong>${game.i18n.localize("NIH.ROLL.Status")}</strong>
+        ${game.i18n.localize("NIH.LegendaryResistance.Resisted")}
       </p>
     `);
 
@@ -684,7 +684,7 @@ export default class ChatMessage5e extends ChatMessage {
         <div class="card-buttons">
           <button type="button">
             <i class="fa-solid fa-dragon" inert></i>
-            ${game.i18n.localize("DND5E.LegendaryResistance.Action.Resist")}
+            ${game.i18n.localize("NIH.LegendaryResistance.Action.Resist")}
           </button>
         </div>
       `);
@@ -705,9 +705,9 @@ export default class ChatMessage5e extends ChatMessage {
    * @protected
    */
   _enrichUsageEffects(html) {
-    if ( this.getFlag("dnd5e", "messageType") !== "usage" ) return;
+    if ( this.getFlag("nih", "messageType") !== "usage" ) return;
     const item = this.getAssociatedItem();
-    const effects = this.getFlag("dnd5e", "use.effects")
+    const effects = this.getFlag("nih", "use.effects")
       ?.map(id => item?.effects.get(id))
       .filter(e => e && (game.user.isGM || (e.transfer && (this.author?.id === game.user.id))));
     if ( !effects?.length ) return;
@@ -735,49 +735,49 @@ export default class ChatMessage5e extends ChatMessage {
     const canTarget = li => game.messages.get(li.dataset.messageId)?.canSelectTargets;
     options.push(
       {
-        name: game.i18n.localize("DND5E.ChatContextDamage"),
+        name: game.i18n.localize("NIH.ChatContextDamage"),
         icon: '<i class="fas fa-user-minus"></i>',
         condition: canApply,
         callback: li => game.messages.get(li.dataset.messageId)?.applyChatCardDamage(li, 1),
         group: "damage"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextHealing"),
+        name: game.i18n.localize("NIH.ChatContextHealing"),
         icon: '<i class="fas fa-user-plus"></i>',
         condition: canApply,
         callback: li => game.messages.get(li.dataset.messageId)?.applyChatCardDamage(li, -1),
         group: "damage"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextTempHP"),
+        name: game.i18n.localize("NIH.ChatContextTempHP"),
         icon: '<i class="fas fa-user-clock"></i>',
         condition: canApply,
         callback: li => game.messages.get(li.dataset.messageId)?.applyChatCardTemp(li),
         group: "damage"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextDoubleDamage"),
+        name: game.i18n.localize("NIH.ChatContextDoubleDamage"),
         icon: '<i class="fas fa-user-injured"></i>',
         condition: canApply,
         callback: li => game.messages.get(li.dataset.messageId)?.applyChatCardDamage(li, 2),
         group: "damage"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextHalfDamage"),
+        name: game.i18n.localize("NIH.ChatContextHalfDamage"),
         icon: '<i class="fas fa-user-shield"></i>',
         condition: canApply,
         callback: li => game.messages.get(li.dataset.messageId)?.applyChatCardDamage(li, 0.5),
         group: "damage"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextSelectHit"),
+        name: game.i18n.localize("NIH.ChatContextSelectHit"),
         icon: '<i class="fas fa-bullseye"></i>',
         condition: canTarget,
         callback: li => game.messages.get(li.dataset.messageId)?.selectTargets(li, "hit"),
         group: "attack"
       },
       {
-        name: game.i18n.localize("DND5E.ChatContextSelectMiss"),
+        name: game.i18n.localize("NIH.ChatContextSelectMiss"),
         icon: '<i class="fas fa-bullseye"></i>',
         condition: canTarget,
         callback: li => game.messages.get(li.dataset.messageId)?.selectTargets(li, "miss"),
@@ -860,7 +860,7 @@ export default class ChatMessage5e extends ChatMessage {
    */
   applyChatCardDamage(li, multiplier) {
     const damages = aggregateDamageRolls(this.rolls, { respectProperties: true }).map(roll => ({
-      value: Math.max(0, roll.total) * (roll.options.type in CONFIG.DND5E.healingTypes ? -1 : 1),
+      value: Math.max(0, roll.total) * (roll.options.type in CONFIG.NIH.healingTypes ? -1 : 1),
       type: roll.options.type,
       properties: new Set(roll.options.properties ?? [])
     }));
@@ -950,7 +950,7 @@ export default class ChatMessage5e extends ChatMessage {
       const notifications = document.getElementById("chat-notifications");
       if ( notifications ) notifications.dataset.gmUser = "";
     }
-    if ( !game.settings.get("dnd5e", "autoCollapseItemCards") ) {
+    if ( !game.settings.get("nih", "autoCollapseItemCards") ) {
       requestAnimationFrame(() => {
         // FIXME: Allow time for transitions to complete. Adding a transitionend listener does not appear to work, so
         // the transition time is hard-coded for now.
@@ -1004,7 +1004,7 @@ export default class ChatMessage5e extends ChatMessage {
   /** @inheritDoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
-    dnd5e.registry.messages.untrack(this);
+    nih.registry.messages.untrack(this);
   }
 
   /* -------------------------------------------- */
@@ -1016,9 +1016,9 @@ export default class ChatMessage5e extends ChatMessage {
    * @returns {Activity|void}
    */
   getAssociatedActivity() {
-    const activity = fromUuidSync(this.getFlag("dnd5e", "activity.uuid"), { strict: false });
+    const activity = fromUuidSync(this.getFlag("nih", "activity.uuid"), { strict: false });
     if ( activity ) return activity;
-    return this.getAssociatedItem()?.system.activities?.get(this.getFlag("dnd5e", "activity.id"));
+    return this.getAssociatedItem()?.system.activities?.get(this.getFlag("nih", "activity.id"));
   }
 
   /* -------------------------------------------- */
@@ -1043,11 +1043,11 @@ export default class ChatMessage5e extends ChatMessage {
    * @returns {Item5e|void}
    */
   getAssociatedItem() {
-    const item = fromUuidSync(this.getFlag("dnd5e", "item.uuid"), { strict: false });
+    const item = fromUuidSync(this.getFlag("nih", "item.uuid"), { strict: false });
     if ( item ) return item;
     const actor = this.getAssociatedActor();
     if ( !actor ) return;
-    const storedData = this.getFlag("dnd5e", "item.data") ?? this.getOriginatingMessage().getFlag("dnd5e", "item.data");
+    const storedData = this.getFlag("nih", "item.data") ?? this.getOriginatingMessage().getFlag("nih", "item.data");
     if ( storedData ) return new Item.implementation(storedData, { parent: actor });
   }
 
@@ -1059,7 +1059,7 @@ export default class ChatMessage5e extends ChatMessage {
    * @returns {ChatMessage5e[]}
    */
   getAssociatedRolls(type) {
-    return dnd5e.registry.messages.get(this.id, type);
+    return nih.registry.messages.get(this.id, type);
   }
 
   /* -------------------------------------------- */
@@ -1070,6 +1070,6 @@ export default class ChatMessage5e extends ChatMessage {
    * @type {ChatMessage5e}
    */
   getOriginatingMessage() {
-    return game.messages.get(this.getFlag("dnd5e", "originatingMessage")) ?? this;
+    return game.messages.get(this.getFlag("nih", "originatingMessage")) ?? this;
   }
 }

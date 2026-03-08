@@ -35,8 +35,8 @@ system:
   requirements: Silver Dragonborn
   properties: []
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: save
       activation:
         type: action
@@ -110,7 +110,7 @@ system:
     level: null
   identifier: breath-weapon-silver
 flags:
-  dnd5e:
+  nih:
     riders:
       activity: []
       effect: []
@@ -119,11 +119,11 @@ effects: []
 _stats:
   duplicateSource: null
   coreVersion: '13.345'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.1.0
   createdTime: 1725037393276
   modifiedTime: 1750440687766
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 sort: 0
 folder: TAw7621pFkXOkuYI

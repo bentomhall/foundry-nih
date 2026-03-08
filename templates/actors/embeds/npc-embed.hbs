@@ -9,19 +9,19 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col" class="visually-hidden">{{ localize "DND5E.Ability" }}</th>
-                            <th scope="col" class="visually-hidden">{{ localize "DND5E.AbilityScoreShort" }}</th>
-                            <th scope="col">{{ localize "DND5E.AbilityModifierShort" }}</th>
-                            <th scope="col">{{ localize "DND5E.SavingThrowShort" }}</th>
+                            <th scope="col" class="visually-hidden">{{ localize "NIH.Ability" }}</th>
+                            <th scope="col" class="visually-hidden">{{ localize "NIH.AbilityScoreShort" }}</th>
+                            <th scope="col">{{ localize "NIH.AbilityModifierShort" }}</th>
+                            <th scope="col">{{ localize "NIH.SavingThrowShort" }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each abilities}}
                         <tr>
                             <th scope="row">{{ label }}</th>
-                            <td class="score">{{ dnd5e-numberFormat value }}</td>
-                            <td>{{ dnd5e-numberFormat mod signDisplay="always" }}</td>
-                            <td>{{ dnd5e-numberFormat save.value signDisplay="always" }}</td>
+                            <td class="score">{{ nih-numberFormat value }}</td>
+                            <td>{{ nih-numberFormat mod signDisplay="always" }}</td>
+                            <td>{{ nih-numberFormat save.value signDisplay="always" }}</td>
                         </tr>
                         {{/each}}
                     </tbody>
@@ -30,7 +30,7 @@
                 {{#each system.abilities}}
                 <div class="ability">
                     <span class="name">{{ lookup (lookup @root.CONFIG.abilities @key) "abbreviation" }}</span>
-                    <span class="score">{{ dnd5e-numberFormat value }} ({{ dnd5e-numberFormat mod signDisplay="always" }})</span>
+                    <span class="score">{{ nih-numberFormat value }} ({{ nih-numberFormat mod signDisplay="always" }})</span>
                 </div>
                 {{/each}}
                 {{/each}}
@@ -42,7 +42,7 @@
             {{#unless hideLabel}}<h5 class="statblock-actions-title">{{ label }}</h5>{{/unless}}
             {{{ description }}}
             {{#each actions}}
-            <div class="statblock-action" {{ dnd5e-dataset dataset }}>
+            <div class="statblock-action" {{ nih-dataset dataset }}>
                 {{{ openingTag }}}
                 <span class="name">{{ name }}</span>
                 {{{ description }}}

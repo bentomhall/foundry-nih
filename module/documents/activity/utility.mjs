@@ -17,7 +17,7 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
   /* -------------------------------------------- */
 
   /** @inheritDoc */
-  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES, "DND5E.UTILITY"];
+  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES, "NIH.UTILITY"];
 
   /* -------------------------------------------- */
 
@@ -25,9 +25,9 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
   static metadata = Object.freeze(
     foundry.utils.mergeObject(super.metadata, {
       type: "utility",
-      img: "systems/dnd5e/icons/svg/activity/utility.svg",
-      title: "DND5E.UTILITY.Title",
-      hint: "DND5E.UTILITY.Hint",
+      img: "systems/nih/icons/svg/activity/utility.svg",
+      title: "NIH.UTILITY.Title",
+      hint: "NIH.UTILITY.Hint",
       sheetClass: UtilitySheet,
       usage: {
         actions: {
@@ -45,7 +45,7 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
   _usageChatButtons(message) {
     if ( !this.roll.formula ) return super._usageChatButtons(message);
     return [{
-      label: this.roll.name || game.i18n.localize("DND5E.Roll"),
+      label: this.roll.name || game.i18n.localize("NIH.Roll"),
       icon: '<i class="fa-solid fa-dice" inert></i>',
       dataset: {
         action: "rollFormula",
@@ -81,7 +81,7 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
       options: {
         window: {
           title: this.item.name,
-          subtitle: "DND5E.RollConfiguration.Title",
+          subtitle: "NIH.RollConfiguration.Title",
           icon: this.item.img
         }
       }
@@ -90,9 +90,9 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
     const messageConfig = foundry.utils.mergeObject({
       create: true,
       data: {
-        flavor: `${this.item.name} - ${this.roll.label || game.i18n.localize("DND5E.OtherFormula")}`,
+        flavor: `${this.item.name} - ${this.roll.label || game.i18n.localize("NIH.OtherFormula")}`,
         flags: {
-          dnd5e: {
+          nih: {
             ...this.messageFlags,
             messageType: "roll",
             roll: { type: "generic" }
@@ -106,14 +106,14 @@ export default class UtilityActivity extends ActivityMixin(BaseUtilityActivityDa
 
     /**
      * A hook event that fires after a formula has been rolled for a Utility activity.
-     * @function dnd5e.rollFormula
+     * @function nih.rollFormula
      * @memberof hookEvents
      * @param {BasicRoll[]} rolls             The resulting rolls.
      * @param {object} data
      * @param {UtilityActivity} data.subject  The Activity that performed the roll.
      */
-    Hooks.callAll("dnd5e.rollFormula", rolls, { subject: this });
-    Hooks.callAll("dnd5e.rollFormulaV2", rolls, { subject: this });
+    Hooks.callAll("nih.rollFormula", rolls, { subject: this });
+    Hooks.callAll("nih.rollFormulaV2", rolls, { subject: this });
 
     return rolls;
   }

@@ -59,8 +59,8 @@ system:
     - concentration
     - ritual
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: utility
       activation:
         type: action
@@ -107,10 +107,10 @@ folder: ERuXllkhTQF51rDJ
 _stats:
   duplicateSource: null
   coreVersion: '13.348'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037346191
   modifiedTime: 1757447024779
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!2skfDtglk1mGrb3l'

@@ -24,8 +24,8 @@ system:
   requirements: Barbarian 1
   properties: []
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: utility
       activation:
         type: bonus
@@ -89,7 +89,7 @@ system:
 effects:
   - _id: eWhL8hUr0c2ujDUm
     flags:
-      dnd5e:
+      nih:
         riders:
           statuses: []
     changes:
@@ -136,11 +136,11 @@ effects:
       compendiumSource: null
       duplicateSource: null
       coreVersion: '13.348'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: null
       modifiedTime: 1757446401485
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     img: icons/creatures/abilities/mouth-teeth-human.webp
     type: base
@@ -155,10 +155,10 @@ flags: {}
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.0.0
   createdTime: 1725037384722
   modifiedTime: 1725992288599
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!VoR0SUrNX5EJVPIO'

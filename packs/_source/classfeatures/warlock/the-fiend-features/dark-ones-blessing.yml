@@ -26,8 +26,8 @@ system:
   requirements: The Fiend 1
   properties: []
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: heal
       activation:
         type: ''
@@ -102,10 +102,10 @@ sort: 0
 _stats:
   duplicateSource: null
   coreVersion: '13.348'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037382557
   modifiedTime: 1758300939101
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!Jv0zu4BtUi8bFCqJ'

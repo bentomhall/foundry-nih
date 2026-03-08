@@ -49,5 +49,5 @@
 
 /**
  * @typedef SystemDataModelMetadata
- * @property {typeof DataModel} [systemFlagsModel]  Model that represents flags data within the dnd5e namespace.
+ * @property {typeof DataModel} [systemFlagsModel]  Model that represents flags data within the nih namespace.
  */

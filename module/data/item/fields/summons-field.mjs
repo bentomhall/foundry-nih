@@ -14,7 +14,7 @@ export default class SummonsField extends EmbeddedDataField {
   constructor(options={}) {
     foundry.utils.logCompatibilityWarning(
       "The `SummonsField` field has been deprecated in favor of the Summons activity.",
-      { since: "DnD5e 5.2", until: "DnD5e 5.3", once: true }
+      { since: "Nih 5.2", until: "Nih 5.3", once: true }
     );
     super(SummonsData, foundry.utils.mergeObject({ required: false, nullable: true, initial: null }, options));
   }
@@ -60,7 +60,7 @@ export class SummonsData extends foundry.abstract.DataModel {
   constructor(...args) {
     foundry.utils.logCompatibilityWarning(
       "The `SummonsData` data model has been deprecated in favor of the Summon activity.",
-      { since: "DnD5e 5.2", until: "DnD5e 5.3", once: true }
+      { since: "Nih 5.2", until: "Nih 5.3", once: true }
     );
     super(...args);
   }
@@ -72,43 +72,43 @@ export class SummonsData extends foundry.abstract.DataModel {
     return {
       bonuses: new SchemaField({
         ac: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.ArmorClass.Label", hint: "DND5E.Summoning.Bonuses.ArmorClass.hint"
+          label: "NIH.Summoning.Bonuses.ArmorClass.Label", hint: "NIH.Summoning.Bonuses.ArmorClass.hint"
         }),
         hd: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.HitDice.Label", hint: "DND5E.Summoning.Bonuses.HitDice.hint"
+          label: "NIH.Summoning.Bonuses.HitDice.Label", hint: "NIH.Summoning.Bonuses.HitDice.hint"
         }),
         hp: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.HitPoints.Label", hint: "DND5E.Summoning.Bonuses.HitPoints.hint"
+          label: "NIH.Summoning.Bonuses.HitPoints.Label", hint: "NIH.Summoning.Bonuses.HitPoints.hint"
         }),
         attackDamage: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.Attack.Label", hint: "DND5E.Summoning.Bonuses.Attack.Hint"
+          label: "NIH.Summoning.Bonuses.Attack.Label", hint: "NIH.Summoning.Bonuses.Attack.Hint"
         }),
         saveDamage: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.Saves.Label", hint: "DND5E.Summoning.Bonuses.Saves.Hint"
+          label: "NIH.Summoning.Bonuses.Saves.Label", hint: "NIH.Summoning.Bonuses.Saves.Hint"
         }),
         healing: new FormulaField({
-          label: "DND5E.Summoning.Bonuses.Healing.Label", hint: "DND5E.Summoning.Bonuses.Healing.Hint"
+          label: "NIH.Summoning.Bonuses.Healing.Label", hint: "NIH.Summoning.Bonuses.Healing.Hint"
         })
       }),
       classIdentifier: new IdentifierField(),
       creatureSizes: new SetField(new StringField(), {
-        label: "DND5E.Summoning.CreatureSizes.Label", hint: "DND5E.Summoning.CreatureSizes.Hint"
+        label: "NIH.Summoning.CreatureSizes.Label", hint: "NIH.Summoning.CreatureSizes.Hint"
       }),
       creatureTypes: new SetField(new StringField(), {
-        label: "DND5E.Summoning.CreatureTypes.Label", hint: "DND5E.Summoning.CreatureTypes.Hint"
+        label: "NIH.Summoning.CreatureTypes.Label", hint: "NIH.Summoning.CreatureTypes.Hint"
       }),
       match: new SchemaField({
         attacks: new BooleanField({
-          label: "DND5E.Summoning.Match.Attacks.Label", hint: "DND5E.Summoning.Match.Attacks.Hint"
+          label: "NIH.Summoning.Match.Attacks.Label", hint: "NIH.Summoning.Match.Attacks.Hint"
         }),
         proficiency: new BooleanField({
-          label: "DND5E.Summoning.Match.Proficiency.Label", hint: "DND5E.Summoning.Match.Proficiency.Hint"
+          label: "NIH.Summoning.Match.Proficiency.Label", hint: "NIH.Summoning.Match.Proficiency.Hint"
         }),
         saves: new BooleanField({
-          label: "DND5E.Summoning.Match.Saves.Label", hint: "DND5E.Summoning.Match.Saves.Hint"
+          label: "NIH.Summoning.Match.Saves.Label", hint: "NIH.Summoning.Match.Saves.Hint"
         })
       }),
-      mode: new StringField({label: "DND5E.Summoning.Mode.Label", hint: "DND5E.Summoning.Mode.Hint"}),
+      mode: new StringField({label: "NIH.Summoning.Mode.Label", hint: "NIH.Summoning.Mode.Hint"}),
       profiles: new ArrayField(new SchemaField({
         _id: new DocumentIdField({initial: () => foundry.utils.randomID()}),
         count: new FormulaField(),
@@ -122,7 +122,7 @@ export class SummonsData extends foundry.abstract.DataModel {
         uuid: new StringField()
       })),
       prompt: new BooleanField({
-        initial: true, label: "DND5E.Summoning.Prompt.Label", hint: "DND5E.Summoning.Prompt.Hint"
+        initial: true, label: "NIH.Summoning.Prompt.Label", hint: "NIH.Summoning.Prompt.Hint"
       })
     };
   }

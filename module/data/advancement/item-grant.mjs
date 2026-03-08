@@ -18,7 +18,7 @@ export default class ItemGrantConfigurationData extends foundry.abstract.DataMod
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.ADVANCEMENT.ItemGrant", "DND5E.ADVANCEMENT.SPELLCONFIG"];
+  static LOCALIZATION_PREFIXES = ["NIH.ADVANCEMENT.ItemGrant", "NIH.ADVANCEMENT.SPELLCONFIG"];
 
   /* -------------------------------------------- */
 

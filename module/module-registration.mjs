@@ -27,26 +27,26 @@ const registerMethods = [registerSourceBooks, registerSpellLists];
 /* -------------------------------------------- */
 
 /**
- * Register package source books from `flags.dnd5e.sourceBooks`.
+ * Register package source books from `flags.nih.sourceBooks`.
  * @param {Module|System|World} manifest  Manifest from which to register data.
  * @returns {string|void}                 Description of the data registered.
  */
 function registerSourceBooks(manifest) {
-  if ( !manifest.flags.dnd5e?.sourceBooks ) return;
-  Object.assign(CONFIG.DND5E.sourceBooks, manifest.flags.dnd5e.sourceBooks);
+  if ( !manifest.flags.nih?.sourceBooks ) return;
+  Object.assign(CONFIG.NIH.sourceBooks, manifest.flags.nih.sourceBooks);
   return "source books";
 }
 
 /* -------------------------------------------- */
 
 /**
- * Register package spell lists from `flags.dnd5e.spellLists`.
+ * Register package spell lists from `flags.nih.spellLists`.
  * @param {Module|System|World} manifest  Manifest from which to register data.
  * @returns {string|void}                 Description of the data registered.
  */
 function registerSpellLists(manifest) {
-  if ( foundry.utils.getType(manifest.flags.dnd5e?.spellLists) !== "Array" ) return;
-  manifest.flags.dnd5e.spellLists.forEach(uuid => dnd5e.registry.spellLists.register(uuid));
+  if ( foundry.utils.getType(manifest.flags.nih?.spellLists) !== "Array" ) return;
+  manifest.flags.nih.spellLists.forEach(uuid => nih.registry.spellLists.register(uuid));
   return "spell lists";
 }
 
@@ -77,12 +77,12 @@ const setupMethods = [setupPackDisplay, setupPackSorting];
 /* -------------------------------------------- */
 
 /**
- * Set application based on `flags.dnd5e.display`.
+ * Set application based on `flags.nih.display`.
  * @param {Compendium} pack  Pack to set up.
  * @returns {string|void}    Description of the step.
  */
 function setupPackDisplay(pack) {
-  const display = pack.metadata.flags.display ?? pack.metadata.flags.dnd5e?.display;
+  const display = pack.metadata.flags.display ?? pack.metadata.flags.nih?.display;
   if ( display !== "table-of-contents" ) return;
   pack.applicationClass = TableOfContentsCompendium;
   return "table of contents";
@@ -94,14 +94,14 @@ let collectionSortingModes;
 let sortingChanged = false;
 
 /**
- * Set default sorting order based on `flags.dnd5e.sorting`.
+ * Set default sorting order based on `flags.nih.sorting`.
  * @param {Compendium} pack  Pack to set up.
  * @returns {string|void}    Description of the step.
  */
 function setupPackSorting(pack) {
   collectionSortingModes ??= game.settings.get("core", "collectionSortingModes") ?? {};
-  if ( !pack.metadata.flags.dnd5e?.sorting || collectionSortingModes[pack.metadata.id] ) return;
-  collectionSortingModes[pack.metadata.id] = pack.metadata.flags.dnd5e.sorting;
+  if ( !pack.metadata.flags.nih?.sorting || collectionSortingModes[pack.metadata.id] ) return;
+  collectionSortingModes[pack.metadata.id] = pack.metadata.flags.nih.sorting;
   sortingChanged = true;
   return "default sorting";
 }
@@ -128,25 +128,25 @@ export function registerModuleRedirects() {
 
 const moduleRedirects = {
   "dnd-players-handbook": {
-    "Compendium.dnd-players-handbook.actors": "Compendium.dnd5e.actors24",
-    "Compendium.dnd-players-handbook.classes": "Compendium.dnd5e.classes24",
-    "Compendium.dnd-players-handbook.content": "Compendium.dnd5e.content24",
-    "Compendium.dnd-players-handbook.equipment": "Compendium.dnd5e.equipment24",
-    "Compendium.dnd-players-handbook.feats": "Compendium.dnd5e.feats24",
-    "Compendium.dnd-players-handbook.origins": "Compendium.dnd5e.origins24",
-    "Compendium.dnd-players-handbook.spells": "Compendium.dnd5e.spells24",
-    "Compendium.dnd-players-handbook.tables": "Compendium.dnd5e.tables24"
+    "Compendium.dnd-players-handbook.actors": "Compendium.nih.actors24",
+    "Compendium.dnd-players-handbook.classes": "Compendium.nih.classes24",
+    "Compendium.dnd-players-handbook.content": "Compendium.nih.content24",
+    "Compendium.dnd-players-handbook.equipment": "Compendium.nih.equipment24",
+    "Compendium.dnd-players-handbook.feats": "Compendium.nih.feats24",
+    "Compendium.dnd-players-handbook.origins": "Compendium.nih.origins24",
+    "Compendium.dnd-players-handbook.spells": "Compendium.nih.spells24",
+    "Compendium.dnd-players-handbook.tables": "Compendium.nih.tables24"
   },
   "dnd-dungeon-masters-guide": {
-    "Compendium.dnd-dungeon-masters-guide.actors": "Compendium.dnd5e.actors24",
-    "Compendium.dnd-dungeon-masters-guide.content": "Compendium.dnd5e.content24",
-    "Compendium.dnd-dungeon-masters-guide.equipment": "Compendium.dnd5e.equipment24",
-    "Compendium.dnd-dungeon-masters-guide.tables": "Compendium.dnd5e.tables24"
+    "Compendium.dnd-dungeon-masters-guide.actors": "Compendium.nih.actors24",
+    "Compendium.dnd-dungeon-masters-guide.content": "Compendium.nih.content24",
+    "Compendium.dnd-dungeon-masters-guide.equipment": "Compendium.nih.equipment24",
+    "Compendium.dnd-dungeon-masters-guide.tables": "Compendium.nih.tables24"
   },
   "dnd-monster-manual": {
-    "Compendium.dnd-monster-manual.actors": "Compendium.dnd5e.actors24",
-    "Compendium.dnd-monster-manual.content": "Compendium.dnd5e.content24",
-    "Compendium.dnd-monster-manual.features": "Compendium.dnd5e.monsterfeatures24",
-    "Compendium.dnd-monster-manual.tables": "Compendium.dnd5e.tables24"
+    "Compendium.dnd-monster-manual.actors": "Compendium.nih.actors24",
+    "Compendium.dnd-monster-manual.content": "Compendium.nih.content24",
+    "Compendium.dnd-monster-manual.features": "Compendium.nih.monsterfeatures24",
+    "Compendium.dnd-monster-manual.tables": "Compendium.nih.tables24"
   }
 };

@@ -59,8 +59,8 @@ system:
     - somatic
     - material
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: utility
       activation:
         type: action
@@ -105,7 +105,7 @@ flags: {}
 img: icons/skills/melee/strike-blade-knife-white-red.webp
 effects:
   - name: Freedom of Movement
-    origin: Compendium.dnd5e.spells.Item.da0a1t2FqaTjRZGT
+    origin: Compendium.nih.spells.Item.da0a1t2FqaTjRZGT
     duration:
       startTime: null
       seconds: null
@@ -136,7 +136,7 @@ effects:
     transfer: false
     statuses: []
     flags:
-      dnd5e:
+      nih:
         riders:
           statuses: []
     tint: '#ffffff'
@@ -144,11 +144,11 @@ effects:
       compendiumSource: null
       duplicateSource: null
       coreVersion: '13.347'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.1.3
       createdTime: null
       modifiedTime: 1755806855234
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     img: icons/skills/melee/strike-blade-knife-white-red.webp
     type: base
@@ -159,10 +159,10 @@ folder: 5auWSClKMDUIV5Ni
 _stats:
   duplicateSource: null
   coreVersion: '13.347'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.1.3
   createdTime: 1725037361182
   modifiedTime: 1755806857216
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!da0a1t2FqaTjRZGT'

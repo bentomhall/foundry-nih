@@ -16,9 +16,9 @@ export default class SubclassAdvancement extends Advancement {
       },
       order: 70,
       icon: "icons/skills/trades/mining-pickaxe-yellow-blue.webp",
-      typeIcon: "systems/dnd5e/icons/svg/subclass.svg",
-      title: game.i18n.localize("DND5E.ADVANCEMENT.Subclass.Title"),
-      hint: game.i18n.localize("DND5E.ADVANCEMENT.Subclass.Hint"),
+      typeIcon: "systems/nih/icons/svg/subclass.svg",
+      title: game.i18n.localize("NIH.ADVANCEMENT.Subclass.Title"),
+      hint: game.i18n.localize("NIH.ADVANCEMENT.Subclass.Hint"),
       apps: {
         flow: SubclassFlow
       }
@@ -58,12 +58,12 @@ export default class SubclassAdvancement extends Advancement {
 
   /** @inheritDoc */
   async apply(level, data, retainedData) {
-    const useRetained = data.uuid === foundry.utils.getProperty(retainedData, "flags.dnd5e.sourceId");
+    const useRetained = data.uuid === foundry.utils.getProperty(retainedData, "flags.nih.sourceId");
     let itemData = useRetained ? retainedData : null;
     if ( !itemData ) {
       itemData = await this.createItemData(data.uuid);
-      delete itemData.flags?.dnd5e?.advancementOrigin;
-      delete itemData.flags?.dnd5e?.advancementRoot;
+      delete itemData.flags?.nih?.advancementOrigin;
+      delete itemData.flags?.nih?.advancementRoot;
       foundry.utils.setProperty(itemData, "system.classIdentifier", this.item.identifier);
     }
     if ( itemData ) {
@@ -80,7 +80,7 @@ export default class SubclassAdvancement extends Advancement {
     this.actor.updateSource({ items: [data] });
     this.updateSource({
       value: {
-        document: data._id, uuid: data._stats?.compendiumSource ?? data.flags?.dnd5e?.sourceId
+        document: data._id, uuid: data._stats?.compendiumSource ?? data.flags?.nih?.sourceId
       }
     });
   }

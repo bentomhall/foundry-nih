@@ -25,7 +25,7 @@ export default class BackgroundData extends ItemDataModel.mixin(
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.SOURCE"];
+  static LOCALIZATION_PREFIXES = ["NIH.SOURCE"];
 
   /* -------------------------------------------- */
 
@@ -50,7 +50,7 @@ export default class BackgroundData extends ItemDataModel.mixin(
   async getSheetData(context) {
     context.subtitles = [{ label: game.i18n.localize(CONFIG.Item.typeLabels.background) }];
     context.singleDescription = true;
-    context.parts = ["dnd5e.details-background", "dnd5e.details-starting-equipment"];
+    context.parts = ["nih.details-background", "nih.details-starting-equipment"];
   }
 
   /* -------------------------------------------- */
@@ -59,20 +59,20 @@ export default class BackgroundData extends ItemDataModel.mixin(
 
   /** @override */
   _advancementToCreate(options) {
-    if ( game.settings.get("dnd5e", "rulesVersion") === "legacy" ) return [
-      { type: "Trait", title: game.i18n.localize("DND5E.ADVANCEMENT.Defaults.BackgroundProficiencies") },
-      { type: "ItemGrant", title: game.i18n.localize("DND5E.ADVANCEMENT.Defaults.BackgroundFeature") }
+    if ( game.settings.get("nih", "rulesVersion") === "legacy" ) return [
+      { type: "Trait", title: game.i18n.localize("NIH.ADVANCEMENT.Defaults.BackgroundProficiencies") },
+      { type: "ItemGrant", title: game.i18n.localize("NIH.ADVANCEMENT.Defaults.BackgroundFeature") }
     ];
 
     return [
       { type: "AbilityScoreImprovement", configuration: { points: 3 } },
-      { type: "Trait", title: game.i18n.localize("DND5E.ADVANCEMENT.Defaults.BackgroundProficiencies") },
+      { type: "Trait", title: game.i18n.localize("NIH.ADVANCEMENT.Defaults.BackgroundProficiencies") },
       {
         type: "Trait",
-        title: game.i18n.localize("DND5E.ADVANCEMENT.Defaults.ChooseLanguages"),
+        title: game.i18n.localize("NIH.ADVANCEMENT.Defaults.ChooseLanguages"),
         configuration: { grants: ["languages:standard:common"] }
       },
-      { type: "ItemGrant", title: game.i18n.localize("DND5E.ADVANCEMENT.Defaults.BackgroundFeat") }
+      { type: "ItemGrant", title: game.i18n.localize("NIH.ADVANCEMENT.Defaults.BackgroundFeat") }
     ];
   }
 

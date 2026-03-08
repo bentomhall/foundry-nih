@@ -37,10 +37,10 @@ sort: 0
 _stats:
   duplicateSource: null
   coreVersion: '13.348'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037384971
   modifiedTime: 1757447545135
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!XogoBnFWmCAHXppo'

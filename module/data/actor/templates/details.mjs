@@ -16,9 +16,9 @@ export default class DetailsField {
   static get common() {
     return {
       biography: new SchemaField({
-        value: new HTMLField({label: "DND5E.Biography"}),
-        public: new HTMLField({label: "DND5E.BiographyPublic"})
-      }, {label: "DND5E.Biography"})
+        value: new HTMLField({label: "NIH.Biography"}),
+        public: new HTMLField({label: "NIH.BiographyPublic"})
+      }, {label: "NIH.Biography"})
     };
   }
 
@@ -30,12 +30,12 @@ export default class DetailsField {
    */
   static get creature() {
     return {
-      alignment: new StringField({required: true, label: "DND5E.Alignment"}),
-      ideal: new StringField({required: true, label: "DND5E.Ideals"}),
-      bond: new StringField({required: true, label: "DND5E.Bonds"}),
-      flaw: new StringField({required: true, label: "DND5E.Flaws"}),
+      alignment: new StringField({required: true, label: "NIH.Alignment"}),
+      ideal: new StringField({required: true, label: "NIH.Ideals"}),
+      bond: new StringField({required: true, label: "NIH.Bonds"}),
+      flaw: new StringField({required: true, label: "NIH.Flaws"}),
       race: new LocalDocumentField(foundry.documents.BaseItem, {
-        required: true, fallback: true, label: "DND5E.Species"
+        required: true, fallback: true, label: "NIH.Species"
       })
     };
   }

@@ -537,14 +537,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.cz1LUaiXG8GshgU9
+      compendiumSource: Compendium.nih.monsterfeatures.cz1LUaiXG8GshgU9
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745445133570
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.sDvx0IybgYa8Q4WG'
   - _id: 2kBUlTLMlwq3KoUB
@@ -583,10 +583,10 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.lOJK48AtlIcfYPPB
+      compendiumSource: Compendium.nih.monsterfeatures.lOJK48AtlIcfYPPB
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -644,14 +644,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.hkmTEk6klT6QL4K4
+      compendiumSource: Compendium.nih.monsterfeatures.hkmTEk6klT6QL4K4
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745447015825
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.9hrSczyYfl4fSrpZ'
   - _id: 2C0408CEBtrZW8ji
@@ -711,8 +711,8 @@ items:
         - somatic
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -759,10 +759,10 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.1N8dDMMgZ1h1YJ3B
+      compendiumSource: Compendium.nih.spells.1N8dDMMgZ1h1YJ3B
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -807,14 +807,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.Hc6MqLQhPTI1KOvm
+      compendiumSource: Compendium.nih.monsterfeatures.Hc6MqLQhPTI1KOvm
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745445146570
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.5sDIEn5aplaeXax7'
   - _id: LyxrhwvzMW4YbiYE
@@ -842,8 +842,8 @@ items:
       requirements: ''
       properties: []
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -906,14 +906,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.EqoLg8T8EHvhJgKE
+      compendiumSource: Compendium.nih.monsterfeatures.EqoLg8T8EHvhJgKE
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: 1745445150557
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.LyxrhwvzMW4YbiYE'
   - _id: BBLXs9hiUvtRaP16
@@ -998,8 +998,8 @@ items:
       container: null
       crewed: false
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: attack
           activation:
             type: action
@@ -1085,14 +1085,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.items.xMkP8BmFzElcsMaR
+      compendiumSource: Compendium.nih.items.xMkP8BmFzElcsMaR
       duplicateSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: null
       modifiedTime: 1760378770591
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.BBLXs9hiUvtRaP16'
   - _id: VJz6sW3vOJcEL4IS
@@ -1129,8 +1129,8 @@ items:
       requirements: ''
       properties: []
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: heal
           activation:
             type: action
@@ -1207,14 +1207,14 @@ items:
       default: 0
     flags: {}
     _stats:
-      compendiumSource: Compendium.dnd5e.monsterfeatures.r3Ugp8f5Ckw2EUHL
+      compendiumSource: Compendium.nih.monsterfeatures.r3Ugp8f5Ckw2EUHL
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.4.0
       createdTime: null
       modifiedTime: 1745445218996
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
       exportSource: null
     _key: '!actors.items!XEByBLeOkDgL3mrr.VJz6sW3vOJcEL4IS'
   - _id: Mzh95utKDPIrjiH8
@@ -1276,8 +1276,8 @@ items:
         - somatic
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -1323,10 +1323,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.Mzh95utKDPIrjiH8
+      compendiumSource: Compendium.nih.spells.Mzh95utKDPIrjiH8
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -1398,8 +1398,8 @@ items:
         - somatic
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: save
           activation:
             type: action
@@ -1466,10 +1466,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.dLJhxDfeyOsc3zsY
+      compendiumSource: Compendium.nih.spells.dLJhxDfeyOsc3zsY
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -1546,8 +1546,8 @@ items:
         - material
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: attack
           activation:
             type: action
@@ -1601,8 +1601,8 @@ items:
             includeBase: true
             parts: []
           sort: 0
-        dnd5eactivity100:
-          _id: dnd5eactivity100
+        nihactivity100:
+          _id: nihactivity100
           type: save
           activation:
             type: action
@@ -1657,10 +1657,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.TkJ8Wtg1L7TZtspm
+      compendiumSource: Compendium.nih.spells.TkJ8Wtg1L7TZtspm
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -1731,8 +1731,8 @@ items:
         - somatic
         - material
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: save
           activation:
             type: action
@@ -1811,10 +1811,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.5e1xTohkzqFqbYH4
+      compendiumSource: Compendium.nih.spells.5e1xTohkzqFqbYH4
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -1891,8 +1891,8 @@ items:
         - somatic
         - material
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: heal
           activation:
             type: action
@@ -1952,10 +1952,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.AGFMPAmuzwWO6Dfz
+      compendiumSource: Compendium.nih.spells.AGFMPAmuzwWO6Dfz
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -2028,8 +2028,8 @@ items:
         - material
         - ritual
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -2081,10 +2081,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.d54VDyFulD9xxY7J
+      compendiumSource: Compendium.nih.spells.d54VDyFulD9xxY7J
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -2206,8 +2206,8 @@ items:
         - material
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: utility
           activation:
             type: action
@@ -2259,10 +2259,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.ZPd73HtKF3At11jh
+      compendiumSource: Compendium.nih.spells.ZPd73HtKF3At11jh
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -2336,8 +2336,8 @@ items:
         - material
         - concentration
       activities:
-        dnd5eactivity000:
-          _id: dnd5eactivity000
+        nihactivity000:
+          _id: nihactivity000
           type: save
           activation:
             type: action
@@ -2404,10 +2404,10 @@ items:
     effects: []
     folder: null
     _stats:
-      compendiumSource: Compendium.dnd5e.spells.OVikYmSdHliAG2YD
+      compendiumSource: Compendium.nih.spells.OVikYmSdHliAG2YD
       duplicateSource: null
       coreVersion: '13.344'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 4.0.0
       createdTime: null
       modifiedTime: null
@@ -2423,10 +2423,10 @@ flags: {}
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.4.0
   createdTime: 1726171237273
   modifiedTime: 1744916069401
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!actors!XEByBLeOkDgL3mrr'

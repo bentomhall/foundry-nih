@@ -32,8 +32,8 @@ system:
   requirements: Oath of Devotion 3
   properties: []
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: utility
       activation:
         type: action
@@ -104,10 +104,10 @@ sort: 0
 _stats:
   duplicateSource: null
   coreVersion: '13.348'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037390191
   modifiedTime: 1759426758283
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!xNN0JMKqlG4hKVYu'

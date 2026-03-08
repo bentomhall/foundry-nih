@@ -49,8 +49,8 @@ system:
     - somatic
     - concentration
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: summon
       activation:
         type: action
@@ -125,10 +125,10 @@ folder: irCSpQWIMtp978TA
 _stats:
   duplicateSource: null
   coreVersion: '13.350'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.0
   createdTime: 1725037358366
   modifiedTime: 1760981595037
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!XT7nzJmVGgv73uaf'

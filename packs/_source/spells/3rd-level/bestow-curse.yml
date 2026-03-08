@@ -80,8 +80,8 @@ system:
     - somatic
     - concentration
   activities:
-    dnd5eactivity000:
-      _id: dnd5eactivity000
+    nihactivity000:
+      _id: nihactivity000
       type: save
       activation:
         type: action
@@ -176,7 +176,7 @@ flags: {}
 img: icons/magic/control/buff-flight-wings-runes-red.webp
 effects:
   - name: Cursed Charisma
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: 1
       startTime: null
@@ -187,7 +187,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/charisma.svg
+    img: systems/nih/icons/svg/abilities/charisma.svg
     _id: OSGSF1Zm61GXLvrC
     type: base
     system: {}
@@ -210,18 +210,18 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.OSGSF1Zm61GXLvrC
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.OSGSF1Zm61GXLvrC
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861699311
       modifiedTime: 1761861699311
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.OSGSF1Zm61GXLvrC'
   - name: Cursed Constitution
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: 1
       startTime: null
@@ -232,7 +232,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/constitution.svg
+    img: systems/nih/icons/svg/abilities/constitution.svg
     _id: pgBN0brGeJBSc413
     type: base
     system: {}
@@ -255,18 +255,18 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.pgBN0brGeJBSc413
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.pgBN0brGeJBSc413
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861700362
       modifiedTime: 1761861700362
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.pgBN0brGeJBSc413'
   - name: Cursed Dexterity
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: 1
       startTime: null
@@ -277,7 +277,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/dexterity.svg
+    img: systems/nih/icons/svg/abilities/dexterity.svg
     _id: RoAMbIx9IUqpNREv
     type: base
     system: {}
@@ -300,18 +300,18 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.RoAMbIx9IUqpNREv
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.RoAMbIx9IUqpNREv
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861702288
       modifiedTime: 1761861702288
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.RoAMbIx9IUqpNREv'
   - name: Cursed Intelligence
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: 1
       startTime: null
@@ -322,7 +322,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/intelligence.svg
+    img: systems/nih/icons/svg/abilities/intelligence.svg
     _id: KCdm5KtgQkFm9L9b
     type: base
     system: {}
@@ -345,18 +345,18 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.KCdm5KtgQkFm9L9b
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.KCdm5KtgQkFm9L9b
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861704580
       modifiedTime: 1761861704580
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.KCdm5KtgQkFm9L9b'
   - name: Cursed Strength
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: null
       startTime: null
@@ -367,7 +367,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/strength.svg
+    img: systems/nih/icons/svg/abilities/strength.svg
     _id: yO17H6NUUH6yTtJj
     type: base
     system: {}
@@ -390,18 +390,18 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.yO17H6NUUH6yTtJj
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.yO17H6NUUH6yTtJj
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861706464
       modifiedTime: 1761861706464
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.yO17H6NUUH6yTtJj'
   - name: Cursed Wisdom
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     duration:
       rounds: 1
       startTime: null
@@ -412,7 +412,7 @@ effects:
       startTurn: null
     disabled: false
     flags: {}
-    img: systems/dnd5e/icons/svg/abilities/wisdom.svg
+    img: systems/nih/icons/svg/abilities/wisdom.svg
     _id: yFn5nMRayDT5pVeT
     type: base
     system: {}
@@ -435,19 +435,19 @@ effects:
     sort: 0
     _stats:
       compendiumSource: >-
-        Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.yFn5nMRayDT5pVeT
+        Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL.ActiveEffect.yFn5nMRayDT5pVeT
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861707655
       modifiedTime: 1761861707655
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.yFn5nMRayDT5pVeT'
   - name: Cursed Attacks
     img: icons/skills/melee/sword-damaged-broken-purple.webp
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     transfer: false
     _id: aahOmoNF6ZsMVxUs
     type: base
@@ -473,15 +473,15 @@ effects:
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861708992
       modifiedTime: 1761861708992
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!pO4zGe5LmFIYqJiL.aahOmoNF6ZsMVxUs'
   - name: Cursed Actions
     img: icons/magic/control/debuff-chains-shackles-movement-blue.webp
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     transfer: false
     type: base
     system: {}
@@ -509,16 +509,16 @@ effects:
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861710228
       modifiedTime: 1761861710228
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _id: Ebzd58ARPldBzKci
     _key: '!items.effects!pO4zGe5LmFIYqJiL.Ebzd58ARPldBzKci'
   - name: Cursed Resilience
     img: icons/skills/wounds/bone-broken-marrow-red.webp
-    origin: Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL
+    origin: Compendium.nih.spells.Item.pO4zGe5LmFIYqJiL
     transfer: false
     type: base
     system: {}
@@ -545,21 +545,21 @@ effects:
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1761861711417
       modifiedTime: 1761861711417
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _id: 2EP5ujWSLnkP1zV0
     _key: '!items.effects!pO4zGe5LmFIYqJiL.2EP5ujWSLnkP1zV0'
 folder: 5Si35RRLLaaoWvC3
 _stats:
   duplicateSource: null
   coreVersion: '13.351'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 5.2.2
   createdTime: 1725037365284
   modifiedTime: 1765219896749
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!pO4zGe5LmFIYqJiL'

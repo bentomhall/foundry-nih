@@ -31,23 +31,23 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
     return this.mergeSchema(super.defineSchema(), {
       abilities: new MappingField(new SchemaField({
         value: new NumberField({
-          required: true, nullable: false, integer: true, min: 0, initial: 10, label: "DND5E.AbilityScore"
+          required: true, nullable: false, integer: true, min: 0, initial: 10, label: "NIH.AbilityScore"
         }),
         proficient: new NumberField({
-          required: true, integer: true, min: 0, max: 1, initial: 0, label: "DND5E.ProficiencyLevel"
+          required: true, integer: true, min: 0, max: 1, initial: 0, label: "NIH.ProficiencyLevel"
         }),
         max: new NumberField({
-          required: true, integer: true, nullable: true, min: 0, initial: null, label: "DND5E.AbilityScoreMax"
+          required: true, integer: true, nullable: true, min: 0, initial: null, label: "NIH.AbilityScoreMax"
         }),
         bonuses: new SchemaField({
-          check: new FormulaField({ required: true, label: "DND5E.AbilityCheckBonus" }),
-          save: new FormulaField({ required: true, label: "DND5E.SaveBonus" })
-        }, { label: "DND5E.AbilityBonuses" }),
+          check: new FormulaField({ required: true, label: "NIH.AbilityCheckBonus" }),
+          save: new FormulaField({ required: true, label: "NIH.SaveBonus" })
+        }, { label: "NIH.AbilityBonuses" }),
         check: new RollConfigField({ ability: false }),
         save: new RollConfigField({ ability: false })
       }), {
-        initialKeys: CONFIG.DND5E.abilities, initialValue: this._initialAbilityValue.bind(this),
-        initialKeysOnly: true, label: "DND5E.Abilities"
+        initialKeys: CONFIG.NIH.abilities, initialValue: this._initialAbilityValue.bind(this),
+        initialKeysOnly: true, label: "NIH.Abilities"
       })
     });
   }
@@ -63,7 +63,7 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
    * @private
    */
   static _initialAbilityValue(key, initial, existing) {
-    const config = CONFIG.DND5E.abilities[key];
+    const config = CONFIG.NIH.abilities[key];
     if ( config ) {
       let defaultValue = config.defaults?.[this._systemType] ?? initial.value;
       if ( typeof defaultValue === "string" ) defaultValue = existing?.[defaultValue]?.value ?? initial.value;
@@ -131,7 +131,7 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
    * @param {object} [options.originalSaves]  Original ability data for transformed actors.
    */
   prepareAbilities({ rollData={}, originalSaves }={}) {
-    const flags = this.parent.flags.dnd5e ?? {};
+    const flags = this.parent.flags.nih ?? {};
     const { prof = 0, ac } = this.attributes ?? {};
     Object.values(this.abilities).forEach(a => a.mod = Math.floor((a.value - 10) / 2));
     const checkBonus = simplifyBonus(this.bonuses?.abilities?.check, rollData);
@@ -162,7 +162,7 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
       abl.attack = abl.mod + prof;
       abl.dc = 8 + abl.mod + prof + dcBonus;
 
-      if ( !Number.isFinite(abl.max) ) abl.max = CONFIG.DND5E.maxAbilityScore;
+      if ( !Number.isFinite(abl.max) ) abl.max = CONFIG.NIH.maxAbilityScore;
 
       // Adjust rolling mode
       if ( this.parent.hasConditionEffect("abilityCheckDisadvantage") ) {
@@ -191,12 +191,12 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
    */
   calculateAbilityCheckProficiency(multiplier, ability, options={}) {
     let roundDown = true;
-    if ( (multiplier < 1) && ((game.settings.get("dnd5e", "rulesVersion") === "legacy") || options.skill) ) {
+    if ( (multiplier < 1) && ((game.settings.get("nih", "rulesVersion") === "legacy") || options.skill) ) {
       if ( this.parent._isRemarkableAthlete(ability) ) {
         multiplier = .5;
         roundDown = false;
       }
-      else if ( this.parent.flags.dnd5e?.jackOfAllTrades ) multiplier = .5;
+      else if ( this.parent.flags.nih?.jackOfAllTrades ) multiplier = .5;
     }
     return new Proficiency(this.attributes.prof, multiplier, roundDown);
   }
@@ -213,7 +213,7 @@ export default class CommonTemplate extends ActorDataModel.mixin(CurrencyTemplat
    * @returns {Proficiency}
    */
   calculateToolProficiency(multiplier, ability, options={}) {
-    if ( (multiplier === 1) && this.parent.flags.dnd5e?.toolExpertise ) {
+    if ( (multiplier === 1) && this.parent.flags.nih?.toolExpertise ) {
       return new Proficiency(this.attributes.prof, 2, true);
     }
     return this.calculateAbilityCheckProficiency(multiplier, ability, options);

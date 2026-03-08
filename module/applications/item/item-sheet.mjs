@@ -35,8 +35,8 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
     classes: ["item"],
     editingDescriptionTarget: null,
     elements: {
-      activities: "dnd5e-activities",
-      effects: "dnd5e-effects"
+      activities: "nih-activities",
+      effects: "nih-effects"
     },
     form: {
       submitOnChange: true
@@ -54,31 +54,31 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
   /** @override */
   static PARTS = {
     header: {
-      template: "systems/dnd5e/templates/items/header.hbs"
+      template: "systems/nih/templates/items/header.hbs"
     },
     tabs: {
-      template: "systems/dnd5e/templates/shared/horizontal-tabs.hbs",
+      template: "systems/nih/templates/shared/horizontal-tabs.hbs",
       templates: ["templates/generic/tab-navigation.hbs"]
     },
     activities: {
-      template: "systems/dnd5e/templates/items/activities.hbs",
-      templates: ["systems/dnd5e/templates/shared/activities.hbs"],
+      template: "systems/nih/templates/items/activities.hbs",
+      templates: ["systems/nih/templates/shared/activities.hbs"],
       scrollable: [""]
     },
     advancement: {
-      template: "systems/dnd5e/templates/items/advancement.hbs",
+      template: "systems/nih/templates/items/advancement.hbs",
       scrollable: [""]
     },
     description: {
-      template: "systems/dnd5e/templates/items/description.hbs",
+      template: "systems/nih/templates/items/description.hbs",
       scrollable: [""]
     },
     details: {
-      template: "systems/dnd5e/templates/items/details.hbs",
+      template: "systems/nih/templates/items/details.hbs",
       scrollable: [""]
     },
     effects: {
-      template: "systems/dnd5e/templates/items/effects.hbs",
+      template: "systems/nih/templates/items/effects.hbs",
       scrollable: [""]
     }
   };
@@ -87,11 +87,11 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
 
   /** @override */
   static TABS = [
-    { tab: "description", label: "DND5E.ITEM.SECTIONS.Description" },
-    { tab: "details", label: "DND5E.ITEM.SECTIONS.Details", condition: this.isItemIdentified.bind(this) },
-    { tab: "activities", label: "DND5E.ITEM.SECTIONS.Activities", condition: this.itemHasActivities.bind(this) },
-    { tab: "effects", label: "DND5E.ITEM.SECTIONS.Effects", condition: this.itemHasEffects.bind(this) },
-    { tab: "advancement", label: "DND5E.ITEM.SECTIONS.Advancement", condition: this.itemHasAdvancement.bind(this) }
+    { tab: "description", label: "NIH.ITEM.SECTIONS.Description" },
+    { tab: "details", label: "NIH.ITEM.SECTIONS.Details", condition: this.isItemIdentified.bind(this) },
+    { tab: "activities", label: "NIH.ITEM.SECTIONS.Activities", condition: this.itemHasActivities.bind(this) },
+    { tab: "effects", label: "NIH.ITEM.SECTIONS.Effects", condition: this.itemHasEffects.bind(this) },
+    { tab: "advancement", label: "NIH.ITEM.SECTIONS.Advancement", condition: this.itemHasAdvancement.bind(this) }
   ];
 
   /* -------------------------------------------- */
@@ -193,7 +193,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
       active: [],
       object: Object.fromEntries((context.system.properties ?? []).map(p => [p, true])),
       options: (this.item.system.validProperties ?? []).reduce((arr, k) => {
-        const { label } = CONFIG.DND5E.itemProperties[k];
+        const { label } = CONFIG.NIH.itemProperties[k];
         arr.push({
           label,
           value: k,
@@ -337,30 +337,30 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
     context.parts ??= [];
 
     context.baseItemOptions = await this._getBaseItemOptions(context);
-    context.coverOptions = Object.entries(CONFIG.DND5E.cover).map(([value, label]) => ({ value, label }));
-    context.unitsOptions = Object.entries(CONFIG.DND5E.movementUnits).map(([value, { label }]) => ({ value, label }));
+    context.coverOptions = Object.entries(CONFIG.NIH.cover).map(([value, label]) => ({ value, label }));
+    context.unitsOptions = Object.entries(CONFIG.NIH.movementUnits).map(([value, { label }]) => ({ value, label }));
 
     // If using modern rules, do not show redundant artificer progression unless it is already selected.
-    context.spellProgression = { ...CONFIG.DND5E.spellProgression };
-    if ( (game.settings.get("dnd5e", "rulesVersion") === "modern")
+    context.spellProgression = { ...CONFIG.NIH.spellProgression };
+    if ( (game.settings.get("nih", "rulesVersion") === "modern")
       && (this.item.system.spellcasting?.progression !== "artificer") ) delete context.spellProgression.artificer;
     context.spellProgression = Object.entries(context.spellProgression).map(([value, config]) => {
-      const group = CONFIG.DND5E.spellcasting[config.type]?.label ?? "";
+      const group = CONFIG.NIH.spellcasting[config.type]?.label ?? "";
       return { group, value, label: config.label };
     });
     const { progression } = this.item.system.spellcasting ?? {};
-    if ( progression && !(progression in CONFIG.DND5E.spellProgression) ) {
+    if ( progression && !(progression in CONFIG.NIH.spellProgression) ) {
       context.spellProgression.push({ value: progression, label: progression });
     }
 
     // Limited Uses
     context.data = { uses: context.source.uses };
     context.hasLimitedUses = this.item.system.hasLimitedUses;
-    context.recoveryPeriods = CONFIG.DND5E.limitedUsePeriods.recoveryOptions;
+    context.recoveryPeriods = CONFIG.NIH.limitedUsePeriods.recoveryOptions;
     context.recoveryTypes = [
-      { value: "recoverAll", label: "DND5E.USES.Recovery.Type.RecoverAll" },
-      { value: "loseAll", label: "DND5E.USES.Recovery.Type.LoseAll" },
-      { value: "formula", label: "DND5E.USES.Recovery.Type.Formula" }
+      { value: "recoverAll", label: "NIH.USES.Recovery.Type.RecoverAll" },
+      { value: "loseAll", label: "NIH.USES.Recovery.Type.LoseAll" },
+      { value: "formula", label: "NIH.USES.Recovery.Type.Formula" }
     ];
     context.usesRecovery = (context.source.uses?.recovery ?? []).map((data, index) => ({
       data,
@@ -385,7 +385,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
   async _prepareEffectsContext(context, options) {
     const effectMap = {};
     const riders = [];
-    const riderIds = new Set(this.item.getFlag("dnd5e", "riders.effect") ?? []);
+    const riderIds = new Set(this.item.getFlag("nih", "riders.effect") ?? []);
     context.tab = context.tabs.effects;
     context.effects = EffectsElement.prepareCategories(this.item.effects, { parent: this.item });
     for ( const category of Object.values(context.effects) ) {
@@ -522,13 +522,13 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
     const tags = [];
     if ( advancement.classRestriction === "primary" ) {
       tags.push({
-        label: "DND5E.AdvancementClassRestrictionPrimary",
-        icon: "systems/dnd5e/icons/svg/original-class.svg"
+        label: "NIH.AdvancementClassRestrictionPrimary",
+        icon: "systems/nih/icons/svg/original-class.svg"
       });
     } else if ( advancement.classRestriction === "secondary" ) {
       tags.push({
-        label: "DND5E.AdvancementClassRestrictionSecondary",
-        icon: "systems/dnd5e/icons/svg/multiclass.svg"
+        label: "NIH.AdvancementClassRestrictionSecondary",
+        icon: "systems/nih/icons/svg/multiclass.svg"
       });
     }
     return tags;
@@ -544,9 +544,9 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
    */
   async _getBaseItemOptions(context) {
     const baseIds = this.item.type === "equipment" ? {
-      ...CONFIG.DND5E.armorIds,
-      ...CONFIG.DND5E.shieldIds
-    } : CONFIG.DND5E[`${this.item.type}Ids`];
+      ...CONFIG.NIH.armorIds,
+      ...CONFIG.NIH.shieldIds
+    } : CONFIG.NIH[`${this.item.type}Ids`];
     if ( baseIds === undefined ) return null;
 
     const options = [];
@@ -604,7 +604,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
   _attachFrameListeners() {
     super._attachFrameListeners();
     new ContextMenu5e(this.element, ".advancement-item[data-id]", [], {
-      onOpen: target => dnd5e.documents.advancement.Advancement.onContextMenu(this.item, target), jQuery: false
+      onOpen: target => nih.documents.advancement.Advancement.onContextMenu(this.item, target), jQuery: false
     });
   }
 
@@ -630,7 +630,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
 
     if ( this._headerToggles.identified ) {
       const isIdentified = this.item.system.identified;
-      const label = isIdentified ? "DND5E.Identified" : "DND5E.Unidentified.Title";
+      const label = isIdentified ? "NIH.Identified" : "NIH.Unidentified.Title";
       this._headerToggles.identified.setAttribute("aria-label", game.i18n.localize(label));
       this._headerToggles.identified.dataset.tooltip = label;
       this._headerToggles.identified.classList.toggle("active", isIdentified);
@@ -638,7 +638,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
 
     if ( this._headerToggles.equipped ) {
       const isEquipped = this.item.system.equipped;
-      const label = isEquipped ? "DND5E.Equipped" : "DND5E.Unequipped";
+      const label = isEquipped ? "NIH.Equipped" : "NIH.Unequipped";
       this._headerToggles.equipped.setAttribute("aria-label", game.i18n.localize(label));
       this._headerToggles.equipped.dataset.tooltip = label;
       this._headerToggles.equipped.classList.toggle("active", isEquipped);
@@ -661,11 +661,11 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
   /** @override */
   _addDocument() {
     if ( this.tabGroups.primary === "activities" ) {
-      return dnd5e.documents.activity.UtilityActivity.createDialog({}, { parent: this.item });
+      return nih.documents.activity.UtilityActivity.createDialog({}, { parent: this.item });
     }
 
     if ( this.tabGroups.primary === "advancement" ) {
-      return dnd5e.documents.advancement.Advancement.createDialog({}, { parent: this.item });
+      return nih.documents.advancement.Advancement.createDialog({}, { parent: this.item });
     }
 
     if ( this.tabGroups.primary === "effects" ) {
@@ -895,14 +895,14 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
 
     /**
      * A hook event that fires when some useful data is dropped onto an ItemSheet5e.
-     * @function dnd5e.dropItemSheetData
+     * @function nih.dropItemSheetData
      * @memberof hookEvents
      * @param {Item5e} item                  The Item5e.
      * @param {ItemSheet5e} sheet            The ItemSheet5e application.
      * @param {object} data                  The data that has been dropped onto the sheet.
      * @returns {boolean}                    Explicitly return `false` to prevent normal drop handling.
      */
-    const allowed = Hooks.call("dnd5e.dropItemSheetData", item, this, data);
+    const allowed = Hooks.call("nih.dropItemSheetData", item, this, data);
     if ( allowed === false ) return;
     event.stopPropagation();
 
@@ -938,7 +938,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
     if ( effect.type === "enchantment" ) {
       effectData.origin ??= effect.parent.uuid;
       options.keepOrigin = true;
-      options.dnd5e = {
+      options.nih = {
         enchantmentProfile: effect.id,
         activityId: data.activityId ?? effect.parent?.system.activities?.getByType("enchant").find(a =>
           a.effects.some(e => e._id === effect.id)
@@ -961,7 +961,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
   _onDropActivity(event, { data }) {
     const { _id: id, type } = data;
     const source = this.item.system.activities.get(id);
-    const config = CONFIG.DND5E.activityTypes[type] ?? {};
+    const config = CONFIG.NIH.activityTypes[type] ?? {};
 
     // Reordering
     if ( source ) {
@@ -1007,7 +1007,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
       return false;
     }
     advancements = advancements.filter(a => {
-      const validItemTypes = CONFIG.DND5E.advancementTypes[a.constructor.typeName]?.validItemTypes
+      const validItemTypes = CONFIG.NIH.advancementTypes[a.constructor.typeName]?.validItemTypes
         ?? a.metadata.validItemTypes;
       return !this.item.advancement.byId[a.id]
         && validItemTypes.has(this.item.type)
@@ -1024,7 +1024,7 @@ export default class ItemSheet5e extends PrimarySheetMixin(DocumentSheet5e) {
     }
 
     if ( !advancements.length ) return false;
-    if ( this.item.actor?.system.metadata?.supportsAdvancement && !game.settings.get("dnd5e", "disableAdvancements") ) {
+    if ( this.item.actor?.system.metadata?.supportsAdvancement && !game.settings.get("nih", "disableAdvancements") ) {
       const manager = AdvancementManager.forNewAdvancement(this.item.actor, this.item.id, advancements);
       if ( manager.steps.length ) return manager.render(true);
     }

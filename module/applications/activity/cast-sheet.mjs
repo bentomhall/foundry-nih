@@ -19,10 +19,10 @@ export default class CastSheet extends ActivitySheet {
   static PARTS = {
     ...super.PARTS,
     effect: {
-      template: "systems/dnd5e/templates/activity/cast-effect.hbs",
+      template: "systems/nih/templates/activity/cast-effect.hbs",
       templates: [
-        "systems/dnd5e/templates/activity/parts/cast-spell.hbs",
-        "systems/dnd5e/templates/activity/parts/cast-details.hbs"
+        "systems/nih/templates/activity/parts/cast-spell.hbs",
+        "systems/nih/templates/activity/parts/cast-details.hbs"
       ]
     }
   };
@@ -47,18 +47,18 @@ export default class CastSheet extends ActivitySheet {
 
     if ( context.spell ) {
       context.contentLink = context.spell.toAnchor().outerHTML;
-      if ( context.spell.system.level > 0 ) context.levelOptions = Object.entries(CONFIG.DND5E.spellLevels)
+      if ( context.spell.system.level > 0 ) context.levelOptions = Object.entries(CONFIG.NIH.spellLevels)
         .filter(([level]) => Number(level) >= context.spell.system.level)
         .map(([value, label]) => ({ value, label }));
     }
 
     context.abilityOptions = [
-      { value: "", label: game.i18n.localize("DND5E.Spellcasting") },
+      { value: "", label: game.i18n.localize("NIH.Spellcasting") },
       { rule: true },
-      ...Object.entries(CONFIG.DND5E.abilities).map(([value, { label }]) => ({ value, label }))
+      ...Object.entries(CONFIG.NIH.abilities).map(([value, { label }]) => ({ value, label }))
     ];
-    context.propertyOptions = Array.from(CONFIG.DND5E.validProperties.spell).map(value => ({
-      value, label: CONFIG.DND5E.itemProperties[value]?.label ?? ""
+    context.propertyOptions = Array.from(CONFIG.NIH.validProperties.spell).map(value => ({
+      value, label: CONFIG.NIH.itemProperties[value]?.label ?? ""
     }));
 
     return context;
@@ -87,7 +87,7 @@ export default class CastSheet extends ActivitySheet {
   /** @inheritDoc */
   _getTabs() {
     const tabs = super._getTabs();
-    tabs.effect.label = "DND5E.CAST.SECTIONS.Spell";
+    tabs.effect.label = "NIH.CAST.SECTIONS.Spell";
     tabs.effect.icon = "fa-solid fa-wand-sparkles";
     return tabs;
   }

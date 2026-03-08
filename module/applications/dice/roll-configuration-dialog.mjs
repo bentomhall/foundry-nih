@@ -32,7 +32,7 @@ export default class RollConfigurationDialog extends Dialog5e {
   static DEFAULT_OPTIONS = {
     classes: ["roll-configuration"],
     window: {
-      title: "DND5E.RollConfiguration.Title",
+      title: "NIH.RollConfiguration.Title",
       icon: "fa-solid fa-dice"
     },
     form: {
@@ -55,13 +55,13 @@ export default class RollConfigurationDialog extends Dialog5e {
   /** @override */
   static PARTS = {
     formulas: {
-      template: "systems/dnd5e/templates/dice/roll-formulas.hbs"
+      template: "systems/nih/templates/dice/roll-formulas.hbs"
     },
     configuration: {
-      template: "systems/dnd5e/templates/dice/roll-configuration.hbs"
+      template: "systems/nih/templates/dice/roll-configuration.hbs"
     },
     buttons: {
-      template: "systems/dnd5e/templates/dice/roll-buttons.hbs"
+      template: "systems/nih/templates/dice/roll-buttons.hbs"
     }
   };
 
@@ -149,7 +149,7 @@ export default class RollConfigurationDialog extends Dialog5e {
       // entirely.
       if ( !this.options.rendering.dice.denominations.has(term.denomination) ) return shouldDisplay = false;
       for ( let i = 0; i < term.number; i++ ) dice.push({
-        icon: `systems/dnd5e/icons/svg/dice/${term.denomination}.svg`,
+        icon: `systems/nih/icons/svg/dice/${term.denomination}.svg`,
         label: term.denomination,
         denomination: term.denomination
       });
@@ -212,7 +212,7 @@ export default class RollConfigurationDialog extends Dialog5e {
       roll: {
         default: true,
         icon: '<i class="fa-solid fa-dice" inert></i>',
-        label: game.i18n.localize("DND5E.Roll")
+        label: game.i18n.localize("NIH.Roll")
       }
     };
     return context;
@@ -230,7 +230,7 @@ export default class RollConfigurationDialog extends Dialog5e {
   async _prepareConfigurationContext(context, options) {
     context.fields = [{
       field: new foundry.data.fields.StringField({
-        label: game.i18n.localize("DND5E.RollMode"), blank: false, required: true
+        label: game.i18n.localize("NIH.RollMode"), blank: false, required: true
       }),
       name: "rollMode",
       value: this.message.rollMode ?? this.options.default?.rollMode ?? game.settings.get("core", "rollMode"),
@@ -285,9 +285,9 @@ export default class RollConfigurationDialog extends Dialog5e {
 
     /**
      * A hook event that fires when a roll config is built using the roll prompt. Multiple hooks may be called depending
-     * on the rolling method (e.g. `dnd5e.buildSkillRollConfig`, `dnd5e.buildAbilityCheckRollConfig`,
-     * `dnd5e.buildRollConfig`).
-     * @function dnd5e.buildRollConfig
+     * on the rolling method (e.g. `nih.buildSkillRollConfig`, `nih.buildAbilityCheckRollConfig`,
+     * `nih.buildRollConfig`).
+     * @function nih.buildRollConfig
      * @memberof hookEvents
      * @param {RollConfigurationDialog} app    Roll configuration dialog.
      * @param {BasicRollConfiguration} config  Roll configuration data.
@@ -295,7 +295,7 @@ export default class RollConfigurationDialog extends Dialog5e {
      * @param {number} index                   Index of the roll within all rolls being prepared.
      */
     for ( const hookName of this.#config.hookNames ?? [""] ) {
-      Hooks.callAll(`dnd5e.build${hookName.capitalize()}RollConfig`, this, config, formData, index);
+      Hooks.callAll(`nih.build${hookName.capitalize()}RollConfig`, this, config, formData, index);
     }
 
     config = this._buildConfig(config, formData, index);
@@ -303,9 +303,9 @@ export default class RollConfigurationDialog extends Dialog5e {
 
     /**
      * A hook event that fires after a roll config has been built using the roll prompt. Multiple hooks may be called
-     * depending on the rolling method (e.g. `dnd5e.postBuildSkillRollConfig`, `dnd5e.postBuildAbilityCheckRollConfig`,
-     * `dnd5e.postBuildRollConfig`).
-     * @function dnd5e.postBuildRollConfig
+     * depending on the rolling method (e.g. `nih.postBuildSkillRollConfig`, `nih.postBuildAbilityCheckRollConfig`,
+     * `nih.postBuildRollConfig`).
+     * @function nih.postBuildRollConfig
      * @memberof hookEvents
      * @param {BasicRollProcessConfiguration} process  Full process configuration data.
      * @param {BasicRollConfiguration} config          Roll configuration data.
@@ -315,7 +315,7 @@ export default class RollConfigurationDialog extends Dialog5e {
      * @param {FormDataExtended} [options.formData]    Any data entered into the rolling prompt.
      */
     for ( const hookName of this.#config.hookNames ?? [""] ) {
-      Hooks.callAll(`dnd5e.postBuild${hookName.capitalize()}RollConfig`, this.config, config, index, {
+      Hooks.callAll(`nih.postBuild${hookName.capitalize()}RollConfig`, this.config, config, index, {
         app: this, formData
       });
     }
@@ -379,7 +379,7 @@ export default class RollConfigurationDialog extends Dialog5e {
   static async #handleFormSubmission(event, form, formData) {
     if ( formData.has("rollMode") ) this.message.rollMode = formData.get("rollMode");
     this.#rolls = this._finalizeRolls(event.submitter?.dataset?.action);
-    await this.close({ dnd5e: { submitted: true } });
+    await this.close({ nih: { submitted: true } });
   }
 
   /* -------------------------------------------- */
@@ -398,7 +398,7 @@ export default class RollConfigurationDialog extends Dialog5e {
 
   /** @override */
   _onClose(options={}) {
-    if ( !options.dnd5e?.submitted ) this.#rolls = [];
+    if ( !options.nih?.submitted ) this.#rolls = [];
   }
 
   /* -------------------------------------------- */

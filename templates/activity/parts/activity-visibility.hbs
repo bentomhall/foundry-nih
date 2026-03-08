@@ -1,18 +1,18 @@
 <fieldset>
-    <legend>{{ localize "DND5E.ACTIVITY.FIELDS.visibility.label" }}</legend>
-    {{> "dnd5e.fieldlist" visibilityFields }}
+    <legend>{{ localize "NIH.ACTIVITY.FIELDS.visibility.label" }}</legend>
+    {{> "nih.fieldlist" visibilityFields }}
     <div class="form-group">
-        <label>{{ localize "DND5E.ACTIVITY.FIELDS.visibility.level.label" }}</label>
+        <label>{{ localize "NIH.ACTIVITY.FIELDS.visibility.level.label" }}</label>
         <div class="form-fields range-fields">
             {{ formInput fields.visibility.fields.level.fields.min value=source.visibility.level.min
-                         placeholder="0" ariaLabel=(localize "DND5E.LevelLimit.Min")
+                         placeholder="0" ariaLabel=(localize "NIH.LevelLimit.Min")
                          input=@root.inputs.createNumberInput }}
-            <dnd5e-icon src="systems/dnd5e/icons/svg/range-connector.svg" class="sep"></dnd5e-icon>
+            <nih-icon src="systems/nih/icons/svg/range-connector.svg" class="sep"></nih-icon>
             {{ formInput fields.visibility.fields.level.fields.max value=source.visibility.level.max
-                         placeholder="∞" ariaLabel=(localize "DND5E.LevelLimit.Max")
+                         placeholder="∞" ariaLabel=(localize "NIH.LevelLimit.Max")
                          input=@root.inputs.createNumberInput }}
         </div>
-        <p class="hint">{{ localize "DND5E.ACTIVITY.FIELDS.visibility.level.hint" }}</p>
+        <p class="hint">{{ localize "NIH.ACTIVITY.FIELDS.visibility.level.hint" }}</p>
     </div>
     {{#if (or (not activity.isSpell) activity.isRider)}}
     {{ formField fields.visibility.fields.identifier value=source.visibility.identifier rootId=partId }}

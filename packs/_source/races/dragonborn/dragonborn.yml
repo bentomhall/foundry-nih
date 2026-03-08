@@ -71,16 +71,16 @@ system:
         allowDrops: false
         type: feat
         pool:
-          - uuid: Compendium.dnd5e.races.NnSZlrsHCFeH3cCq
-          - uuid: Compendium.dnd5e.races.KVgvW5yhKcmQUanz
-          - uuid: Compendium.dnd5e.races.JrUcwLR2aQC09iUM
-          - uuid: Compendium.dnd5e.races.pJzMSk9qYywYy65w
-          - uuid: Compendium.dnd5e.races.bFpLM0N3uTeHLdzu
-          - uuid: Compendium.dnd5e.races.YPQQBZAuRiSwuBfh
-          - uuid: Compendium.dnd5e.races.lXIxndsBaQglHBtO
-          - uuid: Compendium.dnd5e.races.kB61JPKQrDBbSNU7
-          - uuid: Compendium.dnd5e.races.pAYTdRGftNr8AitK
-          - uuid: Compendium.dnd5e.races.KL7wx9Q8XNJQir0k
+          - uuid: Compendium.nih.races.NnSZlrsHCFeH3cCq
+          - uuid: Compendium.nih.races.KVgvW5yhKcmQUanz
+          - uuid: Compendium.nih.races.JrUcwLR2aQC09iUM
+          - uuid: Compendium.nih.races.pJzMSk9qYywYy65w
+          - uuid: Compendium.nih.races.bFpLM0N3uTeHLdzu
+          - uuid: Compendium.nih.races.YPQQBZAuRiSwuBfh
+          - uuid: Compendium.nih.races.lXIxndsBaQglHBtO
+          - uuid: Compendium.nih.races.kB61JPKQrDBbSNU7
+          - uuid: Compendium.nih.races.pAYTdRGftNr8AitK
+          - uuid: Compendium.nih.races.KL7wx9Q8XNJQir0k
         spell:
           ability: []
           preparation: ''
@@ -214,11 +214,11 @@ flags: {}
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.0.0
   createdTime: 1725037392732
   modifiedTime: 1725992703354
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 sort: 0
 folder: gpuhARM4UqdXSEto

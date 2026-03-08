@@ -1,9 +1,6 @@
 import CalenderHUD from "./applications/calendar/calendar-hud.mjs";
 import MapLocationControlIcon from "./canvas/map-location-control-icon.mjs";
 import { ConsumptionTargetData } from "./data/activity/fields/consumption-targets-field.mjs";
-import { CalendarGreyhawk, CALENDAR_OF_GREYHAWK } from "./data/calendar/calendar-of-greyhawk.mjs";
-import { CalendarHarptos, CALENDAR_OF_HARPTOS } from "./data/calendar/calendar-of-harptos.mjs";
-import { CalendarKhorvaire, CALENDAR_OF_KHORVAIRE } from "./data/calendar/calendar-of-khorvaire.mjs";
 import * as activities from "./documents/activity/_module.mjs";
 import Actor5e from "./documents/actor/actor.mjs";
 import * as advancement from "./documents/advancement/_module.mjs";
@@ -17,20 +14,15 @@ import VehicleData from "./data/actor/vehicle.mjs";
  *   ActivityTypeConfiguration, ActorSizeConfiguration, AdvancementTypeConfiguration,
  *   AreaTargetDefinition, CalendarHUDConfiguration, CharacterFlagConfiguration, ConditionConfiguration,
  *   CraftingConfiguration, CreatureTypeConfiguration, CurrencyConfiguration, DamageTypeConfiguration,
- *   EncumbranceConfiguration, FacilityConfiguration, HabitatConfiguration5e,
+ *   EncumbranceConfiguration, HabitatConfiguration5e,
  *   IndividualTargetDefinition, ItemPropertyConfiguration, LimitedUsePeriodConfiguration,
  *   MapLocationMarkerStyle, MovementTypeConfiguration, MovementUnitConfiguration,
  *   RestTypeConfiguration, RequestCallback5e, RuleTypeConfiguration, SkillConfiguration,
  *   SpellcastingFocusConfiguration, SpellcastingPreparationState5e, SpellSchoolConfiguration,
- *   SpellScrollValues, StatusEffectConfig5e, SubtypeTypeConfiguration, TimeUnitConfiguration,
+ *   StatusEffectConfig5e, SubtypeTypeConfiguration, TimeUnitConfiguration,
  *   ToolConfiguration, TraitConfiguration, TransformationConfiguration, TravelPaceConfiguration,
- *   TravelUnitConfiguration, TreasureConfiguration5e, UnitConfiguration, WeaponMasterConfiguration
+ *   TravelUnitConfiguration, TreasureConfiguration5e, UnitConfiguration,
  * } from "./_types.mjs";
- * @import { TravelPace5e } from "./data/actor/fields/_types.mjs";
- * @import {
- *   MultiLevelSpellcasting, SingleLevelSpellcastingData, SlotSpellcastingData, SpellcastingModelData,
- *   SpellcastingTable5e, SpellcastingTableSingle5e
- * } from "./data/spellcasting/_types.mjs";
  */
 
 // Namespace Configuration Values
@@ -2188,7 +2180,7 @@ NIH.movementTypes = {
   }
 };
 preLocalize("movementTypes", { key: "label" });
-patchConfig("movementTypes", "label", { since: "DnD5e 5.1", until: "DnD5e 5.3" });
+patchConfig("movementTypes", "label", { since: "Nih 5.1", until: "Nih 5.3" });
 
 /* -------------------------------------------- */
 
@@ -2772,63 +2764,43 @@ preLocalize("attackTypes", { key: "label" });
 /*  FIXME                                       */
 /* -------------------------------------------- */
 
+const AETHER_PROGRESSION_TYPES = NIH.AETHER_PROGRESSION_TYPES = {
+  full: "full",
+  half: "half",
+  martial: "martial"
+}
+
 /**
- * Define the standard slot progression by character level.
- * The entries of this array represent the spell slot progression for a full spell-caster.
- * @type {SpellcastingTable5e}
+ * Defines the standard aether progression for PCs by type (full, half, martial).
+ * @param {keyof AETHER_PROGRESSION_TYPES} type
+ * @param {number} level
+ * @returns {number}
  */
-const SPELL_SLOT_TABLE = NIH.SPELL_SLOT_TABLE = [
-  [2],
-  [3],
-  [4, 2],
-  [4, 3],
-  [4, 3, 2],
-  [4, 3, 3],
-  [4, 3, 3, 1],
-  [4, 3, 3, 2],
-  [4, 3, 3, 3, 1],
-  [4, 3, 3, 3, 2],
-  [4, 3, 3, 3, 2, 1],
-  [4, 3, 3, 3, 2, 1],
-  [4, 3, 3, 3, 2, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 2, 1, 1, 1, 1],
-  [4, 3, 3, 3, 3, 1, 1, 1, 1],
-  [4, 3, 3, 3, 3, 2, 1, 1, 1],
-  [4, 3, 3, 3, 3, 2, 2, 1, 1]
-];
+const AETHER_PROGRESSION_BY_LEVEL = NIH.AETHER_PROGRESSION_BY_LEVEL = function(type, level) {
+  if (type == AETHER_PROGRESSION_TYPES.full) {
+    return 4*level;
+  } else if (type == AETHER_PROGRESSION_TYPES.half) {
+    return 2*level;
+  } else {
+    return level;
+  }
+}
+
+const AETHER_LIMIT_TABLES = NIH.AETHER_LIMIT_TABLES = {
+  full: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17],
+  half: [2, 2, 3, 3, 4, 5, 5, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14],
+  martial: [1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4] 
+}
 
 /* -------------------------------------------- */
 
 /**
- * Define the pact slot & level progression by pact caster level.
- * @type {SpellcastingTableSingle5e}
- */
-const pactCastingProgression = NIH.pactCastingProgression = {
-  1: { slots: 1, level: 1 },
-  2: { slots: 2, level: 1 },
-  3: { slots: 2, level: 2 },
-  5: { slots: 2, level: 3 },
-  7: { slots: 2, level: 4 },
-  9: { slots: 2, level: 5 },
-  11: { slots: 3, level: 5 },
-  17: { slots: 4, level: 5 }
-};
-
-/* -------------------------------------------- */
-
-/**
- * @typedef {Partial<
- *   SpellcastingModelData & SlotSpellcastingData & SingleLevelSpellcastingData & MultiLevelSpellcasting
- * >} SpellcastingMethod5e
- * @property {SpellcastingTable5e|SpellcastingTableSingle5e} [table]
+ * @typedef {Partial<}
  */
 
 /**
  * Available spellcasting methods.
- * @type {Record<string, SpellcastingMethod5e>}
+ * @type {Record<string, {label: string, order: number}>}
  */
 NIH.spellcasting = {
   atwill: {
@@ -2839,58 +2811,12 @@ NIH.spellcasting = {
     label: "NIH.SPELLCASTING.METHODS.Innate.label",
     order: -20
   },
-  ritual: {
-    label: "NIH.SPELLCASTING.METHODS.Ritual.label",
+  regular: {
+    label: "NIH.SPELLCASTING.METHODS.Regular.label",
     order: -10
-  },
-  pact: {
-    label: "NIH.SPELLCASTING.METHODS.Pact.label",
-    type: "single",
-    cantrips: true,
-    prepares: true,
-    order: 10,
-    img: "icons/magic/unholy/silhouette-robe-evil-power.webp",
-    table: pactCastingProgression,
-    progression: {
-      pact: {
-        label: "NIH.SPELLCASTING.METHODS.Pact.Full.label",
-        divisor: 1
-      }
-    }
-  },
-  spell: {
-    label: "NIH.SPELLCASTING.METHODS.Spell.label",
-    type: "multi",
-    cantrips: true,
-    prepares: true,
-    order: 20,
-    img: "systems/nih/icons/spell-tiers/{id}.webp",
-    table: SPELL_SLOT_TABLE,
-    progression: {
-      full: {
-        label: "NIH.SPELLCASTING.METHODS.Spell.Full.label",
-        divisor: 1
-      },
-      half: {
-        label: "NIH.SPELLCASTING.METHODS.Spell.Half.label",
-        divisor: 2,
-        roundUp: true
-      },
-      third: {
-        label: "NIH.SPELLCASTING.METHODS.Spell.Third.label",
-        divisor: 3
-      },
-      artificer: {
-        label: "NIH.SPELLCASTING.METHODS.Spell.Artificer.label",
-        divisor: 2,
-        roundUp: true
-      }
-    }
   }
 };
 preLocalize("spellcasting", { key: "label" });
-preLocalize("spellcasting.spell.progression", { key: "label" });
-preLocalize("spellcasting.pact.progression", { key: "label" });
 
 /* -------------------------------------------- */
 
@@ -2942,94 +2868,13 @@ NIH.SPELL_LISTS = Object.freeze([
 /* -------------------------------------------- */
 
 /**
- * @deprecated since 5.1
- * @ignore
- */
-NIH.spellPreparationModes = new Proxy(NIH.spellcasting, {
-  get(target, prop, receiver) {
-    foundry.utils.logCompatibilityWarning("CONFIG.NIH.spellPreparationModes is deprecated, use CONFIG.NIH.spellcasting"
-      + " instead.", { since: "DnD5e 5.1", until: "DnD5e 5.4" });
-    if ( (prop === "prepared") || (prop === "always") ) prop = "spell";
-    return Reflect.get(target, prop, receiver);
-  },
-
-  set(target, prop, value, receiver) {
-    foundry.utils.logCompatibilityWarning("CONFIG.NIH.spellPreparationModes is deprecated, use CONFIG.NIH.spellcasting"
-      + " instead.", { since: "DnD5e 5.1", until: "DnD5e 5.4" });
-    if ( (prop === "prepared") || (prop === "always") ) prop = "spell";
-    return Reflect.set(target, prop, value, receiver);
-  }
-});
-
-/* -------------------------------------------- */
-
-/**
- * @deprecated since 5.1
- * @ignore
- */
-NIH.spellcastingTypes = new Proxy(NIH.spellcasting, {
-  get(target, prop, receiver) {
-    foundry.utils.logCompatibilityWarning("CONFIG.NIH.spellcastingTypes is deprecated, use CONFIG.NIH.spellcasting"
-      + " instead.", { since: "DnD5e 5.1", until: "DnD5e 5.4" });
-    if ( prop === "leveled" ) prop = "spell";
-    return Reflect.get(target, prop, receiver);
-  },
-
-  set(target, prop, value, receiver) {
-    foundry.utils.logCompatibilityWarning("CONFIG.NIH.spellcastingTypes is deprecated, use CONFIG.NIH.spellcasting"
-      + " instead.", { since: "DnD5e 5.1", until: "DnD5e 5.4" });
-    if ( prop === "leveled" ) prop = "spell";
-    if ( !("type" in value) ) value.type = "single";
-    if ( !("table" in value) ) value.table = NIH.pactCastingProgression;
-    if ( !("progression" in value) ) value.progression = { [prop]: { label: value.label } };
-    return Reflect.set(target, prop, value, receiver);
-  }
-});
-
-/* -------------------------------------------- */
-
-/**
- * @ignore
- */
-NIH.spellProgression = new Proxy({}, {
-  set() {
-    foundry.utils.logCompatibilityWarning("CONFIG.NIH.spellProgression is read-only. Spell progressions must be set "
-      + "on CONFIG.NIH.spellcasting instead.", { since: "DnD5e 5.1", until: "DnD5e 5.4" });
-    return true;
-  }
-});
-
-
-/* -------------------------------------------- */
-
-/**
- * Valid spell levels.
- * @enum {string}
- */
-NIH.spellLevels = {
-  0: "NIH.SpellLevel0",
-  1: "NIH.SpellLevel1",
-  2: "NIH.SpellLevel2",
-  3: "NIH.SpellLevel3",
-  4: "NIH.SpellLevel4",
-  5: "NIH.SpellLevel5",
-  6: "NIH.SpellLevel6",
-  7: "NIH.SpellLevel7",
-  8: "NIH.SpellLevel8",
-  9: "NIH.SpellLevel9"
-};
-preLocalize("spellLevels");
-
-/* -------------------------------------------- */
-
-/**
  * The available choices for how spell damage scaling may be computed.
  * @enum {string}
  */
 NIH.spellScalingModes = {
   none: "NIH.SpellNone",
   cantrip: "NIH.SpellCantrip",
-  level: "NIH.SpellLevel"
+  aether: "NIH.Aether"
 };
 preLocalize("spellScalingModes", { sort: true });
 
@@ -3109,40 +2954,6 @@ preLocalize("spellListTypes");
 /* -------------------------------------------- */
 
 /**
- * Spell scroll item ID within the `NIH.sourcePacks` compendium or a full UUID for each spell level.
- * @enum {string}
- */
-NIH.spellScrollIds = {
-  0: "",
-  1: "",
-  2: "",
-  3: "",
-  4: "",
-  5: "",
-  6: "",
-  7: "",
-  8: "",
-  9: ""
-};
-
-/* -------------------------------------------- */
-
-/**
- * Spell scroll save DCs and attack bonus values based on spell level. If matching level isn't found,
- * then the nearest level lower than it will be selected.
- * @enum {SpellScrollValues}
- */
-NIH.spellScrollValues = {
-  0: { dc: 13, bonus: 5 },
-  3: { dc: 15, bonus: 7 },
-  5: { dc: 17, bonus: 9 },
-  7: { dc: 18, bonus: 10 },
-  9: { dc: 19, bonus: 11 }
-};
-
-/* -------------------------------------------- */
-
-/**
  * Compendium packs used for localized items.
  * @enum {string}
  */
@@ -3150,7 +2961,8 @@ NIH.sourcePacks = {
   BACKGROUNDS: "nih.backgrounds",
   CLASSES: "nih.classes",
   ITEMS: "nih.items",
-  RACES: "nih.races"
+  LINEAGES: "nih.lineages",
+  CULTURES: "nih.cultures"
 };
 
 /* -------------------------------------------- */
@@ -3269,18 +3081,6 @@ NIH.transformation = {
   },
   other: {},
   presets: {
-    wildshape: {
-      icon: '<i class="fas fa-paw" inert></i>',
-      label: "NIH.TRANSFORM.Preset.WildShape.Label",
-      settings: {
-        effects: new Set(["otherOrigin", "origin", "feat", "spell", "class", "background"]),
-        keep: new Set(["bio", "class", "feats", "hp", "languages", "mental", "tempHP", "type"]),
-        merge: new Set(["saves", "skills"]),
-        minimumAC: "(13 + @abilities.wis.mod) * sign(@subclasses.moon.levels)",
-        spellLists: new Set(["subclass:moon"]),
-        tempFormula: "max(@classes.druid.levels, @subclasses.moon.levels * 3)"
-      }
-    },
     polymorph: {
       icon: '<i class="fas fa-pastafarianism" inert></i>',
       label: "NIH.TRANSFORM.Preset.Polymorph.Label",
@@ -3347,19 +3147,6 @@ NIH.cover = {
   1: "NIH.CoverTotal"
 };
 preLocalize("cover");
-
-/* -------------------------------------------- */
-
-/**
- * A selection of actor attributes that can be tracked on token resource bars.
- * @type {string[]}
- * @deprecated since v10
- */
-NIH.trackableAttributes = [
-  "attributes.ac.value", "attributes.init.bonus", "attributes.movement", "attributes.senses",
-  "attributes.spell.attack", "attributes.spell.dc", "attributes.spell.level", "details.cr",
-  "details.xp.value", "skills.*.passive", "abilities.*.value"
-];
 
 /* -------------------------------------------- */
 
@@ -3522,7 +3309,28 @@ NIH.conditionTypes = {
     reference: "",
     statuses: ["incapacitated"],
     riders: ["prone"]
+  },
+  broken: {
+    name: "NIH.ConBroken",
+    img: "systems/nih/icons/svg/statuses/bloodied.svg",
+    reference: ""
+  },
+  hidden: {
+    name: "NIH.ConHidden",
+    img: "systems/nih/icons/svg/statuses/bloodied.svg",
+    reference: ""
+  },
+  shaken: {
+    name: "NIH.ConShaken",
+    img: "systems/nih/icons/svg/statuses/bloodied.svg",
+    reference: ""
+  },
+  staggered: {
+    name: "NIH.ConStaggered",
+    img: "systems/nih/icons/svg/statuses/bloodied.svg",
+    reference: ""
   }
+
 };
 preLocalize("conditionTypes", { key: "name", sort: true });
 
@@ -3534,17 +3342,16 @@ preLocalize("conditionTypes", { key: "name", sort: true });
  * @enum {Set<string>}
  */
 NIH.conditionEffects = {
-  noMovement: new Set(["exhaustion-5", "grappled", "paralyzed", "petrified", "restrained", "unconscious"]),
-  halfMovement: new Set(["exhaustion-2"]),
+  noMovement: new Set(["grappled", "paralyzed", "petrified", "restrained", "unconscious"]),
+  halfMovement: new Set(["shaken"]),
   crawl: new Set(["prone", "exceedingCarryingCapacity"]),
   petrification: new Set(["petrified"]),
-  halfHealth: new Set(["exhaustion-4"]),
   dehydrated: new Set(["dehydration"]),
   malnourished: new Set(["malnutrition"]),
-  abilityCheckDisadvantage: new Set(["poisoned", "exhaustion-1"]),
+  abilityCheckDisadvantage: new Set(["poisoned"]),
   abilitySaveDisadvantage: new Set(["exhaustion-3"]),
-  attackDisadvantage: new Set(["poisoned", "exhaustion-3"]),
-  dexteritySaveDisadvantage: new Set(["restrained"]),
+  attackDisadvantage: new Set(["poisoned", "staggered"]),
+  dexteritySaveDisadvantage: new Set(["restrained", "staggered"]),
   initiativeAdvantage: new Set(["invisible"]),
   initiativeDisadvantage: new Set(["incapacitated", "surprised"])
 };
@@ -3666,48 +3473,35 @@ NIH.languages = {
     selectable: false,
     children: {
       common: "NIH.Language.Language.Common",
-      draconic: "NIH.Language.Language.Draconic",
       dwarvish: "NIH.Language.Language.Dwarvish",
-      elvish: "NIH.Language.Language.Elvish",
+      yonwach: "NIH.Language.Language.Yonwach",
+      metsae: "NIH.Language.Language.Metsae",
       giant: "NIH.Language.Language.Giant",
       gnomish: "NIH.Language.Language.Gnomish",
       goblin: "NIH.Language.Language.Goblin",
-      halfling: "NIH.Language.Language.Halfling",
       orc: "NIH.Language.Language.Orc",
-      sign: "NIH.Language.Language.CommonSign"
     }
   },
   exotic: {
     label: "NIH.Language.Category.Rare",
     selectable: false,
     children: {
-      aarakocra: "NIH.Language.Language.Aarakocra",
       abyssal: "NIH.Language.Language.Abyssal",
-      cant: "NIH.Language.Language.ThievesCant",
       celestial: "NIH.Language.Language.Celestial",
-      deep: "NIH.Language.Language.DeepSpeech",
-      druidic: "NIH.Language.Language.Druidic",
-      gith: "NIH.Language.Language.Gith",
-      gnoll: "NIH.Language.Language.Gnoll",
+      draconic: "NIH.Language.Language.Draconic",
       infernal: "NIH.Language.Language.Infernal",
-      primordial: {
-        label: "NIH.Language.Language.Primordial",
-        children: {
-          aquan: "NIH.Language.Language.Aquan",
-          auran: "NIH.Language.Language.Auran",
-          ignan: "NIH.Language.Language.Ignan",
-          terran: "NIH.Language.Language.Terran"
-        }
-      },
+      primordial: "NIH.Language.Language.Primordial",
       sylvan: "NIH.Language.Language.Sylvan",
-      undercommon: "NIH.Language.Language.Undercommon"
+      iathNeider: "NIH.Language.Language.IathNeidr",
+      jinzi: "NIH.Language.Language.Jinzi",
+      sarthak: "NIH.Language.Language.Sarthak",
+      tiborean: "NIH.Language.Language.Tiborean"
     }
   }
 };
 preLocalize("languages", { key: "label" });
 preLocalize("languages.standard.children", { key: "label", sort: true });
 preLocalize("languages.exotic.children", { key: "label", sort: true });
-preLocalize("languages.exotic.children.primordial.children", { sort: true });
 
 /* -------------------------------------------- */
 
@@ -3819,58 +3613,9 @@ NIH.maxLevel = 20;
  * @type {number[]}
  */
 NIH.CHARACTER_EXP_LEVELS = [
-  0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
-  120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
+  0, 1, 3, 6, 10, 14, 18, 22, 26, 30, 34, 38,
+  42, 46, 50, 54, 58, 62, 68, 72
 ];
-
-/* -------------------------------------------- */
-
-/**
- * XP granted for each challenge rating.
- * @type {number[]}
- */
-NIH.CR_EXP_LEVELS = [
-  10, 200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000,
-  20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000
-];
-
-/* -------------------------------------------- */
-
-/**
- * XP thresholds for encounter difficulty.
- * @type {number[][]}
- */
-NIH.ENCOUNTER_DIFFICULTY = [
-  [0, 0, 0],
-  [50, 75, 100],
-  [100, 150, 200],
-  [150, 225, 400],
-  [250, 375, 500],
-  [500, 750, 1100],
-  [600, 1000, 1400],
-  [750, 1300, 1700],
-  [1000, 1700, 2100],
-  [1300, 2000, 2600],
-  [1600, 2300, 3100],
-  [1900, 2900, 4100],
-  [2200, 3700, 4700],
-  [2600, 4200, 5400],
-  [2900, 4900, 6200],
-  [3300, 5400, 7800],
-  [3800, 6100, 9800],
-  [4500, 7200, 11700],
-  [5000, 8700, 14200],
-  [5500, 10700, 17200],
-  [6400, 13200, 22000]
-];
-
-/* -------------------------------------------- */
-
-/**
- * Intervals above the maximum XP that result in an epic boon.
- * @type {number}
- */
-NIH.epicBoonInterval = 30000;
 
 /* -------------------------------------------- */
 /*  Traits                                      */
@@ -4026,60 +3771,10 @@ preLocalize("traitModes", { keys: ["label", "hint"] });
  * @enum {CharacterFlagConfiguration}
  */
 NIH.characterFlags = {
-  diamondSoul: {
-    name: "NIH.FlagsDiamondSoul",
-    hint: "NIH.FlagsDiamondSoulHint",
-    section: "NIH.Feats",
-    type: Boolean
-  },
-  enhancedDualWielding: {
-    name: "NIH.FLAGS.EnhancedDualWielding.Name",
-    hint: "NIH.FLAGS.EnhancedDualWielding.Hint",
-    section: "NIH.Feats",
-    type: Boolean
-  },
-  elvenAccuracy: {
-    name: "NIH.FlagsElvenAccuracy",
-    hint: "NIH.FlagsElvenAccuracyHint",
-    section: "NIH.RacialTraits",
-    abilities: ["dex", "int", "wis", "cha"],
-    type: Boolean
-  },
-  halflingLucky: {
-    name: "NIH.FlagsHalflingLucky",
-    hint: "NIH.FlagsHalflingLuckyHint",
-    section: "NIH.RacialTraits",
-    type: Boolean
-  },
-  halflingNimbleness: {
-    name: "NIH.FlagsHalflingNimbleness",
-    hint: "NIH.FlagsHalflingNimblenessHint",
-    section: "NIH.RacialTraits",
-    type: Boolean
-  },
-  initiativeAlert: {
-    name: "NIH.FlagsAlert",
-    hint: "NIH.FlagsAlertHint",
-    section: "NIH.Feats",
-    type: Boolean
-  },
-  jackOfAllTrades: {
-    name: "NIH.FlagsJOAT",
-    hint: "NIH.FlagsJOATHint",
-    section: "NIH.Feats",
-    type: Boolean
-  },
-  observantFeat: {
-    name: "NIH.FlagsObservant",
-    hint: "NIH.FlagsObservantHint",
-    skills: ["prc", "inv"],
-    section: "NIH.Feats",
-    type: Boolean
-  },
-  tavernBrawlerFeat: {
-    name: "NIH.FlagsTavernBrawler",
-    hint: "NIH.FlagsTavernBrawlerHint",
-    section: "NIH.Feats",
+  nimbleStrike: {
+    name: "NIH.FLAGS.NimbleStrike.Name",
+    hint: "NIH.FLAGS.NimbleStrike.Hint",
+    section: "NIH.Class",
     type: Boolean
   },
   powerfulBuild: {
@@ -4191,7 +3886,7 @@ NIH.activityTypes = {
 
 /* -------------------------------------------- */
 
-const _ALL_ITEM_TYPES = ["background", "class", "feat", "race", "subclass"];
+const _ALL_ITEM_TYPES = ["background", "class", "feature", "lineage", "subclass", "culture"];
 
 /**
  * Advancement types that can be added to items.
@@ -4200,7 +3895,7 @@ const _ALL_ITEM_TYPES = ["background", "class", "feat", "race", "subclass"];
 NIH.advancementTypes = {
   AbilityScoreImprovement: {
     documentClass: advancement.AbilityScoreImprovementAdvancement,
-    validItemTypes: new Set(["background", "class", "race", "feat"])
+    validItemTypes: new Set(["background", "class", "lineage", "feature", "culture"])
   },
   HitPoints: {
     documentClass: advancement.HitPointsAdvancement,
@@ -4220,7 +3915,7 @@ NIH.advancementTypes = {
   },
   Size: {
     documentClass: advancement.SizeAdvancement,
-    validItemTypes: new Set(["race"])
+    validItemTypes: new Set(["lineage"])
   },
   Subclass: {
     documentClass: advancement.SubclassAdvancement,
@@ -4280,22 +3975,9 @@ NIH.calendar = {
       config: foundry.data.SIMPLIFIED_GREGORIAN_CALENDAR_CONFIG
     },
     {
-      value: "greyhawk",
-      label: "NIH.CALENDAR.Greyhawk.Name",
-      config: CALENDAR_OF_GREYHAWK,
-      class: CalendarGreyhawk
-    },
-    {
-      value: "harptos",
-      label: "NIH.CALENDAR.Harptos.Name",
-      config: CALENDAR_OF_HARPTOS,
-      class: CalendarHarptos
-    },
-    {
-      value: "khorvaire",
-      label: "NIH.CALENDAR.Khorvaire.Name",
-      config: CALENDAR_OF_KHORVAIRE,
-      class: CalendarKhorvaire
+      value: "quartus",
+      label: "NIH.CALENDAR.Quartus",
+      config: foundry.data.QUARTUS_CALENDAR_CONFIG
     }
   ],
   formatters: [

@@ -21,18 +21,18 @@
     {{!-- Ideals, Bonds, Flaws, Personality Traits, & Appearance --}}
     <div class="middle">
         <div class="left">
-            {{~> "dnd5e.biography-textbox" name="system.details.ideal" value=system.details.ideal label="DND5E.Ideals"
+            {{~> "nih.biography-textbox" name="system.details.ideal" value=system.details.ideal label="NIH.Ideals"
                 icon="fas fa-seedling" class="textbox-half" ~}}
-            {{~> "dnd5e.biography-textbox" name="system.details.bond" value=system.details.bond label="DND5E.Bonds"
+            {{~> "nih.biography-textbox" name="system.details.bond" value=system.details.bond label="NIH.Bonds"
                 icon="fas fa-link" class="textbox-half" ~}}
-            {{~> "dnd5e.biography-textbox" name="system.details.flaw" value=system.details.flaw label="DND5E.Flaws"
+            {{~> "nih.biography-textbox" name="system.details.flaw" value=system.details.flaw label="NIH.Flaws"
                 icon="fas fa-heart-crack" class="textbox-half" ~}}
         </div>
         <div class="right">
-            {{~> "dnd5e.biography-textbox" name="system.details.trait" value=system.details.trait
-                label="DND5E.PersonalityTraits" icon="fas fa-puzzle-piece" class="textbox-half" ~}}
-            {{~> "dnd5e.biography-textbox" name="system.details.appearance" value=system.details.appearance
-                label="DND5E.Appearance" icon="fas fa-image-portrait" class="textbox-half" ~}}
+            {{~> "nih.biography-textbox" name="system.details.trait" value=system.details.trait
+                label="NIH.PersonalityTraits" icon="fas fa-puzzle-piece" class="textbox-half" ~}}
+            {{~> "nih.biography-textbox" name="system.details.appearance" value=system.details.appearance
+                label="NIH.Appearance" icon="fas fa-image-portrait" class="textbox-half" ~}}
         </div>
     </div>
 
@@ -40,8 +40,8 @@
     <div class="bottom" data-target="system.details.biography.value">
         <h3 class="icon">
             <i class="fas fa-feather"></i>
-            <dnd5e-icon src="systems/dnd5e/icons/svg/ink-pot.svg"></dnd5e-icon>
-            <span class="roboto-upper">{{ localize "DND5E.Biography" }}</span>
+            <nih-icon src="systems/nih/icons/svg/ink-pot.svg"></nih-icon>
+            <span class="roboto-upper">{{ localize "NIH.Biography" }}</span>
         </h3>
         {{#if editable}}
         <prose-mirror name="system.details.biography.value" value="{{ source.details.biography.value }}"

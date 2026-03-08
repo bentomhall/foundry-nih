@@ -1,5 +1,5 @@
 {
-"DOCUMENT.DND5E": {
+"DOCUMENT.NIH": {
   "Activity": "Activity",
   "Advancement": "Advancement",
   "Warning": {
@@ -57,21 +57,21 @@
 "TYPES.Item.weaponPl": "Weapons",
 
 "TYPES.RegionBehavior": {
-  "dnd5e.difficultTerrain": "Difficult Terrain",
-  "dnd5e.rotateArea": "Rotate Area"
+  "nih.difficultTerrain": "Difficult Terrain",
+  "nih.rotateArea": "Rotate Area"
 },
 
-"DND5E.title": "Dungeon & Dragons Fifth Edition",
-"DND5E.AbbreviationCR": "CR",
-"DND5E.AbbreviationConc": "Conc.",
-"DND5E.AbbreviationDC": "DC",
-"DND5E.AbbreviationKg": "kg",
-"DND5E.AbbreviationLR": "LR",
-"DND5E.AbbreviationLevel": "Lvl",
-"DND5E.AbbreviationLbs": "lbs.",
-"DND5E.AbbreviationSR": "SR",
+"NIH.title": "Dungeon & Dragons Fifth Edition",
+"NIH.AbbreviationCR": "CR",
+"NIH.AbbreviationConc": "Conc.",
+"NIH.AbbreviationDC": "DC",
+"NIH.AbbreviationKg": "kg",
+"NIH.AbbreviationLR": "LR",
+"NIH.AbbreviationLevel": "Lvl",
+"NIH.AbbreviationLbs": "lbs.",
+"NIH.AbbreviationSR": "SR",
 
-"DND5E.ABILITY": {
+"NIH.ABILITY": {
   "Configure": {
     "CheckLabel": "{ability} Check",
     "SaveLabel": "{ability} Save",
@@ -90,66 +90,66 @@
   }
 },
 
-"DND5E.Ability": "Ability",
-"DND5E.Abilities": "Abilities",
-"DND5E.AbilityStr": "Strength",
-"DND5E.AbilityStrAbbr": "str",
-"DND5E.AbilityCon": "Constitution",
-"DND5E.AbilityConAbbr": "con",
-"DND5E.AbilityDex": "Dexterity",
-"DND5E.AbilityDexAbbr": "dex",
-"DND5E.AbilityInt": "Intelligence",
-"DND5E.AbilityIntAbbr": "int",
-"DND5E.AbilityWis": "Wisdom",
-"DND5E.AbilityWisAbbr": "wis",
-"DND5E.AbilityCha": "Charisma",
-"DND5E.AbilityChaAbbr": "cha",
-"DND5E.AbilityHon": "Honor",
-"DND5E.AbilityHonAbbr": "hon",
-"DND5E.AbilitySan": "Sanity",
-"DND5E.AbilitySanAbbr": "san",
-"DND5E.AbilityScore": "Ability Score",
-"DND5E.AbilityScoreShort": "Score",
-"DND5E.AbilityScorePl": "Ability Scores",
-"DND5E.AbilityScoreL": "{ability} Score",
-"DND5E.AbilityScoreMax": "Maximum Ability Score",
-"DND5E.AbilityScoreMaxShort": "Maximum",
-"DND5E.AbilityModifier": "Ability Modifier",
-"DND5E.AbilityModifierShort": "Mod",
-"DND5E.AbilityPromptText": "What type of {ability} check?",
-"DND5E.AbilityPromptTitle": "{ability} Ability Check",
-"DND5E.AbilityUseChargesLabel": "{value} Charges",
-"DND5E.AbilityUseConsumableLabel": "{max} per {per}",
-"DND5E.AbilityUseCast": "Cast Spell",
-"DND5E.AbilityUseUse": "Use Ability",
-"DND5E.AbilityUseConfig": "Usage Configuration",
-"DND5E.AbilityBonuses": "Ability Bonuses",
-"DND5E.AbilityConfigure": "Configure {ability}",
-"DND5E.AbilityConfigureTitle": "Configure {ability} Saving Throws and Checks",
-"DND5E.AbilitySaveConfigure": "{ability} Saving Throws",
-"DND5E.AbilityCheckConfigure": "{ability} Ability Checks",
-"DND5E.AbilityCheckConfigurationHint": "Configure check bonuses.",
-"DND5E.AbilityConfigurationHint": "Configure ability saving throw proficiency, saving throw bonuses, and check bonuses.",
-"DND5E.AbilityCheckBonus": "Check Bonus",
-"DND5E.AbilityCheckGlobalBonusHint": "This bonus applies to all ability checks made by this actor.",
-"DND5E.Action": "Action",
-"DND5E.ActionAbbr": "A",
-"DND5E.ActionPl": "Actions",
-"DND5E.ActionAbil": "Ability Check",
-"DND5E.ActionEnch": "Enchant",
-"DND5E.ActionHeal": "Heal",
-"DND5E.ActionMSAK": "Melee Spell Attack",
-"DND5E.ActionMWAK": "Melee Weapon Attack",
-"DND5E.ActionOther": "Other",
-"DND5E.ActionRSAK": "Ranged Spell Attack",
-"DND5E.ActionRWAK": "Ranged Weapon Attack",
-"DND5E.ActionSave": "Saving Throw",
-"DND5E.ActionSumm": "Summon",
-"DND5E.ActionUtil": "Utility",
-"DND5E.ActionWarningNoItem": "The requested item {item} no longer exists on Actor {name}",
-"DND5E.ActionWarningNoToken": "You must have one or more controlled Tokens in order to use this option.",
+"NIH.Ability": "Ability",
+"NIH.Abilities": "Abilities",
+"NIH.AbilityStr": "Strength",
+"NIH.AbilityStrAbbr": "str",
+"NIH.AbilityCon": "Constitution",
+"NIH.AbilityConAbbr": "con",
+"NIH.AbilityDex": "Dexterity",
+"NIH.AbilityDexAbbr": "dex",
+"NIH.AbilityInt": "Intelligence",
+"NIH.AbilityIntAbbr": "int",
+"NIH.AbilityWis": "Wisdom",
+"NIH.AbilityWisAbbr": "wis",
+"NIH.AbilityCha": "Charisma",
+"NIH.AbilityChaAbbr": "cha",
+"NIH.AbilityHon": "Honor",
+"NIH.AbilityHonAbbr": "hon",
+"NIH.AbilitySan": "Sanity",
+"NIH.AbilitySanAbbr": "san",
+"NIH.AbilityScore": "Ability Score",
+"NIH.AbilityScoreShort": "Score",
+"NIH.AbilityScorePl": "Ability Scores",
+"NIH.AbilityScoreL": "{ability} Score",
+"NIH.AbilityScoreMax": "Maximum Ability Score",
+"NIH.AbilityScoreMaxShort": "Maximum",
+"NIH.AbilityModifier": "Ability Modifier",
+"NIH.AbilityModifierShort": "Mod",
+"NIH.AbilityPromptText": "What type of {ability} check?",
+"NIH.AbilityPromptTitle": "{ability} Ability Check",
+"NIH.AbilityUseChargesLabel": "{value} Charges",
+"NIH.AbilityUseConsumableLabel": "{max} per {per}",
+"NIH.AbilityUseCast": "Cast Spell",
+"NIH.AbilityUseUse": "Use Ability",
+"NIH.AbilityUseConfig": "Usage Configuration",
+"NIH.AbilityBonuses": "Ability Bonuses",
+"NIH.AbilityConfigure": "Configure {ability}",
+"NIH.AbilityConfigureTitle": "Configure {ability} Saving Throws and Checks",
+"NIH.AbilitySaveConfigure": "{ability} Saving Throws",
+"NIH.AbilityCheckConfigure": "{ability} Ability Checks",
+"NIH.AbilityCheckConfigurationHint": "Configure check bonuses.",
+"NIH.AbilityConfigurationHint": "Configure ability saving throw proficiency, saving throw bonuses, and check bonuses.",
+"NIH.AbilityCheckBonus": "Check Bonus",
+"NIH.AbilityCheckGlobalBonusHint": "This bonus applies to all ability checks made by this actor.",
+"NIH.Action": "Action",
+"NIH.ActionAbbr": "A",
+"NIH.ActionPl": "Actions",
+"NIH.ActionAbil": "Ability Check",
+"NIH.ActionEnch": "Enchant",
+"NIH.ActionHeal": "Heal",
+"NIH.ActionMSAK": "Melee Spell Attack",
+"NIH.ActionMWAK": "Melee Weapon Attack",
+"NIH.ActionOther": "Other",
+"NIH.ActionRSAK": "Ranged Spell Attack",
+"NIH.ActionRWAK": "Ranged Weapon Attack",
+"NIH.ActionSave": "Saving Throw",
+"NIH.ActionSumm": "Summon",
+"NIH.ActionUtil": "Utility",
+"NIH.ActionWarningNoItem": "The requested item {item} no longer exists on Actor {name}",
+"NIH.ActionWarningNoToken": "You must have one or more controlled Tokens in order to use this option.",
 
-"DND5E.ACTIVATION": {
+"NIH.ACTIVATION": {
   "FIELDS": {
     "activation": {
       "label": "Activation",
@@ -254,7 +254,7 @@
   }
 },
 
-"DND5E.ACTIVEEFFECT": {
+"NIH.ACTIVEEFFECT": {
   "AttributeKeyTooltip": "For a list of common keys, see <a href=\"{url}\">the wiki</a>.",
   "FIELDS": {
     "statuses": {
@@ -264,7 +264,7 @@
   }
 },
 
-"DND5E.ACTIVITY": {
+"NIH.ACTIVITY": {
   "Action": {
     "Create": "Create Activity",
     "Delete": "Delete Activity",
@@ -345,7 +345,7 @@
   }
 },
 
-"DND5E.ACTOR": {
+"NIH.ACTOR": {
   "Warning": {
     "CreateActor": "You must have 'Create New Actors' permission in order to summon directly from a compendium.",
     "InvalidItem": "{itemType} items cannot be added to a {actorType}.",
@@ -354,14 +354,14 @@
   }
 },
 
-"DND5E.ActiveEffectOverrideWarning": "This value is being modified by an Active Effect and cannot be edited. Disable the effect to edit it.",
-"DND5E.Add": "Add",
-"DND5E.AdditionalControls": "Additional Controls",
-"DND5E.AdditionalSettings": "Additional Settings",
-"DND5E.AddEmbeddedItemPromptHint": "Do you want to add these items to your character sheet?",
-"DND5E.Advanced": "Advanced",
+"NIH.ActiveEffectOverrideWarning": "This value is being modified by an Active Effect and cannot be edited. Disable the effect to edit it.",
+"NIH.Add": "Add",
+"NIH.AdditionalControls": "Additional Controls",
+"NIH.AdditionalSettings": "Additional Settings",
+"NIH.AddEmbeddedItemPromptHint": "Do you want to add these items to your character sheet?",
+"NIH.Advanced": "Advanced",
 
-"DND5E.ADVANCEMENT": {
+"NIH.ADVANCEMENT": {
   "AbilityScoreImprovement": {
     "Action": {
       "Select": "Select Feat"
@@ -757,64 +757,64 @@
   }
 },
 
-"DND5E.AdvancementChoices": "choices",
-"DND5E.AdvancementClassRestriction": "Class Restriction",
-"DND5E.AdvancementClassRestrictionNone": "All Classes",
-"DND5E.AdvancementClassRestrictionPrimary": "Original Class Only",
-"DND5E.AdvancementClassRestrictionSecondary": "Multiclass Only",
-"DND5E.AdvancementConfigurationActionDisable": "Disable Configuration",
-"DND5E.AdvancementConfigurationActionEnable": "Enable Configuration",
-"DND5E.AdvancementConfigurationModeDisabled": "Configuration Disabled",
-"DND5E.AdvancementConfigurationModeEnabled": "Configuration Enabled",
-"DND5E.AdvancementConfigureTitle": "Configure {item} Advancement",
-"DND5E.AdvancementConfigureAllowDrops": "Allow Drops",
-"DND5E.AdvancementConfigureAllowDropsHint": "Should players be able to drop their own choices into this advancement?",
-"DND5E.AdvancementConfigureDropAreaHint": "Drop Items here to add them to the pool from which a player can choose.",
-"DND5E.AdvancementConfiguredComplete": "Fully Configured",
-"DND5E.AdvancementConfiguredIncomplete": "Not Configured",
-"DND5E.AdvancementCustomIcon": "Custom Icon",
-"DND5E.AdvancementCustomTitle": "Custom Title",
-"DND5E.AdvancementDeleteConfirmationLabel": "Remove advancement changes",
-"DND5E.AdvancementDeleteConfirmationMessage": "Deleting this item will also delete all advancement choices made for it. These changes will be removed from your character as long as the checkbox below is checked.",
-"DND5E.AdvancementDeleteConfirmationTitle": "Confirm Deletion",
-"DND5E.AdvancementFlowDropAreaHint": "Drop an Item here to choose it.",
-"DND5E.AdvancementHint": "Hint",
-"DND5E.AdvancementItemTypeInvalidWarning": "{type} items cannot be added with this advancement type.",
-"DND5E.AdvancementLevelHeader": "Level {level}",
-"DND5E.AdvancementLevelAnyHeader": "Any Level",
-"DND5E.AdvancementLevelNoneHeader": "No Level",
-"DND5E.AdvancementLevelDownConfirmationMessage": "Leveling this class down will also undo all advancement choices made for it. These changes will be removed from your character as long as the checkbox below is checked.",
-"DND5E.AdvancementLevelDownConfirmationTitle": "Confirm Leveling Down",
-"DND5E.AdvancementModifyChoices": "Modify Choices",
-"DND5E.AdvancementSaveButton": "Save Advancement",
-"DND5E.AdvancementSelectionCreateButton": "Create Advancement",
-"DND5E.AdvancementSelectionTitle": "Select Advancement Type",
-"DND5E.AdvancementTitle": "Advancement",
-"DND5E.Advantage": "Advantage",
-"DND5E.AdvantageMode": "Advantage Mode",
-"DND5E.Age": "Age",
-"DND5E.Alignment": "Alignment",
-"DND5E.AlignmentCE": "Chaotic Evil",
-"DND5E.AlignmentCG": "Chaotic Good",
-"DND5E.AlignmentCN": "Chaotic Neutral",
-"DND5E.AlignmentLE": "Lawful Evil",
-"DND5E.AlignmentLG": "Lawful Good",
-"DND5E.AlignmentLN": "Lawful Neutral",
-"DND5E.AlignmentNE": "Neutral Evil",
-"DND5E.AlignmentNG": "Neutral Good",
-"DND5E.AlignmentTN": "True Neutral",
-"DND5E.Amount": "Amount",
-"DND5E.Appearance": "Appearance",
-"DND5E.Apply": "Apply",
-"DND5E.Attunement": "Attunement",
-"DND5E.AttunementMax": "Maximum Attuned Items",
-"DND5E.AttunementNone": "Attunement Not Required",
-"DND5E.AttunementOptional": "Optional Attunement",
-"DND5E.AttunementRequired": "Attunement Required",
-"DND5E.AttunementAttuned": "Attuned",
-"DND5E.AttunementOverride": "Override attunement",
-"DND5E.Attuned": "Attuned",
-"DND5E.AreaOfEffect": {
+"NIH.AdvancementChoices": "choices",
+"NIH.AdvancementClassRestriction": "Class Restriction",
+"NIH.AdvancementClassRestrictionNone": "All Classes",
+"NIH.AdvancementClassRestrictionPrimary": "Original Class Only",
+"NIH.AdvancementClassRestrictionSecondary": "Multiclass Only",
+"NIH.AdvancementConfigurationActionDisable": "Disable Configuration",
+"NIH.AdvancementConfigurationActionEnable": "Enable Configuration",
+"NIH.AdvancementConfigurationModeDisabled": "Configuration Disabled",
+"NIH.AdvancementConfigurationModeEnabled": "Configuration Enabled",
+"NIH.AdvancementConfigureTitle": "Configure {item} Advancement",
+"NIH.AdvancementConfigureAllowDrops": "Allow Drops",
+"NIH.AdvancementConfigureAllowDropsHint": "Should players be able to drop their own choices into this advancement?",
+"NIH.AdvancementConfigureDropAreaHint": "Drop Items here to add them to the pool from which a player can choose.",
+"NIH.AdvancementConfiguredComplete": "Fully Configured",
+"NIH.AdvancementConfiguredIncomplete": "Not Configured",
+"NIH.AdvancementCustomIcon": "Custom Icon",
+"NIH.AdvancementCustomTitle": "Custom Title",
+"NIH.AdvancementDeleteConfirmationLabel": "Remove advancement changes",
+"NIH.AdvancementDeleteConfirmationMessage": "Deleting this item will also delete all advancement choices made for it. These changes will be removed from your character as long as the checkbox below is checked.",
+"NIH.AdvancementDeleteConfirmationTitle": "Confirm Deletion",
+"NIH.AdvancementFlowDropAreaHint": "Drop an Item here to choose it.",
+"NIH.AdvancementHint": "Hint",
+"NIH.AdvancementItemTypeInvalidWarning": "{type} items cannot be added with this advancement type.",
+"NIH.AdvancementLevelHeader": "Level {level}",
+"NIH.AdvancementLevelAnyHeader": "Any Level",
+"NIH.AdvancementLevelNoneHeader": "No Level",
+"NIH.AdvancementLevelDownConfirmationMessage": "Leveling this class down will also undo all advancement choices made for it. These changes will be removed from your character as long as the checkbox below is checked.",
+"NIH.AdvancementLevelDownConfirmationTitle": "Confirm Leveling Down",
+"NIH.AdvancementModifyChoices": "Modify Choices",
+"NIH.AdvancementSaveButton": "Save Advancement",
+"NIH.AdvancementSelectionCreateButton": "Create Advancement",
+"NIH.AdvancementSelectionTitle": "Select Advancement Type",
+"NIH.AdvancementTitle": "Advancement",
+"NIH.Advantage": "Advantage",
+"NIH.AdvantageMode": "Advantage Mode",
+"NIH.Age": "Age",
+"NIH.Alignment": "Alignment",
+"NIH.AlignmentCE": "Chaotic Evil",
+"NIH.AlignmentCG": "Chaotic Good",
+"NIH.AlignmentCN": "Chaotic Neutral",
+"NIH.AlignmentLE": "Lawful Evil",
+"NIH.AlignmentLG": "Lawful Good",
+"NIH.AlignmentLN": "Lawful Neutral",
+"NIH.AlignmentNE": "Neutral Evil",
+"NIH.AlignmentNG": "Neutral Good",
+"NIH.AlignmentTN": "True Neutral",
+"NIH.Amount": "Amount",
+"NIH.Appearance": "Appearance",
+"NIH.Apply": "Apply",
+"NIH.Attunement": "Attunement",
+"NIH.AttunementMax": "Maximum Attuned Items",
+"NIH.AttunementNone": "Attunement Not Required",
+"NIH.AttunementOptional": "Optional Attunement",
+"NIH.AttunementRequired": "Attunement Required",
+"NIH.AttunementAttuned": "Attuned",
+"NIH.AttunementOverride": "Override attunement",
+"NIH.Attuned": "Attuned",
+"NIH.AreaOfEffect": {
   "Label": "Area of Effect",
   "Size": {
     "Label": "Size",
@@ -825,30 +825,30 @@
     "Width": "Width"
   }
 },
-"DND5E.Armor": "Armor",
-"DND5E.ArmorClass": "Armor Class",
-"DND5E.ArmorClassEquipment": "Equipped Armor",
-"DND5E.ArmorClassFlat": "Flat",
-"DND5E.ArmorClassUnarmored": "Unarmored",
-"DND5E.ArmorClassNatural": "Natural Armor",
-"DND5E.ArmorClassMage": "Mage Armor",
-"DND5E.ArmorClassMotionless": "Armor Class while Motionless",
-"DND5E.ArmorClassDraconic": "Draconic Resilience",
-"DND5E.ArmorClassUnarmoredMonk": "Unarmored Defense (Monk)",
-"DND5E.ArmorClassUnarmoredBarbarian": "Unarmored Defense (Barbarian)",
-"DND5E.ArmorClassUnarmoredBard": "Unarmored Defense (Bard)",
-"DND5E.ArmorClassCustom": "Custom Formula",
-"DND5E.ArmorConfig": "Configure Armor",
-"DND5E.ArmorConfigHint": "Fill in the above box to override automatically calculated armor class.",
-"DND5E.ArmorClassCalculation": "Calculation",
-"DND5E.ArmorClassFormula": "Formula",
-"DND5E.ArmorHeavyProficiency": "Heavy",
-"DND5E.ArmorLightProficiency": "Light",
-"DND5E.ArmorMediumProficiency": "Medium",
-"DND5E.ArmorValue": "Armor Value",
-"DND5E.AC": "AC",
+"NIH.Armor": "Armor",
+"NIH.ArmorClass": "Armor Class",
+"NIH.ArmorClassEquipment": "Equipped Armor",
+"NIH.ArmorClassFlat": "Flat",
+"NIH.ArmorClassUnarmored": "Unarmored",
+"NIH.ArmorClassNatural": "Natural Armor",
+"NIH.ArmorClassMage": "Mage Armor",
+"NIH.ArmorClassMotionless": "Armor Class while Motionless",
+"NIH.ArmorClassDraconic": "Draconic Resilience",
+"NIH.ArmorClassUnarmoredMonk": "Unarmored Defense (Monk)",
+"NIH.ArmorClassUnarmoredBarbarian": "Unarmored Defense (Barbarian)",
+"NIH.ArmorClassUnarmoredBard": "Unarmored Defense (Bard)",
+"NIH.ArmorClassCustom": "Custom Formula",
+"NIH.ArmorConfig": "Configure Armor",
+"NIH.ArmorConfigHint": "Fill in the above box to override automatically calculated armor class.",
+"NIH.ArmorClassCalculation": "Calculation",
+"NIH.ArmorClassFormula": "Formula",
+"NIH.ArmorHeavyProficiency": "Heavy",
+"NIH.ArmorLightProficiency": "Light",
+"NIH.ArmorMediumProficiency": "Medium",
+"NIH.ArmorValue": "Armor Value",
+"NIH.AC": "AC",
 
-"DND5E.ATTACK": {
+"NIH.ATTACK": {
   "Attack": {
     "mwak": "Melee Attack",
     "rwak": "Ranged Attack"
@@ -940,16 +940,16 @@
   }
 },
 
-"DND5E.Attack": "Attack",
-"DND5E.AttackPl": "Attacks",
-"DND5E.AttackRoll": "Attack Roll",
-"DND5E.Attributes": "Attributes",
-"DND5E.AttrConcentration": {
+"NIH.Attack": "Attack",
+"NIH.AttackPl": "Attacks",
+"NIH.AttackRoll": "Attack Roll",
+"NIH.Attributes": "Attributes",
+"NIH.AttrConcentration": {
   "Limit": "Limit"
 },
-"DND5E.Automatic": "Automatic",
-"DND5E.AutomaticValue": "Automatic ({value})",
-"DND5E.Award": {
+"NIH.Automatic": "Automatic",
+"NIH.AutomaticValue": "Automatic ({value})",
+"NIH.Award": {
   "Title": "Distribute Award",
   "Action": "Award",
   "Distribution": {
@@ -962,11 +962,11 @@
   "NotGMError": "The /award command is only available to GMs.",
   "UnrecognizedWarning": "Unable to parse {commands}. The /award command should be used with XP & currencies values such as '/award 10gp 50xp'."
 },
-"DND5E.Background": "Background",
-"DND5E.BackgroundAdd": "Add Background",
-"DND5E.BackgroundName": "Background Name",
+"NIH.Background": "Background",
+"NIH.BackgroundAdd": "Add Background",
+"NIH.BackgroundName": "Background Name",
 
-"DND5E.Bastion": {
+"NIH.Bastion": {
   "Action": {
     "BastionTurn": "Advance Bastion Turn"
   },
@@ -1021,19 +1021,19 @@
   }
 },
 
-"DND5E.Biography": "Biography",
-"DND5E.BiographyPublic": "Public Biography",
-"DND5E.BiopgrahyPublicEdit": "Edit Public Biography",
-"DND5E.Bonds": "Bonds",
-"DND5E.Bonus": "Bonus",
-"DND5E.BonusAction": "Bonus Action",
-"DND5E.BonusActionAbbr": "BA",
-"DND5E.BonusAttack": "Attack Bonus",
-"DND5E.BonusDamage": "Damage Bonus",
-"DND5E.BonusSaveForm": "Update Bonuses",
-"DND5E.BonusTitle": "Configure Actor Bonuses",
+"NIH.Biography": "Biography",
+"NIH.BiographyPublic": "Public Biography",
+"NIH.BiopgrahyPublicEdit": "Edit Public Biography",
+"NIH.Bonds": "Bonds",
+"NIH.Bonus": "Bonus",
+"NIH.BonusAction": "Bonus Action",
+"NIH.BonusActionAbbr": "BA",
+"NIH.BonusAttack": "Attack Bonus",
+"NIH.BonusDamage": "Damage Bonus",
+"NIH.BonusSaveForm": "Update Bonuses",
+"NIH.BonusTitle": "Configure Actor Bonuses",
 
-"DND5E.BONUSES": {
+"NIH.BONUSES": {
   "FIELDS": {
     "bonuses": {
       "label": "Global Bonuses",
@@ -1096,7 +1096,7 @@
   }
 },
 
-"DND5E.CALENDAR": {
+"NIH.CALENDAR": {
   "Action": {
     "AdvanceTime": "Advance by {amount}",
     "OpenCharacterSheet": "Open Character Sheet",
@@ -1318,7 +1318,7 @@
   }
 },
 
-"DND5E.CAST": {
+"NIH.CAST": {
   "Action": {
     "RemoveSpell": "Remove Spell"
   },
@@ -1371,10 +1371,10 @@
   "Title": "Cast"
 },
 
-"DND5E.Casting": "Casting",
-"DND5E.Conditions": "Conditions",
+"NIH.Casting": "Casting",
+"NIH.Conditions": "Conditions",
 
-"DND5E.CONTAINER": {
+"NIH.CONTAINER": {
   "Details": "Container Details",
   "FIELDS": {
     "capacity": {
@@ -1407,7 +1407,7 @@
   }
 },
 
-"DND5E.Controls": {
+"NIH.Controls": {
   "Hint": "Enable various hints throughout the UI for certain mouse and keyboard controls.",
   "LeftClick": "Left Click",
   "LockHint": "Middle-click to lock",
@@ -1417,20 +1417,20 @@
     "FastForwardHint": "<kbd>Shift</kbd> + <left-click> the item to skip this dialog"
   }
 },
-"DND5E.Challenge": "Challenge",
-"DND5E.ChallengeRating": "Challenge Rating",
-"DND5E.Charged": "Charged",
-"DND5E.Charges": "Charges",
-"DND5E.ChatContextDamage": "Apply As Damage",
-"DND5E.ChatContextHealing": "Apply As Healing",
-"DND5E.ChatContextTempHP": "Apply As Temporary HP",
-"DND5E.ChatContextDoubleDamage": "Apply Double As Damage",
-"DND5E.ChatContextHalfDamage": "Apply Half As Damage",
-"DND5E.ChatContextSelectHit": "Select Hit Targets",
-"DND5E.ChatContextSelectMiss": "Select Missed Targets",
-"DND5E.ChatFlavor": "Chat Message Flavor",
+"NIH.Challenge": "Challenge",
+"NIH.ChallengeRating": "Challenge Rating",
+"NIH.Charged": "Charged",
+"NIH.Charges": "Charges",
+"NIH.ChatContextDamage": "Apply As Damage",
+"NIH.ChatContextHealing": "Apply As Healing",
+"NIH.ChatContextTempHP": "Apply As Temporary HP",
+"NIH.ChatContextDoubleDamage": "Apply Double As Damage",
+"NIH.ChatContextHalfDamage": "Apply Half As Damage",
+"NIH.ChatContextSelectHit": "Select Hit Targets",
+"NIH.ChatContextSelectMiss": "Select Missed Targets",
+"NIH.ChatFlavor": "Chat Message Flavor",
 
-"DND5E.CHATMESSAGE": {
+"NIH.CHATMESSAGE": {
   "Activities": "Activities",
   "Deltas": {
     "Created": "Item Created",
@@ -1449,7 +1449,7 @@
   }
 },
 
-"DND5E.CHECK": {
+"NIH.CHECK": {
   "FIELDS": {
     "check": {
       "label": "Check Details",
@@ -1479,9 +1479,9 @@
   "Title": "Check"
 },
 
-"DND5E.CheckBonus": "Check Bonus",
+"NIH.CheckBonus": "Check Bonus",
 
-"DND5E.CLASS": {
+"NIH.CLASS": {
   "Multiclass": {
     "Title": "Multiclassing"
   },
@@ -1515,32 +1515,32 @@
   }
 },
 
-"DND5E.ClassAdd": "Add Class",
-"DND5E.ClassIdentifier": "Class Identifier",
-"DND5E.ClassIdentifierHint": "This class's data will be accessible using <strong>@classes.{identifier}</strong> in roll formulas.",
-"DND5E.ClassLevels": "Class Levels",
-"DND5E.ClassMakeOriginal": "Original Class",
-"DND5E.ClassMakeOriginalHint": "First class taken by character used to determine certain class traits when multiclassing.",
-"DND5E.ClassName": "Class Name",
-"DND5E.ClassOriginal": "Original Class",
-"DND5E.ClassSaves": "Saving Throws",
-"DND5E.Confirm": "Confirm",
+"NIH.ClassAdd": "Add Class",
+"NIH.ClassIdentifier": "Class Identifier",
+"NIH.ClassIdentifierHint": "This class's data will be accessible using <strong>@classes.{identifier}</strong> in roll formulas.",
+"NIH.ClassLevels": "Class Levels",
+"NIH.ClassMakeOriginal": "Original Class",
+"NIH.ClassMakeOriginalHint": "First class taken by character used to determine certain class traits when multiclassing.",
+"NIH.ClassName": "Class Name",
+"NIH.ClassOriginal": "Original Class",
+"NIH.ClassSaves": "Saving Throws",
+"NIH.Confirm": "Confirm",
 
-"DND5E.COMBAT": {
+"NIH.COMBAT": {
   "Group": {
     "ActiveCount": "{current} of {combatants}",
     "Title": "{name} Group"
   }
 },
 
-"DND5E.COMBATANT": {
+"NIH.COMBATANT": {
   "Counted": {
     "one": "{number} combatant",
     "other": "{number} combatants"
   }
 },
 
-"DND5E.CompendiumBrowser": {
+"NIH.CompendiumBrowser": {
   "Title": "Compendium Browser",
   "Action": {
     "Open": "Open Compendium Browser"
@@ -1594,98 +1594,98 @@
   },
   "Locked": "Locked"
 },
-"DND5E.ComponentMaterial": "Material",
-"DND5E.ComponentMaterialAbbr": "M",
-"DND5E.ComponentSomatic": "Somatic",
-"DND5E.ComponentSomaticAbbr": "S",
-"DND5E.ComponentVerbal": "Verbal",
-"DND5E.ComponentVerbalAbbr": "V",
-"DND5E.Components": "Components",
-"DND5E.Container": "Container",
-"DND5E.ContainerDeleteMessage": "This container will be permanently deleted and cannot be recovered and the {count} items contained within will be moved out.",
-"DND5E.ContainerDeleteContents": "Also delete all items within the container.",
-"DND5E.ContainerMaxDepth": "Containers cannot be nested more than {depth} levels deep.",
-"DND5E.ContainerRecursiveError": "Containers cannot contain themselves.",
-"DND5E.Contents": "Contents",
-"DND5E.ContextMenuActionEdit": "Edit",
-"DND5E.ContextMenuActionDuplicate": "Duplicate",
-"DND5E.ContextMenuActionDelete": "Delete",
-"DND5E.ContextMenuActionEquip": "Equip",
-"DND5E.ContextMenuActionUnequip": "Unequip",
-"DND5E.ContextMenuActionPrepare": "Prepare",
-"DND5E.ContextMenuActionExpendCharge": "Uncharge",
-"DND5E.ContextMenuActionCharge": "Charge",
-"DND5E.ContextMenuActionUnprepare": "Unprepare",
-"DND5E.ContextMenuActionAttune": "Attune",
-"DND5E.ContextMenuActionUnattune": "Unattune",
-"DND5E.ContextMenuActionEnable": "Enable",
-"DND5E.ContextMenuActionDisable": "Disable",
-"DND5E.ContextMenuActionView": "View",
-"DND5E.Contiguous": "Contiguous",
-"DND5E.ConBlinded": "Blinded",
-"DND5E.ConCharmed": "Charmed",
-"DND5E.ConDeafened": "Deafened",
-"DND5E.ConDiseased": "Diseased",
-"DND5E.CONDITIONS": {
+"NIH.ComponentMaterial": "Material",
+"NIH.ComponentMaterialAbbr": "M",
+"NIH.ComponentSomatic": "Somatic",
+"NIH.ComponentSomaticAbbr": "S",
+"NIH.ComponentVerbal": "Verbal",
+"NIH.ComponentVerbalAbbr": "V",
+"NIH.Components": "Components",
+"NIH.Container": "Container",
+"NIH.ContainerDeleteMessage": "This container will be permanently deleted and cannot be recovered and the {count} items contained within will be moved out.",
+"NIH.ContainerDeleteContents": "Also delete all items within the container.",
+"NIH.ContainerMaxDepth": "Containers cannot be nested more than {depth} levels deep.",
+"NIH.ContainerRecursiveError": "Containers cannot contain themselves.",
+"NIH.Contents": "Contents",
+"NIH.ContextMenuActionEdit": "Edit",
+"NIH.ContextMenuActionDuplicate": "Duplicate",
+"NIH.ContextMenuActionDelete": "Delete",
+"NIH.ContextMenuActionEquip": "Equip",
+"NIH.ContextMenuActionUnequip": "Unequip",
+"NIH.ContextMenuActionPrepare": "Prepare",
+"NIH.ContextMenuActionExpendCharge": "Uncharge",
+"NIH.ContextMenuActionCharge": "Charge",
+"NIH.ContextMenuActionUnprepare": "Unprepare",
+"NIH.ContextMenuActionAttune": "Attune",
+"NIH.ContextMenuActionUnattune": "Unattune",
+"NIH.ContextMenuActionEnable": "Enable",
+"NIH.ContextMenuActionDisable": "Disable",
+"NIH.ContextMenuActionView": "View",
+"NIH.Contiguous": "Contiguous",
+"NIH.ConBlinded": "Blinded",
+"NIH.ConCharmed": "Charmed",
+"NIH.ConDeafened": "Deafened",
+"NIH.ConDiseased": "Diseased",
+"NIH.CONDITIONS": {
   "RiderConditions": {
     "label": "Separate Status Conditions",
     "hint": "When this Active Effect is applied, these additional status conditions will be applied separately."
   }
 },
-"DND5E.ConExhaustion": "Exhaustion",
-"DND5E.ConFrightened": "Frightened",
-"DND5E.ConGrappled": "Grappled",
-"DND5E.ConImm": "Condition Immunities",
-"DND5E.ConIncapacitated": "Incapacitated",
-"DND5E.ConInvisible": "Invisible",
-"DND5E.ConParalyzed": "Paralyzed",
-"DND5E.ConPetrified": "Petrified",
-"DND5E.ConPoisoned": "Poisoned",
-"DND5E.ConProne": "Prone",
-"DND5E.ConRestrained": "Restrained",
-"DND5E.ConStunned": "Stunned",
-"DND5E.ConUnconscious": "Unconscious",
-"DND5E.Concentration": "Concentration",
-"DND5E.ConcentrationAbbr": "C",
-"DND5E.ConcentrationBreak": "Break Concentration",
-"DND5E.ConcentrationBreakWarning": "Breaking concentration on an effect that is active on other creatures requires an active GM to be present.",
-"DND5E.ConcentrationBonus": "Concentration Bonus",
-"DND5E.ConcentrationDuration": "Concentration, up to {duration}",
-"DND5E.ConcentratingOn": "You are maintaining concentration on the effects of the '{name}' {type}.",
-"DND5E.ConcentratingEndChoice": "You are concentrating on effects from more than one source. Pick which effect to end.",
-"DND5E.ConcentratingMissingItem": "The effect that is concentrated on and to be replaced does not exist.",
-"DND5E.ConcentratingLimited": "You are not able to begin concentrating on an additional effect.",
-"DND5E.ConcentrationLimit": "Concentration Limit",
-"DND5E.ConcentratingEnd": "End Concentration",
-"DND5E.ConcentratingItemless": "Concentration With No Source",
-"DND5E.ConcentratingWarnLimit": "You cannot maintain concentration on more effects!",
-"DND5E.ConcentratingWarnLimitOptional": "You may end concentration on one of your maintained effects to use this item.",
-"DND5E.ConcentratingWarnLimitZero": "You are not able to maintain concentration on any effects!",
-"DND5E.ConcentrationConfigurationHint": "Configure concentration modifiers and bonuses which apply to this creature.",
-"DND5E.ConsumeTitle": "Resource Consumption",
-"DND5E.ConsumeAmount": "Consumption Amount",
-"DND5E.ConsumeHint": {
+"NIH.ConExhaustion": "Exhaustion",
+"NIH.ConFrightened": "Frightened",
+"NIH.ConGrappled": "Grappled",
+"NIH.ConImm": "Condition Immunities",
+"NIH.ConIncapacitated": "Incapacitated",
+"NIH.ConInvisible": "Invisible",
+"NIH.ConParalyzed": "Paralyzed",
+"NIH.ConPetrified": "Petrified",
+"NIH.ConPoisoned": "Poisoned",
+"NIH.ConProne": "Prone",
+"NIH.ConRestrained": "Restrained",
+"NIH.ConStunned": "Stunned",
+"NIH.ConUnconscious": "Unconscious",
+"NIH.Concentration": "Concentration",
+"NIH.ConcentrationAbbr": "C",
+"NIH.ConcentrationBreak": "Break Concentration",
+"NIH.ConcentrationBreakWarning": "Breaking concentration on an effect that is active on other creatures requires an active GM to be present.",
+"NIH.ConcentrationBonus": "Concentration Bonus",
+"NIH.ConcentrationDuration": "Concentration, up to {duration}",
+"NIH.ConcentratingOn": "You are maintaining concentration on the effects of the '{name}' {type}.",
+"NIH.ConcentratingEndChoice": "You are concentrating on effects from more than one source. Pick which effect to end.",
+"NIH.ConcentratingMissingItem": "The effect that is concentrated on and to be replaced does not exist.",
+"NIH.ConcentratingLimited": "You are not able to begin concentrating on an additional effect.",
+"NIH.ConcentrationLimit": "Concentration Limit",
+"NIH.ConcentratingEnd": "End Concentration",
+"NIH.ConcentratingItemless": "Concentration With No Source",
+"NIH.ConcentratingWarnLimit": "You cannot maintain concentration on more effects!",
+"NIH.ConcentratingWarnLimitOptional": "You may end concentration on one of your maintained effects to use this item.",
+"NIH.ConcentratingWarnLimitZero": "You are not able to maintain concentration on any effects!",
+"NIH.ConcentrationConfigurationHint": "Configure concentration modifiers and bonuses which apply to this creature.",
+"NIH.ConsumeTitle": "Resource Consumption",
+"NIH.ConsumeAmount": "Consumption Amount",
+"NIH.ConsumeHint": {
   "Attribute": "Attribute to consume (e.g. currency.gp)",
   "Item": "UUID of target in compendium"
 },
-"DND5E.ConsumeTarget": "Consumption Target",
-"DND5E.ConsumeType": "Consumption Category",
-"DND5E.ConsumeAmmunition": "Ammunition",
-"DND5E.ConsumeAttribute": "Attribute",
-"DND5E.ConsumeHitDice": "Hit Dice",
-"DND5E.ConsumeHitDiceLargest": "Largest Available",
-"DND5E.ConsumeHitDiceLargestLong": "Largest Hit Dice Available",
-"DND5E.ConsumeHitDiceSmallest": "Smallest Available",
-"DND5E.ConsumeHitDiceSmallestLong": "Smallest Hit Dice Available",
-"DND5E.ConsumeMaterial": "Material",
-"DND5E.ConsumeCharges": "Item Uses",
-"DND5E.ConsumeResource": "Consume Resource?",
-"DND5E.ConsumeRecharge": "Consume Recharge?",
-"DND5E.ConsumeScaling": "Resource Scaling",
-"DND5E.ConsumeScalingLabel": "Use Resources",
-"DND5E.ConsumeScalingTooltip": "If checked, consuming additional resources will increase the level the spell is cast at.",
+"NIH.ConsumeTarget": "Consumption Target",
+"NIH.ConsumeType": "Consumption Category",
+"NIH.ConsumeAmmunition": "Ammunition",
+"NIH.ConsumeAttribute": "Attribute",
+"NIH.ConsumeHitDice": "Hit Dice",
+"NIH.ConsumeHitDiceLargest": "Largest Available",
+"NIH.ConsumeHitDiceLargestLong": "Largest Hit Dice Available",
+"NIH.ConsumeHitDiceSmallest": "Smallest Available",
+"NIH.ConsumeHitDiceSmallestLong": "Smallest Hit Dice Available",
+"NIH.ConsumeMaterial": "Material",
+"NIH.ConsumeCharges": "Item Uses",
+"NIH.ConsumeResource": "Consume Resource?",
+"NIH.ConsumeRecharge": "Consume Recharge?",
+"NIH.ConsumeScaling": "Resource Scaling",
+"NIH.ConsumeScalingLabel": "Use Resources",
+"NIH.ConsumeScalingTooltip": "If checked, consuming additional resources will increase the level the spell is cast at.",
 
-"DND5E.CONSUMABLE": {
+"NIH.CONSUMABLE": {
   "FIELDS": {
     "damage": {
       "label": "Ammunition Damage",
@@ -1751,13 +1751,13 @@
   }
 },
 
-"DND5E.ConsumableUseWarnStart": "This consumable has",
-"DND5E.ConsumableUseWarnEnd": "of the current unit",
-"DND5E.ConsumableUnitWarn": "units remaining",
-"DND5E.ConsumableLastChargeWarn": "This is the last charge of this unit and consuming it will also reduce the item's quantity by 1",
-"DND5E.ConsumableWithoutCharges": "available units to use",
+"NIH.ConsumableUseWarnStart": "This consumable has",
+"NIH.ConsumableUseWarnEnd": "of the current unit",
+"NIH.ConsumableUnitWarn": "units remaining",
+"NIH.ConsumableLastChargeWarn": "This is the last charge of this unit and consuming it will also reduce the item's quantity by 1",
+"NIH.ConsumableWithoutCharges": "available units to use",
 
-"DND5E.CONSUMPTION": {
+"NIH.CONSUMPTION": {
   "FIELDS": {
     "consumption": {
       "label": "Consumption",
@@ -1904,69 +1904,69 @@
   }
 },
 
-"DND5E.Consumed": "Consumed",
-"DND5E.Copy": "Copy Text",
-"DND5E.Copied": "Copied {value}",
-"DND5E.Cover": "Cover",
-"DND5E.CoverHalf": "Half",
-"DND5E.CoverThreeQuarters": "Three Quarters",
-"DND5E.CoverTotal": "Total",
-"DND5E.Cost": "Cost",
-"DND5E.CostGP": "Cost (GP)",
-"DND5E.CreatureAberration": "Aberration",
-"DND5E.CreatureAberrationPl": "Aberrations",
-"DND5E.CreatureBeast": "Beast",
-"DND5E.CreatureBeastPl": "Beasts",
-"DND5E.CreatureCelestial": "Celestial",
-"DND5E.CreatureCelestialPl": "Celestials",
-"DND5E.CreatureConstruct": "Construct",
-"DND5E.CreatureConstructPl": "Constructs",
-"DND5E.CreatureDragon": "Dragon",
-"DND5E.CreatureDragonPl": "Dragons",
-"DND5E.CreatureElemental": "Elemental",
-"DND5E.CreatureElementalPl": "Elementals",
-"DND5E.CreatureFey": "Fey",
-"DND5E.CreatureFeyPl": "Fey",
-"DND5E.CreatureFiend": "Fiend",
-"DND5E.CreatureFiendPl": "Fiends",
-"DND5E.CreatureGiant": "Giant",
-"DND5E.CreatureGiantPl": "Giants",
-"DND5E.CreatureHumanoid": "Humanoid",
-"DND5E.CreatureHumanoidPl": "Humanoids",
-"DND5E.CreatureMonstrosity": "Monstrosity",
-"DND5E.CreatureMonstrosityPl": "Monstrosities",
-"DND5E.CreatureOoze": "Ooze",
-"DND5E.CreatureOozePl": "Oozes",
-"DND5E.CreaturePlant": "Plant",
-"DND5E.CreaturePlantPl": "Plants",
-"DND5E.CreatureType": "Creature Type",
-"DND5E.CreatureTypeTitle": "Configure Creature Type",
-"DND5E.CreatureSwarm": "Swarm",
-"DND5E.CreatureSwarmSize": "Swarm Size",
-"DND5E.CreatureSwarmPhrase": "Swarm of {size} {type}",
-"DND5E.CreatureTag": "{size} {type}, {alignment}",
-"DND5E.CreatureTypeConfig": "Configure Creature Type",
-"DND5E.CreatureTypeSelectorCustom": "Custom Type",
-"DND5E.CreatureTypeSelectorSubtype": "Subtype",
-"DND5E.CreatureUndead": "Undead",
-"DND5E.CreatureUndeadPl": "Undead",
-"DND5E.Crewed": "Crewed",
-"DND5E.Critical": "Critical",
-"DND5E.CriticalHit": "Critical Hit",
-"DND5E.PowerfulCritical": "Powerful Critical",
-"DND5E.CRLabel": "CR {cr}",
-"DND5E.Currency": "Currency",
-"DND5E.CurrencyAbbrCP": "cp",
-"DND5E.CurrencyAbbrEP": "ep",
-"DND5E.CurrencyAbbrGP": "gp",
-"DND5E.CurrencyAbbrPP": "pp",
-"DND5E.CurrencyAbbrSP": "sp",
-"DND5E.CurrencyCP": "Copper",
-"DND5E.CurrencyEP": "Electrum",
-"DND5E.CurrencyGP": "Gold",
-"DND5E.CurrencyPP": "Platinum",
-"DND5E.CurrencySP": "Silver",
-"DND5E.CurrencyManager": {
+"NIH.Consumed": "Consumed",
+"NIH.Copy": "Copy Text",
+"NIH.Copied": "Copied {value}",
+"NIH.Cover": "Cover",
+"NIH.CoverHalf": "Half",
+"NIH.CoverThreeQuarters": "Three Quarters",
+"NIH.CoverTotal": "Total",
+"NIH.Cost": "Cost",
+"NIH.CostGP": "Cost (GP)",
+"NIH.CreatureAberration": "Aberration",
+"NIH.CreatureAberrationPl": "Aberrations",
+"NIH.CreatureBeast": "Beast",
+"NIH.CreatureBeastPl": "Beasts",
+"NIH.CreatureCelestial": "Celestial",
+"NIH.CreatureCelestialPl": "Celestials",
+"NIH.CreatureConstruct": "Construct",
+"NIH.CreatureConstructPl": "Constructs",
+"NIH.CreatureDragon": "Dragon",
+"NIH.CreatureDragonPl": "Dragons",
+"NIH.CreatureElemental": "Elemental",
+"NIH.CreatureElementalPl": "Elementals",
+"NIH.CreatureFey": "Fey",
+"NIH.CreatureFeyPl": "Fey",
+"NIH.CreatureFiend": "Fiend",
+"NIH.CreatureFiendPl": "Fiends",
+"NIH.CreatureGiant": "Giant",
+"NIH.CreatureGiantPl": "Giants",
+"NIH.CreatureHumanoid": "Humanoid",
+"NIH.CreatureHumanoidPl": "Humanoids",
+"NIH.CreatureMonstrosity": "Monstrosity",
+"NIH.CreatureMonstrosityPl": "Monstrosities",
+"NIH.CreatureOoze": "Ooze",
+"NIH.CreatureOozePl": "Oozes",
+"NIH.CreaturePlant": "Plant",
+"NIH.CreaturePlantPl": "Plants",
+"NIH.CreatureType": "Creature Type",
+"NIH.CreatureTypeTitle": "Configure Creature Type",
+"NIH.CreatureSwarm": "Swarm",
+"NIH.CreatureSwarmSize": "Swarm Size",
+"NIH.CreatureSwarmPhrase": "Swarm of {size} {type}",
+"NIH.CreatureTag": "{size} {type}, {alignment}",
+"NIH.CreatureTypeConfig": "Configure Creature Type",
+"NIH.CreatureTypeSelectorCustom": "Custom Type",
+"NIH.CreatureTypeSelectorSubtype": "Subtype",
+"NIH.CreatureUndead": "Undead",
+"NIH.CreatureUndeadPl": "Undead",
+"NIH.Crewed": "Crewed",
+"NIH.Critical": "Critical",
+"NIH.CriticalHit": "Critical Hit",
+"NIH.PowerfulCritical": "Powerful Critical",
+"NIH.CRLabel": "CR {cr}",
+"NIH.Currency": "Currency",
+"NIH.CurrencyAbbrCP": "cp",
+"NIH.CurrencyAbbrEP": "ep",
+"NIH.CurrencyAbbrGP": "gp",
+"NIH.CurrencyAbbrPP": "pp",
+"NIH.CurrencyAbbrSP": "sp",
+"NIH.CurrencyCP": "Copper",
+"NIH.CurrencyEP": "Electrum",
+"NIH.CurrencyGP": "Gold",
+"NIH.CurrencyPP": "Platinum",
+"NIH.CurrencySP": "Silver",
+"NIH.CurrencyManager": {
   "Title": "Manage Currency",
   "Convert": {
     "Label": "Convert",
@@ -1983,9 +1983,9 @@
     "Half": "Half"
   }
 },
-"DND5E.Current": "Current",
+"NIH.Current": "Current",
 
-"DND5E.DAMAGE": {
+"NIH.DAMAGE": {
   "FIELDS": {
     "damage": {
       "label": "Damage",
@@ -2069,14 +2069,14 @@
   "Title": "Damage"
 },
 
-"DND5E.DamImm": "Damage Immunities",
-"DND5E.DamMod": "Damage Modification",
-"DND5E.DamRes": "Damage Resistances",
-"DND5E.DamVuln": "Damage Vulnerabilities",
-"DND5E.Damage": "Damage",
-"DND5E.DamageAcid": "Acid",
-"DND5E.DamageAll": "All Damage",
-"DND5E.DamageApplication": {
+"NIH.DamImm": "Damage Immunities",
+"NIH.DamMod": "Damage Modification",
+"NIH.DamRes": "Damage Resistances",
+"NIH.DamVuln": "Damage Vulnerabilities",
+"NIH.Damage": "Damage",
+"NIH.DamageAcid": "Acid",
+"NIH.DamageAll": "All Damage",
+"NIH.DamageApplication": {
   "Change": {
     "Modification": "{type} Modification",
     "Immunity": "{type} Immunity",
@@ -2087,87 +2087,87 @@
   "Downgrading": "Downgrading {source} to Resistance",
   "Ignoring": "Ignoring {source}"
 },
-"DND5E.DamageBludgeoning": "Bludgeoning",
-"DND5E.DamageCold": "Cold",
-"DND5E.DamageFire": "Fire",
-"DND5E.DamageForce": "Force",
-"DND5E.DamageLightning": "Lightning",
-"DND5E.DamageModification": {
+"NIH.DamageBludgeoning": "Bludgeoning",
+"NIH.DamageCold": "Cold",
+"NIH.DamageFire": "Fire",
+"NIH.DamageForce": "Force",
+"NIH.DamageLightning": "Lightning",
+"NIH.DamageModification": {
   "Label": "Damage Modification",
   "Hint": "Formulas for amounts that will be added to typed damage applied to this actor. Negative values will reduce the damage taken.",
   "BypassHint": "These weapon properties will bypass damage modification for physical damage."
 },
-"DND5E.DamageNecrotic": "Necrotic",
-"DND5E.DamagePiercing": "Piercing",
-"DND5E.DamagePhysical": "Non-Magical Physical",
-"DND5E.DamagePhysicalBypass": "Physical Bypasses",
-"DND5E.DamagePhysicalBypassHint": "These weapon properties will bypass damage resistance for physical damage.",
-"DND5E.DamagePhysicalBypasses": "{damageTypes} from attacks that are not {bypassTypes}",
-"DND5E.DamagePhysicalBypassesShort": "Bypassed by {type} Sources",
-"DND5E.DamagePoison": "Poison",
-"DND5E.DamagePsychic": "Psychic",
-"DND5E.DamageRadiant": "Radiant",
-"DND5E.DamageRoll": "Damage Roll",
-"DND5E.DamageSlashing": "Slashing",
-"DND5E.DamageThreshold": "Damage Threshold",
-"DND5E.DamageThunder": "Thunder",
-"DND5E.DamageType": "Damage Type",
-"DND5E.DamageTypes": "Damage Types",
-"DND5E.Dawn": "Dawn",
-"DND5E.Day": "Day",
-"DND5E.DeathSave": "Death Saves",
-"DND5E.DeathSaveBonus": "Death Save Bonus",
-"DND5E.DeathSaveConfigure": "Configure Death Saves",
-"DND5E.DeathSaveCriticalSuccess": "{name} critically succeeded on a death saving throw and has regained 1 Hit Point!",
-"DND5E.DeathSaveHide": "Hide Death Saves",
-"DND5E.DeathSaveShow": "Show Death Saves",
-"DND5E.DeathSaveSuccess": "{name} has survived with 3 death save successes and is now stable!",
-"DND5E.DeathSaveSuccessLabel": "Death Save Success",
-"DND5E.DeathSaveSuccessLabelN.one": "1st death save success",
-"DND5E.DeathSaveSuccessLabelN.two": "2nd death save success",
-"DND5E.DeathSaveSuccessLabelN.few": "3rd death save success",
-"DND5E.DeathSaveSuccesses": "Successes",
-"DND5E.DeathSaveFailure": "{name} has died with 3 death save failures!",
-"DND5E.DeathSaveFailureLabel": "Death Save Failure",
-"DND5E.DeathSaveFailureLabelN.one": "1st death save failure",
-"DND5E.DeathSaveFailureLabelN.two": "2nd death save failure",
-"DND5E.DeathSaveFailureLabelN.few": "3rd death save failure",
-"DND5E.DeathSaveFailures": "Failures",
-"DND5E.DeathSaveRoll": "Roll a Death Saving Throw",
-"DND5E.DeathSavingThrow": "Death Saving Throw",
-"DND5E.DeathSaveUnnecessary": "You do not need to roll death saves because you have a positive number of hit points or have already reached 3 successes or failures.",
-"DND5E.Default": "Default",
-"DND5E.DefaultSpecific": "Default ({default})",
-"DND5E.DefaultAbilityCheck": "Default Ability Check",
-"DND5E.Denomination": "Denomination",
-"DND5E.Description": "Description",
-"DND5E.DescriptionChat": "Chat Description",
-"DND5E.DescriptionEdit": "Edit {description}",
-"DND5E.DescriptionSummary": "Summary Description",
-"DND5E.DescriptionUnidentified": "Unidentified Description",
-"DND5E.Details": "Details",
-"DND5E.DetailsEdit": "Edit Details",
-"DND5E.Die": "Die",
-"DND5E.Dimensions": "Dimensions",
-"DND5E.Disadvantage": "Disadvantage",
-"DND5E.Discord": "Discord",
-"DND5E.Disclaimer": "Disclaimer",
-"DND5E.DisplayCard": "Display in Chat",
-"DND5E.DistAny": "Any",
-"DND5E.DistFt": "Feet",
-"DND5E.DistFtAbbr": "ft",
-"DND5E.DistKm": "Kilometers",
-"DND5E.DistKmAbbr": "km",
-"DND5E.DistM": "Meters",
-"DND5E.DistMAbbr": "m",
-"DND5E.DistMi": "Miles",
-"DND5E.DistMiAbbr": "mi",
-"DND5E.DistSelf": "Self",
-"DND5E.DistTouch": "Touch",
-"DND5E.DocumentUseWarn": "You lack permission to use an item on this document.",
-"DND5E.DocumentViewWarn": "You lack permission to view this document.",
+"NIH.DamageNecrotic": "Necrotic",
+"NIH.DamagePiercing": "Piercing",
+"NIH.DamagePhysical": "Non-Magical Physical",
+"NIH.DamagePhysicalBypass": "Physical Bypasses",
+"NIH.DamagePhysicalBypassHint": "These weapon properties will bypass damage resistance for physical damage.",
+"NIH.DamagePhysicalBypasses": "{damageTypes} from attacks that are not {bypassTypes}",
+"NIH.DamagePhysicalBypassesShort": "Bypassed by {type} Sources",
+"NIH.DamagePoison": "Poison",
+"NIH.DamagePsychic": "Psychic",
+"NIH.DamageRadiant": "Radiant",
+"NIH.DamageRoll": "Damage Roll",
+"NIH.DamageSlashing": "Slashing",
+"NIH.DamageThreshold": "Damage Threshold",
+"NIH.DamageThunder": "Thunder",
+"NIH.DamageType": "Damage Type",
+"NIH.DamageTypes": "Damage Types",
+"NIH.Dawn": "Dawn",
+"NIH.Day": "Day",
+"NIH.DeathSave": "Death Saves",
+"NIH.DeathSaveBonus": "Death Save Bonus",
+"NIH.DeathSaveConfigure": "Configure Death Saves",
+"NIH.DeathSaveCriticalSuccess": "{name} critically succeeded on a death saving throw and has regained 1 Hit Point!",
+"NIH.DeathSaveHide": "Hide Death Saves",
+"NIH.DeathSaveShow": "Show Death Saves",
+"NIH.DeathSaveSuccess": "{name} has survived with 3 death save successes and is now stable!",
+"NIH.DeathSaveSuccessLabel": "Death Save Success",
+"NIH.DeathSaveSuccessLabelN.one": "1st death save success",
+"NIH.DeathSaveSuccessLabelN.two": "2nd death save success",
+"NIH.DeathSaveSuccessLabelN.few": "3rd death save success",
+"NIH.DeathSaveSuccesses": "Successes",
+"NIH.DeathSaveFailure": "{name} has died with 3 death save failures!",
+"NIH.DeathSaveFailureLabel": "Death Save Failure",
+"NIH.DeathSaveFailureLabelN.one": "1st death save failure",
+"NIH.DeathSaveFailureLabelN.two": "2nd death save failure",
+"NIH.DeathSaveFailureLabelN.few": "3rd death save failure",
+"NIH.DeathSaveFailures": "Failures",
+"NIH.DeathSaveRoll": "Roll a Death Saving Throw",
+"NIH.DeathSavingThrow": "Death Saving Throw",
+"NIH.DeathSaveUnnecessary": "You do not need to roll death saves because you have a positive number of hit points or have already reached 3 successes or failures.",
+"NIH.Default": "Default",
+"NIH.DefaultSpecific": "Default ({default})",
+"NIH.DefaultAbilityCheck": "Default Ability Check",
+"NIH.Denomination": "Denomination",
+"NIH.Description": "Description",
+"NIH.DescriptionChat": "Chat Description",
+"NIH.DescriptionEdit": "Edit {description}",
+"NIH.DescriptionSummary": "Summary Description",
+"NIH.DescriptionUnidentified": "Unidentified Description",
+"NIH.Details": "Details",
+"NIH.DetailsEdit": "Edit Details",
+"NIH.Die": "Die",
+"NIH.Dimensions": "Dimensions",
+"NIH.Disadvantage": "Disadvantage",
+"NIH.Discord": "Discord",
+"NIH.Disclaimer": "Disclaimer",
+"NIH.DisplayCard": "Display in Chat",
+"NIH.DistAny": "Any",
+"NIH.DistFt": "Feet",
+"NIH.DistFtAbbr": "ft",
+"NIH.DistKm": "Kilometers",
+"NIH.DistKmAbbr": "km",
+"NIH.DistM": "Meters",
+"NIH.DistMAbbr": "m",
+"NIH.DistMi": "Miles",
+"NIH.DistMiAbbr": "mi",
+"NIH.DistSelf": "Self",
+"NIH.DistTouch": "Touch",
+"NIH.DocumentUseWarn": "You lack permission to use an item on this document.",
+"NIH.DocumentViewWarn": "You lack permission to view this document.",
 
-"DND5E.DURATION": {
+"NIH.DURATION": {
   "FIELDS": {
     "duration": {
       "label": "Duration",
@@ -2195,16 +2195,16 @@
   }
 },
 
-"DND5E.Duration": "Duration",
-"DND5E.DurationPermanent": "Permanent",
-"DND5E.DurationTime": "Time",
-"DND5E.DurationType": "Duration Type",
-"DND5E.DurationUnits": "Duration Units",
-"DND5E.DurationValue": "Duration Value",
-"DND5E.Dusk": "Dusk",
-"DND5E.Effect": "Effect",
-"DND5E.Effects": "Effects",
-"DND5E.EFFECT": {
+"NIH.Duration": "Duration",
+"NIH.DurationPermanent": "Permanent",
+"NIH.DurationTime": "Time",
+"NIH.DurationType": "Duration Type",
+"NIH.DurationUnits": "Duration Units",
+"NIH.DurationValue": "Duration Value",
+"NIH.Dusk": "Dusk",
+"NIH.Effect": "Effect",
+"NIH.Effects": "Effects",
+"NIH.EFFECT": {
   "Action": {
     "Create": "Create Effect",
     "Delete": "Delete Effect",
@@ -2217,12 +2217,12 @@
     "Effect": "Enchantment Rider Effect"
   }
 },
-"DND5E.EffectsApplyTokens": "Apply to selected tokens",
-"DND5E.EffectApplyWarningConcentration": "Applying an effect that is being concentrated on by another character requires GM permissions.",
-"DND5E.EffectApplyWarningOwnership": "Effects cannot be applied to tokens you are not the owner of.",
-"DND5E.EffectsSearch": "Search effects",
+"NIH.EffectsApplyTokens": "Apply to selected tokens",
+"NIH.EffectApplyWarningConcentration": "Applying an effect that is being concentrated on by another character requires GM permissions.",
+"NIH.EffectApplyWarningOwnership": "Effects cannot be applied to tokens you are not the owner of.",
+"NIH.EffectsSearch": "Search effects",
 
-"DND5E.ENCHANT": {
+"NIH.ENCHANT": {
   "FIELDS": {
     "effects.element": {
       "level": {
@@ -2311,7 +2311,7 @@
   }
 },
 
-"DND5E.ENCHANTMENT": {
+"NIH.ENCHANTMENT": {
   "Action": {
     "Apply": "Apply Enchantment",
     "Disable": "Disable Enchantment",
@@ -2355,7 +2355,7 @@
   }
 },
 
-"DND5E.ENCOUNTER": {
+"NIH.ENCOUNTER": {
   "Action": {
     "AddCreature": "Add Creature",
     "Award": "Award XP & Currency"
@@ -2372,9 +2372,9 @@
   }
 },
 
-"DND5E.Environment": "Environment",
+"NIH.Environment": "Environment",
 
-"DND5E.EQUIPMENT": {
+"NIH.EQUIPMENT": {
   "Type": {
     "Clothing": {
       "Label": "Clothing"
@@ -2400,18 +2400,18 @@
   }
 },
 
-"DND5E.EquipmentBonus": "Magical Bonus",
-"DND5E.EquipmentHeavy": "Heavy Armor",
-"DND5E.EquipmentLight": "Light Armor",
-"DND5E.EquipmentMedium": "Medium Armor",
-"DND5E.EquipmentNatural": "Natural Armor",
-"DND5E.EquipmentShield": "Shield",
-"DND5E.EquipmentShieldProficiency": "Shields",
-"DND5E.Equipped": "Equipped",
-"DND5E.Exhaustion": "Exhaustion",
-"DND5E.ExhaustionLevel": "Exhaustion Level {n}",
+"NIH.EquipmentBonus": "Magical Bonus",
+"NIH.EquipmentHeavy": "Heavy Armor",
+"NIH.EquipmentLight": "Light Armor",
+"NIH.EquipmentMedium": "Medium Armor",
+"NIH.EquipmentNatural": "Natural Armor",
+"NIH.EquipmentShield": "Shield",
+"NIH.EquipmentShieldProficiency": "Shields",
+"NIH.Equipped": "Equipped",
+"NIH.Exhaustion": "Exhaustion",
+"NIH.ExhaustionLevel": "Exhaustion Level {n}",
 
-"DND5E.ExperiencePoints": {
+"NIH.ExperiencePoints": {
   "Abbreviation": "XP",
   "Boons": {
     "one": "{number} Boon",
@@ -2429,9 +2429,9 @@
   "Value": "XP Value"
 },
 
-"DND5E.Expertise": "Expertise",
+"NIH.Expertise": "Expertise",
 
-"DND5E.FACILITY": {
+"NIH.FACILITY": {
   "Action": {
     "DeleteDefender": "Delete Defender",
     "DeleteOccupant": "Delete Occupant",
@@ -2685,13 +2685,13 @@
   }
 },
 
-"DND5E.Favorite": "Favorite",
-"DND5E.FavoriteDrop": "Drop Favorite",
-"DND5E.FavoriteRemove": "Remove Favorite",
-"DND5E.Favorites": "Favorites",
-"DND5E.FeatureActionRecharge": "Action Recharge",
+"NIH.Favorite": "Favorite",
+"NIH.FavoriteDrop": "Drop Favorite",
+"NIH.FavoriteRemove": "Remove Favorite",
+"NIH.Favorites": "Favorites",
+"NIH.FeatureActionRecharge": "Action Recharge",
 
-"DND5E.FEATURE": {
+"NIH.FEATURE": {
   "FIELDS": {
     "cover": {
       "label": "Cover",
@@ -2709,7 +2709,7 @@
   }
 },
 
-"DND5E.Feature": {
+"NIH.Feature": {
   "Background": "Background Feature",
   "Class": {
     "Label": "Class Feature",
@@ -2751,24 +2751,24 @@
     "Label": "Vehicle Feature"
   }
 },
-"DND5E.Focus": {
+"NIH.Focus": {
   "Label": "Spellcasting Focus",
   "Arcane": "Arcane Focus",
   "Druidic": "Druidic Focus",
   "Holy": "Holy Focus"
 },
-"DND5E.Loot.Art": "Art Object",
-"DND5E.Loot.Gear": "Adventuring Gear",
-"DND5E.Loot.Gem": "Gemstone",
-"DND5E.Loot.Junk": "Junk",
-"DND5E.Loot.Material": "Material",
-"DND5E.Loot.Resource": "Resource",
-"DND5E.Loot.Trade": "Trade Good",
-"DND5E.Loot.Treasure": "Treasure",
-"DND5E.Flaws": "Flaws",
-"DND5E.FormulaCannotContainDiceError": "{name} formula cannot contain dice expressions.",
+"NIH.Loot.Art": "Art Object",
+"NIH.Loot.Gear": "Adventuring Gear",
+"NIH.Loot.Gem": "Gemstone",
+"NIH.Loot.Junk": "Junk",
+"NIH.Loot.Material": "Material",
+"NIH.Loot.Resource": "Resource",
+"NIH.Loot.Trade": "Trade Good",
+"NIH.Loot.Treasure": "Treasure",
+"NIH.Flaws": "Flaws",
+"NIH.FormulaCannotContainDiceError": "{name} formula cannot contain dice expressions.",
 
-"DND5E.FORWARD": {
+"NIH.FORWARD": {
   "FIELDS": {
     "activity": {
       "label": "Triggered Activity"
@@ -2781,104 +2781,104 @@
   }
 },
 
-"DND5E.EffectCreate": "Create Effect",
-"DND5E.EffectToggle": "Toggle Effect",
-"DND5E.EffectEdit": "Edit Effect",
-"DND5E.EffectEnable": "Enable Effect",
-"DND5E.EffectDelete": "Delete Effect",
-"DND5E.EffectDisable": "Disable Effect",
-"DND5E.EffectTemporary": "Temporary Effects",
-"DND5E.EffectPassive": "Passive Effects",
-"DND5E.EffectInactive": "Inactive Effects",
-"DND5E.EffectNew": "New Effect",
-"DND5E.EffectType": {
+"NIH.EffectCreate": "Create Effect",
+"NIH.EffectToggle": "Toggle Effect",
+"NIH.EffectEdit": "Edit Effect",
+"NIH.EffectEnable": "Enable Effect",
+"NIH.EffectDelete": "Delete Effect",
+"NIH.EffectDisable": "Disable Effect",
+"NIH.EffectTemporary": "Temporary Effects",
+"NIH.EffectPassive": "Passive Effects",
+"NIH.EffectInactive": "Inactive Effects",
+"NIH.EffectNew": "New Effect",
+"NIH.EffectType": {
   "Inactive": "Inactive",
   "Passive": "Passive",
   "Temporary": "Temporary",
   "Unavailable": "Unavailable"
 },
-"DND5E.EffectUnavailable": "Unavailable Effects",
-"DND5E.EffectUnavailableInfo": "Source item must be equipped or attuned to activate these",
-"DND5E.Encumbrance": "Encumbrance",
-"DND5E.Eyes": "Eyes",
-"DND5E.Faith": "Faith",
-"DND5E.FeatureActive": "Active Abilities",
-"DND5E.FeatureAdd": "Create Feature",
-"DND5E.FeatureAttack": "Feature Attack",
-"DND5E.FeaturePassive": "Passive Abilities",
-"DND5E.FeatureRechargeOn": "Recharge On",
-"DND5E.FeatureRechargeResult": "1d6 Result",
-"DND5E.FeatureSearch": "Search features",
-"DND5E.FeatureUsage": "Feature Usage",
-"DND5E.Features": "Features",
-"DND5E.FeaturesBackground": "Background Features",
-"DND5E.FeaturesClass": "{class} Features",
-"DND5E.FeaturesOther": "Other Features",
-"DND5E.Feats": "Feats",
-"DND5E.FeetAbbr": "ft.",
-"DND5E.Filter": "Filter",
-"DND5E.FilterClear": "Clear Filters",
-"DND5E.FilterGroupCategory": "Group by Category",
-"DND5E.FilterGroupOrigin": "Group by Origin",
-"DND5E.FilterGroupAction": "Group by Action",
-"DND5E.FilterNoSpells": "No spells found for this set of filters.",
-"DND5E.NoSpellLevels": "This character has no spellcaster levels, but you may add spells manually.",
+"NIH.EffectUnavailable": "Unavailable Effects",
+"NIH.EffectUnavailableInfo": "Source item must be equipped or attuned to activate these",
+"NIH.Encumbrance": "Encumbrance",
+"NIH.Eyes": "Eyes",
+"NIH.Faith": "Faith",
+"NIH.FeatureActive": "Active Abilities",
+"NIH.FeatureAdd": "Create Feature",
+"NIH.FeatureAttack": "Feature Attack",
+"NIH.FeaturePassive": "Passive Abilities",
+"NIH.FeatureRechargeOn": "Recharge On",
+"NIH.FeatureRechargeResult": "1d6 Result",
+"NIH.FeatureSearch": "Search features",
+"NIH.FeatureUsage": "Feature Usage",
+"NIH.Features": "Features",
+"NIH.FeaturesBackground": "Background Features",
+"NIH.FeaturesClass": "{class} Features",
+"NIH.FeaturesOther": "Other Features",
+"NIH.Feats": "Feats",
+"NIH.FeetAbbr": "ft.",
+"NIH.Filter": "Filter",
+"NIH.FilterClear": "Clear Filters",
+"NIH.FilterGroupCategory": "Group by Category",
+"NIH.FilterGroupOrigin": "Group by Origin",
+"NIH.FilterGroupAction": "Group by Action",
+"NIH.FilterNoSpells": "No spells found for this set of filters.",
+"NIH.NoSpellLevels": "This character has no spellcaster levels, but you may add spells manually.",
 
-"DND5E.FLAGS": {
+"NIH.FLAGS": {
   "EnhancedDualWielding": {
     "Name": "Enhanced Dual Wielding",
     "Hint": "Allow bonus action extra attacks using any melee weapon without the Two-Handed property."
   }
 },
 
-"DND5E.FlagsInstructions": "Configure character features and traits which fine-tune behaviors of the D&D Fifth Edition system.",
-"DND5E.FlagsSave": "Update Special Traits",
-"DND5E.FlagsTitle": "Configure Special Traits",
-"DND5E.FlagsDiamondSoul": "Diamond Soul",
-"DND5E.FlagsDiamondSoulHint": "Gain proficiency to all saving throws.",
-"DND5E.FlagsPowerfulBuild": "Powerful Build",
-"DND5E.FlagsPowerfulBuildHint": "Provides increased carrying capacity.",
-"DND5E.FlagsElvenAccuracy": "Elven Accuracy",
-"DND5E.FlagsElvenAccuracyHint": "Roll an extra d20 with advantage to Dex, Int, Wis, or Cha.",
-"DND5E.FlagsHalflingLucky": "Halfling Lucky",
-"DND5E.FlagsHalflingLuckyHint": "Reroll ones when rolling d20 checks.",
-"DND5E.FlagsHalflingNimbleness": "Halfling Nimbleness",
-"DND5E.FlagsHalflingNimblenessHint": "Movement through larger creatures is not blocked.",
-"DND5E.FlagsAlert": "Alert Feat",
-"DND5E.FlagsAlertHint": "Proficient in Initiative rolls.",
-"DND5E.FlagsAlertHintLegacy": "Provides +5 to Initiative.",
-"DND5E.FlagsJOAT": "Jack of All Trades",
-"DND5E.FlagsJOATHint": "Half-Proficiency to Ability Checks in which you are not already Proficient.",
-"DND5E.FlagsObservant": "Observant Feat",
-"DND5E.FlagsObservantHint": "Provides a +5 to passive Perception and Investigation.",
-"DND5E.FlagsTavernBrawler": "Tavern Brawler Feat",
-"DND5E.FlagsTavernBrawlerHint": "Proficient with improvised weapons.",
-"DND5E.FlagsReliableTalent": "Reliable Talent",
-"DND5E.FlagsReliableTalentHint": "Rogues Reliable Talent Feature.",
-"DND5E.FlagsRemarkableAthlete": "Remarkable Athlete",
-"DND5E.FlagsRemarkableAthleteHint": "Half-Proficiency (rounded-up) to physical Ability Checks and Initiative.",
-"DND5E.FlagsWeaponCritThreshold": "Weapon Critical Hit Threshold",
-"DND5E.FlagsWeaponCritThresholdHint": "An expanded critical hit threshold for weapon attacks.",
-"DND5E.FlagsSpellCritThreshold": "Spell Critical Hit Threshold",
-"DND5E.FlagsSpellCritThresholdHint": "An expanded critical hit threshold for spell attacks.",
-"DND5E.FlagsMeleeCriticalDice": "Melee Critical Damage Dice",
-"DND5E.FlagsMeleeCriticalDiceHint": "A number of additional damage dice added to melee weapon critical hits.",
-"DND5E.FlagsToolExpertise": "Tool Expertise",
-"DND5E.FlagsToolExpertiseHint": "Doubles your proficiency bonus for any ability check you make that uses your proficiency with a tool.",
-"DND5E.Flat": "Flat",
-"DND5E.Formula": "Formula",
-"DND5E.FormulaMalformedError": "Problem preparing the {property} formula within {name}.",
-"DND5E.FormulaMissingReferenceWarn": "The {property} formula within {name} has references to missing data: {references}",
-"DND5E.Gear": "Gear",
-"DND5E.Gender": "Gender",
-"DND5E.GlobalBonus": "Global Bonus",
-"DND5E.GrantedAbilities": "Granted Abilities",
-"DND5E.GroupInventory": "Inventory",
-"DND5E.GroupHP": "Aggregate Hit Points",
-"DND5E.GroupSummary": "A group of {members}",
-"DND5E.GroupSummaryEmpty": "Empty group",
-"DND5E.GroupControls": "Controls",
-"DND5E.Group": {
+"NIH.FlagsInstructions": "Configure character features and traits which fine-tune behaviors of the D&D Fifth Edition system.",
+"NIH.FlagsSave": "Update Special Traits",
+"NIH.FlagsTitle": "Configure Special Traits",
+"NIH.FlagsDiamondSoul": "Diamond Soul",
+"NIH.FlagsDiamondSoulHint": "Gain proficiency to all saving throws.",
+"NIH.FlagsPowerfulBuild": "Powerful Build",
+"NIH.FlagsPowerfulBuildHint": "Provides increased carrying capacity.",
+"NIH.FlagsElvenAccuracy": "Elven Accuracy",
+"NIH.FlagsElvenAccuracyHint": "Roll an extra d20 with advantage to Dex, Int, Wis, or Cha.",
+"NIH.FlagsHalflingLucky": "Halfling Lucky",
+"NIH.FlagsHalflingLuckyHint": "Reroll ones when rolling d20 checks.",
+"NIH.FlagsHalflingNimbleness": "Halfling Nimbleness",
+"NIH.FlagsHalflingNimblenessHint": "Movement through larger creatures is not blocked.",
+"NIH.FlagsAlert": "Alert Feat",
+"NIH.FlagsAlertHint": "Proficient in Initiative rolls.",
+"NIH.FlagsAlertHintLegacy": "Provides +5 to Initiative.",
+"NIH.FlagsJOAT": "Jack of All Trades",
+"NIH.FlagsJOATHint": "Half-Proficiency to Ability Checks in which you are not already Proficient.",
+"NIH.FlagsObservant": "Observant Feat",
+"NIH.FlagsObservantHint": "Provides a +5 to passive Perception and Investigation.",
+"NIH.FlagsTavernBrawler": "Tavern Brawler Feat",
+"NIH.FlagsTavernBrawlerHint": "Proficient with improvised weapons.",
+"NIH.FlagsReliableTalent": "Reliable Talent",
+"NIH.FlagsReliableTalentHint": "Rogues Reliable Talent Feature.",
+"NIH.FlagsRemarkableAthlete": "Remarkable Athlete",
+"NIH.FlagsRemarkableAthleteHint": "Half-Proficiency (rounded-up) to physical Ability Checks and Initiative.",
+"NIH.FlagsWeaponCritThreshold": "Weapon Critical Hit Threshold",
+"NIH.FlagsWeaponCritThresholdHint": "An expanded critical hit threshold for weapon attacks.",
+"NIH.FlagsSpellCritThreshold": "Spell Critical Hit Threshold",
+"NIH.FlagsSpellCritThresholdHint": "An expanded critical hit threshold for spell attacks.",
+"NIH.FlagsMeleeCriticalDice": "Melee Critical Damage Dice",
+"NIH.FlagsMeleeCriticalDiceHint": "A number of additional damage dice added to melee weapon critical hits.",
+"NIH.FlagsToolExpertise": "Tool Expertise",
+"NIH.FlagsToolExpertiseHint": "Doubles your proficiency bonus for any ability check you make that uses your proficiency with a tool.",
+"NIH.Flat": "Flat",
+"NIH.Formula": "Formula",
+"NIH.FormulaMalformedError": "Problem preparing the {property} formula within {name}.",
+"NIH.FormulaMissingReferenceWarn": "The {property} formula within {name} has references to missing data: {references}",
+"NIH.Gear": "Gear",
+"NIH.Gender": "Gender",
+"NIH.GlobalBonus": "Global Bonus",
+"NIH.GrantedAbilities": "Granted Abilities",
+"NIH.GroupInventory": "Inventory",
+"NIH.GroupHP": "Aggregate Hit Points",
+"NIH.GroupSummary": "A group of {members}",
+"NIH.GroupSummaryEmpty": "Empty group",
+"NIH.GroupControls": "Controls",
+"NIH.Group": {
   "Action": {
     "ChangePace": "Change Pace",
     "Inventory": {
@@ -2930,7 +2930,7 @@
     "PlaceMembers": "Error placing tokens in scene."
   }
 },
-"DND5E.Habitat": {
+"NIH.Habitat": {
   "Categories": {
     "Any": "Any",
     "Arctic": "Arctic",
@@ -2955,10 +2955,10 @@
   },
   "Subtype": "{type} ({subtype})"
 },
-"DND5E.Hair": "Hair",
-"DND5E.HalfProficient": "Half Proficient",
+"NIH.Hair": "Hair",
+"NIH.HalfProficient": "Half Proficient",
 
-"DND5E.HEAL": {
+"NIH.HEAL": {
   "FIELDS": {
     "healing": {
       "label": "Healing",
@@ -3010,12 +3010,12 @@
   "Title": "Heal"
 },
 
-"DND5E.Healing": "Healing",
-"DND5E.HealingRoll": "Healing Roll",
-"DND5E.HealingTemp": "Temporary Hit Points",
-"DND5E.Height": "Height",
+"NIH.Healing": "Healing",
+"NIH.HealingRoll": "Healing Roll",
+"NIH.HealingTemp": "Temporary Hit Points",
+"NIH.Height": "Height",
 
-"DND5E.HITPOINTS": {
+"NIH.HITPOINTS": {
   "Counted": {
     "one": "{number} hit point",
     "other": "{number} hit points"
@@ -3028,26 +3028,26 @@
   }
 },
 
-"DND5E.HitPoints": "Hit Points",
-"DND5E.HitPointsBonusLevel": "Per Level Bonus",
-"DND5E.HitPointsBonusOverall": "Overall Bonus",
-"DND5E.HitPointsConfig": "Configure Hit Points",
-"DND5E.HitPointsCurrent": "Current Hit Points",
-"DND5E.HitPointsMax": "Maximum Hit Points",
-"DND5E.HitPointsMin": "Minimum Hit Points",
-"DND5E.HitPointsOverride": "Maximum Override",
-"DND5E.HitPointsOverrideHint": "Override automatically calculated hit points, ignoring any HP from classes, bonuses, and ability modifier.",
-"DND5E.HitPointsTemp": "Temporary Hit Points",
-"DND5E.HitPointsTempShort": "Temporary HP",
-"DND5E.HitPointsTempMax": "Temporary Maximum",
-"DND5E.HitPointsTempMaxHint": "Temporary change to the maximum HP.",
-"DND5E.HitPointsTempMaxShort": "Temp Max HP",
-"DND5E.HP": "HP",
-"DND5E.HPFormula": "Health Formula",
-"DND5E.HPFormulaError": "The provided hit point formula could not be evaluated.",
-"DND5E.HPFormulaRollMessage": "Roll Hit Point Formula",
+"NIH.HitPoints": "Hit Points",
+"NIH.HitPointsBonusLevel": "Per Level Bonus",
+"NIH.HitPointsBonusOverall": "Overall Bonus",
+"NIH.HitPointsConfig": "Configure Hit Points",
+"NIH.HitPointsCurrent": "Current Hit Points",
+"NIH.HitPointsMax": "Maximum Hit Points",
+"NIH.HitPointsMin": "Minimum Hit Points",
+"NIH.HitPointsOverride": "Maximum Override",
+"NIH.HitPointsOverrideHint": "Override automatically calculated hit points, ignoring any HP from classes, bonuses, and ability modifier.",
+"NIH.HitPointsTemp": "Temporary Hit Points",
+"NIH.HitPointsTempShort": "Temporary HP",
+"NIH.HitPointsTempMax": "Temporary Maximum",
+"NIH.HitPointsTempMaxHint": "Temporary change to the maximum HP.",
+"NIH.HitPointsTempMaxShort": "Temp Max HP",
+"NIH.HP": "HP",
+"NIH.HPFormula": "Health Formula",
+"NIH.HPFormulaError": "The provided hit point formula could not be evaluated.",
+"NIH.HPFormulaRollMessage": "Roll Hit Point Formula",
 
-"DND5E.HITDICE": {
+"NIH.HITDICE": {
   "Abbreviation": "HD",
   "Action": {
     "Decrease": "Decrease",
@@ -3061,114 +3061,114 @@
   }
 },
 
-"DND5E.HitDie": "Hit Die",
-"DND5E.HitDice": "Hit Dice",
-"DND5E.HitDiceConfig": "Adjust Hit Dice",
-"DND5E.HitDiceConfigHint": "Adjust remaining hit dice levels for each class.",
-"DND5E.HitDiceMax": "Maximum Hit Dice",
-"DND5E.HitDiceRemaining": "Remaining Hit Dice",
-"DND5E.HitDiceRoll": "Roll Hit Dice",
-"DND5E.HitDiceWarn": "{name} has no available {formula} Hit Dice remaining!",
-"DND5E.HitDiceNPCWarn": "{name} has no available Hit Dice remaining!",
-"DND5E.Ideals": "Ideals",
-"DND5E.Identified": "Identified",
-"DND5E.Identifier": "Identifier",
-"DND5E.IdentifierError": "An identifier can only contain letters (a-z), numbers (0-9), dashes (-), and underscores (_).",
-"DND5E.Identify": "Identify",
-"DND5E.Immunities": "Immunities",
-"DND5E.Initiative": "Initiative",
-"DND5E.InitiativeAbbr": "Init",
-"DND5E.InitiativeBonus": "Initiative Bonus",
-"DND5E.InitiativeRoll": "Initiative Roll",
-"DND5E.InitiativeConfig": "Configure Initiative",
-"DND5E.InitiativeConfigHint": "Configure initiative modifiers and bonuses which apply to this Actor.",
-"DND5E.Inspiration": "Inspiration",
-"DND5E.Inventory": "Inventory",
-"DND5E.InventorySearch": "Search inventory",
-"DND5E.Issues": "Issues",
-"DND5E.ItemActionType": "Action Type",
-"DND5E.ItemActivation": "Activation",
-"DND5E.ItemActivationCondition": "Activation Condition",
-"DND5E.ItemActivationCost": "Activation Cost",
-"DND5E.ItemActivationType": "Activation Type",
-"DND5E.ItemAmmoProperties": "Ammunition Properties",
-"DND5E.ItemAttackBonus": "Attack Roll Bonus",
-"DND5E.ItemAttackFlat": "Flat Bonus",
-"DND5E.ItemAttackFlatHint": "If checked, don't add proficiency, ability modifier, or any other bonuses to attack roll except what is included here.",
-"DND5E.ItemBackgroundDetails": "Background Details",
-"DND5E.ItemClassDetails": "Class Details",
-"DND5E.ItemConsumableActivation": "Consumable Activation",
-"DND5E.ItemConsumableUsage": "Consumable Usage",
-"DND5E.ItemConsumableDetails": "Consumable Details",
-"DND5E.ItemConsumableProperties": "Consumable Properties",
-"DND5E.ItemConsumableStatus": "Consumable Status",
-"DND5E.ItemConsumableSubtype": "{category} Type",
-"DND5E.ItemConsumableType": "Consumable Type",
-"DND5E.ItemCreate": "Create Item",
-"DND5E.ItemCritThreshold": "Critical Hit Threshold",
-"DND5E.ItemCritExtraDamage": "Extra Critical Hit Damage",
-"DND5E.ItemDelete": "Delete Item",
-"DND5E.ItemEdit": "Edit Item",
-"DND5E.ItemEquipmentAction": "Equipment Action",
-"DND5E.ItemEquipmentBase": "Base Equipment",
-"DND5E.ItemEquipmentDetails": "Equipment Details",
-"DND5E.ItemEquipmentDexMod": "Max. Dexterity Modifier",
-"DND5E.ItemEquipmentDexModAbbr": "Max Dex",
-"DND5E.ItemEquipmentProperties": "Equipment Properties",
-"DND5E.ItemEquipmentStatus": "Equipment Status",
-"DND5E.ItemEquipmentStealthDisav": "Imposes Stealth Disadvantage",
-"DND5E.ItemEquipmentType": "Equipment Type",
-"DND5E.ItemEquipmentUsage": "Equipment Usage",
-"DND5E.ItemFacilityDetails": "Facility Details",
-"DND5E.ItemFeatureDetails": "Feature Details",
-"DND5E.ItemFeatureProperties": "Feature Properties",
-"DND5E.ItemFeatureSubtype": "{category} Type",
-"DND5E.ItemFeatureType": "Feature Type",
-"DND5E.ItemLootDetails": "Loot Details",
-"DND5E.ItemLootProperties": "Loot Properties",
-"DND5E.ItemLootSubtype": "{category} Type",
-"DND5E.ItemLootType": "Loot Type",
-"DND5E.ItemName": "Item Name",
-"DND5E.ItemNew": "New {type}",
-"DND5E.ItemRarityCommon": "common",
-"DND5E.ItemRarityMundane": "mundane",
-"DND5E.ItemRarityUncommon": "uncommon",
-"DND5E.ItemRarityRare": "rare",
-"DND5E.ItemRarityVeryRare": "very rare",
-"DND5E.ItemRarityLegendary": "legendary",
-"DND5E.ItemRarityArtifact": "artifact",
-"DND5E.ItemRechargeCheck": "{name} recharge check - {result}",
-"DND5E.ItemRechargeFailure": "failure!",
-"DND5E.ItemRechargeSuccess": "success!",
-"DND5E.ItemRecoveryRoll": "{name} recovers {count} charges",
-"DND5E.ItemLossRoll": "{name} loses {count} charges",
-"DND5E.ItemRecoveryRollMax": "{name} recovers all charges",
-"DND5E.ItemRecoveryFormulaWarning": "Unable to recover uses for {name}. Invalid recovery formula '{formula}' ({uuid}).",
-"DND5E.ItemRequiredStr": "Required Strength",
-"DND5E.Items": "Items",
-"DND5E.ItemSiegeProperties": "Siege Properties",
-"DND5E.ItemSpeciesDetails": "Species Details",
-"DND5E.ItemSpeciesDetailsLegacy": "Race Details",
-"DND5E.ItemSubclassDetails": "Subclass Details",
-"DND5E.ItemToolBase": "Base Tool",
-"DND5E.ItemToolBonus": "Tool Bonus",
-"DND5E.ItemToolDetails": "Tool Details",
-"DND5E.ItemToolProficiency": "Tool Proficiency",
-"DND5E.ItemToolProperties": "Tool Properties",
-"DND5E.ItemToolStatus": "Tool Status",
-"DND5E.ItemToolType": "Tool Type",
-"DND5E.ItemToolUsage": "Tool Usage",
-"DND5E.ItemVehicleProperties": "Vehicle Properties",
-"DND5E.ItemView": "View Item",
-"DND5E.ItemWeaponAttack": "Weapon Attack",
-"DND5E.ItemWeaponBase": "Base Weapon",
-"DND5E.ItemWeaponDetails": "Weapon Details",
-"DND5E.ItemWeaponProperties": "Weapon Properties",
-"DND5E.ItemWeaponStatus": "Weapon Status",
-"DND5E.ItemWeaponType": "Weapon Type",
-"DND5E.ItemWeaponUsage": "Weapon Usage",
+"NIH.HitDie": "Hit Die",
+"NIH.HitDice": "Hit Dice",
+"NIH.HitDiceConfig": "Adjust Hit Dice",
+"NIH.HitDiceConfigHint": "Adjust remaining hit dice levels for each class.",
+"NIH.HitDiceMax": "Maximum Hit Dice",
+"NIH.HitDiceRemaining": "Remaining Hit Dice",
+"NIH.HitDiceRoll": "Roll Hit Dice",
+"NIH.HitDiceWarn": "{name} has no available {formula} Hit Dice remaining!",
+"NIH.HitDiceNPCWarn": "{name} has no available Hit Dice remaining!",
+"NIH.Ideals": "Ideals",
+"NIH.Identified": "Identified",
+"NIH.Identifier": "Identifier",
+"NIH.IdentifierError": "An identifier can only contain letters (a-z), numbers (0-9), dashes (-), and underscores (_).",
+"NIH.Identify": "Identify",
+"NIH.Immunities": "Immunities",
+"NIH.Initiative": "Initiative",
+"NIH.InitiativeAbbr": "Init",
+"NIH.InitiativeBonus": "Initiative Bonus",
+"NIH.InitiativeRoll": "Initiative Roll",
+"NIH.InitiativeConfig": "Configure Initiative",
+"NIH.InitiativeConfigHint": "Configure initiative modifiers and bonuses which apply to this Actor.",
+"NIH.Inspiration": "Inspiration",
+"NIH.Inventory": "Inventory",
+"NIH.InventorySearch": "Search inventory",
+"NIH.Issues": "Issues",
+"NIH.ItemActionType": "Action Type",
+"NIH.ItemActivation": "Activation",
+"NIH.ItemActivationCondition": "Activation Condition",
+"NIH.ItemActivationCost": "Activation Cost",
+"NIH.ItemActivationType": "Activation Type",
+"NIH.ItemAmmoProperties": "Ammunition Properties",
+"NIH.ItemAttackBonus": "Attack Roll Bonus",
+"NIH.ItemAttackFlat": "Flat Bonus",
+"NIH.ItemAttackFlatHint": "If checked, don't add proficiency, ability modifier, or any other bonuses to attack roll except what is included here.",
+"NIH.ItemBackgroundDetails": "Background Details",
+"NIH.ItemClassDetails": "Class Details",
+"NIH.ItemConsumableActivation": "Consumable Activation",
+"NIH.ItemConsumableUsage": "Consumable Usage",
+"NIH.ItemConsumableDetails": "Consumable Details",
+"NIH.ItemConsumableProperties": "Consumable Properties",
+"NIH.ItemConsumableStatus": "Consumable Status",
+"NIH.ItemConsumableSubtype": "{category} Type",
+"NIH.ItemConsumableType": "Consumable Type",
+"NIH.ItemCreate": "Create Item",
+"NIH.ItemCritThreshold": "Critical Hit Threshold",
+"NIH.ItemCritExtraDamage": "Extra Critical Hit Damage",
+"NIH.ItemDelete": "Delete Item",
+"NIH.ItemEdit": "Edit Item",
+"NIH.ItemEquipmentAction": "Equipment Action",
+"NIH.ItemEquipmentBase": "Base Equipment",
+"NIH.ItemEquipmentDetails": "Equipment Details",
+"NIH.ItemEquipmentDexMod": "Max. Dexterity Modifier",
+"NIH.ItemEquipmentDexModAbbr": "Max Dex",
+"NIH.ItemEquipmentProperties": "Equipment Properties",
+"NIH.ItemEquipmentStatus": "Equipment Status",
+"NIH.ItemEquipmentStealthDisav": "Imposes Stealth Disadvantage",
+"NIH.ItemEquipmentType": "Equipment Type",
+"NIH.ItemEquipmentUsage": "Equipment Usage",
+"NIH.ItemFacilityDetails": "Facility Details",
+"NIH.ItemFeatureDetails": "Feature Details",
+"NIH.ItemFeatureProperties": "Feature Properties",
+"NIH.ItemFeatureSubtype": "{category} Type",
+"NIH.ItemFeatureType": "Feature Type",
+"NIH.ItemLootDetails": "Loot Details",
+"NIH.ItemLootProperties": "Loot Properties",
+"NIH.ItemLootSubtype": "{category} Type",
+"NIH.ItemLootType": "Loot Type",
+"NIH.ItemName": "Item Name",
+"NIH.ItemNew": "New {type}",
+"NIH.ItemRarityCommon": "common",
+"NIH.ItemRarityMundane": "mundane",
+"NIH.ItemRarityUncommon": "uncommon",
+"NIH.ItemRarityRare": "rare",
+"NIH.ItemRarityVeryRare": "very rare",
+"NIH.ItemRarityLegendary": "legendary",
+"NIH.ItemRarityArtifact": "artifact",
+"NIH.ItemRechargeCheck": "{name} recharge check - {result}",
+"NIH.ItemRechargeFailure": "failure!",
+"NIH.ItemRechargeSuccess": "success!",
+"NIH.ItemRecoveryRoll": "{name} recovers {count} charges",
+"NIH.ItemLossRoll": "{name} loses {count} charges",
+"NIH.ItemRecoveryRollMax": "{name} recovers all charges",
+"NIH.ItemRecoveryFormulaWarning": "Unable to recover uses for {name}. Invalid recovery formula '{formula}' ({uuid}).",
+"NIH.ItemRequiredStr": "Required Strength",
+"NIH.Items": "Items",
+"NIH.ItemSiegeProperties": "Siege Properties",
+"NIH.ItemSpeciesDetails": "Species Details",
+"NIH.ItemSpeciesDetailsLegacy": "Race Details",
+"NIH.ItemSubclassDetails": "Subclass Details",
+"NIH.ItemToolBase": "Base Tool",
+"NIH.ItemToolBonus": "Tool Bonus",
+"NIH.ItemToolDetails": "Tool Details",
+"NIH.ItemToolProficiency": "Tool Proficiency",
+"NIH.ItemToolProperties": "Tool Properties",
+"NIH.ItemToolStatus": "Tool Status",
+"NIH.ItemToolType": "Tool Type",
+"NIH.ItemToolUsage": "Tool Usage",
+"NIH.ItemVehicleProperties": "Vehicle Properties",
+"NIH.ItemView": "View Item",
+"NIH.ItemWeaponAttack": "Weapon Attack",
+"NIH.ItemWeaponBase": "Base Weapon",
+"NIH.ItemWeaponDetails": "Weapon Details",
+"NIH.ItemWeaponProperties": "Weapon Properties",
+"NIH.ItemWeaponStatus": "Weapon Status",
+"NIH.ItemWeaponType": "Weapon Type",
+"NIH.ItemWeaponUsage": "Weapon Usage",
 
-"DND5E.ITEM": {
+"NIH.ITEM": {
   "Category": {
     "Label": "Category",
     "Physical": "Physical"
@@ -3211,9 +3211,9 @@
   }
 },
 
-"DND5E.JackOfAllTrades": "Jack of all Trades",
+"NIH.JackOfAllTrades": "Jack of all Trades",
 
-"DND5E.JOURNALENTRY": {
+"NIH.JOURNALENTRY": {
   "Navigation": {
     "Next": "Next",
     "Previous": "Previous",
@@ -3221,7 +3221,7 @@
   }
 },
 
-"DND5E.LAIR": {
+"NIH.LAIR": {
   "Label": "Lair",
   "Action": {
     "Label": "Lair Action",
@@ -3232,7 +3232,7 @@
   "Inside": "Inside Lair"
 },
 
-"DND5E.Language": {
+"NIH.Language": {
   "All": "All Languages",
   "Label": "Language",
   "Category": {
@@ -3273,9 +3273,9 @@
     "Undercommon": "Undercommon"
   }
 },
-"DND5E.Languages": "Languages",
+"NIH.Languages": "Languages",
 
-"DND5E.LegendaryAction": {
+"NIH.LegendaryAction": {
   "Description": "Legendary Action Uses: {uses}. Immediately after another creature’s turn, the {name} can expend a use to take one of the following actions. The {name} regains all expended uses at the start of each of its turns.",
   "DescriptionLegacy": "The {name} can take {usesNamed}, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature’s turn. The {name} regains spent legendary actions at the start of its turn.",
   "Label": "Legendary Action",
@@ -3292,7 +3292,7 @@
   "Spent": "Spent Legendary Actions"
 },
 
-"DND5E.LegendaryResistance": {
+"NIH.LegendaryResistance": {
   "Action": {
     "Resist": "Legendary Resistance"
   },
@@ -3311,58 +3311,58 @@
   "Spent": "Spent Legendary Resistances"
 },
 
-"DND5E.Level": "Level",
-"DND5E.LevelAvg": "Avg. Level",
-"DND5E.LevelPl": "Levels",
-"DND5E.LevelActionDecrease": "Level Down",
-"DND5E.LevelActionIncrease": "Level Up",
-"DND5E.LevelCount": "{ordinal} Level",
-"DND5E.LevelLimit": {
+"NIH.Level": "Level",
+"NIH.LevelAvg": "Avg. Level",
+"NIH.LevelPl": "Levels",
+"NIH.LevelActionDecrease": "Level Down",
+"NIH.LevelActionIncrease": "Level Up",
+"NIH.LevelCount": "{ordinal} Level",
+"NIH.LevelLimit": {
   "Label": "Level Limit",
   "Max": "Maximum Level",
   "Min": "Minimum Level"
 },
-"DND5E.LevelNumber": "Level {level}",
-"DND5E.LevelScaling": "Level Scaling",
-"DND5E.LimitedUses": "Limited Uses",
-"DND5E.LimitedUsesAvailable": "Remaining Uses",
-"DND5E.LimitedUsesMax": "Maximum Uses",
-"DND5E.LimitedUsesPer": "Use Recovery Mode",
-"DND5E.LimitedUsesPrompt": "Uses Prompt",
-"DND5E.LimitedUsesPromptTooltip": "If unchecked, the prompt to consume an available use will be suppressed.",
-"DND5E.Long": "Long",
-"DND5E.Loyalty": "Loyalty",
-"DND5E.MagicalBonus": "Magical Bonus",
-"DND5E.Materials": "Materials",
-"DND5E.Max": "Max",
-"DND5E.MaxCharacterLevelExceededWarn": "Character cannot be advanced past level {max}.",
-"DND5E.MaxClassLevelExceededWarn": "Class cannot be advanced past level {max}.",
-"DND5E.MaxClassLevelMinimumWarn": "Class must have at least one level.",
-"DND5E.Maximum": "Maximum",
-"DND5E.Minimum": "Minimum",
-"DND5E.Method": "Method",
-"DND5E.Modifier": "Modifier",
-"DND5E.ModuleArtConfigH": "Configure which module-provided art should be used.",
-"DND5E.ModuleArtConfigL": "Configure Art",
-"DND5E.ModuleArtConfigN": "Module-provided Art",
-"DND5E.ModuleArtConfigPortraits": "Portraits",
-"DND5E.ModuleArtConfigTokens": "Tokens",
-"DND5E.ModuleArtPriorityDecrease": "Decrease Priority",
-"DND5E.ModuleArtPriorityHint": "Use the arrows to adjust the priority of the art sources. When a single Actor has art provided from multiple sources, the one with the highest priority will be used.",
-"DND5E.ModuleArtPriorityIncrease": "Increase Priority",
-"DND5E.Multiple": "Multiple",
-"DND5E.Multiplier": "Multiplier",
-"DND5E.MythicActionLabel": "Mythic Action",
-"DND5E.Name": "Character Name",
-"DND5E.NameUnidentified": "Unidentified Name",
-"DND5E.NoCharges": "No Charges",
-"DND5E.None": "None",
-"DND5E.NoneActionLabel": "None",
-"DND5E.Normal": "Normal",
-"DND5E.NotProficient": "Not Proficient",
-"DND5E.Notes": "Notes",
+"NIH.LevelNumber": "Level {level}",
+"NIH.LevelScaling": "Level Scaling",
+"NIH.LimitedUses": "Limited Uses",
+"NIH.LimitedUsesAvailable": "Remaining Uses",
+"NIH.LimitedUsesMax": "Maximum Uses",
+"NIH.LimitedUsesPer": "Use Recovery Mode",
+"NIH.LimitedUsesPrompt": "Uses Prompt",
+"NIH.LimitedUsesPromptTooltip": "If unchecked, the prompt to consume an available use will be suppressed.",
+"NIH.Long": "Long",
+"NIH.Loyalty": "Loyalty",
+"NIH.MagicalBonus": "Magical Bonus",
+"NIH.Materials": "Materials",
+"NIH.Max": "Max",
+"NIH.MaxCharacterLevelExceededWarn": "Character cannot be advanced past level {max}.",
+"NIH.MaxClassLevelExceededWarn": "Class cannot be advanced past level {max}.",
+"NIH.MaxClassLevelMinimumWarn": "Class must have at least one level.",
+"NIH.Maximum": "Maximum",
+"NIH.Minimum": "Minimum",
+"NIH.Method": "Method",
+"NIH.Modifier": "Modifier",
+"NIH.ModuleArtConfigH": "Configure which module-provided art should be used.",
+"NIH.ModuleArtConfigL": "Configure Art",
+"NIH.ModuleArtConfigN": "Module-provided Art",
+"NIH.ModuleArtConfigPortraits": "Portraits",
+"NIH.ModuleArtConfigTokens": "Tokens",
+"NIH.ModuleArtPriorityDecrease": "Decrease Priority",
+"NIH.ModuleArtPriorityHint": "Use the arrows to adjust the priority of the art sources. When a single Actor has art provided from multiple sources, the one with the highest priority will be used.",
+"NIH.ModuleArtPriorityIncrease": "Increase Priority",
+"NIH.Multiple": "Multiple",
+"NIH.Multiplier": "Multiplier",
+"NIH.MythicActionLabel": "Mythic Action",
+"NIH.Name": "Character Name",
+"NIH.NameUnidentified": "Unidentified Name",
+"NIH.NoCharges": "No Charges",
+"NIH.None": "None",
+"NIH.NoneActionLabel": "None",
+"NIH.Normal": "Normal",
+"NIH.NotProficient": "Not Proficient",
+"NIH.Notes": "Notes",
 
-"DND5E.NPC": {
+"NIH.NPC": {
   "ActionCostCounted": {
     "other": "Costs {number} Actions"
   },
@@ -3397,7 +3397,7 @@
   }
 },
 
-"DND5E.NUMBER": {
+"NIH.NUMBER": {
   "1": "one",
   "2": "two",
   "3": "three",
@@ -3409,25 +3409,25 @@
   "9": "nine"
 },
 
-"DND5E.Number": "Number",
-"DND5E.OtherFormula": "Other Formula",
+"NIH.Number": "Number",
+"NIH.OtherFormula": "Other Formula",
 
-"DND5E.ORDINAL": {
+"NIH.ORDINAL": {
   "one": "{number}st",
   "two": "{number}nd",
   "few": "{number}rd",
   "other": "{number}th"
 },
 
-"DND5E.PactMagic": "Pact Magic",
-"DND5E.Passive": "Passive",
-"DND5E.PassivePerception": "Passive Perception",
-"DND5E.Period": "Period",
-"DND5E.PersonalityTraits": "Personality Traits",
-"DND5E.Portrait": "Portrait",
-"DND5E.Prepared": "Prepared",
-"DND5E.Preparation": "Preparation",
-"DND5E.Prerequisites": {
+"NIH.PactMagic": "Pact Magic",
+"NIH.Passive": "Passive",
+"NIH.PassivePerception": "Passive Perception",
+"NIH.Period": "Period",
+"NIH.PersonalityTraits": "Personality Traits",
+"NIH.Portrait": "Portrait",
+"NIH.Prepared": "Prepared",
+"NIH.Preparation": "Preparation",
+"NIH.Prerequisites": {
   "Header": "Feature Prerequisites",
   "FIELDS": {
     "prerequisites": {
@@ -3453,28 +3453,28 @@
     "NotRepeatable": "must not have taken this before"
   }
 },
-"DND5E.Price": "Price",
-"DND5E.Proficiency": "Proficiency",
-"DND5E.ProficiencyBonus": "Proficiency Bonus",
-"DND5E.ProficiencyBonusAbbr": "PB",
-"DND5E.ProficiencyConfigurationHint": "Configure proficiency and bonuses.",
-"DND5E.ProficiencyConfigureTitle": "Configure {label}",
-"DND5E.ProficiencyLevel": "Proficiency Level",
-"DND5E.ProficiencyOther": "Other",
-"DND5E.Proficient": "Proficient",
-"DND5E.Properties": "Properties",
-"DND5E.PropertyBase": "Base",
-"DND5E.PropertyTotal": "Total",
-"DND5E.Public": "Public",
-"DND5E.Quality": "Quality",
-"DND5E.Quantity": "Quantity",
-"DND5E.QuantityAbbr": "Qty",
-"DND5E.QuantityFormula": "Quantity Formula",
-"DND5E.QuantityRoll": "Roll Quantities",
-"DND5E.RacialTraits": "Species Traits",
-"DND5E.RacialTraitsLegacy": "Racial Traits",
+"NIH.Price": "Price",
+"NIH.Proficiency": "Proficiency",
+"NIH.ProficiencyBonus": "Proficiency Bonus",
+"NIH.ProficiencyBonusAbbr": "PB",
+"NIH.ProficiencyConfigurationHint": "Configure proficiency and bonuses.",
+"NIH.ProficiencyConfigureTitle": "Configure {label}",
+"NIH.ProficiencyLevel": "Proficiency Level",
+"NIH.ProficiencyOther": "Other",
+"NIH.Proficient": "Proficient",
+"NIH.Properties": "Properties",
+"NIH.PropertyBase": "Base",
+"NIH.PropertyTotal": "Total",
+"NIH.Public": "Public",
+"NIH.Quality": "Quality",
+"NIH.Quantity": "Quantity",
+"NIH.QuantityAbbr": "Qty",
+"NIH.QuantityFormula": "Quantity Formula",
+"NIH.QuantityRoll": "Roll Quantities",
+"NIH.RacialTraits": "Species Traits",
+"NIH.RacialTraitsLegacy": "Racial Traits",
 
-"DND5E.RANGE": {
+"NIH.RANGE": {
   "FIELDS": {
     "range": {
       "label": "Range",
@@ -3509,22 +3509,22 @@
   }
 },
 
-"DND5E.Range": "Range",
-"DND5E.RangeDistance": "Distance",
-"DND5E.RangeLong": "Long Range",
-"DND5E.RangeNormal": "Normal Range",
-"DND5E.RangeUnits": "Range Type or Units",
-"DND5E.Rarity": "Rarity",
-"DND5E.Reaction": "Reaction",
-"DND5E.ReactionAbbr": "R",
-"DND5E.ReactionPl": "Reactions",
-"DND5E.Recharge": "Recharge",
-"DND5E.RechargeLong": "Recharge after a Long Rest",
-"DND5E.RechargeShort": "Recharge after a Short or Long Rest",
-"DND5E.Recovery": "Recovery",
-"DND5E.RecoveryFormula": "Recovery Formula",
+"NIH.Range": "Range",
+"NIH.RangeDistance": "Distance",
+"NIH.RangeLong": "Long Range",
+"NIH.RangeNormal": "Normal Range",
+"NIH.RangeUnits": "Range Type or Units",
+"NIH.Rarity": "Rarity",
+"NIH.Reaction": "Reaction",
+"NIH.ReactionAbbr": "R",
+"NIH.ReactionPl": "Reactions",
+"NIH.Recharge": "Recharge",
+"NIH.RechargeLong": "Recharge after a Long Rest",
+"NIH.RechargeShort": "Recharge after a Short or Long Rest",
+"NIH.Recovery": "Recovery",
+"NIH.RecoveryFormula": "Recovery Formula",
 
-"DND5E.REGIONBEHAVIORS": {
+"NIH.REGIONBEHAVIORS": {
   "DIFFICULTTERRAIN": {
     "FIELDS": {
       "ignoredDispositions": {
@@ -3630,19 +3630,19 @@
   }
 },
 
-"DND5E.Remaining": "Remaining",
-"DND5E.RequiredMaterials": "Required Materials",
-"DND5E.Requirements": "Requirements",
-"DND5E.Resistances": "Resistances",
-"DND5E.Resources": "Resources",
-"DND5E.ResourceLabel": "Label",
-"DND5E.ResourceMax": "Resource Maximum",
-"DND5E.ResourceValue": "Resource Value",
-"DND5E.ResourcePrimary": "Resource 1",
-"DND5E.ResourceSecondary": "Resource 2",
-"DND5E.ResourceTertiary": "Resource 3",
+"NIH.Remaining": "Remaining",
+"NIH.RequiredMaterials": "Required Materials",
+"NIH.Requirements": "Requirements",
+"NIH.Resistances": "Resistances",
+"NIH.Resources": "Resources",
+"NIH.ResourceLabel": "Label",
+"NIH.ResourceMax": "Resource Maximum",
+"NIH.ResourceValue": "Resource Value",
+"NIH.ResourcePrimary": "Resource 1",
+"NIH.ResourceSecondary": "Resource 2",
+"NIH.ResourceTertiary": "Resource 3",
 
-"DND5E.REST": {
+"NIH.REST": {
   "Configuration": "Rest Configuration",
   "HitDice": {
     "AutoSpend": {
@@ -3708,10 +3708,10 @@
   }
 },
 
-"DND5E.Ritual": "Ritual",
-"DND5E.RitualAbbr": "R",
+"NIH.Ritual": "Ritual",
+"NIH.RitualAbbr": "R",
 
-"DND5E.ROLL": {
+"NIH.ROLL": {
   "Range": {
     "Label": "Roll Range",
     "Maximum": "Maximum Roll",
@@ -3721,16 +3721,16 @@
   "Status": "Status"
 },
 
-"DND5E.Roll": "Roll",
-"DND5E.RollConfiguration": {
+"NIH.Roll": "Roll",
+"NIH.RollConfiguration": {
   "Title": "Configure Roll",
   "Configuration": "Configuration",
   "Rolls": "Rolls"
 },
-"DND5E.RollExample": "e.g. 1d4",
-"DND5E.RollMode": "Roll Mode",
-"DND5E.RollSituationalBonus": "Situational Bonus?",
-"DND5E.Rule": {
+"NIH.RollExample": "e.g. 1d4",
+"NIH.RollMode": "Roll Mode",
+"NIH.RollSituationalBonus": "Situational Bonus?",
+"NIH.Rule": {
   "Tooltip": "Tooltip",
   "Type": {
     "Label": "Rule Type",
@@ -3739,7 +3739,7 @@
   }
 },
 
-"DND5E.MOVEMENT": {
+"NIH.MOVEMENT": {
   "Action": {
     "Configure": "Configure Movement Speed"
   },
@@ -3772,9 +3772,9 @@
   }
 },
 
-"DND5E.Movement": "Movement",
+"NIH.Movement": "Movement",
 
-"DND5E.SAVE": {
+"NIH.SAVE": {
   "FIELDS": {
     "damage": {
       "label": "Save Damage",
@@ -3825,9 +3825,9 @@
   }
 },
 
-"DND5E.SaveBonus": "Saving Throw Bonus",
-"DND5E.SaveGlobalBonusHint": "This bonus applies to all saving throws made by this actor.",
-"DND5E.Scroll": {
+"NIH.SaveBonus": "Saving Throw Bonus",
+"NIH.SaveGlobalBonusHint": "This bonus applies to all saving throws made by this actor.",
+"NIH.Scroll": {
   "CreateFrom": "Create Scroll from {spell}",
   "CreateScroll": "Create Scroll",
   "Details": "Scroll Details",
@@ -3841,18 +3841,18 @@
   "SaveDC": "Save DC",
   "Values": "Spell Values"
 },
-"DND5E.Senses": "Senses",
-"DND5E.SensesConfig": "Configure Senses",
-"DND5E.SensesConfigHint": "Configure any special sensory perception abilities that this actor possesses.",
-"DND5E.SenseDarkvision": "Darkvision",
-"DND5E.SenseBlindsight": "Blindsight",
-"DND5E.SenseTremorsense": "Tremorsense",
-"DND5E.SenseTruesight": "Truesight",
-"DND5E.SenseUnits": "Units",
-"DND5E.SenseSpecial": "Special Senses",
-"DND5E.Shape": "Shape",
+"NIH.Senses": "Senses",
+"NIH.SensesConfig": "Configure Senses",
+"NIH.SensesConfigHint": "Configure any special sensory perception abilities that this actor possesses.",
+"NIH.SenseDarkvision": "Darkvision",
+"NIH.SenseBlindsight": "Blindsight",
+"NIH.SenseTremorsense": "Tremorsense",
+"NIH.SenseTruesight": "Truesight",
+"NIH.SenseUnits": "Units",
+"NIH.SenseSpecial": "Special Senses",
+"NIH.Shape": "Shape",
 
-"DND5E.SheetClass": {
+"NIH.SheetClass": {
   "Character": "Default 5e Character Sheet",
   "ClassSummary": "Default 5e Class Summary Sheet",
   "Container": "Default 5e Container Sheet",
@@ -3871,41 +3871,41 @@
   "Vehicle": "Default 5e Vehicle Sheet"
 },
 
-"DND5E.SheetModeEdit": "Edit",
-"DND5E.SheetModePlay": "Play",
-"DND5E.SavingThrow": "Saving Throw",
-"DND5E.SavingThrowDC": "DC {dc} {ability} Saving Throw",
-"DND5E.SavingThrowRoll": "Roll {ability} Saving Throw",
-"DND5E.SavingThrowShort": "Save",
-"DND5E.SaveDC": "DC {dc} {ability}",
-"DND5E.SavePromptTitle": "{ability} Saving Throw",
-"DND5E.ScalingFormula": "Scaling Formula",
-"DND5E.ScalingMode": "Scaling Mode",
-"DND5E.ScalingValue": "Scaling Value",
-"DND5E.School": "School",
-"DND5E.SchoolAbj": "Abjuration",
-"DND5E.SchoolCon": "Conjuration",
-"DND5E.SchoolDiv": "Divination",
-"DND5E.SchoolEnc": "Enchantment",
-"DND5E.SchoolEvo": "Evocation",
-"DND5E.SchoolIll": "Illusion",
-"DND5E.SchoolNec": "Necromancy",
-"DND5E.SchoolTrs": "Transmutation",
-"DND5E.Size": "Size",
-"DND5E.SizeGargantuan": "Gargantuan",
-"DND5E.SizeGargantuanAbbr": "Gt",
-"DND5E.SizeHuge": "Huge",
-"DND5E.SizeHugeAbbr": "Hg",
-"DND5E.SizeLarge": "Large",
-"DND5E.SizeLargeAbbr": "Lg",
-"DND5E.SizeMedium": "Medium",
-"DND5E.SizeMediumAbbr": "Md",
-"DND5E.SizeSmall": "Small",
-"DND5E.SizeSmallAbbr": "Sm",
-"DND5E.SizeTiny": "Tiny",
-"DND5E.SizeTinyAbbr": "Tn",
+"NIH.SheetModeEdit": "Edit",
+"NIH.SheetModePlay": "Play",
+"NIH.SavingThrow": "Saving Throw",
+"NIH.SavingThrowDC": "DC {dc} {ability} Saving Throw",
+"NIH.SavingThrowRoll": "Roll {ability} Saving Throw",
+"NIH.SavingThrowShort": "Save",
+"NIH.SaveDC": "DC {dc} {ability}",
+"NIH.SavePromptTitle": "{ability} Saving Throw",
+"NIH.ScalingFormula": "Scaling Formula",
+"NIH.ScalingMode": "Scaling Mode",
+"NIH.ScalingValue": "Scaling Value",
+"NIH.School": "School",
+"NIH.SchoolAbj": "Abjuration",
+"NIH.SchoolCon": "Conjuration",
+"NIH.SchoolDiv": "Divination",
+"NIH.SchoolEnc": "Enchantment",
+"NIH.SchoolEvo": "Evocation",
+"NIH.SchoolIll": "Illusion",
+"NIH.SchoolNec": "Necromancy",
+"NIH.SchoolTrs": "Transmutation",
+"NIH.Size": "Size",
+"NIH.SizeGargantuan": "Gargantuan",
+"NIH.SizeGargantuanAbbr": "Gt",
+"NIH.SizeHuge": "Huge",
+"NIH.SizeHugeAbbr": "Hg",
+"NIH.SizeLarge": "Large",
+"NIH.SizeLargeAbbr": "Lg",
+"NIH.SizeMedium": "Medium",
+"NIH.SizeMediumAbbr": "Md",
+"NIH.SizeSmall": "Small",
+"NIH.SizeSmallAbbr": "Sm",
+"NIH.SizeTiny": "Tiny",
+"NIH.SizeTinyAbbr": "Tn",
 
-"DND5E.SKILL": {
+"NIH.SKILL": {
   "SECTIONS": {
     "Details": "{label} Details",
     "Bonuses": {
@@ -3919,46 +3919,46 @@
   }
 },
 
-"DND5E.Skill": "Skill",
-"DND5E.Skills": "Skills",
-"DND5E.SkillAcr": "Acrobatics",
-"DND5E.SkillAni": "Animal Handling",
-"DND5E.SkillArc": "Arcana",
-"DND5E.SkillAth": "Athletics",
-"DND5E.SkillDec": "Deception",
-"DND5E.SkillHis": "History",
-"DND5E.SkillIns": "Insight",
-"DND5E.SkillInv": "Investigation",
-"DND5E.SkillItm": "Intimidation",
-"DND5E.SkillMed": "Medicine",
-"DND5E.SkillNat": "Nature",
-"DND5E.SkillPer": "Persuasion",
-"DND5E.SkillPrc": "Perception",
-"DND5E.SkillPrf": "Performance",
-"DND5E.SkillRel": "Religion",
-"DND5E.SkillSlt": "Sleight of Hand",
-"DND5E.SkillSte": "Stealth",
-"DND5E.SkillSur": "Survival",
-"DND5E.SkillRoll": "Roll {ability} ({skill}) Check",
-"DND5E.SkillTitle": "{ability} ({skill})",
-"DND5E.SkillPromptTitle": "{ability} ({skill}) Check",
-"DND5E.SkillConfigureTitle": "Configure {skill}",
-"DND5E.SkillConfigure": "Configure Skill",
-"DND5E.SkillsConfig": "Configure Skills",
-"DND5E.SkillBonuses": "Skill Bonuses",
-"DND5E.SkillBonusCheck": "Check Bonus",
-"DND5E.SkillBonusPassive": "Passive Bonus",
-"DND5E.SkillConfigurationHint": "Configure skill proficiency and bonuses.",
-"DND5E.SkillGlobalBonusCheckHint": "This bonus applies to all skill checks made by this actor.",
-"DND5E.SkillModifierHint": "{skill} Modifier",
-"DND5E.SkillPassiveHint": "Passive {skill}",
-"DND5E.SkillPassiveSpecificHint": "Passive {ability} ({skill})",
-"DND5E.SkillPassiveScore": "Passive {skill} Score",
-"DND5E.SkillPassives": "Skill Passives",
-"DND5E.Skin": "Skin",
-"DND5E.Skip": "Skip",
+"NIH.Skill": "Skill",
+"NIH.Skills": "Skills",
+"NIH.SkillAcr": "Acrobatics",
+"NIH.SkillAni": "Animal Handling",
+"NIH.SkillArc": "Arcana",
+"NIH.SkillAth": "Athletics",
+"NIH.SkillDec": "Deception",
+"NIH.SkillHis": "History",
+"NIH.SkillIns": "Insight",
+"NIH.SkillInv": "Investigation",
+"NIH.SkillItm": "Intimidation",
+"NIH.SkillMed": "Medicine",
+"NIH.SkillNat": "Nature",
+"NIH.SkillPer": "Persuasion",
+"NIH.SkillPrc": "Perception",
+"NIH.SkillPrf": "Performance",
+"NIH.SkillRel": "Religion",
+"NIH.SkillSlt": "Sleight of Hand",
+"NIH.SkillSte": "Stealth",
+"NIH.SkillSur": "Survival",
+"NIH.SkillRoll": "Roll {ability} ({skill}) Check",
+"NIH.SkillTitle": "{ability} ({skill})",
+"NIH.SkillPromptTitle": "{ability} ({skill}) Check",
+"NIH.SkillConfigureTitle": "Configure {skill}",
+"NIH.SkillConfigure": "Configure Skill",
+"NIH.SkillsConfig": "Configure Skills",
+"NIH.SkillBonuses": "Skill Bonuses",
+"NIH.SkillBonusCheck": "Check Bonus",
+"NIH.SkillBonusPassive": "Passive Bonus",
+"NIH.SkillConfigurationHint": "Configure skill proficiency and bonuses.",
+"NIH.SkillGlobalBonusCheckHint": "This bonus applies to all skill checks made by this actor.",
+"NIH.SkillModifierHint": "{skill} Modifier",
+"NIH.SkillPassiveHint": "Passive {skill}",
+"NIH.SkillPassiveSpecificHint": "Passive {ability} ({skill})",
+"NIH.SkillPassiveScore": "Passive {skill} Score",
+"NIH.SkillPassives": "Skill Passives",
+"NIH.Skin": "Skin",
+"NIH.Skip": "Skip",
 
-"DND5E.SOURCE": {
+"NIH.SOURCE": {
   "FIELDS": {
     "source": {
       "label": "Source",
@@ -3994,10 +3994,10 @@
   }
 },
 
-"DND5E.Special": "Special",
-"DND5E.SpecialHint": "Special values separated by semi-colons.",
-"DND5E.SpecialTraits": "Special Traits",
-"DND5E.Species": {
+"NIH.Special": "Special",
+"NIH.SpecialHint": "Special values separated by semi-colons.",
+"NIH.SpecialTraits": "Special Traits",
+"NIH.Species": {
   "Label": "Species",
   "Add": "Add Species",
   "AddLegacy": "Add Race",
@@ -4005,23 +4005,23 @@
   "FeaturesLegacy": "Race Features",
   "Name": "Species Name"
 },
-"DND5E.Speed": "Speed",
-"DND5E.SpeedSpecial": "Special Movement",
-"DND5E.SpellAbility": "Spellcasting Ability",
-"DND5E.SpellAbilitySet": "Set as Primary Spellcasting Ability",
-"DND5E.SpellAdd": "Add Spell",
-"DND5E.SpellAttackBonus": "Spell Attack Bonus",
-"DND5E.SpellCantrip": "Cantrip",
-"DND5E.SpellCastConsume": "Consume Spell Slot?",
-"DND5E.SpellCastNoSlots": "You have no available {level} spell slots with which to cast {name}",
-"DND5E.SpellCastNoSlotsLeft": "You have no available spell slots with which to cast {name}!",
-"DND5E.SpellCastTime": "Casting Time",
-"DND5E.SpellCastUpcast": "Cast at Level",
-"DND5E.SpellcasterLevel": "Spellcaster Level",
-"DND5E.SpellCastingHeader": "Spell Casting",
-"DND5E.Spellcasting": "Spellcasting",
+"NIH.Speed": "Speed",
+"NIH.SpeedSpecial": "Special Movement",
+"NIH.SpellAbility": "Spellcasting Ability",
+"NIH.SpellAbilitySet": "Set as Primary Spellcasting Ability",
+"NIH.SpellAdd": "Add Spell",
+"NIH.SpellAttackBonus": "Spell Attack Bonus",
+"NIH.SpellCantrip": "Cantrip",
+"NIH.SpellCastConsume": "Consume Spell Slot?",
+"NIH.SpellCastNoSlots": "You have no available {level} spell slots with which to cast {name}",
+"NIH.SpellCastNoSlotsLeft": "You have no available spell slots with which to cast {name}!",
+"NIH.SpellCastTime": "Casting Time",
+"NIH.SpellCastUpcast": "Cast at Level",
+"NIH.SpellcasterLevel": "Spellcaster Level",
+"NIH.SpellCastingHeader": "Spell Casting",
+"NIH.Spellcasting": "Spellcasting",
 
-"DND5E.SPELLCASTING": {
+"NIH.SPELLCASTING": {
   "METHODS": {
     "AtWill": {
       "label": "At-Will"
@@ -4075,14 +4075,14 @@
   "Unlabeled": "Unlabeled Spellcasting"
 },
 
-"DND5E.SpellcastingClass": "{class} Spellcasting",
-"DND5E.SpellComponent": "Spell Component",
-"DND5E.SpellComponents": "Spell Components",
-"DND5E.SpellCreate": "Create Spell",
-"DND5E.SpellDC": "Spell DC",
-"DND5E.SpellDetails": "Spell Details",
-"DND5E.SpellEffects": "Spell Effects",
-"DND5E.SpellHeader": {
+"NIH.SpellcastingClass": "{class} Spellcasting",
+"NIH.SpellComponent": "Spell Component",
+"NIH.SpellComponents": "Spell Components",
+"NIH.SpellCreate": "Create Spell",
+"NIH.SpellDC": "Spell DC",
+"NIH.SpellDetails": "Spell Details",
+"NIH.SpellEffects": "Spell Effects",
+"NIH.SpellHeader": {
   "Formula": "Formula",
   "Range": "Range",
   "Roll": "Roll",
@@ -4090,70 +4090,70 @@
   "Target": "Target",
   "Time": "Time"
 },
-"DND5E.SpellLevel": "Spell Level",
-"DND5E.SpellLevels": "Spell Levels",
-"DND5E.SpellLevel0": "Cantrip",
-"DND5E.SpellLevel1": "1st Level",
-"DND5E.SpellLevel2": "2nd Level",
-"DND5E.SpellLevel3": "3rd Level",
-"DND5E.SpellLevel4": "4th Level",
-"DND5E.SpellLevel5": "5th Level",
-"DND5E.SpellLevel6": "6th Level",
-"DND5E.SpellLevel7": "7th Level",
-"DND5E.SpellLevel8": "8th Level",
-"DND5E.SpellLevel9": "9th Level",
-"DND5E.SpellLevelSpell": "{level} ({n} Slots)",
-"DND5E.SpellLevelPact": "Pact Slot [Level {level}] ({n} Slots)",
-"DND5E.SpellMaterials": "Spellcasting Materials",
-"DND5E.SpellMaterialsConsumed": "Consume Materials",
-"DND5E.SpellMaterialsCost": "Material Cost",
-"DND5E.SpellMaterialsDescription": "Material Description",
-"DND5E.SpellMaterialsSupply": "Material Supply",
-"DND5E.SpellName": "Spell Name",
-"DND5E.SpellNone": "None",
-"DND5E.SpellPrepAtWill": "At-Will",
-"DND5E.SpellPrepInnate": "Innate Spellcasting",
-"DND5E.SpellPrepRitual": "Ritual Only",
-"DND5E.SpellPrepPrepared": "Prepared",
-"DND5E.SpellPrepAlways": "Always Prepared",
-"DND5E.SpellPreparation": {
+"NIH.SpellLevel": "Spell Level",
+"NIH.SpellLevels": "Spell Levels",
+"NIH.SpellLevel0": "Cantrip",
+"NIH.SpellLevel1": "1st Level",
+"NIH.SpellLevel2": "2nd Level",
+"NIH.SpellLevel3": "3rd Level",
+"NIH.SpellLevel4": "4th Level",
+"NIH.SpellLevel5": "5th Level",
+"NIH.SpellLevel6": "6th Level",
+"NIH.SpellLevel7": "7th Level",
+"NIH.SpellLevel8": "8th Level",
+"NIH.SpellLevel9": "9th Level",
+"NIH.SpellLevelSpell": "{level} ({n} Slots)",
+"NIH.SpellLevelPact": "Pact Slot [Level {level}] ({n} Slots)",
+"NIH.SpellMaterials": "Spellcasting Materials",
+"NIH.SpellMaterialsConsumed": "Consume Materials",
+"NIH.SpellMaterialsCost": "Material Cost",
+"NIH.SpellMaterialsDescription": "Material Description",
+"NIH.SpellMaterialsSupply": "Material Supply",
+"NIH.SpellName": "Spell Name",
+"NIH.SpellNone": "None",
+"NIH.SpellPrepAtWill": "At-Will",
+"NIH.SpellPrepInnate": "Innate Spellcasting",
+"NIH.SpellPrepRitual": "Ritual Only",
+"NIH.SpellPrepPrepared": "Prepared",
+"NIH.SpellPrepAlways": "Always Prepared",
+"NIH.SpellPreparation": {
   "Label": "Spell Preparation",
   "Formula": "Preparation Formula",
   "Method": "Spellcasting Method"
 },
-"DND5E.SpellSourceClass": "Source Class",
-"DND5E.SpellPrepared": "Prepared",
-"DND5E.SpellProgArt": "Artificer",
-"DND5E.SpellProgAvailable": "Available slots",
-"DND5E.SpellProgFull": "Full Caster",
-"DND5E.SpellProgHalf": "Half Caster",
-"DND5E.SpellProgLeveled": "Leveled Magic",
-"DND5E.SpellProgOverride": "Override slots",
-"DND5E.SpellProgPact": "Pact Magic",
-"DND5E.SpellProgThird": "Third Caster",
-"DND5E.SpellProgression": "Spell Progression",
-"DND5E.SpellsSearch": "Search spells",
-"DND5E.SpellSchool": "Spell School",
-"DND5E.SpellScroll": "Spell Scroll",
-"DND5E.SpellSlotExpended": "Expended Spell Slot",
-"DND5E.SpellSlotN.one": "{n}st spell slot",
-"DND5E.SpellSlotN.two": "{n}nd spell slot",
-"DND5E.SpellSlotN.few": "{n}rd spell slot",
-"DND5E.SpellSlotN.other": "{n}th spell slot",
-"DND5E.SpellSlotTemporary": "Temporary Spell Slot",
-"DND5E.SpellSlotsN.one": "{n}st Level Slots",
-"DND5E.SpellSlotsN.two": "{n}nd Level Slots",
-"DND5E.SpellSlotsN.few": "{n}rd Level Slots",
-"DND5E.SpellSlotsN.other": "{n}th Level Slots",
-"DND5E.SpellSlotsPact": "Pact Slots",
-"DND5E.SpellSlotsConfig": "Configure Spell Slots",
-"DND5E.SpellTag": "Spell Tag",
-"DND5E.SpellTarget": "Spell Target",
-"DND5E.SpellUnprepared": "Unprepared",
-"DND5E.SpellUsage": "Spell Usage",
-"DND5E.Spellbook": "Spellbook",
-"DND5E.Spent": "Spent",
-"DND5E.StartingEquipment": {
+"NIH.SpellSourceClass": "Source Class",
+"NIH.SpellPrepared": "Prepared",
+"NIH.SpellProgArt": "Artificer",
+"NIH.SpellProgAvailable": "Available slots",
+"NIH.SpellProgFull": "Full Caster",
+"NIH.SpellProgHalf": "Half Caster",
+"NIH.SpellProgLeveled": "Leveled Magic",
+"NIH.SpellProgOverride": "Override slots",
+"NIH.SpellProgPact": "Pact Magic",
+"NIH.SpellProgThird": "Third Caster",
+"NIH.SpellProgression": "Spell Progression",
+"NIH.SpellsSearch": "Search spells",
+"NIH.SpellSchool": "Spell School",
+"NIH.SpellScroll": "Spell Scroll",
+"NIH.SpellSlotExpended": "Expended Spell Slot",
+"NIH.SpellSlotN.one": "{n}st spell slot",
+"NIH.SpellSlotN.two": "{n}nd spell slot",
+"NIH.SpellSlotN.few": "{n}rd spell slot",
+"NIH.SpellSlotN.other": "{n}th spell slot",
+"NIH.SpellSlotTemporary": "Temporary Spell Slot",
+"NIH.SpellSlotsN.one": "{n}st Level Slots",
+"NIH.SpellSlotsN.two": "{n}nd Level Slots",
+"NIH.SpellSlotsN.few": "{n}rd Level Slots",
+"NIH.SpellSlotsN.other": "{n}th Level Slots",
+"NIH.SpellSlotsPact": "Pact Slots",
+"NIH.SpellSlotsConfig": "Configure Spell Slots",
+"NIH.SpellTag": "Spell Tag",
+"NIH.SpellTarget": "Spell Target",
+"NIH.SpellUnprepared": "Unprepared",
+"NIH.SpellUsage": "Spell Usage",
+"NIH.Spellbook": "Spellbook",
+"NIH.Spent": "Spent",
+"NIH.StartingEquipment": {
   "Title": "Starting Equipment",
   "Action": {
     "AddEntry": "Add Entry",
@@ -4186,16 +4186,16 @@
     "Hint": "Formula in GP that can be used in place of starting equipment."
   }
 },
-"DND5E.SubclassAdd": "Add Subclass",
-"DND5E.SubclassIdentifierHint": "This identifier should match the identifier on the parent class to ensure they are properly linked.",
-"DND5E.SubclassAssignmentError": "{class} already has a subclass. Remove the existing '{subclass}' subclass before adding a new one.",
-"DND5E.SubclassDuplicateError": "A subclass with the identifier {identifier} already exists on this actor.",
-"DND5E.SubclassMismatchWarn": "{name} subclass has no matching class with identifier '{class}'.",
-"DND5E.SubclassName": "Subclass Name",
-"DND5E.Subtype": "Subtype",
-"DND5E.Summary": "Summary",
+"NIH.SubclassAdd": "Add Subclass",
+"NIH.SubclassIdentifierHint": "This identifier should match the identifier on the parent class to ensure they are properly linked.",
+"NIH.SubclassAssignmentError": "{class} already has a subclass. Remove the existing '{subclass}' subclass before adding a new one.",
+"NIH.SubclassDuplicateError": "A subclass with the identifier {identifier} already exists on this actor.",
+"NIH.SubclassMismatchWarn": "{name} subclass has no matching class with identifier '{class}'.",
+"NIH.SubclassName": "Subclass Name",
+"NIH.Subtype": "Subtype",
+"NIH.Summary": "Summary",
 
-"DND5E.SUMMON": {
+"NIH.SUMMON": {
   "FIELDS": {
     "bonuses": {
       "ac": {
@@ -4343,13 +4343,13 @@
   }
 },
 
-"DND5E.Summoning": {
+"NIH.Summoning": {
   "Label": "Summoning"
 },
-"DND5E.Supply": "Supply",
-"DND5E.Suppressed": "Suppressed",
+"NIH.Supply": "Supply",
+"NIH.Suppressed": "Suppressed",
 
-"DND5E.TARGET": {
+"NIH.TARGET": {
   "Action": {
     "PlaceTemplate": "Place Measured Template"
   },
@@ -4576,43 +4576,43 @@
   }
 },
 
-"DND5E.Target": "Target",
-"DND5E.TargetPl": "Targets",
-"DND5E.TargetType": "Target Type",
-"DND5E.TargetTypeArea": "Area",
-"DND5E.TargetTypeIndividual": "Individual",
-"DND5E.TargetUnits": "Area of Effect Units",
-"DND5E.TargetValue": "Target Length or Count",
-"DND5E.TargetWidth": "Line Width",
-"DND5E.TemplatePrompt": "Template Prompt",
-"DND5E.TemplatePromptTooltip": "If unchecked, the prompt for placing a Measured Template will be suppressed.",
-"DND5E.Temp": "Temp",
-"DND5E.Threshold": "Threshold",
-"DND5E.TimeDay": "Days",
-"DND5E.TimeDayAbbr": "d",
-"DND5E.TimeDisp": "Until Dispelled",
-"DND5E.TimeDispTrig": "Until Dispelled or Triggered",
-"DND5E.TimeHour": "Hours",
-"DND5E.TimeHourAbbr": "h",
-"DND5E.TimeInst": "Instantaneous",
-"DND5E.TimeMinute": "Minutes",
-"DND5E.TimeMinuteAbbr": "m",
-"DND5E.TimeMonth": "Months",
-"DND5E.TimePerm": "Permanent",
-"DND5E.TimeRound": "Rounds",
-"DND5E.TimeTurn": "Turns",
-"DND5E.TimeYear": "Years",
-"DND5E.TMP": "TMP",
-"DND5E.ToHit": "To Hit",
-"DND5E.Tokens": {
+"NIH.Target": "Target",
+"NIH.TargetPl": "Targets",
+"NIH.TargetType": "Target Type",
+"NIH.TargetTypeArea": "Area",
+"NIH.TargetTypeIndividual": "Individual",
+"NIH.TargetUnits": "Area of Effect Units",
+"NIH.TargetValue": "Target Length or Count",
+"NIH.TargetWidth": "Line Width",
+"NIH.TemplatePrompt": "Template Prompt",
+"NIH.TemplatePromptTooltip": "If unchecked, the prompt for placing a Measured Template will be suppressed.",
+"NIH.Temp": "Temp",
+"NIH.Threshold": "Threshold",
+"NIH.TimeDay": "Days",
+"NIH.TimeDayAbbr": "d",
+"NIH.TimeDisp": "Until Dispelled",
+"NIH.TimeDispTrig": "Until Dispelled or Triggered",
+"NIH.TimeHour": "Hours",
+"NIH.TimeHourAbbr": "h",
+"NIH.TimeInst": "Instantaneous",
+"NIH.TimeMinute": "Minutes",
+"NIH.TimeMinuteAbbr": "m",
+"NIH.TimeMonth": "Months",
+"NIH.TimePerm": "Permanent",
+"NIH.TimeRound": "Rounds",
+"NIH.TimeTurn": "Turns",
+"NIH.TimeYear": "Years",
+"NIH.TMP": "TMP",
+"NIH.ToHit": "To Hit",
+"NIH.Tokens": {
   "NoneSelected": "No Tokens Selected",
   "NoneTargeted": "No Tokens Targeted",
   "Selected": "Selected",
   "Targeted": "Targeted"
 },
-"DND5E.ToggleDescription": "Toggle Description",
+"NIH.ToggleDescription": "Toggle Description",
 
-"DND5E.TOOL": {
+"NIH.TOOL": {
   "SECTIONS": {
     "Details": "{label} Details",
     "Bonuses": {
@@ -4626,63 +4626,63 @@
   }
 },
 
-"DND5E.ToolArtisans": "Artisan's Tools",
-"DND5E.ToolBonuses": "Tool Bonuses",
-"DND5E.ToolCheck": "Tool Check",
-"DND5E.ToolConfigure": "Configure Tool Proficiency",
-"DND5E.ToolDisguiseKit": "Disguise Kit",
-"DND5E.ToolForgeryKit": "Forgery Kit",
-"DND5E.ToolGamingSet": "Gaming Set",
-"DND5E.ToolHerbalismKit": "Herbalism Kit",
-"DND5E.ToolMusicalInstrument": "Musical Instrument",
-"DND5E.ToolNavigators": "Navigator's Tools",
-"DND5E.ToolPoisonersKit": "Poisoner's Kit",
-"DND5E.ToolPromptTitle": "{tool} Check",
-"DND5E.ToolThieves": "Thieves' Tools",
-"DND5E.ToolVehicle": "Vehicles",
-"DND5E.TraitAll": "All {category}",
-"DND5E.TraitArmorPlural.one": "Armor Training",
-"DND5E.TraitArmorPlural.other": "Armor Training",
-"DND5E.TraitArmorProf": "Armor Training",
-"DND5E.TraitArmorLegacyPlural.one": "Armor Proficiency",
-"DND5E.TraitArmorLegacyPlural.other": "Armor Proficiencies",
-"DND5E.TraitArmorLegacyProf": "Armor Proficiencies",
-"DND5E.TraitCIPlural.one": "Condition Immunity",
-"DND5E.TraitCIPlural.other": "Condition Immunities",
-"DND5E.TraitConfig": "Configure {trait}",
-"DND5E.TraitConfigChooseAnyCounted": "any {count} {type}",
-"DND5E.TraitConfigChooseAnyUncounted": "any {type}",
-"DND5E.TraitConfigChooseList": "{count} from {list}",
-"DND5E.TraitConfigChooseOther": "{count} other {type}",
-"DND5E.TraitConfigChooseWrapper": "Choose {choices}",
-"DND5E.TraitDIPlural.one": "Damage Immunity",
-"DND5E.TraitDIPlural.other": "Damage Immunities",
-"DND5E.TraitDMPlural.one": "Damage Modification",
-"DND5E.TraitDMPlural.other": "Damage Modifications",
-"DND5E.TraitDRPlural.one": "Damage Resistance",
-"DND5E.TraitDRPlural.other": "Damage Resistances",
-"DND5E.TraitDVPlural.one": "Damage Vulnerability",
-"DND5E.TraitDVPlural.other": "Damage Vulnerabilities",
-"DND5E.TraitGenericPlural.one": "Trait",
-"DND5E.TraitGenericPlural.other": "Traits",
-"DND5E.TraitLanguagesPlural.one": "Language",
-"DND5E.TraitLanguagesPlural.other": "Languages",
-"DND5E.TraitSave": "Update",
-"DND5E.TraitSavesPlural.one": "Saving Throw Proficiency",
-"DND5E.TraitSavesPlural.other": "Saving Throw Proficiencies",
-"DND5E.TraitSelectorSpecial": "Special (Split with Semi-Colon)",
-"DND5E.TraitSkillsPlural.one": "Skill Proficiency",
-"DND5E.TraitSkillsPlural.other": "Skill Proficiencies",
-"DND5E.TraitToolPlural.one": "Tool Proficiency",
-"DND5E.TraitToolPlural.other": "Tool Proficiencies",
-"DND5E.TraitToolProf": "Tool Proficiencies",
-"DND5E.TraitWeaponPlural.one": "Weapon Proficiency",
-"DND5E.TraitWeaponPlural.other": "Weapon Proficiencies",
-"DND5E.TraitWeaponProf": "Weapon Proficiencies",
-"DND5E.Traits": "Traits",
-"DND5E.TraitsChosen": "Chosen Traits",
+"NIH.ToolArtisans": "Artisan's Tools",
+"NIH.ToolBonuses": "Tool Bonuses",
+"NIH.ToolCheck": "Tool Check",
+"NIH.ToolConfigure": "Configure Tool Proficiency",
+"NIH.ToolDisguiseKit": "Disguise Kit",
+"NIH.ToolForgeryKit": "Forgery Kit",
+"NIH.ToolGamingSet": "Gaming Set",
+"NIH.ToolHerbalismKit": "Herbalism Kit",
+"NIH.ToolMusicalInstrument": "Musical Instrument",
+"NIH.ToolNavigators": "Navigator's Tools",
+"NIH.ToolPoisonersKit": "Poisoner's Kit",
+"NIH.ToolPromptTitle": "{tool} Check",
+"NIH.ToolThieves": "Thieves' Tools",
+"NIH.ToolVehicle": "Vehicles",
+"NIH.TraitAll": "All {category}",
+"NIH.TraitArmorPlural.one": "Armor Training",
+"NIH.TraitArmorPlural.other": "Armor Training",
+"NIH.TraitArmorProf": "Armor Training",
+"NIH.TraitArmorLegacyPlural.one": "Armor Proficiency",
+"NIH.TraitArmorLegacyPlural.other": "Armor Proficiencies",
+"NIH.TraitArmorLegacyProf": "Armor Proficiencies",
+"NIH.TraitCIPlural.one": "Condition Immunity",
+"NIH.TraitCIPlural.other": "Condition Immunities",
+"NIH.TraitConfig": "Configure {trait}",
+"NIH.TraitConfigChooseAnyCounted": "any {count} {type}",
+"NIH.TraitConfigChooseAnyUncounted": "any {type}",
+"NIH.TraitConfigChooseList": "{count} from {list}",
+"NIH.TraitConfigChooseOther": "{count} other {type}",
+"NIH.TraitConfigChooseWrapper": "Choose {choices}",
+"NIH.TraitDIPlural.one": "Damage Immunity",
+"NIH.TraitDIPlural.other": "Damage Immunities",
+"NIH.TraitDMPlural.one": "Damage Modification",
+"NIH.TraitDMPlural.other": "Damage Modifications",
+"NIH.TraitDRPlural.one": "Damage Resistance",
+"NIH.TraitDRPlural.other": "Damage Resistances",
+"NIH.TraitDVPlural.one": "Damage Vulnerability",
+"NIH.TraitDVPlural.other": "Damage Vulnerabilities",
+"NIH.TraitGenericPlural.one": "Trait",
+"NIH.TraitGenericPlural.other": "Traits",
+"NIH.TraitLanguagesPlural.one": "Language",
+"NIH.TraitLanguagesPlural.other": "Languages",
+"NIH.TraitSave": "Update",
+"NIH.TraitSavesPlural.one": "Saving Throw Proficiency",
+"NIH.TraitSavesPlural.other": "Saving Throw Proficiencies",
+"NIH.TraitSelectorSpecial": "Special (Split with Semi-Colon)",
+"NIH.TraitSkillsPlural.one": "Skill Proficiency",
+"NIH.TraitSkillsPlural.other": "Skill Proficiencies",
+"NIH.TraitToolPlural.one": "Tool Proficiency",
+"NIH.TraitToolPlural.other": "Tool Proficiencies",
+"NIH.TraitToolProf": "Tool Proficiencies",
+"NIH.TraitWeaponPlural.one": "Weapon Proficiency",
+"NIH.TraitWeaponPlural.other": "Weapon Proficiencies",
+"NIH.TraitWeaponProf": "Weapon Proficiencies",
+"NIH.Traits": "Traits",
+"NIH.TraitsChosen": "Chosen Traits",
 
-"DND5E.TRANSFORM": {
+"NIH.TRANSFORM": {
   "Action": {
     "Restore": "Restore Transformation",
     "Transform": "Transform"
@@ -4916,7 +4916,7 @@
   }
 },
 
-"DND5E.TRAVEL": {
+"NIH.TRAVEL": {
   "FIELDS": {
     "pace": {
       "label": "Pace"
@@ -4948,7 +4948,7 @@
   }
 },
 
-"DND5E.Treasure": {
+"NIH.Treasure": {
   "Categories": {
     "Any": "Any",
     "Arcana": "Arcana",
@@ -4963,17 +4963,17 @@
     "Title": "Configure Treasure"
   }
 },
-"DND5E.Trigger": "Trigger",
-"DND5E.Type": "Type",
-"DND5E.Uncrewed": "Uncrewed",
-"DND5E.Unequipped": "Not Equipped",
-"DND5E.Unidentified.DefaultName": "Unidentified {name}",
-"DND5E.Unidentified.Notice": "You must identify this item to learn its details.",
-"DND5E.Unidentified.Title": "Unidentified",
-"DND5E.Unidentified.Value": "???",
-"DND5E.Unit": "Unit",
+"NIH.Trigger": "Trigger",
+"NIH.Type": "Type",
+"NIH.Uncrewed": "Uncrewed",
+"NIH.Unequipped": "Not Equipped",
+"NIH.Unidentified.DefaultName": "Unidentified {name}",
+"NIH.Unidentified.Notice": "You must identify this item to learn its details.",
+"NIH.Unidentified.Title": "Unidentified",
+"NIH.Unidentified.Value": "???",
+"NIH.Unit": "Unit",
 
-"DND5E.UNITS": {
+"NIH.UNITS": {
   "DISTANCE": {
     "Foot": {
       "Label": "Feet",
@@ -5120,10 +5120,10 @@
   }
 },
 
-"DND5E.Unknown": "Unknown",
-"DND5E.Unlimited": "Unlimited",
+"NIH.Unknown": "Unknown",
+"NIH.Unlimited": "Unlimited",
 
-"DND5E.USAGE": {
+"NIH.USAGE": {
   "SECTION": {
     "Consumption": "Consumption",
     "Creation": "Creation",
@@ -5131,19 +5131,19 @@
   }
 },
 
-"DND5E.Usage": "Usage",
-"DND5E.Use": "Use",
-"DND5E.UseItem": "Use {item}",
-"DND5E.Uses": "Uses",
-"DND5E.UsesAvailable": "Available Uses",
-"DND5E.UsesMax": "Maximum Uses",
-"DND5E.UsesPeriod": "Recovery Period",
-"DND5E.UsesPeriods": {
+"NIH.Usage": "Usage",
+"NIH.Use": "Use",
+"NIH.UseItem": "Use {item}",
+"NIH.Uses": "Uses",
+"NIH.UsesAvailable": "Available Uses",
+"NIH.UsesMax": "Maximum Uses",
+"NIH.UsesPeriod": "Recovery Period",
+"NIH.UsesPeriods": {
   "Charges": "Charges",
   "ChargesAbbreviation": "Charges"
 },
 
-"DND5E.USES": {
+"NIH.USES": {
   "FIELDS": {
     "uses": {
       "label": "Uses",
@@ -5229,7 +5229,7 @@
   }
 },
 
-"DND5E.UTILITY": {
+"NIH.UTILITY": {
   "FIELDS": {
     "roll": {
       "label": "Roll",
@@ -5255,9 +5255,9 @@
   "Title": "Use"
 },
 
-"DND5E.Value": "Value",
+"NIH.Value": "Value",
 
-"DND5E.VEHICLE": {
+"NIH.VEHICLE": {
   "Action": {
     "Create": {
       "Equipment": "Create Equipment",
@@ -5420,17 +5420,17 @@
   }
 },
 
-"DND5E.Vehicle": "Vehicle",
-"DND5E.Versatile": "Versatile",
-"DND5E.VersatileDamage": "Versatile Damage",
-"DND5E.VsDC": "vs DC.",
-"DND5E.Vulnerabilities": "Vulnerabilities",
-"DND5E.WarnBadACFormula": "The provided AC formula \"{formula}\" could not be evaluated.",
-"DND5E.WarnCantAddMultipleAdvancements": "It is not currently possible to add multiple items with advancements to an actor at the same time. Please add them individually.",
-"DND5E.WarnMultipleArmor": "More than one suit of armor equipped, AC calculation may be incorrect.",
-"DND5E.WarnMultipleShields": "More than one shield equipped, AC calculation may be incorrect.",
+"NIH.Vehicle": "Vehicle",
+"NIH.Versatile": "Versatile",
+"NIH.VersatileDamage": "Versatile Damage",
+"NIH.VsDC": "vs DC.",
+"NIH.Vulnerabilities": "Vulnerabilities",
+"NIH.WarnBadACFormula": "The provided AC formula \"{formula}\" could not be evaluated.",
+"NIH.WarnCantAddMultipleAdvancements": "It is not currently possible to add multiple items with advancements to an actor at the same time. Please add them individually.",
+"NIH.WarnMultipleArmor": "More than one suit of armor equipped, AC calculation may be incorrect.",
+"NIH.WarnMultipleShields": "More than one shield equipped, AC calculation may be incorrect.",
 
-"DND5E.WEAPON": {
+"NIH.WEAPON": {
   "FIELDS": {
     "ammunition": {
       "type": {
@@ -5464,26 +5464,26 @@
   }
 },
 
-"DND5E.WeaponCategory": "{category} Weapon",
-"DND5E.WeaponImprov": "Improvised",
-"DND5E.WeaponMartialM": "Martial Melee",
-"DND5E.WeaponMartialProficiency": "Martial",
-"DND5E.WeaponMartialR": "Martial Ranged",
-"DND5E.WeaponNatural": "Natural",
-"DND5E.WeaponSiege": "Siege Weapon",
-"DND5E.WeaponSimpleM": "Simple Melee",
-"DND5E.WeaponSimpleProficiency": "Simple",
-"DND5E.WeaponSimpleR": "Simple Ranged",
-"DND5E.Weight": "Weight",
-"DND5E.WhisperedTo": "Whispered to",
-"DND5E.Wiki": "Wiki",
-"DND5E.available": "available",
-"DND5E.description": "A system for playing the fifth edition of the worlds most popular roleplaying game in the Foundry Virtual Tabletop environment.",
-"DND5E.of": "of",
-"DND5E.per": "per",
-"DND5E.spell": "spell",
+"NIH.WeaponCategory": "{category} Weapon",
+"NIH.WeaponImprov": "Improvised",
+"NIH.WeaponMartialM": "Martial Melee",
+"NIH.WeaponMartialProficiency": "Martial",
+"NIH.WeaponMartialR": "Martial Ranged",
+"NIH.WeaponNatural": "Natural",
+"NIH.WeaponSiege": "Siege Weapon",
+"NIH.WeaponSimpleM": "Simple Melee",
+"NIH.WeaponSimpleProficiency": "Simple",
+"NIH.WeaponSimpleR": "Simple Ranged",
+"NIH.Weight": "Weight",
+"NIH.WhisperedTo": "Whispered to",
+"NIH.Wiki": "Wiki",
+"NIH.available": "available",
+"NIH.description": "A system for playing the fifth edition of the worlds most popular roleplaying game in the Foundry Virtual Tabletop environment.",
+"NIH.of": "of",
+"NIH.per": "per",
+"NIH.spell": "spell",
 
-"EDITOR.DND5E.Inline": {
+"EDITOR.NIH.Inline": {
   "ApplyStatus": "Apply Status to Selected Tokens",
   "AttackExtended": "<em>{type}</em>: {parts}",
   "AttackLong": "{formula} to hit",
@@ -5515,7 +5515,7 @@
   }
 },
 
-"EFFECT.DND5E": {
+"EFFECT.NIH": {
   "StatusBleeding": "Bleeding",
   "StatusBloodied": "Bloodied",
   "StatusBurning": "Burning",
@@ -5551,7 +5551,7 @@
 "TYPES.JournalEntryPage.rule": "Rule",
 "TYPES.JournalEntryPage.spells": "Spell List",
 "TYPES.JournalEntryPage.subclass": "Subclass Summary",
-"JOURNALENTRYPAGE.DND5E": {
+"JOURNALENTRYPAGE.NIH": {
   "Class": {
     "FIELDS": {
       "description": {
@@ -5670,11 +5670,11 @@
   }
 },
 
-"KEYBINDINGS.DND5E.DragCopy": "Force Copy when Dragging Document",
-"KEYBINDINGS.DND5E.DragMove": "Force Move when Dragging Document",
-"KEYBINDINGS.DND5E.SkipDialogNormal": "Skip Dialog",
-"KEYBINDINGS.DND5E.SkipDialogAdvantage": "Skip Dialog (roll with Advantage/Critical)",
-"KEYBINDINGS.DND5E.SkipDialogDisadvantage": "Skip Dialog (roll with Disadvantage/Non-Critical)",
+"KEYBINDINGS.NIH.DragCopy": "Force Copy when Dragging Document",
+"KEYBINDINGS.NIH.DragMove": "Force Move when Dragging Document",
+"KEYBINDINGS.NIH.SkipDialogNormal": "Skip Dialog",
+"KEYBINDINGS.NIH.SkipDialogAdvantage": "Skip Dialog (roll with Advantage/Critical)",
+"KEYBINDINGS.NIH.SkipDialogDisadvantage": "Skip Dialog (roll with Disadvantage/Non-Critical)",
 
 "MACRO.5eMissingTargetWarn": "Your controlled actor '{actor}' does not have an {type} with name '{name}'.",
 "MACRO.5eMultipleTargetsWarn": "Your controlled actor '{actor}' has more than one {type} with name '{name}'. The first match will be chosen.",
@@ -5695,7 +5695,7 @@
 "SETTINGS.5eNoConcentrationL": "Disable the system's automated tracking of concentration.",
 "SETTINGS.5eGridAlignedSquareTemplatesL": "When square templates are created as the result of casting a spell or using an item, they will be locked to the grid alignment and unable to be rotated.",
 "SETTINGS.5eGridAlignedSquareTemplatesN": "Grid-Aligned Square Templates",
-"SETTINGS.DND5E": {
+"SETTINGS.NIH": {
   "AUTOMATION": {
     "Movement": {
       "Name": "Movement Automation",
@@ -5884,7 +5884,7 @@
   }
 },
 
-"SHEETS.DND5E": {
+"SHEETS.NIH": {
   "THEME": {
     "Label": "Theme",
     "Automatic": "Automatic",

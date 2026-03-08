@@ -34,12 +34,12 @@ img: icons/skills/movement/feet-winged-boots-brown.webp
 effects:
   - name: Halfling Nimbleness
     img: icons/skills/movement/feet-winged-boots-brown.webp
-    origin: Compendium.dnd5e.races.Item.PqxZgcJzp1VVgP8t
+    origin: Compendium.nih.races.Item.PqxZgcJzp1VVgP8t
     _id: 8oJGOvksocvoVzVE
     type: base
     system: {}
     changes:
-      - key: flags.dnd5e.halflingNimbleness
+      - key: flags.nih.halflingNimbleness
         mode: 5
         value: 'true'
         priority: null
@@ -58,7 +58,7 @@ effects:
     statuses: []
     sort: 0
     flags:
-      dnd5e:
+      nih:
         riders:
           statuses: []
     _stats:
@@ -66,21 +66,21 @@ effects:
       duplicateSource: null
       exportSource: null
       coreVersion: '13.350'
-      systemId: dnd5e
+      systemId: nih
       systemVersion: 5.2.0
       createdTime: 1762280439878
       modifiedTime: 1762280447210
-      lastModifiedBy: dnd5ebuilder0000
+      lastModifiedBy: nihbuilder0000
     _key: '!items.effects!PqxZgcJzp1VVgP8t.8oJGOvksocvoVzVE'
 folder: kbtbKofcv13crhke
 sort: 0
 _stats:
   duplicateSource: null
   coreVersion: '13.344'
-  systemId: dnd5e
+  systemId: nih
   systemVersion: 4.0.0
   createdTime: 1725037392889
   modifiedTime: 1725992703480
-  lastModifiedBy: dnd5ebuilder0000
+  lastModifiedBy: nihbuilder0000
   exportSource: null
 _key: '!items!PqxZgcJzp1VVgP8t'

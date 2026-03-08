@@ -36,7 +36,7 @@ export default class FeatData extends ItemDataModel.mixin(
   /* -------------------------------------------- */
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["DND5E.FEATURE", "DND5E.ENCHANTMENT", "DND5E.Prerequisites", "DND5E.SOURCE"];
+  static LOCALIZATION_PREFIXES = ["NIH.FEATURE", "NIH.ENCHANTMENT", "NIH.Prerequisites", "NIH.SOURCE"];
 
   /* -------------------------------------------- */
 
@@ -74,15 +74,15 @@ export default class FeatData extends ItemDataModel.mixin(
   static get compendiumBrowserFilters() {
     return new Map([
       ["category", {
-        label: "DND5E.ITEM.Category.Label",
+        label: "NIH.ITEM.Category.Label",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.featureTypes,
+          choices: CONFIG.NIH.featureTypes,
           keyPath: "system.type.value"
         }
       }],
       ["subtype", {
-        label: "DND5E.ItemFeatureType",
+        label: "NIH.ItemFeatureType",
         type: "set",
         config: {
           choices: filters => {
@@ -91,7 +91,7 @@ export default class FeatData extends ItemDataModel.mixin(
               o.anyNegative ||= v < 0;
               return o;
             }, { anyPositive: false, anyNegative: false });
-            return Object.entries(CONFIG.DND5E.featureTypes).reduce((obj, [type, config]) => {
+            return Object.entries(CONFIG.NIH.featureTypes).reduce((obj, [type, config]) => {
               if ( anyPositive && (filters.additional.category[type] !== 1) ) return obj;
               if ( anyNegative && (filters.additional.category[type] < 0) ) return obj;
               for ( const [key, label] of Object.entries(config.subtypes ?? {}) ) obj[key] = label;
@@ -103,10 +103,10 @@ export default class FeatData extends ItemDataModel.mixin(
       }],
       ["properties", this.compendiumBrowserPropertiesFilter("feat")],
       ["abilityScoreImprovement", {
-        label: "DND5E.ADVANCEMENT.AbilityScoreImprovement.Title",
+        label: "NIH.ADVANCEMENT.AbilityScoreImprovement.Title",
         type: "set",
         config: {
-          choices: CONFIG.DND5E.abilities
+          choices: CONFIG.NIH.abilities
         },
         createFilter: (filters, value, def) => {
           const { include, exclude } = Object.entries(value).reduce((d, [key, value]) => {
@@ -175,8 +175,8 @@ export default class FeatData extends ItemDataModel.mixin(
    * @type {boolean}
    */
   get isEnchantmentSource() {
-    return CONFIG.DND5E.featureTypes[this.type?.value]?.subtypes?.[this.type?.subtype]
-      && (this.type?.subtype in CONFIG.DND5E.featureTypes.enchantment.subtypes);
+    return CONFIG.NIH.featureTypes[this.type?.value]?.subtypes?.[this.type?.subtype]
+      && (this.type?.subtype in CONFIG.NIH.featureTypes.enchantment.subtypes);
   }
 
   /* -------------------------------------------- */
@@ -252,19 +252,19 @@ export default class FeatData extends ItemDataModel.mixin(
     this.prepareDescriptionData();
 
     if ( this.type.value ) {
-      const config = CONFIG.DND5E.featureTypes[this.type.value];
+      const config = CONFIG.NIH.featureTypes[this.type.value];
       if ( config ) this.type.label = config.subtypes?.[this.type.subtype] ?? null;
       else this.type.label = game.i18n.localize(CONFIG.Item.typeLabels.feat);
     }
 
     let label;
     const activation = this.activities.contents[0]?.activation.type;
-    if ( activation === "legendary" ) label = game.i18n.localize("DND5E.LegendaryAction.Label");
-    if ( activation === "mythic" ) label = game.i18n.localize("DND5E.MythicActionLabel");
-    else if ( activation === "lair" ) label = game.i18n.localize("DND5E.LAIR.Action.Label");
-    else if ( activation === "action" && this.hasAttack ) label = game.i18n.localize("DND5E.Attack");
-    else if ( activation ) label = game.i18n.localize("DND5E.Action");
-    else label = game.i18n.localize("DND5E.Passive");
+    if ( activation === "legendary" ) label = game.i18n.localize("NIH.LegendaryAction.Label");
+    if ( activation === "mythic" ) label = game.i18n.localize("NIH.MythicActionLabel");
+    else if ( activation === "lair" ) label = game.i18n.localize("NIH.LAIR.Action.Label");
+    else if ( activation === "action" && this.hasAttack ) label = game.i18n.localize("NIH.Attack");
+    else if ( activation ) label = game.i18n.localize("NIH.Action");
+    else label = game.i18n.localize("NIH.Passive");
     this.parent.labels ??= {};
     this.parent.labels.featType = label;
   }
@@ -294,11 +294,11 @@ export default class FeatData extends ItemDataModel.mixin(
       { label: this.type.label },
       { label: this.parent.labels.featType },
       { label: this.requirements, value: this._source.requirements, field: this.schema.getField("requirements"),
-        placeholder: "DND5E.Requirements" }
+        placeholder: "NIH.Requirements" }
     ];
 
-    context.parts = ["dnd5e.details-feat", "dnd5e.field-uses"];
-    const itemTypes = CONFIG.DND5E.featureTypes[this._source.type.value];
+    context.parts = ["nih.details-feat", "nih.field-uses"];
+    const itemTypes = CONFIG.NIH.featureTypes[this._source.type.value];
     if ( itemTypes ) {
       context.itemType = itemTypes.label;
       context.itemSubtypes = itemTypes.subtypes;
@@ -327,7 +327,7 @@ export default class FeatData extends ItemDataModel.mixin(
 
     // Check to ensure the item doesn't already exist on actor if it is not repeatable
     if ( !this.prerequisites.repeatable && actor.sourcedItems?.get(this.parent.uuid)?.size ) {
-      messages.push(game.i18n.localize("DND5E.Prerequisites.Warning.NotRepeatable"));
+      messages.push(game.i18n.localize("NIH.Prerequisites.Warning.NotRepeatable"));
     }
 
     // If a feature has item pre-requisites, make sure the other items exist on the actor
@@ -337,14 +337,14 @@ export default class FeatData extends ItemDataModel.mixin(
       return (actor.identifiedItems.get(i)?.size || pendingAddition.has(i)) && !pendingRemoval.has(i);
     });
     if ( !someExist ) {
-      messages.push(game.i18n.format("DND5E.Prerequisites.Warning.MissingItem", {
+      messages.push(game.i18n.format("NIH.Prerequisites.Warning.MissingItem", {
         items: game.i18n.getListFormatter({ type: "disjunction" }).format(Array.from(this.prerequisites.items))
       }));
     }
 
     // If a feature has a level pre-requisite, make sure it is less than or equal to current level
     if ( (this.prerequisites?.level ?? -Infinity) > (level ?? Infinity) ) {
-      messages.push(game.i18n.format("DND5E.Prerequisites.Warning.InvalidLevel", {
+      messages.push(game.i18n.format("NIH.Prerequisites.Warning.InvalidLevel", {
         level: this.prerequisites.level
       }));
     }
@@ -352,7 +352,7 @@ export default class FeatData extends ItemDataModel.mixin(
     if ( !messages.length ) return true;
 
     if ( showMessage || throwError ) {
-      const message = game.i18n.format("DND5E.Prerequisites.Warning.Message", {
+      const message = game.i18n.format("NIH.Prerequisites.Warning.Message", {
         actor: actor.name,
         requirements: game.i18n.getListFormatter().format(messages),
         type: game.i18n.localize(CONFIG.Item.typeLabels[this.parent.type]).toLowerCase()
