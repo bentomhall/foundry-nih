@@ -92,18 +92,8 @@ Hooks.once("init", function() {
   // Configure module art
   game.nih.moduleArt = new ModuleArt();
 
-  // Configure bastions
-  game.nih.bastion = new documents.Bastion();
-
   // Configure tooltips
   game.nih.tooltips = new Tooltips5e();
-
-  // Remove honor & sanity from configuration if they aren't enabled
-  if ( !game.settings.get("nih", "honorScore") ) delete NIH.abilities.hon;
-  if ( !game.settings.get("nih", "sanityScore") ) delete NIH.abilities.san;
-
-  // Legacy rules.
-  if ( game.settings.get("nih", "rulesVersion") === "legacy" ) applyLegacyRules();
 
   // Register system
   NIH.SPELL_LISTS.forEach(uuid => nih.registry.spellLists.register(uuid));
@@ -476,39 +466,6 @@ Hooks.once("i18nInit", () => {
   // Set up status effects. Explicitly performed after init and before prelocalization.
   _configureStatusEffects();
 
-  if ( game.settings.get("nih", "rulesVersion") === "legacy" ) {
-    const { translations, _fallback } = game.i18n;
-    foundry.utils.mergeObject(translations, {
-      "TYPES.Item": {
-        race: game.i18n.localize("TYPES.Item.raceLegacy"),
-        racePl: game.i18n.localize("TYPES.Item.raceLegacyPl")
-      },
-      NIH: {
-        "Feature.Class.ArtificerPlan": game.i18n.localize("NIH.Feature.Class.ArtificerInfusion"),
-        "Feature.Species": game.i18n.localize("NIH.Feature.SpeciesLegacy"),
-        FlagsAlertHint: game.i18n.localize("NIH.FlagsAlertHintLegacy"),
-        ItemSpeciesDetails: game.i18n.localize("NIH.ItemSpeciesDetailsLegacy"),
-        "Language.Category.Rare": game.i18n.localize("NIH.Language.Category.Exotic"),
-        "MOVEMENT.Type.Speed": game.i18n.localize("NIH.MOVEMENT.Type.Walk"),
-        RacialTraits: game.i18n.localize("NIH.RacialTraitsLegacy"),
-        "REST.Long.Hint.Normal": game.i18n.localize("NIH.REST.Long.Hint.NormalLegacy"),
-        "REST.Long.Hint.Group": game.i18n.localize("NIH.REST.Long.Hint.GroupLegacy"),
-        "Species.Add": game.i18n.localize("NIH.Species.AddLegacy"),
-        "Species.Features": game.i18n.localize("NIH.Species.FeaturesLegacy"),
-        "TARGET.Type.Emanation": foundry.utils.mergeObject(
-          _fallback.NIH?.TARGET?.Type?.Radius ?? {},
-          translations.NIH?.TARGET?.Type?.Radius ?? {},
-          { inplace: false }
-        ),
-        TraitArmorPlural: foundry.utils.mergeObject(
-          _fallback.NIH?.TraitArmorLegacyPlural ?? {},
-          translations.NIH?.TraitArmorLegacyPlural ?? {},
-          { inplace: false }
-        ),
-        TraitArmorProf: game.i18n.localize("NIH.TraitArmorLegacyProf")
-      }
-    });
-  }
   utils.performPreLocalization(CONFIG.NIH);
   Object.values(CONFIG.NIH.activityTypes).forEach(c => c.documentClass.localize());
   Object.values(CONFIG.NIH.advancementTypes).forEach(c => c.documentClass.localize());
@@ -546,9 +503,6 @@ Hooks.once("ready", function() {
   // Chat message listeners
   documents.ChatMessage5e.activateListeners();
 
-  // Bastion initialization
-  game.nih.bastion.initializeUI();
-
   // Display the calendar HUD
   if ( CONFIG.NIH.calendar.application ) {
     nih.ui.calendar = new CONFIG.NIH.calendar.application();
@@ -564,7 +518,7 @@ Hooks.once("ready", function() {
 
   // Compendium pack folder migration.
   if ( foundry.utils.isNewerVersion("3.0.0", cv) ) {
-    migrations.reparentCompendiums("NIH SRD Content", "D&D SRD Content");
+    migrations.reparentCompendiums("NIH SRD Content");
   }
 
   // Perform the migration
